@@ -22,6 +22,7 @@ library(ggbiplot)
 library(ggforce)
 library(gt)
 library(hagenutils)
+library(mediation)
 
 d <-
   signaling2020 %>%
@@ -333,3 +334,30 @@ model_stats %>%
   gt(groupname_col = 'Model') %>%
   fmt_number(c(3:8)) %>%
   tab_footnote(model_summary, cells_row_groups())
+
+
+# Mediation Model ---------------------------------------------------------
+
+# Mediator model: Belief in need t2 ~ Signal + Belief in need t1
+# Outcome model: Likelihood of help t2  ~ Signal + Belief in need t2 + Likelihood of help t1 + Belief in need t1
+
+d_mediate <-
+  d %>%
+  dplyr::filter(
+  signal %in% c(
+    'Verbal request',
+    'Depression')
+) %>%
+  mutate(
+    signal = factor(signal, levels = c('Verbal request', 'Depression'))
+  )
+
+mmediator <- lm(T2Belief ~ signal + T1Belief, d_mediate)
+mout <- lm(T2Action ~ signal + T2Belief + T1Action + T1Belief, d_mediate)
+
+out <- mediate(mmediator, mout,treat = "signal", mediator = "T2Belief")
+
+summary(out)
+plot(out)
+
+# mediation_model <- mediate(model.m, model.y, treat = 'signal', mediator = 'delta_needs_money', boot = T)
