@@ -361,3 +361,67 @@ summary(out)
 plot(out)
 
 # mediation_model <- mediate(model.m, model.y, treat = 'signal', mediator = 'delta_needs_money', boot = T)
+
+d_mediate <-
+  d %>%
+  dplyr::filter(
+    signal %in% c(
+      'Depression',
+      'Suicide attempt')
+  ) %>%
+  mutate(
+    signal = factor(signal, levels = c('Depression', 'Suicide attempt'))
+  )
+
+mmediator <- lm(T2Belief ~ signal + T1Belief + vignette + Sex, d_mediate)
+mout <- lm(T2Action ~ signal + T2Belief + T1Action + T1Belief + vignette + Sex, d_mediate)
+
+out <- mediate(mmediator, mout,treat = "signal", mediator = "T2Belief")
+
+summary(out)
+plot(out)
+
+# to do: moderated mediation model
+
+d_mediate <-
+  d %>%
+  dplyr::filter(
+    signal %in% c(
+      'Verbal request',
+      'Depression'),
+    vignette != "Thwarted marriage"
+  ) %>%
+  mutate(
+    signal = factor(signal, levels = c('Verbal request', 'Depression'))
+  )
+
+mmediator <- lm(T2Belief ~ signal + T1Belief + vignette, d_mediate)
+mout <- lm(T2Action ~ signal + T2Belief + T1Action + T1Belief + vignette, d_mediate)
+
+out <- mediate(mmediator, mout, treat = "signal", mediator = "T2Belief")
+
+summary(out)
+plot(out)
+
+
+
+d_mediate <-
+  d %>%
+  dplyr::filter(
+    signal %in% c(
+      'Depression',
+      'Suicide attempt'),
+    vignette != "Thwarted marriage",
+    Sex == "Male"
+  ) %>%
+  mutate(
+    signal = factor(signal, levels = c('Depression', 'Suicide attempt'))
+  )
+
+mmediator <- lm(T2Belief ~ signal + T1Belief + vignette, d_mediate)
+mout <- lm(T2Action ~ signal + T2Belief + T1Action + T1Belief + vignette, d_mediate)
+
+out <- mediate(mmediator, mout, treat = "signal", mediator = "T2Belief")
+
+summary(out)
+plot(out)
