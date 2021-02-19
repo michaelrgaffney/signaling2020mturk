@@ -1,9 +1,20 @@
 ---
 title: "Depression and suicidality as costly signals of need"
-author: "Michael Gaffney, Kai Adams, Kristen Syme, and Edward Hagen"
-date: "2/18/2021"
-output: html_document
+author: "Michael Gaffney, Kai Adams, Kristen L. Syme, and Edward H. Hagen"
+date: '`r format(Sys.Date(), "%B %d, %Y")`'
+always_allow_html: true
+output: 
+  bookdown::html_document2:
+    number_sections: false
+bibliography: MTBib.bib
+csl: apa-6th-edition.csl
 ---
+
+```{r setup, include=F}
+knitr::opts_chunk$set(echo = F, warning = F, error = F, message = F)
+source('analysis.R')
+```
+
 
 # Abstract
 
@@ -208,7 +219,7 @@ Both emotional and instrumental responses were measured in the survey portion of
 
 To measure these responses, sliders which functioned largely as visual analogue scales were used due to the fact they allow for finer grained changes than categorical scales and provide a continuum of scores [@KlimekEtAl2017]. For the pre-signal set of questions, only the ends of each continuum were labeled with some variant of extremely likely and extremely unlikely being used for each measure. For the second set, the center was labelled no change, and the ends of each continuum were labelled as some variant of much more likely and much less likely. 
 
-Compared to our pre-signal measures, we had more missing values in the post-signal questions. We attributed this to the fact that Qualtrics only records responses if the slider is touched, which most participants probably did not realize. Since the slider was preset at the center at Time 2, we assumed that the missing values were largely due to participants meaning to report no change. We therefore replaced the missing values with the middle value for Time 2 variables only. The minimum perent of a entries replaced was $`r signif(df_na_sum["Min."], 2)`$%, and the maximum was $`r signif(df_na_sum["Max."], 2)`$%, with the mean percentage of missing values replaced being $`r signif(df_na_sum["Mean"], 2)`$%. We did not replace missing values for Time 1 because the slider was preset to the far left (e.g. 0 percieved need).
+[deleted MA results stuff]
 
 In addition to this, the amount of money participants were comfortable lending to their imagined sisters was asked and was measured with a slider which ranged from $0 to $50,000 and allowed the participant to see the amount they were selecting. Unlike the previously described measures, it was repeated identically at both time periods and asked on its own page due to the desire to save the only question that allowed for partial support for after those with less flexibility were asked.
 
