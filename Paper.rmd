@@ -273,3 +273,6 @@ To analyze the effects of conflict and the amount and type of information (herea
 To understand the effects of the signals, we fit linear models for each of our four dependent variables. For the models of change in perceived need of money and change in likelihood of lending money, each was modeled with signal type as the sole independent variable. For the model looking at change in the amount of money participants were willing to lend, the same measure pre-signal was controlled for. And in the PCA model, PC1 post-signal was modeled controlling for PC1 pre-signal. 
 
 We also fit interaction models for the same outcome variables post-signal, with each being the independent variable for model that interacted signal with information and signal with conflict. 
+
+# Results
+

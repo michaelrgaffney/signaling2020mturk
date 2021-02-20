@@ -24,6 +24,15 @@ library(gt)
 library(hagenutils)
 library(mediation)
 
+
+# Functions ---------------------------------------------------------------
+
+theme_bw2 <-
+  theme_bw(15) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+
+# Prepare data ------------------------------------------------------------
+
 d <-
   signaling2020 %>%
   dplyr::filter(CompleteSurvey) %>%
@@ -44,8 +53,12 @@ m1 <- lm(T2Belief ~ T1Belief * signal, d)
 summary(m1)
 Anova(m1, type = 3)
 
-p <- visreg(m1, xvar='signal', by = 'T1Belief', partial = F, rug = F, gg = T)
-p + theme_bw() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+plot_belief <-
+  visreg(m1, xvar='signal', by = 'T1Belief', partial = F, rug = F, gg = T) +
+  ylim(c(0, 100)) +
+  labs(x = '', y = 'T2 Belief\n') +
+  theme_bw2
+plot_belief
 
 # Signals vs belief in each vignette
 
@@ -53,8 +66,12 @@ m1b <- lm(T2Belief ~ T1Belief + signal*vignette, d)
 # summary(m1b)
 Anova(m1b, type = 3)
 
-p <- visreg(m1b, xvar='signal', by = 'vignette', partial = F, rug = F, gg = T)
-p + theme_bw() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+plot_belief_vignettes <-
+  visreg(m1b, xvar='signal', by = 'vignette', partial = F, rug = F, gg = T) +
+  ylim(c(0, 100)) +
+  labs(x = '', y = 'T2 Belief\n') +
+  theme_bw2
+plot_belief_vignettes
 
 # Plot of raw data
 
@@ -76,19 +93,31 @@ d4c <-
   group_by(signal, vignette, Time) %>%
   dplyr::summarise(value = mean(value))
 
-ggplot() +
+plot_raw_beliefs <-
+  ggplot() +
   geom_line(data = d4b, aes(Time, value, group = id), alpha = 0.1) +
   geom_line(data = d4c, aes(Time, value, group = 1), colour = 'red') +
+  scale_x_discrete(expand = expansion(mult=0.1)) +
   facet_grid(vignette~signal) +
   labs(x = '', y = 'Belief\n') +
-  theme_minimal() + theme(strip.text.y = element_text(angle = 0, hjust = 0))
+  theme_minimal(15) +
+  theme(
+    strip.text.y = element_text(angle = 0, hjust = 0),
+    panel.spacing.x = unit(1, 'lines')
+  )
+plot_raw_beliefs
 
 # Action ------------------------------------------------------------------
 
 m2 <- lm(T2Action ~ T1Action * signal, d)
 # summary(m2)
-p <- visreg(m2, xvar='signal', by = 'T1Action', partial = F, rug = F, gg = T)
-p + theme_bw() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+Anova(m2, type = 3)
+
+plot_action <-
+  visreg(m2, xvar='signal', by = 'T1Action', partial = F, rug = F, gg = T) +
+  labs(x = '', y = 'T2 Action\n') +
+  theme_bw2
+plot_action
 
 # Signals vs actions in each vignette
 
@@ -96,21 +125,42 @@ m2b <- lm(T2Action ~ T1Action + signal*vignette, d)
 # summary(m2b)
 Anova(m2b, type = 3)
 
-p <- visreg(m2b, xvar='signal', by = 'vignette', partial = F, rug = F, gg = T)
-p + theme_bw() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+plot_action_vignette <-
+  visreg(m2b, xvar='signal', by = 'vignette', partial = F, rug = F, gg = T) +
+  ylim(c(0, 100)) +
+  labs(x = '', y = 'T2 Action\n') +
+  theme_bw2
+plot_action_vignette
 
 # Effect of second signal indicating victim is telling the truth
 m2c <- lm(T3Action ~ T2Action * signal, d)
 Anova(m2c, type = 3)
 
-p <- visreg(m2c, xvar = 'T2Action', by='signal', partial = F, rug = F, gg = T)
-p + theme_bw()
+plot_T3_action <-
+  visreg(m2c, xvar = 'T2Action', by='signal', partial = F, rug = F, gg = T) +
+  ylim(c(0, 100)) +
+  labs(x = '\nT2 Action', y = 'T3 Action\n') +
+  theme_bw2
+plot_T3_action
 
-m2d <- lm(T3Action ~ T2Action * vignette + signal, d)
+m2d <- glm(I(T3Action/100) ~ I(T2Action/100) * vignette + signal, family = binomial, d)
 Anova(m2d, type = 3)
 
-p <- visreg(m2d, xvar = 'T2Action', by='vignette', partial = F, rug = F, gg = T)
-p + theme_bw()
+plot_T3_action_vignette <-
+  visreg(m2d, xvar = 'T2Action', by='vignette', scale = 'response', partial = F, rug = F, gg = T) +
+  ylim(c(0, 1)) +
+  labs(x = '\nT2 Action', y = 'T3 Action\n') +
+  theme_bw(15)
+plot_T3_action_vignette
+
+# Indian sample only
+
+plot_t2_t3 <-
+  ggplot(d[d$vignette == 'Thwarted marriage',], aes(T2Action, T3Action)) +
+  geom_point() +
+  geom_abline(intercept = 0, slope = 1) +
+  ggtitle("Thwarted marriage only")
+plot_t2_t3
 
 # Plot of raw data
 
@@ -123,28 +173,43 @@ d4e <-
   group_by(signal, vignette, Time) %>%
   dplyr::summarise(value = mean(value))
 
-ggplot() +
+plot_belief_raw <-
+  ggplot() +
   geom_line(data = d4d, aes(Time, value, group = id), alpha = 0.1) +
   geom_line(data = d4e, aes(Time, value, group = 1), colour = 'red') +
+  scale_x_discrete(expand = expansion(mult=0.1)) +
   facet_grid(vignette~signal) +
-  labs(x = '', y = 'Action\n') +
-  theme_minimal() + theme(strip.text.y = element_text(angle = 0, hjust = 0))
+  labs(x = '', y = 'Belief\n') +
+  theme_minimal(15) +
+  theme(
+    strip.text.y = element_text(angle = 0, hjust = 0),
+    panel.spacing.x = unit(1, 'lines')
+  )
+plot_belief_raw
 
 # Divide (thwarted marriage only) -----------------------------------------
 
 m13 <- lm(T2Divide ~ T1Divide * signal, d2)
 Anova(m13)
 
-p <- visreg(m13, xvar='signal', by = 'T1Divide', partial = F, rug = F, gg = T)
-p + theme_bw() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+plot_divide <-
+  visreg(m13, xvar='signal', by = 'T1Divide', partial = F, rug = F, gg = T) +
+  ylim(c(0, 100)) +
+  labs(x = '', y = 'T2 Division to older daughter\n') +
+  theme_bw2
+plot_divide
 
 # Exploratory
 
 m13b <- lm(T2Divide ~ T1Divide + Age * signal, d2)
 Anova(m13b)
 
-p <- visreg(m13b, xvar='signal', by = 'Age', partial = F, rug = F, gg = T)
-p + theme_bw() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+plot_divide_age <-
+  visreg(m13b, xvar='signal', by = 'Age', partial = F, rug = F, gg = T) +
+  ylim(c(0, 100)) +
+  labs(x = '', y = 'T2 Division to older daugther') +
+  theme_bw2
+plot_divide_age
 
 # Jealous -----------------------------------------------------------------
 
@@ -176,16 +241,43 @@ p + theme_bw() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust
 m4 <- lm(T2Belief ~ T1Belief + signal*Sex, d)
 Anova(m4, type = 3)
 
-p <- visreg(m4, xvar='Sex', by = 'signal', partial = F, rug = F, gg = T, scale = 'response')
-p + theme_bw()
+plot_belief_sex <-
+  visreg(m4, xvar='Sex', by = 'signal', partial = F, rug = F, gg = T, scale = 'response') +
+  ylim(c(0, 100)) +
+  labs(x = '', y = 'T2 Belief\n') +
+  theme_bw(15)
+plot_belief_sex
+
+m4b <- lm(T2Belief ~ T1Belief + vignette*Sex, d)
+Anova(m4b)
+
+plot_belief_sex_vignette <-
+  visreg(m4b, xvar='Sex', by = 'vignette', partial = F, rug = F, gg = T, scale = 'response') +
+  ylim(c(0, 100)) +
+  labs(x = '', y = 'T2 Belief\n') +
+  theme_bw(15)
+plot_belief_sex_vignette
 
 # Action vs sex
 m5 <- lm(T2Action ~ T1Action + signal*Sex, d)
 Anova(m5, type = 3)
 
-p <- visreg(m5, xvar='Sex', by = 'signal', partial = F, rug = F, gg = T, scale = 'response')
-p + theme_bw()
+plot_action_sex <-
+  visreg(m5, xvar='Sex', by = 'signal', partial = F, rug = F, gg = T, scale = 'response') +
+  ylim(c(0, 100)) +
+  labs(x = '', y = 'T2 Action\n') +
+  theme_bw(15)
+plot_action_sex
 
+m5b <- lm(T2Action ~ T1Action + vignette*Sex, d)
+Anova(m5b, type = 3)
+
+plot_action_sex_vignette <-
+  visreg(m5b, xvar='Sex', by = 'vignette', partial = F, rug = F, gg = T, scale = 'response') +
+  ylim(c(0, 100)) +
+  labs(x = '', y = 'T2 Action\n') +
+  theme_bw(15)
+plot_action_sex_vignette
 
 # Age ---------------------------------------------------------------------
 
@@ -193,44 +285,68 @@ p + theme_bw()
 m9 <- lm(T2Belief ~ T1Belief + signal * Age, d)
 Anova(m9, type = 3)
 
-p <- visreg(m9, xvar='Age', by = 'signal', partial = F, rug = F, gg = T, scale = 'response')
-p + theme_bw()
+plot_belief_age <-
+  visreg(m9, xvar='Age', by = 'signal', partial = F, rug = F, gg = T, scale = 'response') +
+  ylim(c(0, 100)) +
+  labs(x = '\nAge', y = 'T2 Belief\n') +
+  theme_bw2
+plot_belief_age
 
 # Action vs Age
 m10 <- lm(T2Action ~ T1Action + signal * Age, d)
 Anova(m10, type = 3)
 
-p <- visreg(m10, xvar='Age', by = 'signal', partial = F, rug = F, gg = T, scale = 'response')
-p + theme_bw()
+plot_action_age <-
+  visreg(m10, xvar='Age', by = 'signal', partial = F, rug = F, gg = T, scale = 'response') +
+  ylim(c(0, 100)) +
+  labs(x = '\nAge', y = 'T2 Action\n') +
+  theme_bw2
+plot_action_age
 
 # Vignette vs Age
 m11 <- lm(T2Belief ~ T1Belief + signal + vignette*Age, d)
 Anova(m11, type = 3)
 
-p <- visreg(m11, xvar='Age', by = 'vignette', partial = F, rug = F, gg = T, scale = 'response')
-p + theme_bw()
+plot_belief_age_vignette <-
+  visreg(m11, xvar='Age', by = 'vignette', partial = F, rug = F, gg = T, scale = 'response') +
+  ylim(c(0, 100)) +
+  labs(x = '\nAge', y = 'Belief\n') +
+  theme_bw2
+plot_belief_age_vignette
 
 m12 <- lm(T2Action ~ T1Action + signal + vignette*Age, d)
 Anova(m12, type = 3)
 
-p <- visreg(m12, xvar='Age', by = 'vignette', partial = F, rug = F, gg = T, scale = 'response')
-p + theme_bw()
+plot_action_age_vignette <-
+  visreg(m12, xvar='Age', by = 'vignette', partial = F, rug = F, gg = T, scale = 'response') +
+  ylim(c(0, 100)) +
+  labs(x = '\nAge', y = 'Action\n') +
+  theme_bw2
+plot_action_age_vignette
 
 # Perceived mental illness ------------------------------------------------
 
 m3 <- glm(T2MentallyIll ~ T1MentallyIll + signal, family = binomial, d)
 Anova(m3, type = 3)
 
-p <- visreg(m3, xvar='signal', partial = F, rug = F, gg = T, scale = 'response')
-p + theme_bw() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+plot_mentallyill <-
+  visreg(m3, xvar='signal', partial = F, rug = F, gg = T, scale = 'response') +
+  ylim(c(0, 1)) +
+  labs(x = '', y = 'T2 Mentally ill\n') +
+  theme_bw2
+plot_mentallyill
 
 # Mental illness by vignette
 
 m3b <- glm(T2MentallyIll ~ T1MentallyIll + signal*vignette, family = binomial, d)
 Anova(m3b, type = 3)
 
-p <- visreg(m3b, xvar='signal', by = 'vignette', partial = F, rug = F, gg = T, scale = 'response')
-p + theme_bw() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+plot_mentallyill_vignette <-
+  visreg(m3b, xvar='signal', by = 'vignette', partial = F, rug = F, gg = T, scale = 'response') +
+  ylim(c(0, 1)) +
+  labs(x = '', y = 'T2 Mentally ill\n') +
+  theme_bw2
+plot_mentallyill_vignette
 
 # Perceived emotions ------------------------------------------------------
 
@@ -306,13 +422,14 @@ boot_emotions <- function(i){
 
 d3_boot <- map_df(1:500, boot_emotions)
 
-ggplot() +
+plot_emotions <-
+  ggplot() +
   geom_segment(data = d3_boot, aes(x = T1LowMood_mean, y = T1Manipulative_mean, xend = T2LowMood_mean, yend = T2Manipulative_mean, colour=vignette), alpha = 0.02, arrow = arrow(length = unit(3, "mm"))) +
   geom_segment(data = d3_full, aes(x = T1LowMood_mean, y = T1Manipulative_mean, xend = T2LowMood_mean, yend = T2Manipulative_mean, colour=vignette), alpha = 1, size = 1, arrow = arrow(length = unit(3, "mm"))) +
   facet_wrap(~signal) +
   labs(title = 'Change in mean emotion from T1 to T2', x = '\nLow mood', y = 'Manipulative\n') +
   theme_bw()
-
+plot_emotions
 
 # Regression table --------------------------------------------------------
 
@@ -330,11 +447,12 @@ model_summary <-
   signif(2) %>%
   str_glue_data('N={nobs}; Rsq={r.squared}; Adj.Rsq={adj.r.squared}; F({df},{df.residual})={statistic}; p={p.value}')
 
-model_stats %>%
+table_model_stats <-
+  model_stats %>%
   gt(groupname_col = 'Model') %>%
   fmt_number(c(3:8)) %>%
   tab_footnote(model_summary, cells_row_groups())
-
+table_model_stats
 
 # Mediation Model ---------------------------------------------------------
 
