@@ -13,6 +13,7 @@ csl: apa-6th-edition.csl
 ```{r setup, include=F}
 knitr::opts_chunk$set(echo = F, warning = F, error = F, message = F)
 source('analysis.R')
+library(equatiomatic)
 ```
 
 
@@ -196,6 +197,9 @@ For our signal manipulation, six types of signals accompanying verbal requests w
 
 Unfortunately, it became clear after the study was completed that our no signal control was flawed due to the fact that a verbal request was always included in the main part of the vignette. Therefore, although the control had no signal after the main vignette, there was still a signal present before. For this reason, verbal request may be the closest condition to a control we have, with our original control simply being a one-time verbal request.
 
+## Preregistrations
+
+`r extract_eq(m1, intercept = 'beta', wrap = T)`
 
 ## Sampling
 
