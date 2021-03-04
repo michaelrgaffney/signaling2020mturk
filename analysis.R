@@ -24,6 +24,7 @@ library(gt)
 library(hagenutils)
 library(mediation)
 library(gglm)
+library(glmmboot)
 
 # Functions ---------------------------------------------------------------
 
@@ -68,6 +69,15 @@ m1 <- glm(T2Belief ~ T1Belief * signal, family = quasibinomial, d)
 summary(m1)
 Anova(m1, type = 3)
 gglm(m1)
+
+# glmmboot
+
+m1boot <- bootstrap_model(
+  base_model = m1,
+  base_data = d,
+  resamples = 999,
+  parallelism = 'parallel'
+)
 
 plot_belief <-
   visreg(m1, xvar='signal', by = 'T1Belief', partial = F, rug = F, gg = T, scale = 'response') +
@@ -162,9 +172,17 @@ plot_T2Belief_T2Action <-
 plot_T2Belief_T2Action
 
 m2 <- glm(T2Action ~ T1Action * signal, family = quasibinomial, d)
-# summary(m2)
+summary(m2)
 Anova(m2, type = 3)
 gglm(m2)
+
+# glmmboot
+m2boot <- bootstrap_model(
+  base_model = m2,
+  base_data = d,
+  resamples = 999,
+  parallelism = 'parallel'
+)
 
 plot_action <-
   visreg(m2, xvar='signal', by = 'T1Action', partial = F, rug = F, gg = T, scale = 'response') +
