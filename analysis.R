@@ -8,7 +8,7 @@
 #'
 #' **Brother-in-law**: Your teenage daughter claims your sister's husband sexually assaulted her (but might just be jealous of your sister's popular daughter)
 #'
-#' **Thwarted marriage**: Marriagable daughter refuses to marry available man (but might just want a bigger dowry)
+#' **Thwarted marriage**: Marriageable daughter refuses to marry available man (but might just want a bigger dowry)
 
 #+ warning=F, message=F
 
@@ -706,3 +706,23 @@ out <- mediate(mmediator, mout, treat = "signal", mediator = "T2Belief", boot = 
 
 summary(out)
 plot(out)
+
+
+# Emotion PCA -------------------------------------------------------------
+
+d_emotions <-
+  d %>%
+  dplyr::select(
+    starts_with('T2'),
+    -T2Action,
+    -T2Belief,
+    -T2Divide
+  )
+
+pca_emotions <- prcomp(d_emotions, scale. = F)
+
+d$PC1emotion <- -pca_emotions$x[,1]
+d$PC2emotion <- -pca_emotions$x[,2]
+
+m_emotion_belief <- glm(T2Belief ~ T1Belief + signal + PC1emotion + PC2emotion, family = quasibinomial, d)
+m_emotion_action <- glm(T2Action ~ T1Action * signal + PC1emotion + PC2emotion, family = quasibinomial, d)
