@@ -574,6 +574,7 @@ plot(out)
 
 # to do: moderated mediation model
 
+# Depression vs Verbal
 d_mediate <-
   d %>%
   dplyr::filter(
@@ -593,6 +594,95 @@ out <- mediate(mmediator, mout, treat = "signal", mediator = "T2Belief", boot = 
 
 summary(out)
 plot(out)
+
+
+# Suicide attempt vs Verbal
+d_mediate <-
+  d %>%
+  dplyr::filter(
+    signal %in% c(
+      'Verbal request',
+      'Suicide attempt'),
+    vignette != "Thwarted marriage"
+  ) %>%
+  mutate(
+    signal = factor(signal, levels = c('Verbal request', 'Suicide attempt'))
+  )
+
+mmediator <- lm(T2Belief ~ signal + T1Belief + vignette, d_mediate)
+mout <- lm(T2Action ~ signal + T2Belief + T1Action + T1Belief + vignette, d_mediate)
+
+out <- mediate(mmediator, mout, treat = "signal", mediator = "T2Belief")
+
+summary(out)
+plot(out)
+
+
+# Suicide attempt vs Depression
+d_mediate <-
+  d %>%
+  dplyr::filter(
+    signal %in% c(
+      'Depression',
+      'Suicide attempt'),
+    vignette != "Thwarted marriage"
+  ) %>%
+  mutate(
+    signal = factor(signal, levels = c('Depression', 'Suicide attempt'))
+  )
+
+mmediator <- lm(T2Belief ~ signal + T1Belief + vignette, d_mediate)
+mout <- lm(T2Action ~ signal + T2Belief + T1Action + T1Belief + vignette, d_mediate)
+
+out <- mediate(mmediator, mout, treat = "signal", mediator = "T2Belief")
+
+summary(out)
+plot(out)
+
+# Minor depression vs Depression
+d_mediate <-
+  d %>%
+  dplyr::filter(
+    signal %in% c(
+      'Mild depression',
+      'Depression'),
+    vignette != "Thwarted marriage"
+  ) %>%
+  mutate(
+    signal = factor(signal, levels = c('Mild depression', 'Depression'))
+  )
+
+mmediator <- lm(T2Belief ~ signal + T1Belief + vignette, d_mediate)
+mout <- lm(T2Action ~ signal + T2Belief + T1Action + T1Belief + vignette, d_mediate)
+
+out <- mediate(mmediator, mout, treat = "signal", mediator = "T2Belief")
+
+summary(out)
+plot(out)
+
+# Crying vs Verbal
+d_mediate <-
+  d %>%
+  dplyr::filter(
+    signal %in% c(
+      'Crying',
+      'Verbal request'),
+    vignette != "Thwarted marriage"
+  ) %>%
+  mutate(
+    signal = factor(signal, levels = c('Verbal request', 'Crying'))
+  )
+
+mmediator <- lm(T2Belief ~ signal + T1Belief + vignette, d_mediate)
+mout <- lm(T2Action ~ signal + T2Belief + T1Action + T1Belief + vignette, d_mediate)
+
+out <- mediate(mmediator, mout, treat = "signal", mediator = "T2Belief")
+
+summary(out)
+plot(out)
+
+
+
 
 
 
