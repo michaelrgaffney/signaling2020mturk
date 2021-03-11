@@ -25,6 +25,7 @@ library(hagenutils)
 library(mediation)
 library(gglm)
 library(glmmboot)
+# https://cran.r-project.org/web/packages/ggside/
 
 # Functions ---------------------------------------------------------------
 
@@ -467,6 +468,22 @@ m_pca_t2emo <- prcomp(T2emo)
 pca_loadings_plot(m_pca_t2emo)
 ggbiplot(m_pca_t2emo, groups = d$signal, ellipse = T)
 
+d$PC1emotion <- -m_pca_t2emo$x[,1]
+d$PC2emotion <- -m_pca_t2emo$x[,2]
+
+ggplot(d, aes(PC1emotion, PC2emotion, colour = T2Belief)) +
+  geom_density_2d(alpha = 0.35) +
+  geom_point() +
+  coord_fixed() +
+  scale_color_viridis_c(option='A') +
+  theme_minimal(15)
+
+m_emotion_belief <- glm(T2Belief ~ T1Belief + signal + PC1emotion + PC2emotion, family = quasibinomial, d)
+Anova(m_emotion_belief)
+x <- visreg(m_emotion_belief, scale = 'response', gg=T, rug = F)
+(x[[1]] + x[[2]])/(x[[3]] + x[[4]]) & theme_bw()
+
+m_emotion_action <- glm(T2Action ~ T1Action * signal + PC1emotion + PC2emotion, family = quasibinomial, d)
 
 # Emotion change ----------------------------------------------------------
 
@@ -546,10 +563,16 @@ d_mediate <-
 mmediator <- lm(T2Belief ~ signal + T1Belief, d_mediate)
 mout <- lm(T2Action ~ signal + T2Belief + T1Action + T1Belief, d_mediate)
 
-out <- mediate(mmediator, mout,treat = "signal", mediator = "T2Belief", boot = T)
-
+out <- mediate(mmediator, mout, treat = "signal", mediator = "T2Belief", boot = T)
 summary(out)
 plot(out)
+
+mmediator <- lm(PC1emotion ~ signal + T1Belief, d_mediate)
+mout <- lm(T2Belief ~ signal + PC1emotion + T1Belief, d_mediate)
+out <- mediate(mmediator, mout, treat = "signal", mediator = "PC1emotion")
+summary(out)
+plot(out)
+
 
 # mediation_model <- mediate(model.m, model.y, treat = 'signal', mediator = 'delta_needs_money', boot = T)
 
@@ -681,11 +704,6 @@ out <- mediate(mmediator, mout, treat = "signal", mediator = "T2Belief")
 summary(out)
 plot(out)
 
-
-
-
-
-
 d_mediate <-
   d %>%
   dplyr::filter(
@@ -706,23 +724,3 @@ out <- mediate(mmediator, mout, treat = "signal", mediator = "T2Belief", boot = 
 
 summary(out)
 plot(out)
-
-
-# Emotion PCA -------------------------------------------------------------
-
-d_emotions <-
-  d %>%
-  dplyr::select(
-    starts_with('T2'),
-    -T2Action,
-    -T2Belief,
-    -T2Divide
-  )
-
-pca_emotions <- prcomp(d_emotions, scale. = F)
-
-d$PC1emotion <- -pca_emotions$x[,1]
-d$PC2emotion <- -pca_emotions$x[,2]
-
-m_emotion_belief <- glm(T2Belief ~ T1Belief + signal + PC1emotion + PC2emotion, family = quasibinomial, d)
-m_emotion_action <- glm(T2Action ~ T1Action * signal + PC1emotion + PC2emotion, family = quasibinomial, d)
