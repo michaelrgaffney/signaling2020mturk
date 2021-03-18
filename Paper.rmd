@@ -12,7 +12,8 @@ csl: apa-6th-edition.csl
 
 ```{r setup, include=F}
 knitr::opts_chunk$set(echo = F, warning = F, error = F, message = F)
-source('analysis.R')
+# source('analysis.R')
+tar_load(c('models', 'effectsPlots', 'plot_T1Belief_T1Action'))
 library(equatiomatic)
 ```
 
@@ -239,7 +240,6 @@ Unfortunately, it became clear after the study was completed that our no signal 
 
 ## Preregistrations
 
-`r extract_eq(m1, intercept = 'beta', wrap = T)`
 
 ## Sampling
 
@@ -319,4 +319,8 @@ To understand the effects of the signals, we fit linear models for each of our f
 We also fit interaction models for the same outcome variables post-signal, with each being the independent variable for model that interacted signal with information and signal with conflict. 
 
 # Results
+
+```{r t1plot}
+plot_T1Belief_T1Action
+```
 

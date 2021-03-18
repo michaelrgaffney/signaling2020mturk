@@ -478,7 +478,7 @@ ggplot(d, aes(PC1emotion, PC2emotion, colour = T2Belief)) +
   scale_color_viridis_c(option='A') +
   theme_minimal(15)
 
-m_emotion_belief <- glm(T2Belief ~ T1Belief + signal + PC1emotion + PC2emotion, family = quasibinomial, d)
+m_emotion_belief <- glm(T2Belief ~ T1Belief * signal + PC1emotion + PC2emotion, family = quasibinomial, d)
 Anova(m_emotion_belief)
 x <- visreg(m_emotion_belief, scale = 'response', gg=T, rug = F)
 (x[[1]] + x[[2]])/(x[[3]] + x[[4]]) & theme_bw()
@@ -724,3 +724,4 @@ out <- mediate(mmediator, mout, treat = "signal", mediator = "T2Belief", boot = 
 
 summary(out)
 plot(out)
+
