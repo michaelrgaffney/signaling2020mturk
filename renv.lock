@@ -516,8 +516,14 @@
     "ggbiplot": {
       "Package": "ggbiplot",
       "Version": "0.55",
-      "Source": "unknown",
-      "Hash": "62e70ba7a4a4f2b464b9f00087c621d9"
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "ggbiplot",
+      "RemoteUsername": "vqv",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "7325e880485bea4c07465a0304c470608fffb5d9",
+      "Hash": "15a56f59159161ce6ec761f9deef8e78"
     },
     "ggforce": {
       "Package": "ggforce",
