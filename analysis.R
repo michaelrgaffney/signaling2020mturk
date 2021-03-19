@@ -14,7 +14,7 @@
 
 library(signaling2020data)
 library(car)
-library(ggbiplot)
+# library(ggbiplot)
 library(tidyverse)
 library(broom)
 library(effects)

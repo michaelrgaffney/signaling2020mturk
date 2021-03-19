@@ -12,9 +12,25 @@ csl: apa-6th-edition.csl
 
 ```{r setup, include=F}
 knitr::opts_chunk$set(echo = F, warning = F, error = F, message = F)
-# source('analysis.R')
-tar_load(c('models', 'effectsPlots', 'plot_T1Belief_T1Action'))
 library(equatiomatic)
+library(knitr)
+library(kableExtra)
+library(ggplot2)
+library(patchwork)
+
+tar_load(
+  c(
+    'd',
+    'models', 
+    'effectsPlots', 
+    'plot_T1Belief_T1Action',
+    'plot_emotions',
+    'plot_raw_beliefs',
+    'plot_raw_actions',
+    'med1'
+    )
+  )
+
 ```
 
 # Introduction
@@ -169,7 +185,90 @@ Outcome model: Likelihood of help t2  ~ Signal + Belief in need t2 + Likelihood 
 
 # Results
 
-```{r t1plot}
+## Summary statistics
+
+```{r sumtab}
+
+# d$Income <- ifelse(d$CurrencyType == 'USD', d$Income, d$Income*0.014)
+
+d$minutes <- d$TotalTime/60
+
+vars <- c(
+  Age = 'Age (years)',
+  Income = 'Income (USD)',
+  minutes = 'Time to complete (minutes)',
+  T1Belief = 'T1 Belief',
+  T1Action = 'T1 Action',
+  T1Divide = 'T1 Division',
+  T1LowMood = 'T1 Low mood',
+  T1Manipulative = 'T1 Manipulative',
+  T2Belief = 'T2 Belief',
+  T2Action = 'T2 Action',
+  T2Divide = 'T2 Division',
+  T2LowMood = 'T2 Low mood',
+  T2Manipulative = 'T2 Manipulative',
+  T3Action = 'T3 Action'
+)
+kable(custom.summarize(d, vars), caption = "Summary statistics for study variables. Original 0-100 values scaled to 0-1. Indian participants reported income in rupees, which we converted to USD at the current exchange rate (1 rupee == 0.014 USD).") %>% kable_styling()
+```
+
+## Distributions of beliefs and actions at time 1
+
+```{r t1plot, fig.width=10, fig.height=10, fig.cap="The distributions of Time 1 Belief vs. Time 1 Action, by vignette. Each dot is one participant. Original 0-100 values scaled to 0-1. Contour lines represent equal densities, estimated using a bivariate normal kernal (Venables and Ripley, 2002). Lines fit by linear regression. Dot size indicates the number of overlapping points."}
 plot_T1Belief_T1Action
 ```
 
+## Effects of signals on beliefs and actions
+
+```{r beliefeffect, fig.width=8, fig.height=8, fig.cap="The effect of the signals on T2 Belief (top) and Action (bottom) controlling for T1 values of Belief and Action, respectively, with an interaction between T1 values and the signal. Estimated using generalized linear regression models with the quasibinomial family."}
+(effectsPlots$m1plot + theme(axis.text.x = element_blank()))/effectsPlots$m3plot + plot_layout(ncol = 1) & theme(plot.margin = unit(c(0,0,0,0), units = 'mm'))
+```
+
+```{r beliefvignette, fig.width=8, fig.height=8, fig.cap=paste0("The effect of the signals on T2 Belief (top) and Action (bottom) in each vignette, controlling for T1 values of Belief and Action, respectively. Effects computed with T1 values set to their median value (T1Belief=", median(d$T1Belief, na.rm=T), ", T1Action=", median(d$T1Action, na.rm=T), "). Estimated using generalized linear regression models with the quasibinomial family.")}
+(effectsPlots$m2plot + theme(axis.text.x = element_blank()))/effectsPlots$m4plot + plot_layout(ncol = 1) & theme(plot.margin = unit(c(0,0,0,0), units = 'mm'))
+
+```
+
+## Effects of signals on victim's perceived emotional state
+
+```{r emotionsplot, fig.width=10, fig.height=8, fig.cap="The effect of the signals on the inferred *low mood* and *manipulative* emotion ratings from T1 (arrow base) to T2 (arrow head), in each of the four vignettes. Thick arrows: mean change. Thin arrows: means of 500 bootstrap resamples."}
+plot_emotions
+```
+
+## Mediation of action by belief
+
+```{r medation, fig.cap="Mediation of T2 Action by T2 Belief."}
+plot(med1, treatment = 'treated')
+```
+
+
+# Supplementary information
+
+## Demographic effects
+
+```{r demoeffectsbeliefs, fig.width=9, fig.height=8, fig.cap="Demographic effects on Belief. **Top**: Association of age with T2 Belief, controlling for T1 Belief, sex, and vignette. **Bottom**: Sex interacting with the effect of the signals on T2 Belief controlling for T1 Belief, age, and vignette. Estimated using a generalized linear regression model with the quasibinomial family."}
+effectsPlots$m24plotAge / effectsPlots$m24plotSex
+```
+
+```{r demoeffectsaction, fig.width=9, fig.height=8, fig.cap="Demographic effects on Action. **Top**: Association of age with T2 Action, controlling for T1 Action, sex, and vignette. **Bottom**: Association of sex with T2 Action controlling for T1 Action, age, and vignette. Estimated using a generalized linear regression model with the quasibinomial family."}
+effectsPlots$m25plotAge / effectsPlots$m25plotSex
+```
+
+## Raw beliefs and actions
+
+```{r rawbeliefs, fig.width=10, fig.height=10, fig.cap="Change in beliefs from T1 to T2 for participants in each condition. Each grey line is one participant. Red lines are the mean change."}
+plot_raw_beliefs
+```
+
+```{r rawactions, fig.width=10, fig.height=10, fig.cap="Change in actions from T1 to T2 for participants in each condition. Each grey line is one participant. Red lines are the mean change."}
+plot_raw_actions
+```
+
+## Mentally ill
+
+```{r mentallyill, fig.width=8, fig.cap="Proportion of participants in each condition who thought that the vignette victim was mentally ill. Means estimated with a generalized linear regression model with the quasibinomial family."}
+effectsPlots$m21plot
+```
+
+
+# References
