@@ -1,6 +1,6 @@
 
 
-fit_models2 <- function(d, d_thwarted, family = 'quasibinomial'){
+fit_models2 <- function(d, family = 'quasibinomial'){
   list(
     m1 = glm(T2Belief ~ T1Belief * signal, family = family, d),
     m2 = glm(T2Belief ~ T1Belief + signal * vignette, family = family, d),
@@ -28,11 +28,11 @@ fit_models2 <- function(d, d_thwarted, family = 'quasibinomial'){
   )
 }
 
-fit_models <- function(data, formulas, family = 'quasibinomial'){
+fit_models <- function(data, formulas){
   tibble(
     Name = names(formulas),
     Formula = unname(formulas),
-    Model = map(Formula, ~glm(formula = .x, family = family, data = data)),
+    Model = map(Formula, ~glm(formula = .x, family = 'quasibinomial', data = data)),
     Anova = map(Model, ~Anova(.x, type = 3)),
     Tidy = map(Model, ~tidy(.x, conf.int = T))
   )
