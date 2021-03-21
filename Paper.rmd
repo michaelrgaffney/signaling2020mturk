@@ -81,6 +81,8 @@ Beneficial social changes are also reported in traditional societies. Unlike Wes
 
 ## notes: 
 add funding info somewhere
+update MTurk (Ed email links + mine)
+Find a place for the predictions
 
 ## Design
 
@@ -254,6 +256,20 @@ ggmediation(med1b)
 ```{r emotionsplot, fig.width=10, fig.height=8, fig.cap="The effect of the signals on participants' inferred *manipulative* and *low mood* emotional states of the victim, from T1 (arrow base) to T2 (arrow head), in each of the four vignettes. Thick arrows: mean change. Thin arrows: means of 500 bootstrap resamples."}
 plot_emotions
 ```
+
+# Discussion
+
+## The effect of signaling on belief
+
+## Mediation models
+
+## Limitations
+
+The largest source of limitations of this study is its lack of ecological validity, something which had to be sacrificed for any experimental design involving depression and suicide attempts. It is almost certain that participants experienced this study differently than they would if the event actually happened to them. This may have biased results in a pro-signaler direction due to the lack of meaningful costs making support feel less costly or through the likely inability of participants to imagine themselves in an anonymous scenario (cite your paper on this) leading them to take an opportunity to signal generosity cheaply. It may have also biased participants against helping if they could not fully imagine the characters in the story as kin or important cooperative partners, while the survey's short duration may have weakened the strength of the bargaining of the costlier signals. However, both the findings of a main effect of signal and the effect of signal type on likelihood of support was largely mediated by change in belief suggest that participants were paying attention to the theoretically relevant details in ways that influenced their behavior. 
+
+Another limitation is our uncertainty over the data quality from the Indian sample. Compared to the US sample, far more participants were filtered out by our attention checks, something which could be consistent with botting, unfamiliarity with English, or low effort responses. Assuming this corresponded with more low-quality responses among those who passed the attention checks, the differences seen among those in the thwarted marriage vignette may simply be due to added noise rather than differences in the scenarios or the effectiveness of the signals among Indians compared to Americans.
+
+# Conclusion
 
 # Supplementary information
 
