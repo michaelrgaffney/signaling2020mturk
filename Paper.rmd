@@ -12,6 +12,7 @@ csl: apa-6th-edition.csl
 
 ```{r setup, include=F}
 knitr::opts_chunk$set(echo = F, warning = F, error = F, message = F)
+# options(warn = 2)
 library(equatiomatic)
 library(knitr)
 library(kableExtra)
@@ -245,7 +246,7 @@ knitr::include_graphics('paths.svg')
 
 The total effect of the *Depression* signal (treatment) vs. *Verbal request* (control) on the likelihood of *Action* was to increase it by `r 100*signif(med1b$tau.coef, 3)` points from T1 to T2 (on the original 100-point scale). Of this increase, `r 100*signif(med1b$n.avg, 2)`% was mediated by the increased *Belief* that the victim was telling the truth. See Figure \@ref(fig:mediation).
 
-```{r mediation, fig.height=4, fig.cap="The effect of Depression (treatment) vs. Verbal request (control) on Action is largely mediated by Belief. ACME: Average causal mediation effect. ADE: Average direct effect. The mediation model controlled for T1 Belief, and the outcome model controlled for T1 Belief and T1 Action. Both models were GLMs with the binomial family (the mediation package does not support the quasibinomial family)."}
+```{r mediation, fig.height=4, fig.cap="The effect of Depression (treatment) vs. Verbal request (control) on Action (0-1 scale) is largely mediated by Belief. ACME: Average causal mediation effect. ADE: Average direct effect. The mediation model controlled for T1 Belief, and the outcome model controlled for T1 Belief and T1 Action. Both models were GLMs with the binomial family (the mediation package does not support the quasibinomial family)."}
 ggmediation(med1b)
 ```
 
@@ -301,10 +302,21 @@ plot_raw_actions
 effectsPlots$m21plot
 ```
 
+## The effect of signals on T2 division in thwarted marriage vignette
+
+```{r division, fig.width=9, fig.cap="Effect of signals on division of dowry between the daughters in the thwarted marriage vignette, with an interaction between T1 Division and signal. Means estimated with a generalized linear regression model with the quasibinomial family."}
+effectsPlots$m7
+```
+
+```{r divisionage, fig.width=9, fig.cap="Interaction of age with signals on T2 Division of dowry between the daughters in the thwarted marriage vignette."}
+effectsPlots$m8
+```
+
+
 ## T3 Action vs. T2 Action
 
 ```{r t2action, fig.width=10, fig.cap="The effect of post-signal (T3) information that the victim was telling the truth on the likelihood of acting to help her (T3 Action), controlling for T2 Action."}
-effectsPlots$m26plot
+effectsPlots$m26plot + theme(panel.spacing = unit(1.5, "lines"))
 ```
 
 

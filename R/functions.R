@@ -27,14 +27,19 @@ effect_plot <- function(m, ...){
   args$gg <- T
   args$scale <- 'response'
 
-  p <- exec('visreg', !!!args)
-  p + ylim(c(0, 1)) +
-    labs(x = '', y = args$ylbl) +
+  p <- exec('visreg', !!!args) +
+    ylim(0, 1) +
+    ylab(args$ylbl) +
     theme_bw(15) +
-    theme(
-      axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
-      axis.title.y = element_text(angle = 0)
-    )
+    theme(axis.title.y = element_text(angle = 0))
+
+  d <- args$data
+  vartype = class(d[[args$xvar]])
+  if('numeric' %in% vartype) return(p)
+
+  p +
+    xlab('') +
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 }
 
 effect_plots <- function(models, data){
@@ -45,6 +50,8 @@ effect_plots <- function(models, data){
     m3plot = effect_plot(fit=models$m3, xvar='signal', ylbl='T2 Action', data=data),
     m3bplot = effect_plot(fit=models$m3b, xvar='signal', by='T1Action', ylbl='T2 Action', data=data),
     m4plot = effect_plot(fit=models$m4, xvar='signal', by='vignette', ylbl='T2 Action', data=data),
+    m7plot = effect_plot(fit=models$m7, xvar='signal', by='T1Divide', ylbl='T2 Division', data=data),
+    m8plot = effect_plot(fit=models$m8, xvar='Age', by='signal', ylbl='T2 Division', data=data),
     m12plot = effect_plot(fit=models$m12, xvar='Sex', by='signal', ylbl='T2 Belief', data=data),
     m13plot = effect_plot(fit=models$m13, xvar='Sex', by='vignette', ylbl='T2 Belief', data=data),
     m14plot = effect_plot(fit=models$m14, xvar='Sex', by='signal', ylbl='T2 Action', data=data),
@@ -55,16 +62,10 @@ effect_plots <- function(models, data){
     m19plot = effect_plot(fit=models$m19, xvar='Age', by='vignette', ylbl='T2 Action', data=data),
     m21plot = effect_plot(fit=models$m21, xvar='signal', by='vignette', ylbl = "Mentally ill", data=data),
     m24plotAge = visreg(fit=models$m24, xvar='Age', partial=F, rug=F, gg=T, scale='response', data=data) +
-      theme_bw(15) +
-      theme(
-        axis.title.y = element_text(angle = 0)
-      ),
+      theme_bw(15) + theme(axis.title.y = element_text(angle = 0)),
     m24plotSex = effect_plot(fit=models$m24, xvar='Sex', by = 'signal', ylbl='T2 Belief', data=data),
     m25plotAge = visreg(fit=models$m25, xvar='Age', partial=F, rug=F, gg=T, scale='response', data=data) +
-      theme_bw(15) +
-      theme(
-        axis.title.y = element_text(angle = 0)
-      ),
+      theme_bw(15) + theme(axis.title.y = element_text(angle = 0)),
     m25plotSex = effect_plot(fit=models$m25, xvar='Sex', ylbl='T2 Action', data=data),
     m26plot = effect_plot(fit=models$m26, xvar='T2Action', by='vignette', ylbl='T3 Action', data=data) +
       theme(axis.text.x = element_text(angle = 0)) + xlab('\nT2 Action')
