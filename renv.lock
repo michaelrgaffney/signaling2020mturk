@@ -595,15 +595,15 @@
     },
     "hagenutils": {
       "Package": "hagenutils",
-      "Version": "0.0.8",
+      "Version": "0.0.9",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
       "RemoteRepo": "hagenutils",
       "RemoteUsername": "grasshoppermouse",
       "RemoteRef": "HEAD",
-      "RemoteSha": "5b298eec320cefbcad74f05aee8feb3d378db576",
-      "Hash": "94e9b59a2b72936211d94f9de9165bbd"
+      "RemoteSha": "4231d0675272585871212ba0679991de5045317b",
+      "Hash": "ef81ad3e4322ae57223b650b9f2c388d"
     },
     "haven": {
       "Package": "haven",
@@ -811,9 +811,14 @@
     "mediation": {
       "Package": "mediation",
       "Version": "4.5.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "8da1d14d50a1179586a6e88c5090d305"
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "mediation",
+      "RemoteUsername": "kosukeimai",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "deec99a101f650e6faebd7948f72514056a1c8dc",
+      "Hash": "bb190b29d8fdc6f90f84360e37804b7e"
     },
     "mgcv": {
       "Package": "mgcv",

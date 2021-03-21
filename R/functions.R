@@ -1,41 +1,22 @@
 
 
-fit_models2 <- function(d, family = 'quasibinomial'){
-  list(
-    m1 = glm(T2Belief ~ T1Belief * signal, family = family, d),
-    m2 = glm(T2Belief ~ T1Belief + signal * vignette, family = family, d),
-    m3 = glm(T2Action ~ T1Action * signal, family = family, d),
-    m4 = glm(T2Action ~ T1Action + signal * vignette, family = family, d),
-    m5 = glm(T3Action ~ T2Action * signal, family = family, d),
-    m6 = glm(T3Action ~ T2Action * vignette + signal, family = family, d),
-    m7 = glm(T2Divide ~ T1Divide * signal, family = family, d_thwarted),
-    m8 = glm(T2Divide ~ T1Divide + Age * signal, family = family, d_thwarted),
-    m9 = glm(T2Jealous ~ T1Jealous * signal, family = family, d),
-    m10 = glm(T2Devious ~ T1Devious + signal, family = family, d),
-    m11 = glm(T2Angry ~ T1Angry + signal, family = family, d),
-    m12 = glm(T2Belief ~ T1Belief + signal*Sex, family = family, d),
-    m13 = glm(T2Belief ~ T1Belief + vignette*Sex, family = family, d),
-    m14 = glm(T2Action ~ T1Action + signal*Sex, family = family, d),
-    m15 = glm(T2Action ~ T1Action + vignette*Sex, family = family, d),
-    m16 = glm(T2Belief ~ T1Belief + signal * Age, family = family, d),
-    m17 = glm(T2Action ~ T1Action + signal * Age, family = family, d),
-    m18 = glm(T2Belief ~ T1Belief + signal + vignette*Age, family = family, d),
-    m19 = glm(T2Action ~ T1Action + signal + vignette*Age, family = family, d),
-    m20 = glm(T2MentallyIll ~ T1MentallyIll + signal, family = family, d),
-    m21 = glm(T2MentallyIll ~ T1MentallyIll + signal*vignette, family = family, d),
-    m22 = glm(T2Belief ~ T1Belief * signal + PC1emotionT1 + PC2emotionT1, family = family, d),
-    m23 = glm(T2Action ~ T1Action * signal + PC1emotionT1 + PC2emotionT1, family = family, d)
-  )
-}
-
-fit_models <- function(data, formulas){
-  tibble(
+fit_models <- function(data, formulas, family = 'quasibinomial'){
+  d <- tibble(
     Name = names(formulas),
     Formula = unname(formulas),
-    Model = map(Formula, ~glm(formula = .x, family = 'quasibinomial', data = data)),
+    Model = if(family == 'quasibinomial'){
+      map(Formula, ~glm(formula = .x, family = quasibinomial, data = data))
+    } else {
+      map(Formula, ~lm(formula = .x, data = data))
+      },
+    TidyModel = map(Model, ~tidy(.x, conf.int = T)),
     Anova = map(Model, ~Anova(.x, type = 3)),
-    Tidy = map(Model, ~tidy(.x, conf.int = T))
+    TidyANOVA = map(Anova, ~tidy(.x, conf.int = T))
   )
+  names(d$Model) <- d$Name
+  names(d$TidyModel) <- d$Name
+  names(d$TidyANOVA) <- d$Name
+  return(d)
 }
 
 effect_plot <- function(m, ...){
@@ -58,27 +39,35 @@ effect_plot <- function(m, ...){
 
 effect_plots <- function(models, data){
   list(
-    m1plot = effect_plot(fit=models[[1]], xvar='signal', by='T1Belief', ylbl='T2 Belief', data=data),
-    m2plot = effect_plot(fit=models[[2]], xvar='signal', by='vignette', ylbl='T2 Belief', data=data),
-    m3plot = effect_plot(fit=models[[3]], xvar='signal', by='T1Action', ylbl='T2 Action', data=data),
-    m4plot = effect_plot(fit=models[[4]], xvar='signal', by='vignette', ylbl='T2 Action', data=data),
-    m12plot = effect_plot(fit=models[[12]], xvar='Sex', by='signal', ylbl='T2 Belief', data=data),
-    m14plot = effect_plot(fit=models[[14]], xvar='Sex', by='signal', ylbl='T2 Action', data=data),
-    m16plot = effect_plot(fit=models[[16]], xvar='Age', by='signal', ylbl='T2 Belief', data=data),
-    m17plot = effect_plot(fit=models[[17]], xvar='Age', by='signal', ylbl='T2 Action', data=data),
-    m21plot = effect_plot(fit=models[[21]], xvar='signal', by='vignette', ylbl = "Mentally ill", data=data),
-    m24plotAge = visreg(fit=models[[24]], xvar='Age', partial=F, rug=F, gg=T, scale='response', data=data) +
+    m1plot = effect_plot(fit=models$m1, xvar='signal', ylbl='T2 Belief', data=data),
+    m1bplot = effect_plot(fit=models$m1b, xvar='signal', by='T1Belief', ylbl='T2 Belief', data=data),
+    m2plot = effect_plot(fit=models$m2, xvar='signal', by='vignette', ylbl='T2 Belief', data=data),
+    m3plot = effect_plot(fit=models$m3, xvar='signal', ylbl='T2 Action', data=data),
+    m3bplot = effect_plot(fit=models$m3b, xvar='signal', by='T1Action', ylbl='T2 Action', data=data),
+    m4plot = effect_plot(fit=models$m4, xvar='signal', by='vignette', ylbl='T2 Action', data=data),
+    m12plot = effect_plot(fit=models$m12, xvar='Sex', by='signal', ylbl='T2 Belief', data=data),
+    m13plot = effect_plot(fit=models$m13, xvar='Sex', by='vignette', ylbl='T2 Belief', data=data),
+    m14plot = effect_plot(fit=models$m14, xvar='Sex', by='signal', ylbl='T2 Action', data=data),
+    m15plot = effect_plot(fit=models$m15, xvar='Sex', by='vignette', ylbl='T2 Action', data=data),
+    m16plot = effect_plot(fit=models$m16, xvar='Age', by='signal', ylbl='T2 Belief', data=data),
+    m17plot = effect_plot(fit=models$m17, xvar='Age', by='signal', ylbl='T2 Action', data=data),
+    m18plot = effect_plot(fit=models$m18, xvar='Age', by='vignette', ylbl='T2 Belief', data=data),
+    m19plot = effect_plot(fit=models$m19, xvar='Age', by='vignette', ylbl='T2 Action', data=data),
+    m21plot = effect_plot(fit=models$m21, xvar='signal', by='vignette', ylbl = "Mentally ill", data=data),
+    m24plotAge = visreg(fit=models$m24, xvar='Age', partial=F, rug=F, gg=T, scale='response', data=data) +
       theme_bw(15) +
       theme(
         axis.title.y = element_text(angle = 0)
       ),
-    m24plotSex = effect_plot(fit=models[[24]], xvar='Sex', by = 'signal', ylbl='T2 Belief', data=data),
-    m25plotAge = visreg(fit=models[[25]], xvar='Age', partial=F, rug=F, gg=T, scale='response', data=data) +
+    m24plotSex = effect_plot(fit=models$m24, xvar='Sex', by = 'signal', ylbl='T2 Belief', data=data),
+    m25plotAge = visreg(fit=models$m25, xvar='Age', partial=F, rug=F, gg=T, scale='response', data=data) +
       theme_bw(15) +
       theme(
         axis.title.y = element_text(angle = 0)
       ),
-    m25plotSex = effect_plot(fit=models[[25]], xvar='Sex',ylbl='T2 Action', data=data)
+    m25plotSex = effect_plot(fit=models$m25, xvar='Sex', ylbl='T2 Action', data=data),
+    m26plot = effect_plot(fit=models$m26, xvar='T2Action', by='vignette', ylbl='T3 Action', data=data) +
+      theme(axis.text.x = element_text(angle = 0)) + xlab('\nT2 Action')
   )
 }#"T2Belief ~ T1Belief + Age + Sex * signal + vignette"
 
@@ -89,15 +78,23 @@ signal_mediate <- function(
   med_f = NULL,
   out_f = NULL,
   mediator = NULL,
+  family = 'binomial',
   sims = 1000
 ){
   d <-
     data %>%
     dplyr::filter(signal %in% c(control.value, treat.value)) %>%
-    mutate(signal = fct_relevel(signal, control.value))
+    mutate(
+      signal = fct_relevel(as.character(signal), control.value)
+      )
 
-  m_med <- glm(med_f, family = binomial, d)
-  m_out <- glm(out_f, family = binomial, d)
+  if (family == 'binomial'){
+    m_med <- glm(med_f, family = binomial, d)
+    m_out <- glm(out_f, family = binomial, d)
+  } else if (family == 'gaussian'){
+    m_med <- lm(med_f, d)
+    m_out <- lm(out_f, d)
+  }
   out <- mediate(m_med, m_out, treat = "signal", mediator = 'T2Belief', control.value = control.value, treat.value = treat.value, robustSE = T, sims = sims)
   return(out)
 }
@@ -128,9 +125,11 @@ emotion_plot <- function(d){
   ggplot() +
     geom_segment(data = d_boot, aes(x = T1LowMood_mean, y = T1Manipulative_mean, xend = T2LowMood_mean, yend = T2Manipulative_mean, colour=signal), alpha = 0.02, arrow = arrow(length = unit(3, "mm"))) +
     geom_segment(data = d_full, aes(x = T1LowMood_mean, y = T1Manipulative_mean, xend = T2LowMood_mean, yend = T2Manipulative_mean, colour=signal), alpha = 1, size = 1, arrow = arrow(length = unit(3, "mm"))) +
+    xlim(0, NA) +
     facet_wrap(~vignette) +
-    labs(title = 'Change in mean emotion from T1 to T2', x = '\nLow mood', y = 'Manipulative\n') +
-    theme_bw()
+    labs(title = 'Change in mean emotions from T1 to T2', x = '\nLow mood', y = 'Manipulative\n') +
+    theme_bw(15) +
+    theme(axis.title.y = element_text(angle = 0))
 }
 
 plot_raw_data <- function(d, type){

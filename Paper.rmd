@@ -17,17 +17,21 @@ library(knitr)
 library(kableExtra)
 library(ggplot2)
 library(patchwork)
+library(hagenutils)
 
 tar_load(
   c(
     'd',
-    'models', 
+    'models',
+    'models_prereg',
     'effectsPlots', 
     'plot_T1Belief_T1Action',
     'plot_emotions',
     'plot_raw_beliefs',
     'plot_raw_actions',
-    'med1'
+    'med1b',
+    'm1b_boot',
+    'm3b_boot'
     )
   )
 
@@ -160,6 +164,8 @@ T1Action | Romantic partner | How likely are you to kick your partner out? | 0: 
 T1Action | Thwarted Marriage | How likely are you to provide the large dowry so your older(bold) daughter can marry the man she is in love with?  | 0: Very unlikely; 100: Very likely
 T1Divide | Thwarted Marriage | How would you plan on dividing the money between your daughters?  | 0: Much more for the younger daughter; 50: Even division; 100: Much more for the older daughter
 
+Table: (\#tab:outcomes) Outcome variables in each vignette.
+
 ### Demographic Questions
 
 The final part of the survey was a brief demographic questionnaire which examined: (1) the age, (2) sex, (3) number of siblings, (4) number of sons, (5) number of daughters, (6) current relationship status, (7) highest level of education, and (8) the annual household income of each participant.
@@ -221,28 +227,43 @@ plot_T1Belief_T1Action
 ## Effects of signals on beliefs and actions
 
 ```{r beliefeffect, fig.width=8, fig.height=8, fig.cap="The effect of the signals on T2 Belief (top) and Action (bottom) controlling for T1 values of Belief and Action, respectively, with an interaction between T1 values and the signal. Estimated using generalized linear regression models with the quasibinomial family."}
-(effectsPlots$m1plot + theme(axis.text.x = element_blank()))/effectsPlots$m3plot + plot_layout(ncol = 1) & theme(plot.margin = unit(c(0,0,0,0), units = 'mm'))
+(effectsPlots$m1bplot + theme(axis.text.x = element_blank()))/effectsPlots$m3bplot + plot_layout(ncol = 1) & theme(plot.margin = unit(c(0,0,0,0), units = 'mm'))
 ```
 
 ```{r beliefvignette, fig.width=8, fig.height=8, fig.cap=paste0("The effect of the signals on T2 Belief (top) and Action (bottom) in each vignette, controlling for T1 values of Belief and Action, respectively. Effects computed with T1 values set to their median value (T1Belief=", median(d$T1Belief, na.rm=T), ", T1Action=", median(d$T1Action, na.rm=T), "). Estimated using generalized linear regression models with the quasibinomial family.")}
 (effectsPlots$m2plot + theme(axis.text.x = element_blank()))/effectsPlots$m4plot + plot_layout(ncol = 1) & theme(plot.margin = unit(c(0,0,0,0), units = 'mm'))
+```
 
+## The effect of signals on action is largely mediated by belief
+
+According to our theoretical model, credible signals of need increase observers' belief that the victim is telling the truth. Increased belief then increases the likelihood of helping the victim (action). See Figure \@ref(fig:medmodel).
+
+```{r medmodel, fig.cap="Possible causal effects of the signal on helping behavior. A credible signal of need increases belief that the victim is telling the truth and needs help, which increase the likelihood of helping. The direct path from the signal to action represents other causal effects of the signal on observers, such as perceptions of the victim's emotional state (and other factors not measured in this study) that might alter observer behavior."}
+
+knitr::include_graphics('paths.svg')
+```
+
+The total effect of the *Depression* signal (treatment) vs. *Verbal request* (control) on the likelihood of *Action* was to increase it by `r 100*signif(med1b$tau.coef, 3)` points from T1 to T2 (on the original 100-point scale). Of this increase, `r 100*signif(med1b$n.avg, 2)`% was mediated by the increased *Belief* that the victim was telling the truth. See Figure \@ref(fig:mediation).
+
+```{r mediation, fig.height=4, fig.cap="The effect of Depression (treatment) vs. Verbal request (control) on Action is largely mediated by Belief. ACME: Average causal mediation effect. ADE: Average direct effect. The mediation model controlled for T1 Belief, and the outcome model controlled for T1 Belief and T1 Action. Both models were GLMs with the binomial family (the mediation package does not support the quasibinomial family)."}
+ggmediation(med1b)
 ```
 
 ## Effects of signals on victim's perceived emotional state
 
-```{r emotionsplot, fig.width=10, fig.height=8, fig.cap="The effect of the signals on the inferred *low mood* and *manipulative* emotion ratings from T1 (arrow base) to T2 (arrow head), in each of the four vignettes. Thick arrows: mean change. Thin arrows: means of 500 bootstrap resamples."}
+```{r emotionsplot, fig.width=10, fig.height=8, fig.cap="The effect of the signals on participants' inferred *manipulative* and *low mood* emotional states of the victim, from T1 (arrow base) to T2 (arrow head), in each of the four vignettes. Thick arrows: mean change. Thin arrows: means of 500 bootstrap resamples."}
 plot_emotions
 ```
 
-## Mediation of action by belief
-
-```{r medation, fig.cap="Mediation of T2 Action by T2 Belief."}
-plot(med1, treatment = 'treated')
-```
-
-
 # Supplementary information
+
+## Sample size in each condition
+
+```{r conditions}
+as.data.frame.matrix(xtabs(~signal+vignette, d)) %>% 
+  kable(caption = "Sample size in each condition.") %>% 
+  kable_styling()
+```
 
 ## Demographic effects
 
@@ -253,6 +274,16 @@ effectsPlots$m24plotAge / effectsPlots$m24plotSex
 ```{r demoeffectsaction, fig.width=9, fig.height=8, fig.cap="Demographic effects on Action. **Top**: Association of age with T2 Action, controlling for T1 Action, sex, and vignette. **Bottom**: Association of sex with T2 Action controlling for T1 Action, age, and vignette. Estimated using a generalized linear regression model with the quasibinomial family."}
 effectsPlots$m25plotAge / effectsPlots$m25plotSex
 ```
+
+```{r demovignettebelief, fig.width=8, fig.height=8, fig.cap="Associations of age (top) and sex (bottom) with T2 Belief by vignette, controlling for T1 Belief and signal. Estimated using a generalized linear regression model with the quasibinomial family."}
+effectsPlots$m18plot / effectsPlots$m13plot
+```
+
+
+```{r demovignetteaction, fig.width=8, fig.height=8, fig.cap="Associations of age (top) and sex (bottom) with T2 Action by vignette, controlling for T1 Action and signal. Estimated using a generalized linear regression model with the quasibinomial family."}
+effectsPlots$m19plot / effectsPlots$m15plot
+```
+
 
 ## Raw beliefs and actions
 
@@ -268,6 +299,92 @@ plot_raw_actions
 
 ```{r mentallyill, fig.width=8, fig.cap="Proportion of participants in each condition who thought that the vignette victim was mentally ill. Means estimated with a generalized linear regression model with the quasibinomial family."}
 effectsPlots$m21plot
+```
+
+## T3 Action vs. T2 Action
+
+```{r t2action, fig.width=10, fig.cap="The effect of post-signal (T3) information that the victim was telling the truth on the likelihood of acting to help her (T3 Action), controlling for T2 Action."}
+effectsPlots$m26plot
+```
+
+
+## Regression tables
+
+```{r regressiontables}
+tmp <- models %>% 
+  dplyr::filter(Name %in% c('m1', 'm2', 'm3', 'm4', 'm21', 'm24', 'm25'))
+
+regressiontable(tmp$Model, caption = 'Regression coefficients')
+```
+
+
+## ANOVA tables
+
+ANOVA tables for generalized linear regression models (quasibinomial family).
+
+```{r anovatables}
+
+bind_rows(tmp$TidyANOVA, .id = 'Model') %>%
+  dplyr::rename(Variable = term, `LR Chisq` = statistic) %>% 
+  gt::gt(groupname_col = "Model", caption = "ANOVA tables") %>% 
+  gt::cols_label(Variable = "") %>% 
+  gt::fmt_number(columns=3, decimals = 1) %>% 
+  gt::fmt_scientific(5, decimals = 1) %>% 
+  gt::tab_style(style = gt::cell_text(indent = gt::px(40)), 
+                locations = gt::cells_body(columns = "Variable"))
+```
+
+## Preregistered OLS models
+
+```{r preregbelief, fig.width=8, fig.height=8, fig.cap="The effect of the signals on T2 Belief (top) and Action (bottom) controlling for T1 values of Belief and Action, respectively. Estimated using OLS linear regression models (gaussian)."}
+p1 <- effect_plot(fit=models_prereg$Model$m1, xvar='signal',ylbl='T2 Belief', data=d)
+
+p2 <- effect_plot(fit=models_prereg$Model$m3, xvar='signal', ylbl='T2 Action', data=d)
+
+(p1 + theme(axis.text.x = element_blank()))/p2 + plot_layout(ncol = 1) & theme(plot.margin = unit(c(0,0,0,0), units = 'mm'))
+```
+
+
+```{r preregbeliefB, fig.width=8, fig.height=8, fig.cap="The effect of the signals on T2 Belief (top) and Action (bottom) controlling for T1 values of Belief and Action, respectively, with an interaction between T1 values and the signal. Estimated using OLS linear regression models (gaussian)."}
+p1 <- effect_plot(fit=models_prereg$Model$m1b, xvar='signal', by='T1Belief', ylbl='T2 Belief', data=d)
+
+p2 <- effect_plot(fit=models_prereg$Model$m3b, xvar='signal', by='T1Action', ylbl='T2 Action', data=d)
+
+(p1 + theme(axis.text.x = element_blank()))/p2 + plot_layout(ncol = 1) & theme(plot.margin = unit(c(0,0,0,0), units = 'mm'))
+```
+
+### OLS regression tables
+
+
+```{r preregtables}
+regressiontable(models_prereg$Model, caption = 'OLS regression coefficients for preregistered linear regression models.')
+```
+
+### OLS Anova tables
+
+```{r prepreganova}
+bind_rows(models_prereg$TidyANOVA, .id = 'Model') %>%
+  dplyr::rename(Variable = term, `LR Chisq` = statistic) %>% 
+  gt::gt(groupname_col = "Model", caption = "OLS ANOVA tables") %>% 
+  gt::cols_label(Variable = "") %>% 
+  gt::fmt_number(columns=c(3,5), decimals = 1) %>% 
+  gt::fmt_scientific(6, decimals = 1) %>% 
+  gt::fmt_missing(columns=5:6, rows = everything(), missing_text = "---") %>% 
+  gt::tab_style(style = gt::cell_text(indent = gt::px(40)), 
+                locations = gt::cells_body(columns = "Variable"))
+
+```
+
+## Differences between quasibinomial and bootstrapped confidence intervals
+
+```{r}
+m1b_quasi <- models$TidyModel$m1b
+m1b_diff <- (m1b_boot[,'boot 97.5%'] - m1b_boot[,'boot 2.5%'])/(m1b_quasi$conf.high-m1b_quasi$conf.low)
+
+m3b_quasi <- models$TidyModel$m3b
+m3b_diff <- (m3b_boot[,'boot 97.5%'] - m3b_boot[,'boot 2.5%'])/(m3b_quasi$conf.high-m3b_quasi$conf.low)
+
+diff_sum <- summary(c(m1b_diff, m3b_diff))
 ```
 
 

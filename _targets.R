@@ -71,9 +71,11 @@ list(
   tar_target(
     model_formulas,
     c(
-      m1 = "T2Belief ~ T1Belief * signal",
+      m1 = "T2Belief ~ T1Belief + signal",
+      m1b = "T2Belief ~ T1Belief * signal",
       m2 = "T2Belief ~ T1Belief + signal * vignette",
-      m3 = "T2Action ~ T1Action * signal",
+      m3 = "T2Action ~ T1Action + signal",
+      m3b = "T2Action ~ T1Action * signal",
       m4 = "T2Action ~ T1Action + signal * vignette",
       m5 = "T3Action ~ T2Action * signal",
       m6 = "T3Action ~ T2Action * vignette + signal",
@@ -85,7 +87,7 @@ list(
       m12 = "T2Belief ~ T1Belief + signal * Sex",
       m13 = "T2Belief ~ T1Belief + vignette * Sex",
       m14 = "T2Action ~ T1Action + signal * Sex",
-      m15 = "T2Action ~ T1Action + vignette * Sex",
+      m15 = "T2Action ~ T1Action + signal + vignette * Sex",
       m16 = "T2Belief ~ T1Belief + signal * Age",
       m17 = "T2Action ~ T1Action + signal * Age",
       m18 = "T2Belief ~ T1Belief + signal + vignette * Age",
@@ -95,14 +97,43 @@ list(
       m22 = "T2Belief ~ T1Belief * signal + PC1emotionT1 + PC2emotionT1",
       m23 = "T2Action ~ T1Action * signal + PC1emotionT1 + PC2emotionT1",
       m24 = "T2Belief ~ T1Belief + Age + Sex * signal + vignette",
-      m25 = "T2Action ~ T1Action + Age + Sex + signal + vignette"
+      m25 = "T2Action ~ T1Action + Age + Sex + signal + vignette",
+      m26 = 'T3Action ~ T2Action + vignette'
     )
   ),
 
   tar_target(
     models,
-    fit_models(d, model_formulas)
+    fit_models(d, model_formulas, family = 'quasibinomial')
   ),
+
+  tar_target(
+    models_prereg,
+    fit_models(d, model_formulas[c('m1', 'm1b', 'm3', 'm3b')], family = 'gaussian')
+  ),
+
+
+# Bootstrapped models -----------------------------------------------------
+
+  tar_target(
+    m1b_boot,
+    bootstrap_model(
+      base_model = glm(T2Belief ~ T1Belief * signal, family = binomial, d),
+      base_data = d,
+      resamples = 999,
+      parallelism = 'parallel'
+    )
+  ),
+
+tar_target(
+  m3b_boot,
+  bootstrap_model(
+    base_model = glm(T2Action ~ T1Action * signal, family = binomial, d),
+    base_data = d,
+    resamples = 999,
+    parallelism = 'parallel'
+  )
+),
 
 # Effects plots -----------------------------------------------------------
 
@@ -119,7 +150,17 @@ list(
       data=d,
       treat.value = 'Depression',
       med_f = 'T2Belief ~ signal + T1Belief',
-      out_f = 'T2Action ~ signal + T2Belief + T1Action + T1Belief',
+      out_f = 'T2Action ~ signal + T1Belief + T1Action + T2Belief',
+      mediator = 'T2Belief'
+    )
+  ),
+  tar_target(
+    med1b,
+    signal_mediate(
+      data=d,
+      treat.value = 'Depression',
+      med_f = 'T2Belief ~ signal * T1Belief',
+      out_f = 'T2Action ~ signal * T1Belief + T1Action + T2Belief',
       mediator = 'T2Belief'
     )
   ),
@@ -129,8 +170,8 @@ list(
       data=d,
       control.value = 'Depression',
       treat.value = 'Suicide attempt',
-      med_f = 'T2Belief ~ signal + T1Belief',
-      out_f = 'T2Action ~ signal + T2Belief + T1Action + T1Belief',
+      med_f = 'T2Belief ~ signal * T1Belief',
+      out_f = 'T2Action ~ signal * T1Belief + T1Action + T2Belief',
       mediator = 'T2Belief'
     )
   ),
@@ -139,12 +180,11 @@ list(
     signal_mediate(
       data = d_thwarted,
       treat.value = 'Depression',
-      med_f = 'T2Belief ~ signal + T1Belief',
-      out_f = 'T2Action ~ signal + T2Belief + T1Action + T1Belief',
+      med_f = 'T2Belief ~ signal * T1Belief',
+      out_f = 'T2Action ~ signal * T1Belief + T1Action + T2Belief',
       mediator = 'T2Belief'
     )
   ),
-
 
 # T1 plot -----------------------------------------------------------------
 
