@@ -1,4 +1,27 @@
 
+T1Belief_Action_dist <- function(d){
+
+  dcor <-
+    d %>%
+    group_by(vignette) %>%
+    summarise(
+      r = signif(cor(T1Belief, T1Action), 2)
+    ) %>%
+    mutate(r = paste('r =', r))
+
+  ggplot(d, aes(T1Belief, T1Action, colour = vignette)) +
+    geom_density2d(alpha = 0.5, show.legend = F) +
+    geom_count(alpha = 0.5) +
+    geom_smooth(se=F, method = 'lm', show.legend = F) +
+    geom_text(data = dcor, aes(label = r), x = .15, y = 0.95, size=5, colour='black') +
+    coord_fixed() +
+    labs(x = '\nT1 Belief', y = 'T1 Action\n') +
+    guides(colour = 'none', size = guide_legend(title = 'Overlapping\npoints')) +
+    facet_wrap(~vignette) +
+    theme_minimal(15) +
+    theme(axis.title.y = element_text(angle=0))
+
+}
 
 fit_models <- function(data, formulas, family = 'quasibinomial'){
   d <- tibble(
@@ -60,7 +83,7 @@ effect_plots <- function(models, data){
     m17plot = effect_plot(fit=models$m17, xvar='Age', by='signal', ylbl='T2 Action', data=data),
     m18plot = effect_plot(fit=models$m18, xvar='Age', by='vignette', ylbl='T2 Belief', data=data),
     m19plot = effect_plot(fit=models$m19, xvar='Age', by='vignette', ylbl='T2 Action', data=data),
-    m21plot = effect_plot(fit=models$m21, xvar='signal', by='vignette', ylbl = "Mentally ill", data=data),
+    m21plot = effect_plot(fit=models$m21, xvar='signal', by='vignette', ylbl = "T2 Mentally ill", data=data),
     m24plotAge = visreg(fit=models$m24, xvar='Age', partial=F, rug=F, gg=T, scale='response', data=data) +
       theme_bw(15) + theme(axis.title.y = element_text(angle = 0)),
     m24plotSex = effect_plot(fit=models$m24, xvar='Sex', by = 'signal', ylbl='T2 Belief', data=data),
@@ -68,7 +91,8 @@ effect_plots <- function(models, data){
       theme_bw(15) + theme(axis.title.y = element_text(angle = 0)),
     m25plotSex = effect_plot(fit=models$m25, xvar='Sex', ylbl='T2 Action', data=data),
     m26plot = effect_plot(fit=models$m26, xvar='T2Action', by='vignette', ylbl='T3 Action', data=data) +
-      theme(axis.text.x = element_text(angle = 0)) + xlab('\nT2 Action')
+      theme(axis.text.x = element_text(angle = 0)) + xlab('\nT2 Action'),
+    m27plot = effect_plot(fit=models$m27, xvar='vignette', ylbl='T1 Mentally ill', data=data)
   )
 }#"T2Belief ~ T1Belief + Age + Sex * signal + vignette"
 
@@ -164,3 +188,27 @@ plot_raw_data <- function(d, type){
       panel.spacing.x = unit(1, 'lines')
     )
 }
+
+
+
+
+######### Alternate mediators ############
+
+# tmp <-
+#   d %>%
+#   dplyr::select(T1Action, T2Action, T1Belief, T2Belief, signal, T1LowMood, T2LowMood, T1Manipulative, T2Manipulative, T1Jealous, T2Jealous) %>%
+#   dplyr::filter(signal %in% c('Suicide attempt', 'Verbal request')) %>%
+#   mutate(signal = ifelse(signal == 'Suicide attempt', 1, 0)) %>%
+#   as.data.frame()
+#
+#
+# m <-
+#   multimed(
+#     outcome = "T2Action",
+#     med.main = "T2Belief",
+#     med.alt = "T2Jealous",
+#     treat = "signal",
+#     covariates = c("T1Belief", "T1Jealous", "T1Action"),
+#     data = tmp,
+#     sims = 1000
+#     )
