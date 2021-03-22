@@ -12,6 +12,7 @@ csl: apa-6th-edition.csl
 
 ```{r setup, include=F}
 knitr::opts_chunk$set(echo = F, warning = F, error = F, message = F)
+# options(warn = 2)
 library(equatiomatic)
 library(knitr)
 library(kableExtra)
@@ -248,7 +249,7 @@ knitr::include_graphics('paths.svg')
 
 The total effect of the *Depression* signal (treatment) vs. *Verbal request* (control) on the likelihood of *Action* was to increase it by `r 100*signif(med1b$tau.coef, 3)` points from T1 to T2 (on the original 100-point scale). Of this increase, `r 100*signif(med1b$n.avg, 2)`% was mediated by the increased *Belief* that the victim was telling the truth. See Figure \@ref(fig:mediation).
 
-```{r mediation, fig.height=4, fig.cap="The effect of Depression (treatment) vs. Verbal request (control) on Action is largely mediated by Belief. ACME: Average causal mediation effect. ADE: Average direct effect. The mediation model controlled for T1 Belief, and the outcome model controlled for T1 Belief and T1 Action. Both models were GLMs with the binomial family (the mediation package does not support the quasibinomial family)."}
+```{r mediation, fig.height=4, fig.cap="The effect of Depression (treatment) vs. Verbal request (control) on Action (0-1 scale) is largely mediated by Belief. ACME: Average causal mediation effect. ADE: Average direct effect. The mediation model controlled for T1 Belief, and the outcome model controlled for T1 Belief and T1 Action. Both models were GLMs with the binomial family (the mediation package does not support the quasibinomial family)."}
 ggmediation(med1b)
 ```
 
@@ -294,6 +295,30 @@ as.data.frame.matrix(xtabs(~signal+vignette, d)) %>%
   kable_styling()
 ```
 
+## Distributions of T2 Belief and Action by signal and vignette
+
+```{r distbelief, fig.width=10, fig.height=10, fig.cap="Histograms of T2 Belief by signal and vignette."}
+ggplot(d, aes(x = T2Belief, fill=signal)) +
+  geom_histogram(colour='grey') +
+  scale_x_continuous(breaks = c(0, 0.5, 1)) +
+  facet_grid(vignette~signal) +
+  guides(fill='none') +
+  xlab('\n T2 Belief') +
+  theme_minimal(15) + 
+  theme(strip.text.y = element_text(angle=0, hjust=0))
+```
+
+```{r distaction, fig.width=10, fig.height=10, fig.cap="Histograms of T2 Action by signal and vignette."}
+ggplot(d, aes(x = T2Action, fill=signal)) +
+  geom_histogram(colour='grey') +
+  scale_x_continuous(breaks = c(0, 0.5, 1)) +
+  facet_grid(vignette~signal) +
+  guides(fill='none') +  
+  xlab('\n T2 Action') +
+  theme_minimal(15) + 
+  theme(strip.text.y = element_text(angle=0, hjust=0))
+```
+
 ## Demographic effects
 
 ```{r demoeffectsbeliefs, fig.width=9, fig.height=8, fig.cap="Demographic effects on Belief. **Top**: Association of age with T2 Belief, controlling for T1 Belief, sex, and vignette. **Bottom**: Sex interacting with the effect of the signals on T2 Belief controlling for T1 Belief, age, and vignette. Estimated using a generalized linear regression model with the quasibinomial family."}
@@ -326,14 +351,31 @@ plot_raw_actions
 
 ## Mentally ill
 
-```{r mentallyill, fig.width=8, fig.cap="Proportion of participants in each condition who thought that the vignette victim was mentally ill. Means estimated with a generalized linear regression model with the quasibinomial family."}
-effectsPlots$m21plot
+
+```{r mentallyillT1, fig.width=8, fig.cap="Proportion of participants in each vignette who thought that the victim was mentally ill at T1. Means estimated with a generalized linear regression model with the quasibinomial family."}
+effectsPlots$m27plot + ggtitle('Time 1')
 ```
+
+
+```{r mentallyillT2, fig.width=8, fig.cap="Proportion of participants in each condition who thought that the victim was mentally ill at T2, controlling for perceptions of mental illness at T1. Means estimated with a generalized linear regression model with the quasibinomial family."}
+effectsPlots$m21plot + ggtitle('Time 2')
+```
+
+## The effect of signals on T2 division in thwarted marriage vignette
+
+```{r division, fig.width=9, fig.cap="Effect of signals on division of dowry between the daughters in the thwarted marriage vignette, with an interaction between T1 Division and signal. Means estimated with a generalized linear regression model with the quasibinomial family."}
+effectsPlots$m7
+```
+
+```{r divisionage, fig.width=9, fig.cap="Interaction of age with signals on T2 Division of dowry between the daughters in the thwarted marriage vignette."}
+effectsPlots$m8
+```
+
 
 ## T3 Action vs. T2 Action
 
 ```{r t2action, fig.width=10, fig.cap="The effect of post-signal (T3) information that the victim was telling the truth on the likelihood of acting to help her (T3 Action), controlling for T2 Action."}
-effectsPlots$m26plot
+effectsPlots$m26plot + theme(panel.spacing = unit(1.5, "lines"))
 ```
 
 

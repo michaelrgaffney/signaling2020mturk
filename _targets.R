@@ -7,7 +7,7 @@ source("R/functions.R")
 
 # Set target-specific options such as packages.
 tar_option_set(
-  packages = c("signaling2020data", "dplyr", "tidyr", "purrr", "ggplot2", "forcats", "car", "ggbiplot", "hagenutils", "visreg", "effects", "glmmboot", "broom", "mediation", "gglm", "gt", "ggforce"),
+  packages = c("signaling2020data", "car", "hagenutils", "visreg", "effects", "glmmboot", "broom", "mediation", "gglm", "gt", "ggforce", "dplyr", "tidyr", "purrr", "ggplot2", "forcats"),
   imports = c("signaling2020data")
   )
 
@@ -98,7 +98,8 @@ list(
       m23 = "T2Action ~ T1Action * signal + PC1emotionT1 + PC2emotionT1",
       m24 = "T2Belief ~ T1Belief + Age + Sex * signal + vignette",
       m25 = "T2Action ~ T1Action + Age + Sex + signal + vignette",
-      m26 = 'T3Action ~ T2Action + vignette'
+      m26 = 'T3Action ~ T2Action + vignette',
+      m27 = 'T1MentallyIll ~ vignette'
     )
   ),
 
@@ -190,16 +191,7 @@ tar_target(
 
   tar_target(
     plot_T1Belief_T1Action,
-    ggplot(d, aes(T1Belief, T1Action, colour = vignette)) +
-      geom_density2d(alpha = 0.5, show.legend = F) +
-      geom_count(alpha = 0.5) +
-      geom_smooth(se=F, method = 'lm', show.legend = F) +
-      coord_fixed() +
-      labs(x = '\nT1 Belief', y = 'T1 Action\n') +
-      guides(colour = 'none', size = guide_legend(title = 'Overlapping\npoints')) +
-      facet_wrap(~vignette) +
-      theme_minimal(15) +
-      theme(axis.title.y = element_text(angle=0))
+    T1Belief_Action_dist(d)
   ),
 
 # Emotion plot ------------------------------------------------------------
