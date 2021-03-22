@@ -201,6 +201,15 @@ tar_target(
     emotion_plot(d)
   ),
 
+  tar_target(
+    plot_T1emotion_heatmap,
+    T1emotion_heatmap(d)
+  ),
+
+  tar_target(
+    plot_T2emotion_heatmap,
+    T2emotion_heatmap(d)
+  ),
 
 # Raw data plots ----------------------------------------------------------
 

@@ -32,7 +32,9 @@ tar_load(
     'plot_raw_actions',
     'med1b',
     'm1b_boot',
-    'm3b_boot'
+    'm3b_boot',
+    'plot_T1emotion_heatmap',
+    'plot_T2emotion_heatmap'
     )
   )
 
@@ -349,8 +351,20 @@ plot_raw_beliefs
 plot_raw_actions
 ```
 
-## Mentally ill
+## T1 emotion vs vignette heatmap
 
+```{r t1emotionheatmap, fig.width=8, fig.cap="Time 1 inference of victim's emotional state in each vignette. Each cell represents the proportion of participants who inferred that emotion. Participants could check multiple emotions from the list."}
+plot_T1emotion_heatmap
+```
+
+## T2 emotion vs signal heatmap
+
+```{r t2emotionheatmap, fig.width=8, fig.cap="Time 2 inference of victim's emotional state following the signal. Each cell represents the proportion of participants who inferred that emotion. Participants could check multiple emotions from the list."}
+plot_T2emotion_heatmap
+```
+
+
+## Mentally ill
 
 ```{r mentallyillT1, fig.width=8, fig.cap="Proportion of participants in each vignette who thought that the victim was mentally ill at T1. Means estimated with a generalized linear regression model with the quasibinomial family."}
 effectsPlots$m27plot + ggtitle('Time 1')

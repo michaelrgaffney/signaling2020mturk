@@ -725,3 +725,23 @@ out <- mediate(mmediator, mout, treat = "signal", mediator = "T2Belief", boot = 
 summary(out)
 plot(out)
 
+d %>%
+  # dplyr::filter(vignette != 'Thwarted marriage') %>%
+  dplyr::select(signal, T2Angry:T2Violated) %>%
+  pivot_longer(-signal) %>%
+  mutate(name = str_remove(name, 'T2')) %>%
+  # dplyr::filter(value>0) %>%
+  group_by(name, signal) %>%
+  summarise(n = sum(value)/n()) %>%
+  pivot_wider(names_from = signal, values_from = n, values_fill = 0) %>%
+  hagenheat(rotate_labels = F, seriation_method = 'PCA_angle', viridis_option = 'B')
+
+d %>%
+  dplyr::select(vignette, T1Angry:T1Violated) %>%
+  pivot_longer(-vignette) %>%
+  mutate(name = str_remove(name, 'T1')) %>%
+  # dplyr::filter(value>0) %>%
+  group_by(name, vignette) %>%
+  summarise(n = sum(value)/n()) %>%
+  pivot_wider(names_from = vignette, values_from = n, values_fill = 0) %>%
+  hagenheat(rotate_labels = F, seriation_method = 'PCA_angle', viridis_option = 'B')
