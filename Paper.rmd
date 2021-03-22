@@ -266,6 +266,30 @@ as.data.frame.matrix(xtabs(~signal+vignette, d)) %>%
   kable_styling()
 ```
 
+## Distributions of T2 Belief and Action by signal and vignette
+
+```{r distbelief, fig.width=10, fig.height=10, fig.cap="Histograms of T2 Belief by signal and vignette."}
+ggplot(d, aes(x = T2Belief, fill=signal)) +
+  geom_histogram(colour='grey') +
+  scale_x_continuous(breaks = c(0, 0.5, 1)) +
+  facet_grid(vignette~signal) +
+  guides(fill='none') +
+  xlab('\n T2 Belief') +
+  theme_minimal(15) + 
+  theme(strip.text.y = element_text(angle=0, hjust=0))
+```
+
+```{r distaction, fig.width=10, fig.height=10, fig.cap="Histograms of T2 Action by signal and vignette."}
+ggplot(d, aes(x = T2Action, fill=signal)) +
+  geom_histogram(colour='grey') +
+  scale_x_continuous(breaks = c(0, 0.5, 1)) +
+  facet_grid(vignette~signal) +
+  guides(fill='none') +  
+  xlab('\n T2 Action') +
+  theme_minimal(15) + 
+  theme(strip.text.y = element_text(angle=0, hjust=0))
+```
+
 ## Demographic effects
 
 ```{r demoeffectsbeliefs, fig.width=9, fig.height=8, fig.cap="Demographic effects on Belief. **Top**: Association of age with T2 Belief, controlling for T1 Belief, sex, and vignette. **Bottom**: Sex interacting with the effect of the signals on T2 Belief controlling for T1 Belief, age, and vignette. Estimated using a generalized linear regression model with the quasibinomial family."}
@@ -298,8 +322,14 @@ plot_raw_actions
 
 ## Mentally ill
 
-```{r mentallyill, fig.width=8, fig.cap="Proportion of participants in each condition who thought that the vignette victim was mentally ill. Means estimated with a generalized linear regression model with the quasibinomial family."}
-effectsPlots$m21plot
+
+```{r mentallyillT1, fig.width=8, fig.cap="Proportion of participants in each vignette who thought that the victim was mentally ill at T1. Means estimated with a generalized linear regression model with the quasibinomial family."}
+effectsPlots$m27plot + ggtitle('Time 1')
+```
+
+
+```{r mentallyillT2, fig.width=8, fig.cap="Proportion of participants in each condition who thought that the victim was mentally ill at T2, controlling for perceptions of mental illness at T1. Means estimated with a generalized linear regression model with the quasibinomial family."}
+effectsPlots$m21plot + ggtitle('Time 2')
 ```
 
 ## The effect of signals on T2 division in thwarted marriage vignette

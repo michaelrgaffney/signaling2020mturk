@@ -13,7 +13,7 @@
    version="1.1"
    id="svg8"
    inkscape:version="1.0.2 (e86c8708, 2021-01-15)"
-   sodipodi:docname="SEM.svg">
+   sodipodi:docname="paths.svg">
   <defs
      id="defs2">
     <marker
@@ -166,9 +166,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.764285"
-     inkscape:cx="374.06791"
-     inkscape:cy="98.610147"
+     inkscape:zoom="1.2475379"
+     inkscape:cx="406.92786"
+     inkscape:cy="79.118115"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -190,7 +190,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -199,79 +199,69 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(-9.2892023,-4.7456207)">
-    <g
-       id="g845"
-       transform="translate(-17.639789)">
-      <rect
-         style="fill:none;stroke:#2b0000;stroke-width:0.665001;stroke-opacity:0.979839"
-         id="rect833"
-         width="47.306705"
-         height="33.141422"
-         x="27.261492"
-         y="51.850288">
-        <desc
-           id="desc835">Signal</desc>
-      </rect>
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-         x="34.696247"
+    <rect
+       style="fill:none;stroke:#2b0000;stroke-width:0.665001;stroke-opacity:0.979839"
+       id="rect833"
+       width="47.306705"
+       height="33.141422"
+       x="9.6217031"
+       y="51.850288">
+      <desc
+         id="desc835">Signal</desc>
+    </rect>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="33.417164"
+       y="71.348457"
+       id="text839"><tspan
+         sodipodi:role="line"
+         id="tspan837"
+         x="33.417164"
          y="71.348457"
-         id="text839"><tspan
-           sodipodi:role="line"
-           id="tspan837"
-           x="34.696247"
-           y="71.348457"
-           style="stroke-width:0.264583">Signal</tspan></text>
-    </g>
-    <g
-       id="g879">
-      <rect
-         style="fill:none;stroke:#2b0000;stroke-width:0.665001;stroke-opacity:0.979839"
-         id="rect849"
-         width="47.306705"
-         height="33.141422"
-         x="82.45266"
-         y="5.0781212">
-        <desc
-           id="desc847">Signal</desc>
-      </rect>
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         style="text-align:center;text-anchor:middle;stroke-width:0.264583">Signal</tspan></text>
+    <rect
+       style="fill:none;stroke:#2b0000;stroke-width:0.665001;stroke-opacity:0.979839"
+       id="rect849"
+       width="47.306705"
+       height="33.141422"
+       x="82.45266"
+       y="5.0781212">
+      <desc
+         id="desc847">Signal</desc>
+    </rect>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="105.41872"
+       y="25.627905"
+       id="text853"><tspan
+         sodipodi:role="line"
+         id="tspan851"
          x="105.41872"
          y="25.627905"
-         id="text853"><tspan
-           sodipodi:role="line"
-           id="tspan851"
-           x="105.41872"
-           y="25.627905"
-           style="text-align:center;text-anchor:middle;stroke-width:0.264583">Belief</tspan></text>
-    </g>
-    <g
-       id="g885">
-      <rect
-         style="fill:none;stroke:#2b0000;stroke-width:0.665001;stroke-opacity:0.979839"
-         id="rect859"
-         width="47.306705"
-         height="33.141422"
-         x="155.2836"
-         y="51.850288">
-        <desc
-           id="desc857">Signal</desc>
-      </rect>
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         style="text-align:center;text-anchor:middle;stroke-width:0.264583">Belief</tspan></text>
+    <rect
+       style="fill:none;stroke:#2b0000;stroke-width:0.665001;stroke-opacity:0.979839"
+       id="rect859"
+       width="47.306705"
+       height="33.141422"
+       x="155.2836"
+       y="51.850288">
+      <desc
+         id="desc857">Signal</desc>
+    </rect>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="178.67857"
+       y="71.348457"
+       id="text863"><tspan
+         sodipodi:role="line"
+         id="tspan861"
          x="178.67857"
          y="71.348457"
-         id="text863"><tspan
-           sodipodi:role="line"
-           id="tspan861"
-           x="178.67857"
-           y="71.348457"
-           style="text-align:center;text-anchor:middle;stroke-width:0.264583">Action</tspan></text>
-    </g>
+         style="text-align:center;text-anchor:middle;stroke-width:0.264583">Action</tspan></text>
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.853152;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker1477)"
        d="M 56.928408,68.421 H 152.60771"
