@@ -82,6 +82,9 @@ Beneficial social changes are also reported in traditional societies. Unlike Wes
 
 ## notes: 
 add funding info somewhere
+update MTurk (Ed email links + mine)
+Find a place for the predictions and preregistration 
+go back and emohasize conflit and PI in the methods (at least in the pilot studies portion)
 
 ## Design
 
@@ -255,6 +258,31 @@ ggmediation(med1b)
 ```{r emotionsplot, fig.width=10, fig.height=8, fig.cap="The effect of the signals on participants' inferred *manipulative* and *low mood* emotional states of the victim, from T1 (arrow base) to T2 (arrow head), in each of the four vignettes. Thick arrows: mean change. Thin arrows: means of 500 bootstrap resamples."}
 plot_emotions
 ```
+
+# Discussion
+
+## The effect of signaling on belief and likelihood of support
+
+Consistent with costly signaling theory, costlier signals resulted in greater perceptions of need and increased the liklihood of participants helping the signaler than the less costly signals. This effect was largest in the "brother-in-law" and "romantic partner" vignettes, both of which involved claims of assault against participants' imagined daughters. However, the effect of signal type was much smaller in both the "basketball coach" and the "thwarted marriage" vignette. In the "basketball coach" vignette, part of the reason for this may have been the lack of relatedness participants had with the alleged victim. However, this was still a surprising finding due to the relatively small size of the request (i.e., recommend the coach be suspended rather than kick out family or a romantic partner). With the thwarted marriage vignette, the fact that support came at the cost of one's younger daughter may explain the relatively small effect of signal strength. However, data from the Indian sample appears to be of lower quality (see limitations for more information).
+
+In the "brother-in-law" and "romantic partner" scenarios, there was a noticeable jump in the magnitude of pro-signaler responses when going from the crying to mild depression and then a second, smaller jump from depression to a sucide attempt (Ed please check this is the right interpretation. It's definitely not the most conservative one). One potential reason for this is the increase in symptoms from mild depression to depression was not costly enough to result in a large effect as the symptoms only differed in severity (e.g., grades dropping from As to Bs [mild depression] or Cs [depression]).
+
+We also found evidence for the predicted interaction between signal and belief in need and likelihood of help at T1, with the pro-signaler effects being larger at intermediate but low levels of believe at T1. In real-life scenarios, it would be reasonable to expect that costly-signaling would not be engaged in when others already believe one's need. For this reason, too strong of a signal may be seen as manipulative or a cue of dysfunction, and therefore, be responded to aversively. However, belief in need and likelihood of help at T2 still remained high when it was high at T1, suggesting that this may not be a significant risk when one is in severe enough need (want to bring in MA here. Is that a bad idea?).
+
+## Mediation models
+
+Our prediction that the effect of signal cost on likelihood of help would largely be mediated by signal's effect on belief in need was also met, as would be expected if the main function of signaling need is a reduction in the amount of private information one has relative to those motivated to care for the signaler (cite). However, there was still a positive main effect of the signal in many pairwise comparisons between the costlier signals and the less costly signals, including the comparison between the depression and verbal request condition (See SI for other mediation models). One possible reason for this is that someone may still be distressed and face real adversity without being forthcoming about one's problems. For example, participants who saw the "brother-in-law" vignette may have thought the daughter was lying about the assault due to jealously over her cousin, with stronger signals still conveying the severity of the competition between her and her cousin in ways words alone could not.
+
+## Broader discussion
+
+Scenarios likely favor cheating due to high potential of benefits
+## Limitations
+
+The largest source of limitations of this study is its lack of ecological validity, something which had to be sacrificed for any experimental design involving depression and suicide attempts. It is almost certain that participants experienced this study differently than they would if the event actually happened to them. This may have biased results in a pro-signaler direction due to the lack of meaningful costs making support feel less costly or through the likely inability of participants to imagine themselves in an anonymous scenario (cite your paper on this) leading them to take an opportunity to signal generosity cheaply. It may have also biased participants against helping if they could not fully imagine the characters in the story as kin or important cooperative partners, while the survey's short duration may have weakened the strength of the bargaining of the costlier signals. However, both the findings of a main effect of signal and the effect of signal type on likelihood of support was largely mediated by change in belief suggest that participants were paying attention to the theoretically relevant details in ways that influenced their behavior. 
+
+Another limitation is our uncertainty over the data quality from the Indian sample. Compared to the US sample, far more participants were filtered out by our attention checks, something which could be consistent with botting, unfamiliarity with English, or low effort responses. Assuming this corresponded with more low-quality responses among those who passed the attention checks, the differences seen among those in the thwarted marriage vignette may simply be due to added noise rather than differences in the scenarios or the effectiveness of the signals among Indians compared to Americans.
+
+# Conclusion
 
 # Supplementary information
 
