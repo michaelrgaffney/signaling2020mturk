@@ -725,7 +725,8 @@ out <- mediate(mmediator, mout, treat = "signal", mediator = "T2Belief", boot = 
 summary(out)
 plot(out)
 
-d %>%
+dT2signal <-
+  d %>%
   # dplyr::filter(vignette != 'Thwarted marriage') %>%
   dplyr::select(signal, T2Angry:T2Violated) %>%
   pivot_longer(-signal) %>%
@@ -733,15 +734,34 @@ d %>%
   # dplyr::filter(value>0) %>%
   group_by(name, signal) %>%
   summarise(n = sum(value)/n()) %>%
-  pivot_wider(names_from = signal, values_from = n, values_fill = 0) %>%
-  hagenheat(rotate_labels = F, seriation_method = 'PCA_angle', viridis_option = 'B')
+  pivot_wider(names_from = signal, values_from = n, values_fill = 0)
 
-d %>%
+hagenheat(dT2, rotate_labels = F, seriation_method = 'PCA_angle', viridis_option = 'B')
+
+dT1vignette <-
+  d %>%
   dplyr::select(vignette, T1Angry:T1Violated) %>%
   pivot_longer(-vignette) %>%
   mutate(name = str_remove(name, 'T1')) %>%
   # dplyr::filter(value>0) %>%
   group_by(name, vignette) %>%
   summarise(n = sum(value)/n()) %>%
-  pivot_wider(names_from = vignette, values_from = n, values_fill = 0) %>%
-  hagenheat(rotate_labels = F, seriation_method = 'PCA_angle', viridis_option = 'B')
+  pivot_wider(names_from = vignette, values_from = n, values_fill = 0)
+
+hagenheat(dT1, rotate_labels = F, seriation_method = 'PCA_angle', viridis_option = 'B')
+
+dT1signal <-
+  d %>%
+  dplyr::select(signal, T1Angry:T1Violated) %>%
+  pivot_longer(-signal) %>%
+  mutate(name = str_remove(name, 'T1')) %>%
+  group_by(name, signal) %>%
+  summarise(n = sum(value)/n()) %>%
+  pivot_wider(names_from = signal, values_from = n, values_fill = 0)
+
+
+d_diff <- as.matrix(dT2signal[-1]) - as.matrix(dT1signal[-1])
+rownames(d_diff) <- dT2signal$name
+
+hagenheat(d_diff, rotate_labels = F, seriation_method = 'PCA_angle') + scale_fill_gradient2()
+

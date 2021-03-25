@@ -836,6 +836,13 @@
       "Repository": "CRAN",
       "Hash": "a4b659bd0528226724d55034f11ed7cb"
     },
+    "mnormt": {
+      "Package": "mnormt",
+      "Version": "2.0.2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "7e6ee68a01d6c87c69087d4a250ee763"
+    },
     "modelr": {
       "Package": "modelr",
       "Version": "0.1.8",
@@ -996,6 +1003,13 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "32620e2001c1dce1af49c49dccbb9420"
+    },
+    "psych": {
+      "Package": "psych",
+      "Version": "2.0.12",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "9345dffe01b539d1c0b00eef80c51adf"
     },
     "purrr": {
       "Package": "purrr",
@@ -1284,6 +1298,13 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "066f49a225dc3215cb1f32bc23535f88"
+    },
+    "tmvnsim": {
+      "Package": "tmvnsim",
+      "Version": "1.0-2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "50470c7ed0cc8099cbc17b38f0ef621f"
     },
     "tweenr": {
       "Package": "tweenr",

@@ -25,6 +25,7 @@ tar_load(
     'd',
     'models',
     'models_prereg',
+    'effect_sizes',
     'effectsPlots', 
     'plot_T1Belief_T1Action',
     'plot_emotions',
@@ -33,8 +34,9 @@ tar_load(
     'med1b',
     'm1b_boot',
     'm3b_boot',
-    'plot_T1emotion_heatmap',
-    'plot_T2emotion_heatmap'
+    'dfT1emotion_vignette',
+    'dfT1emotion_signal',
+    'dfT2emotion_signal'
     )
   )
 
@@ -321,6 +323,27 @@ ggplot(d, aes(x = T2Action, fill=signal)) +
   theme(strip.text.y = element_text(angle=0, hjust=0))
 ```
 
+## Signal effect sizes
+
+```{r effectsizes, fig.width=10, fig.height=8, fig.cap="Cohen's d (95% CI) for the effect of each signal on Action and Belief in each vignette relative to the Verbal request signal, ranked by effect size."}
+
+relbl <- function(lb){
+  map_chr(lb, ~str_split(.x, ',')[[1]][2])
+}
+
+ggplot(effect_sizes, aes(est, fct_reorder(id, est), xmin=low, xmax=high, colour = signal, shape=Outcome)) +
+  geom_pointrange(position = position_dodge(width = 0.7), lwd = 2.5, fatten = 1, alpha=0.5) +
+  geom_vline(xintercept = 0, linetype = 'dotted') +
+  scale_y_discrete(labels = relbl) +
+  scale_color_manual(name=NULL, values = c('black', 'darkred', 'red', 'orange')) +
+  # scale_color_viridis_d(option='A') +
+  guides(colour = guide_legend(override.aes = list(size = 1)), shape = guide_legend(title=NULL, override.aes = list(size = 1))) +
+  # facet_wrap(~Outcome, ncol=1) +
+  labs(x="\nCohn's d (95% CI)", y=NULL) +
+  theme_minimal(15) +
+  theme(legend.position = 'top')
+```
+
 ## Demographic effects
 
 ```{r demoeffectsbeliefs, fig.width=9, fig.height=8, fig.cap="Demographic effects on Belief. **Top**: Association of age with T2 Belief, controlling for T1 Belief, sex, and vignette. **Bottom**: Sex interacting with the effect of the signals on T2 Belief controlling for T1 Belief, age, and vignette. Estimated using a generalized linear regression model with the quasibinomial family."}
@@ -353,14 +376,26 @@ plot_raw_actions
 
 ## T1 emotion vs vignette heatmap
 
-```{r t1emotionheatmap, fig.width=8, fig.cap="Time 1 inference of victim's emotional state in each vignette. Each cell represents the proportion of participants who inferred that emotion. Participants could check multiple emotions from the list."}
-plot_T1emotion_heatmap
+```{r t1emotionheatmap, fig.width=8, fig.cap="Time 1 inference of victim's emotional state in each vignette. Each cell represents the proportion of participants who inferred that emotion. Participants could check multiple emotions from the list. Rows and columns ordered with the PCA angle method in the seriation package."}
+hagenheat(dfT1emotion_vignette, rotate_labels = F, seriation_method = 'PCA_angle', viridis_option = 'B') + theme_minimal(15)
 ```
 
 ## T2 emotion vs signal heatmap
 
-```{r t2emotionheatmap, fig.width=8, fig.cap="Time 2 inference of victim's emotional state following the signal. Each cell represents the proportion of participants who inferred that emotion. Participants could check multiple emotions from the list."}
-plot_T2emotion_heatmap
+```{r t2emotionheatmap, fig.width=8, fig.cap="Time 2 inference of victim's emotional state following the signal. Each cell represents the proportion of participants who inferred that emotion. Participants could check multiple emotions from the list. Rows and columns ordered with the PCA angle method in the seriation package."}
+
+hagenheat(dfT2emotion_signal, rotate_labels = F, seriation_method = 'PCA_angle', viridis_option = 'B') + theme_minimal(15)
+```
+
+## Change in emotions T1 to T2 by signal
+
+```{r diffemotions, fig.width=8, fig.cap="Change in inference of victim's emotional state From pre- to post-signal. Each cell represents the difference in proportions of participants who inferred that emotion (T2 - T1). Participants could check multiple emotions from the list. Rows and columns ordered with the PCA angle method in the seriation package."}
+
+d_diff <- as.matrix(dfT2emotion_signal[-1]) - as.matrix(dfT1emotion_signal[-1])
+rownames(d_diff) <- dfT2emotion_signal$name
+
+hagenheat(d_diff, rotate_labels = F, seriation_method = 'PCA_angle') + scale_fill_gradient2()
+
 ```
 
 

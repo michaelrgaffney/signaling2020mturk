@@ -7,7 +7,7 @@ source("R/functions.R")
 
 # Set target-specific options such as packages.
 tar_option_set(
-  packages = c("signaling2020data", "car", "hagenutils", "visreg", "effects", "glmmboot", "broom", "mediation", "gglm", "gt", "ggforce", "dplyr", "tidyr", "purrr", "ggplot2", "forcats"),
+  packages = c("signaling2020data", "car", "hagenutils", "visreg", "effects", "glmmboot", "broom", "mediation", "gglm", "gt", "ggforce", "dplyr", "tidyr", "purrr", "ggplot2", "forcats", "stringr"),
   imports = c("signaling2020data")
   )
 
@@ -194,7 +194,7 @@ tar_target(
     T1Belief_Action_dist(d)
   ),
 
-# Emotion plot ------------------------------------------------------------
+# Emotion plots -----------------------------------------------------------
 
   tar_target(
     plot_emotions,
@@ -202,13 +202,18 @@ tar_target(
   ),
 
   tar_target(
-    plot_T1emotion_heatmap,
-    T1emotion_heatmap(d)
+    dfT1emotion_vignette,
+    T1emotion_vignette(d)
   ),
 
   tar_target(
-    plot_T2emotion_heatmap,
-    T2emotion_heatmap(d)
+  dfT1emotion_signal,
+  T1emotion_signal(d)
+),
+
+  tar_target(
+    dfT2emotion_signal,
+    T2emotion_signal(d)
   ),
 
 # Raw data plots ----------------------------------------------------------
@@ -221,6 +226,14 @@ tar_target(
   tar_target(
     plot_raw_actions,
     plot_raw_data(d, 'Action')
+  ),
+
+
+# Effect sizes ------------------------------------------------------------
+
+  tar_target(
+    effect_sizes,
+    eff_sizes(d)
   ),
 
 # Paper -------------------------------------------------------------------

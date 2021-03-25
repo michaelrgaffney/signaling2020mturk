@@ -189,28 +189,63 @@ plot_raw_data <- function(d, type){
     )
 }
 
-T2emotion_heatmap <- function(d){
-  d %>%
-    dplyr::select(signal, T2Angry:T2Violated) %>%
-    pivot_longer(-signal) %>%
-    mutate(name = stringr::str_remove(name, 'T2')) %>%
-    group_by(name, signal) %>%
-    summarise(n = sum(value)/n()) %>%
-    pivot_wider(names_from = signal, values_from = n, values_fill = 0) %>%
-    hagenheat(rotate_labels = F, seriation_method = 'PCA_angle', viridis_option = 'B') +
-    theme_minimal(15)
-}
-
-T1emotion_heatmap <- function(d){
+T1emotion_vignette <- function(d){
   d %>%
     dplyr::select(vignette, T1Angry:T1Violated) %>%
     pivot_longer(-vignette) %>%
     mutate(name = stringr::str_remove(name, 'T1')) %>%
     group_by(name, vignette) %>%
     summarise(n = sum(value)/n()) %>%
-    pivot_wider(names_from = vignette, values_from = n, values_fill = 0) %>%
-    hagenheat(rotate_labels = F, seriation_method = 'PCA_angle', viridis_option = 'B') +
-    theme_minimal(15)
+    pivot_wider(names_from = vignette, values_from = n)
+}
+
+T1emotion_signal <- function(d){
+  d %>%
+    dplyr::select(signal, T1Angry:T1Violated) %>%
+    pivot_longer(-signal) %>%
+    mutate(name = stringr::str_remove(name, 'T2')) %>%
+    group_by(signal, name) %>%
+    summarise(n = sum(value)/n()) %>%
+    pivot_wider(names_from = signal, values_from = n)
+}
+
+T2emotion_signal <- function(d){
+  d %>%
+    dplyr::select(signal, T2Angry:T2Violated) %>%
+    pivot_longer(-signal) %>%
+    mutate(name = stringr::str_remove(name, 'T2')) %>%
+    group_by(signal, name) %>%
+    summarise(n = sum(value)/n()) %>%
+    pivot_wider(names_from = signal, values_from = n)
+}
+
+
+# Effect sizes ------------------------------------------------------------
+
+eff_sizes <- function(d){
+  signals <- as.character(unique(d$signal))[-1]
+  vignettes <- unique(d$vignette)
+  crs <- cross_df(list(signal=signals, vignette=vignettes))
+  names(crs$signal) <- 1:length(crs$signal)
+
+  ef <- function(s, v, d){
+    tmp <- d %>%
+      dplyr::filter(vignette == v, signal == s | signal == 'Verbal request') %>%
+      dplyr::select(T2Belief, T2Action, signal, vignette)
+    efs <- c(as.numeric(psych::cohen.d(tmp$T2Belief, tmp$signal)$cohen.d), as.numeric(psych::cohen.d(tmp$T2Action, tmp$signal)$cohen.d))
+    names(efs) <- c('Belief_low', 'Belief_est', 'Belief_high', 'Action_low', 'Action_est', 'Action_high')
+    efs
+  }
+
+  bind_cols(
+    crs,
+    map2_dfr(crs$signal, crs$vignette, ~ef(.x, .y, d))
+  ) %>%
+    mutate(
+      signal = factor(signal, levels = c('Crying', 'Mild depression', 'Depression', 'Suicide attempt')),
+      id = paste0(signal, ',', vignette)
+    ) %>%
+    pivot_longer(Belief_low:Action_high, names_to = c('Outcome', '.value'), names_sep = '_')
 }
 
 ######### Alternate mediators ############
