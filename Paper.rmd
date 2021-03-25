@@ -1,6 +1,6 @@
 ---
 title: "Depression and suicidality as costly signals of need"
-author: "Michael Gaffney, Kai Adams, Kristen L. Syme, and Edward H. Hagen"
+author: "Michael R. Gaffney, Kai Adams, Kristen L. Syme, and Edward H. Hagen"
 date: '`r format(Sys.Date(), "%B %d, %Y")`'
 always_allow_html: true
 output: 
@@ -200,6 +200,10 @@ To examine our hypothesis that beneficial treatment would be largely due to a si
 
 Mediator model: Belief in need t2 ~ Signal + Belief in need t1
 Outcome model: Likelihood of help t2  ~ Signal + Belief in need t2 + Likelihood of help t1 + Belief in need t1 
+
+## Data availibility
+
+http://doi.org/10.5281/zenodo.4637904
 
 # Results
 
