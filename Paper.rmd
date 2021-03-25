@@ -361,7 +361,7 @@ ggplot(effect_sizes2, aes(effsize, fct_reorder(id, effsize), xmin=conf.low, xmax
   # scale_color_viridis_d(option='A') +
   guides(colour = guide_legend(override.aes = list(size = 1)), shape = guide_legend(title=NULL, override.aes = list(size = 1))) +
   # facet_wrap(~Outcome, ncol=1) +
-  labs(x="\nCohn's d (95% CI)", y=NULL) +
+  labs(x="\nCohen's d (95% CI)", y=NULL) +
   theme_minimal(15) +
   theme(legend.position = 'top')
 ```
@@ -377,7 +377,7 @@ ggplot(effect_sizes, aes(est, fct_reorder(id, est), xmin=low, xmax=high, colour 
   # scale_color_viridis_d(option='A') +
   guides(colour = guide_legend(override.aes = list(size = 1)), shape = guide_legend(title=NULL, override.aes = list(size = 1))) +
   # facet_wrap(~Outcome, ncol=1) +
-  labs(x="\nCohn's d (95% CI)", y=NULL) +
+  labs(x="\nCohen's d (95% CI)", y=NULL) +
   theme_minimal(15) +
   theme(legend.position = 'top')
 ```
