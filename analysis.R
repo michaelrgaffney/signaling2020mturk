@@ -764,4 +764,3 @@ d_diff <- as.matrix(dT2signal[-1]) - as.matrix(dT1signal[-1])
 rownames(d_diff) <- dT2signal$name
 
 hagenheat(d_diff, rotate_labels = F, seriation_method = 'PCA_angle') + scale_fill_gradient2()
-

@@ -23,15 +23,18 @@ library(hagenutils)
 tar_load(
   c(
     'd',
+    'power_curve',
     'models',
     'models_prereg',
     'effect_sizes',
+    'effect_sizes2',
     'effectsPlots', 
     'plot_T1Belief_T1Action',
     'plot_emotions',
     'plot_raw_beliefs',
     'plot_raw_actions',
     'med1b',
+    'med4',
     'm1b_boot',
     'm3b_boot',
     'dfT1emotion_vignette',
@@ -123,8 +126,9 @@ The sole treatment in this study was the signal participants saw, with these sig
 
 As the amount of crying in those with depression is moderately associated with depression severity [@VingerhoetsEtAl2016] and depression is a major risk factor for suicide [@BostwickPankratz2000; @Kessler2012], each signal was designed to build off of the less costly signals so that each signal contained elements of any signal it was costlier than.
 
-## Preregistrations
+## Preregistration
 
+https://osf.io/g3s6n
 
 ## Sampling
 
@@ -293,7 +297,23 @@ Another limitation is our uncertainty over the data quality from the Indian samp
 
 # Supplementary information
 
-## Sample size in each condition
+## Pilot study description
+
+Briefly, Participants read a vignette that put them in situations in which an imagined sister was requesting a loan of $50,000 from the participant that was originally saved for the participant's imagined daughter’s college education. The sister claims the money is needed for medical treatment for her own child, but she has incentives to deceive. The manipulations were signals very similar to those used in this study, and the outcomes were belief that the sister really needed the money and intention to load her the money. See XX for the full write-up. See https://osf.io/3rg8b for preregistration of the pilot study.
+
+## Power from pilot study
+
+We estimated power using our pilot study data by comparing the effect of the *Depression* signal vs. the *Verbal request* signal on *Belief* (that the sister needed the money) at T2 controlling for *Belief* at T1 in a linear regression model. Specifically, we resampled the pilot data with replacement with sample sizes ranging from N=20 to N=100, fit the linear regression model, and extracted the p-value for the signal coefficient, repeating this 1000 times for each sample size. Power was computed as the proportion of p-values < 0.05. Power was about 80% for a sample size of about 35, and was about 90% for a sample size of about 45. 
+
+```{r power}
+  ggplot(power_curve, aes(sample_size, power)) +
+    geom_line() +
+    labs(x = '\n Sample size (2 conditions)', y = 'Power\n') +
+    theme_minimal(15)
+```
+
+
+## Sample size in each condition in the current study
 
 ```{r conditions}
 as.data.frame.matrix(xtabs(~signal+vignette, d)) %>% 
@@ -327,17 +347,33 @@ ggplot(d, aes(x = T2Action, fill=signal)) +
 
 ## Signal effect sizes
 
-```{r effectsizes, fig.width=10, fig.height=8, fig.cap="Cohen's d (95% CI) for the effect of each signal on Action and Belief in each vignette relative to the Verbal request signal, ranked by effect size."}
+```{r effectsizes2, fig.width=10, fig.height=7, fig.cap="Within-subjects Cohen's d (95% CI) for the effect of each signal on Belief and Action in each vignette relative to T1 baseline Belief and  Action, respectively, ranked by effect size."}
 
 relbl <- function(lb){
   map_chr(lb, ~str_split(.x, ',')[[1]][2])
 }
 
+ggplot(effect_sizes2, aes(effsize, fct_reorder(id, effsize), xmin=conf.low, xmax=conf.high, colour = signal, shape=Outcome)) +
+  geom_pointrange(position = position_dodge(width = 0.7), lwd = 2.5, fatten = 1, alpha=0.5) +
+  geom_vline(xintercept = 0, linetype = 'dotted') +
+  scale_y_discrete(labels = relbl) +
+  scale_color_manual(name=NULL, values = c('black', 'darkblue', 'darkred', 'red', 'orange')) +
+  # scale_color_viridis_d(option='A') +
+  guides(colour = guide_legend(override.aes = list(size = 1)), shape = guide_legend(title=NULL, override.aes = list(size = 1))) +
+  # facet_wrap(~Outcome, ncol=1) +
+  labs(x="\nCohn's d (95% CI)", y=NULL) +
+  theme_minimal(15) +
+  theme(legend.position = 'top')
+```
+
+
+```{r effectsizes, fig.width=10, fig.height=7, fig.cap="Between-subjects Cohen's d (95% CI) for the effect of each signal on Belief and Action in each vignette relative to the Verbal request signal, ranked by effect size."}
+
 ggplot(effect_sizes, aes(est, fct_reorder(id, est), xmin=low, xmax=high, colour = signal, shape=Outcome)) +
   geom_pointrange(position = position_dodge(width = 0.7), lwd = 2.5, fatten = 1, alpha=0.5) +
   geom_vline(xintercept = 0, linetype = 'dotted') +
   scale_y_discrete(labels = relbl) +
-  scale_color_manual(name=NULL, values = c('black', 'darkred', 'red', 'orange')) +
+  scale_color_manual(name=NULL, values = c('darkblue', 'darkred', 'red', 'orange')) +
   # scale_color_viridis_d(option='A') +
   guides(colour = guide_legend(override.aes = list(size = 1)), shape = guide_legend(title=NULL, override.aes = list(size = 1))) +
   # facet_wrap(~Outcome, ncol=1) +
@@ -365,6 +401,13 @@ effectsPlots$m18plot / effectsPlots$m13plot
 effectsPlots$m19plot / effectsPlots$m15plot
 ```
 
+## Mediation of Suicide attempt signal
+
+The total effect of the *Suicide attempt* signal (treatment) vs. *Verbal request* (control) on the likelihood of *Action* was to increase it by `r 100*signif(med4$tau.coef, 3)` points from T1 to T2 (on the original 100-point scale). Of this increase, `r 100*signif(med4$n.avg, 2)`% was mediated by the increased *Belief* that the victim was telling the truth. See Figure \@ref(fig:mediationsuicide).
+
+```{r mediationsuicide, fig.height=4, fig.cap="The effect of a Suicide attempt (treatment) vs. Verbal request (control) on Action (0-1 scale) is largely mediated by Belief. ACME: Average causal mediation effect. ADE: Average direct effect. The mediation model controlled for T1 Belief, and the outcome model controlled for T1 Belief and T1 Action. Both models were GLMs with the binomial family (the mediation package does not support the quasibinomial family)."}
+ggmediation(med4)
+```
 
 ## Raw beliefs and actions
 

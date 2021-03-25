@@ -248,6 +248,50 @@ eff_sizes <- function(d){
     pivot_longer(Belief_low:Action_high, names_to = c('Outcome', '.value'), names_sep = '_')
 }
 
+eff_sizes2 <- function(d){
+
+  tmp1 <-
+    d %>%
+    dplyr::select(vignette, signal, T1Belief, T2Belief) %>%
+    pivot_longer(cols = c(T1Belief, T2Belief)) %>%
+    mutate(name = factor(name, levels = c('T2Belief', 'T1Belief'))) %>%
+    group_by(vignette, signal) %>%
+    rstatix::cohens_d(., value ~ name, paired=T, ci=T, nboot = 1000)
+
+  tmp2 <-
+    d %>%
+    dplyr::select(vignette, signal, T1Action, T2Action) %>%
+    pivot_longer(cols = c(T1Action, T2Action)) %>%
+    mutate(name = factor(name, levels = c('T2Action', 'T1Action'))) %>%
+    group_by(vignette, signal) %>%
+    rstatix::cohens_d(., value ~ name, paired=T, ci=T, nboot = 1000)
+
+  tmp <- bind_rows(list(Belief = tmp1, Action = tmp2), .id = 'Outcome')
+  tmp$id <- paste0(tmp$signal, ',', tmp$vignette)
+  tmp
+}
+
+
+# Power -------------------------------------------------------------------
+
+pwr_curve <- function(signalingdata2018){
+
+  e <-
+    signalingdata2018 %>%
+    dplyr::filter(signal == "Depression:Sister" | signal == "VerbalRequest:Sister") %>%
+    mutate(signal = factor(signal, levels = c("VerbalRequest:Sister", "Depression:Sister")))
+
+  pwr <- function(sample_size){
+    pvalues <- map_dbl(1:2000, ~summary(lm(needsmoneyt2 ~ needsmoneyt1 + signal, e[sample(1:nrow(e), sample_size, replace = T),]))$coefficients["signalDepression:Sister","Pr(>|t|)"])
+    sum(pvalues < 0.05)/length(pvalues)
+  }
+
+  tibble(
+      sample_size = seq(20, 100, 5),
+      power = map_dbl(sample_size, pwr)
+    )
+}
+
 ######### Alternate mediators ############
 
 # tmp <-

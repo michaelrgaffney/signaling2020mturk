@@ -7,8 +7,8 @@ source("R/functions.R")
 
 # Set target-specific options such as packages.
 tar_option_set(
-  packages = c("signaling2020data", "car", "hagenutils", "visreg", "effects", "glmmboot", "broom", "mediation", "gglm", "gt", "ggforce", "dplyr", "tidyr", "purrr", "ggplot2", "forcats", "stringr"),
-  imports = c("signaling2020data")
+  packages = c("signalingdata2018", "signaling2020data", "car", "hagenutils", "visreg", "effects", "glmmboot", "broom", "mediation", "gglm", "gt", "ggforce", "dplyr", "tidyr", "purrr", "ggplot2", "forcats", "stringr"),
+  imports = c("signalingdata2018", "signaling2020data")
   )
 
 # List of target objects
@@ -16,7 +16,10 @@ list(
 
 # Data preparation --------------------------------------------------------
 
+  tar_target(signalingdata2018, signalingdata2018::signalingdata2018),
+
   tar_target(signaling2020, signaling2020data::signaling2020),
+
   tar_target(
   d_tmp,
     signaling2020 %>%
@@ -64,6 +67,14 @@ list(
     d_thwarted,
     d %>%
       dplyr::filter(vignette == 'Thwarted marriage')
+  ),
+
+
+# Power -------------------------------------------------------------------
+
+  tar_target(
+    power_curve,
+    pwr_curve(signalingdata2018)
   ),
 
 # Models ------------------------------------------------------------------
@@ -186,6 +197,26 @@ tar_target(
       mediator = 'T2Belief'
     )
   ),
+  tar_target(
+    med4,
+    signal_mediate(
+      data=d,
+      treat.value = 'Suicide attempt',
+      med_f = 'T2Belief ~ signal + T1Belief',
+      out_f = 'T2Action ~ signal + T1Belief + T1Action + T2Belief',
+      mediator = 'T2Belief'
+    )
+  ),
+tar_target(
+  med4b,
+  signal_mediate(
+    data=d,
+    treat.value = 'Suicide attempt',
+    med_f = 'T2Belief ~ signal * T1Belief',
+    out_f = 'T2Action ~ signal * T1Belief + T1Action + T2Belief',
+    mediator = 'T2Belief'
+  )
+),
 
 # T1 plot -----------------------------------------------------------------
 
@@ -234,6 +265,11 @@ tar_target(
   tar_target(
     effect_sizes,
     eff_sizes(d)
+  ),
+
+  tar_target(
+    effect_sizes2,
+    eff_sizes2(d)
   ),
 
 # Paper -------------------------------------------------------------------
