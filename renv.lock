@@ -310,6 +310,13 @@
       "Repository": "CRAN",
       "Hash": "a31720f692920e635ecef0481d478247"
     },
+    "corrplot": {
+      "Package": "corrplot",
+      "Version": "0.84",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "b55c32ae818a84109a51f172290c95f2"
+    },
     "cpp11": {
       "Package": "cpp11",
       "Version": "0.2.6",
@@ -1116,6 +1123,13 @@
       "Repository": "CRAN",
       "Hash": "9787c1fcb680e655d062e7611cadf78e"
     },
+    "rstatix": {
+      "Package": "rstatix",
+      "Version": "0.7.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "aa020f8efde649badd0b2b5456e942fe"
+    },
     "rstudioapi": {
       "Package": "rstudioapi",
       "Version": "0.13",
@@ -1176,6 +1190,18 @@
       "RemoteRef": "HEAD",
       "RemoteSha": "72e49976a015c5bee91a98f3f669e3b38b66649e",
       "Hash": "8b63993b816849201176e99a05f662b4"
+    },
+    "signalingdata2018": {
+      "Package": "signalingdata2018",
+      "Version": "0.0.2",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "signalingdata2018",
+      "RemoteUsername": "michaelrgaffney",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "0ff31ce5f0e1432763494c597946f00645f676a0",
+      "Hash": "83b09a47e4345d187343bd73f95a4c49"
     },
     "sp": {
       "Package": "sp",
