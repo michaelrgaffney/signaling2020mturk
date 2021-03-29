@@ -92,6 +92,8 @@ add funding info somewhere
 update MTurk (Ed email links + mine)
 Find a place for the predictions and preregistration 
 go back and emohasize conflit and PI in the methods (at least in the pilot studies portion)
+add abstract
+add conclusion
 
 ## Design
 
@@ -207,6 +209,8 @@ http://doi.org/10.5281/zenodo.4637904
 
 # Results
 
+1,950 participants started the study by clicking the link to Qualtrics (1,213 American and 737 Indian). After removing participants who did not finish the survey, failed attention checks, or moved through the study at an unrealistc pace, our sample dropped to N = 1,240 (937 American and 303 Indian). Basic summary statistics on the remaining N = 1,240 participants (Male = 759, Female = 479) can be found in table XX.
+
 ## Summary statistics
 
 ```{r sumtab}
@@ -236,11 +240,17 @@ kable(custom.summarize(d, vars), caption = "Summary statistics for study variabl
 
 ## Distributions of beliefs and actions at time 1
 
+Power analyses prior to data collection showed that high proportions of participants scoring extremely high on belief or likelihood of helping at T1 would result in low power for this study's design, a problem which we appeared to largely avoid (see figure XX).
+
+Although not a part of our pre-registered predictions, both T1Belief and T1Action were highly correlated across the four vignettes (enter correlation coefficients), consistent with help being worth providing if the signaler's claims were true (see figure XX).
+
 ```{r t1plot, fig.width=10, fig.height=10, fig.cap="The distributions of Time 1 Belief vs. Time 1 Action, by vignette. Each dot is one participant. Original 0-100 values scaled to 0-1. Contour lines represent equal densities, estimated using a bivariate normal kernal (Venables and Ripley, 2002). Lines fit by linear regression. Dot size indicates the number of overlapping points."}
 plot_T1Belief_T1Action
 ```
 
 ## Effects of signals on beliefs and actions
+
+As a whole, our predictions for the effect of signal cost on belief and likelihood of helping T2 were met, with costlier signals eliciting greater pro-signaler responses. There was also support for an interaction between signal and T1Belief or T1Action, although the effect was not large (See figure 2). However, the effect of signal cost varied by vignette, with signal type having the greatest effect in the "basketball coach" and "brother-in-law" vignettes. When ordered according to cost, the greatest jump in support tended to occur between crying and mild-depression, with the next largest jump tending to occur between depression and suicide attempt. Overall, there was little difference between the effect of mild depression and the effect of depression.
 
 ```{r beliefeffect, fig.width=8, fig.height=8, fig.cap="The effect of the signals on T2 Belief (top) and Action (bottom) controlling for T1 values of Belief and Action, respectively, with an interaction between T1 values and the signal. Estimated using generalized linear regression models with the quasibinomial family."}
 (effectsPlots$m1bplot + theme(axis.text.x = element_blank()))/effectsPlots$m3bplot + plot_layout(ncol = 1) & theme(plot.margin = unit(c(0,0,0,0), units = 'mm'))
@@ -259,13 +269,17 @@ According to our theoretical model, credible signals of need increase observers'
 knitr::include_graphics('paths.svg')
 ```
 
-The total effect of the *Depression* signal (treatment) vs. *Verbal request* (control) on the likelihood of *Action* was to increase it by `r 100*signif(med1b$tau.coef, 3)` points from T1 to T2 (on the original 100-point scale). Of this increase, `r 100*signif(med1b$n.avg, 2)`% was mediated by the increased *Belief* that the victim was telling the truth. See Figure \@ref(fig:mediation).
+The total effect of the *Depression* signal (treatment) vs. *Verbal request* (control) on the likelihood of *Action* was to increase it by `r 100*signif(med1b$tau.coef, 3)` points from T1 to T2 (on the original 100-point scale). Of this increase, `r 100*signif(med1b$n.avg, 2)`% was mediated by the increased *Belief* that the victim was telling the truth. See Figure \@ref(fig:mediation). The total effect of the *Suicide attempt* signal (treatment) vs. *Verbal request* (control) on the likelihood of *Action* was to increase it by `r 100*signif(med4b$tau.coef, 3)` points from T1 to T2. Of this increase, `r 100*signif(med4b$n.avg, 2)`% was mediated by the increased *Belief* that the victim was telling the truth (Check if med4 or med4b is correct; they look identical to me).
 
 ```{r mediation, fig.height=4, fig.cap="The effect of Depression (treatment) vs. Verbal request (control) on Action (0-1 scale) is largely mediated by Belief. ACME: Average causal mediation effect. ADE: Average direct effect. The mediation model controlled for T1 Belief, and the outcome model controlled for T1 Belief and T1 Action. Both models were GLMs with the binomial family (the mediation package does not support the quasibinomial family)."}
 ggmediation(med1b)
 ```
 
 ## Effects of signals on victim's perceived emotional state
+
+We also examined the effect of signaling on how participants perceived the signaler's emotional state. To do this, we created four new variables: LowMood (T1 and T2) and Manipulative (T1 and T2). This was done by adding the dummy variables for whether a participant thought the signaler was depressed, distressed or sad for the LowMood variables and by adding the dummy variables for whether they thought the particpant was Devious or Jealous for the Manipulative variables. In all instances, 0 indicated a participant did not select the emotion, while 1 indicated selection. 
+
+We then plotted the mean change seen in the data in addition to the change seen in 500 bootstrap resamples (see figure 6).
 
 ```{r emotionsplot, fig.width=10, fig.height=8, fig.cap="The effect of the signals on participants' inferred *manipulative* and *low mood* emotional states of the victim, from T1 (arrow base) to T2 (arrow head), in each of the four vignettes. Thick arrows: mean change. Thin arrows: means of 500 bootstrap resamples."}
 plot_emotions
