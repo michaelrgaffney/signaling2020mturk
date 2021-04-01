@@ -24,15 +24,18 @@ tar_load(
   c(
     'd',
     'power_curve',
+    'power_curve2',
     'models',
     'models_prereg',
     'effect_sizes',
     'effect_sizes2',
     'effectsPlots', 
+    'ecdf_plot',
     'plot_T1Belief_T1Action',
     'plot_emotions',
     'plot_raw_beliefs',
     'plot_raw_actions',
+    'plot_raw_belief_action2d',
     'med1b',
     'med4',
     'm1b_boot',
@@ -234,7 +237,7 @@ vars <- c(
 kable(custom.summarize(d, vars), caption = "Summary statistics for study variables. Original 0-100 values scaled to 0-1. Indian participants reported income in rupees, which we converted to USD at the current exchange rate (1 rupee == 0.014 USD).") %>% kable_styling()
 ```
 
-## Distributions of beliefs and actions at time 1
+## Distributions of beliefs and actions at Time 1
 
 ```{r t1plot, fig.width=10, fig.height=10, fig.cap="The distributions of Time 1 Belief vs. Time 1 Action, by vignette. Each dot is one participant. Original 0-100 values scaled to 0-1. Contour lines represent equal densities, estimated using a bivariate normal kernal (Venables and Ripley, 2002). Lines fit by linear regression. Dot size indicates the number of overlapping points."}
 plot_T1Belief_T1Action
@@ -242,12 +245,17 @@ plot_T1Belief_T1Action
 
 ## Effects of signals on beliefs and actions
 
-```{r beliefeffect, fig.width=8, fig.height=8, fig.cap="The effect of the signals on T2 Belief (top) and Action (bottom) controlling for T1 values of Belief and Action, respectively, with an interaction between T1 values and the signal. Estimated using generalized linear regression models with the quasibinomial family."}
+```{r beliefeffect, fig.width=8, fig.height=8, fig.cap="The effect of the signals on T2 Belief (top) and Action (bottom) controlling for T1 values of Belief and Action, respectively, with an interaction between T1 values and the signal. Fit using generalized linear regression models with the quasibinomial family."}
 (effectsPlots$m1bplot + theme(axis.text.x = element_blank()))/effectsPlots$m3bplot + plot_layout(ncol = 1) & theme(plot.margin = unit(c(0,0,0,0), units = 'mm'))
 ```
 
-```{r beliefvignette, fig.width=8, fig.height=8, fig.cap=paste0("The effect of the signals on T2 Belief (top) and Action (bottom) in each vignette, controlling for T1 values of Belief and Action, respectively. Effects computed with T1 values set to their median value (T1Belief=", median(d$T1Belief, na.rm=T), ", T1Action=", median(d$T1Action, na.rm=T), "). Estimated using generalized linear regression models with the quasibinomial family.")}
+```{r beliefvignette, fig.width=8, fig.height=8, fig.cap=paste0("The effect of the signals on T2 Belief (top) and Action (bottom) in each vignette, controlling for T1 values of Belief and Action, respectively. Effects computed with T1 values set to their median value (T1Belief=", median(d$T1Belief, na.rm=T), ", T1Action=", median(d$T1Action, na.rm=T), "). Fit using generalized linear regression models with the quasibinomial family.")}
 (effectsPlots$m2plot + theme(axis.text.x = element_blank()))/effectsPlots$m4plot + plot_layout(ncol = 1) & theme(plot.margin = unit(c(0,0,0,0), units = 'mm'))
+```
+
+
+```{r ecdf, fig.width=11, fig.height=6, fig.cap="Empirical cummulative distribution functions for Time 2 Belief (top) and Action (bottom) compared to their Time 1 baseline values (red), by signal and vignette. Dots indicate median values of Belief and Action, by signal and vignette."}
+ecdf_plot
 ```
 
 ## The effect of signals on action is largely mediated by belief
@@ -307,15 +315,34 @@ Briefly, Participants read a vignette that put them in situations in which an im
 
 ## Power from pilot study
 
-We estimated power using our pilot study data by comparing the effect of the *Depression* signal vs. the *Verbal request* signal on *Belief* (that the sister needed the money) at T2 controlling for *Belief* at T1 in a linear regression model. Specifically, we resampled the pilot data with replacement with sample sizes ranging from N=20 to N=100, fit the linear regression model, and extracted the p-value for the signal coefficient, repeating this 1000 times for each sample size. Power was computed as the proportion of p-values < 0.05. Power was about 80% for a sample size of about 35, and was about 90% for a sample size of about 45. 
+```{r}
+pwr80_90 <- 
+  power_curve %>% 
+  group_by(Base) %>% 
+  summarise(
+    pwr80 = min(sample_size[power>=.8]), 
+    pwr90 = min(sample_size[power>=.9])
+  )
+```
 
-```{r power}
-  ggplot(power_curve, aes(sample_size, power)) +
+
+We estimated power using our pilot study data to compared the effect of the *Depression* signal vs. the *Verbal request* signal on *Belief* (that the sister needed the money) at T2 controlling for *Belief* at T1 in a linear regression model. Specifically, we resampled the pilot data with replacement, fit the linear regression model, and extracted the p-value for the signal coefficient, repeating this 2000 times for each sample size ranging from N=20 to N=200. Power was computed as the proportion of p-values < 0.05. Power was about 80% for a sample size of about `r pwr80_90[2,2]`, and was about 90% for a sample size of about `r pwr80_90[2,3]`. We then repeated this entire procedure to compare *Depression* to a *Control* condition that was meant to not include any signaling (but which we realized, post hoc, did include a verbal request). Power was about 80% for a sample size of about `r pwr80_90[1,2]`, and was about 90% for a sample size of about `r pwr80_90[1,3]`. See Figure \@ref(fig:power).
+
+```{r power, fig.cap="Power curve for between-subjects effect of Depression vs. Verbal request signal on T2 Belief, controlling for T1 Belief."}
+  ggplot(power_curve, aes(sample_size, power, color=Base)) +
     geom_line() +
-    labs(x = '\n Sample size (2 conditions)', y = 'Power\n') +
+    labs(x = '\n Sample size', y = 'Power\n') +
     theme_minimal(15)
 ```
 
+<!-- Second, for participants in the *Depression* condition only, we compared their T2 Belief to their T1 Belief using a paired t-test (in the full pilot data, *Depression* increased belief by about 8 points on a 100 point scale). We again resampled our pilot data 2000 times for each sample size from N=20 to N=200. Power was about 80% for a sample size of 125, and about 90% for a sample size of 175. See Figure \@ref(fig:power2). -->
+
+```{r power2, fig.cap="Power curve for within-subjects effect of Depression signal on T2 Belief relative to T1 Belief."}
+  # ggplot(power_curve2, aes(sample_size, power)) +
+  #   geom_line() +
+  #   labs(x = '\n Sample size', y = 'Power\n') +
+  #   theme_minimal(15)
+```
 
 ## Sample size in each condition in the current study
 
@@ -325,28 +352,34 @@ as.data.frame.matrix(xtabs(~signal+vignette, d)) %>%
   kable_styling()
 ```
 
-## Distributions of T2 Belief and Action by signal and vignette
+<!-- ## Distributions of T2 Belief and Action by signal and vignette -->
 
 ```{r distbelief, fig.width=10, fig.height=10, fig.cap="Histograms of T2 Belief by signal and vignette."}
-ggplot(d, aes(x = T2Belief, fill=signal)) +
-  geom_histogram(colour='grey') +
-  scale_x_continuous(breaks = c(0, 0.5, 1)) +
-  facet_grid(vignette~signal) +
-  guides(fill='none') +
-  xlab('\n T2 Belief') +
-  theme_minimal(15) + 
-  theme(strip.text.y = element_text(angle=0, hjust=0))
+
+# h <- hist(d$T2Belief, breaks = "FD", plot = FALSE)
+# 
+# ggplot(d, aes(x = T2Belief, fill=signal)) +
+#   geom_histogram(colour='grey', breaks = h$breaks) +
+#   scale_x_continuous(breaks = c(0, 0.5, 1)) +
+#   facet_grid(signal~vignette, as.table = F) +
+#   guides(fill='none') +
+#   xlab('\n T2 Belief') +
+#   theme_minimal(15) +
+#   theme(strip.text.y = element_text(angle=0, hjust=0))
 ```
 
 ```{r distaction, fig.width=10, fig.height=10, fig.cap="Histograms of T2 Action by signal and vignette."}
-ggplot(d, aes(x = T2Action, fill=signal)) +
-  geom_histogram(colour='grey') +
-  scale_x_continuous(breaks = c(0, 0.5, 1)) +
-  facet_grid(vignette~signal) +
-  guides(fill='none') +  
-  xlab('\n T2 Action') +
-  theme_minimal(15) + 
-  theme(strip.text.y = element_text(angle=0, hjust=0))
+
+# h <- hist(d$T2Action, breaks = "FD", plot = FALSE)
+# 
+# ggplot(d, aes(x = T2Action, fill=signal)) +
+#   geom_histogram(colour='grey', breaks=h$breaks) +
+#   scale_x_continuous(breaks = c(0, 0.5, 1)) +
+#   facet_grid(signal~vignette, as.table = F) +
+#   guides(fill='none') +  
+#   xlab('\n T2 Action') +
+#   theme_minimal(15) + 
+#   theme(strip.text.y = element_text(angle=0, hjust=0))
 ```
 
 ## Signal effect sizes
@@ -416,12 +449,17 @@ ggmediation(med4)
 ## Raw beliefs and actions
 
 ```{r rawbeliefs, fig.width=10, fig.height=10, fig.cap="Change in beliefs from T1 to T2 for participants in each condition. Each grey line is one participant. Red lines are the mean change."}
-plot_raw_beliefs
+# plot_raw_beliefs
 ```
 
 ```{r rawactions, fig.width=10, fig.height=10, fig.cap="Change in actions from T1 to T2 for participants in each condition. Each grey line is one participant. Red lines are the mean change."}
-plot_raw_actions
+# plot_raw_actions
 ```
+
+```{r rawbeliefactions2d, fig.width=10, fig.height=10, fig.cap="Change in beliefs and actions from T1 (arrow base) to T2 arrow head) for participants in each condition. Each grey arrow is one participant. Red arrows are the mean change."}
+plot_raw_belief_action2d
+```
+
 
 ## T1 emotion vs vignette heatmap
 
