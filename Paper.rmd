@@ -24,15 +24,18 @@ tar_load(
   c(
     'd',
     'power_curve',
+    'power_curve2',
     'models',
     'models_prereg',
     'effect_sizes',
     'effect_sizes2',
     'effectsPlots', 
+    'ecdf_plot',
     'plot_T1Belief_T1Action',
     'plot_emotions',
     'plot_raw_beliefs',
     'plot_raw_actions',
+    'plot_raw_belief_action2d',
     'med1b',
     'med4',
     'm1b_boot',
@@ -50,11 +53,19 @@ tar_load(
 Major depression and suicide are generally viewed as pathological responses to stress that elicit aversive responses from others. Alternatively, depression and suicide attempts might be the result of adaptations for reliably signaling need and bargaining for increased support from reluctant others. To test this hypothesis, we examined responses to  emotional signals in a vignette study in which the existence of conflicts of interest and private information about one's need were emphasized in four scenarios involving claims of extreme need. Although the effect of signal type varied by vignette, costlier signals like depression and suicide attempts resulted in greater perceptions of need and increased likelihood of support compared to simple verbal requests and crying without further symptoms in our sample of 1,240 participants recruited from Amazon Mechanical Turk. Additionally, the effect of signal type on likelihood of support was largely mediated by the effect of signaling on believe in need as predicted. Our results suggest that depression and suicide attempts, apparent human universals, are a relatively successful way of signaling honest need and eliciting support, consistent with costly signaling explanations.
 
 # Introduction
-Since Durkheim’s pioneering effort to use quantitative social science to explain suicide (cite), anthropologists, psychologists, and sociologists have made varied attempts at better understanding depression and suicide. Despite this effort and substantial investment by funding agencies, rates of depression and suicide attempts have remained largely unchanged over the last 100 years (confirm and cite), and there is still substantial uncertainty about why both are as common as they are (cite). Likely due to  the suffering they cause, the vast majority of these approaches have been built on the assumption that they are the result of internal dysfunction (cite examples). However, a subset of anthropologists and evolutionary theorists have challenged this idea, suggesting that despite the subjective suffering they cause, they may function as a means to limit negative fitness outcomes in times of substantial adversity (Firth + others).
 
-Within anthropology, Raymond Firth was likely the first to do this. Based on observations that suicide attempts often followed social conflict or loss and varied substantially in their likelihood of death, he argued that a sizable subset of the suicide attempts among the Tikopia were not meant to end in death but instead were a means to elicit attention, status, and immediate reintegration into the community following negative events (Firth 1967[not original date]). Compared to suicide, however, anthropological explanations for depression are a much more recent occurrence (cite), despite frequent reports of depression or depression-like behavior in a wide range of societies (cite) and the potential for cross-cultural research to help understand depressive states (cite).
+Durkheim’s pioneering study of suicide [@durkheim1897] arguably launched sociology as a quantitative discipline. Sociological investigations of suicide flourished through much of the 20th century, but began to be supplanted by medical and public health approaches as the biomedical model of mental health took hold in the late 1970's and early 1980's [@wray2011; @syme2020]. The biomedical model tends to frame suicide as an individiual-level problem, e.g., as one involving psychiatric disturbance, drug addiction, or severe stress [@wray2011]. This theoretical approach has made little progress: Despite substantial investment by funding agencies, rates of suicide have remained largely unchanged over the last 100 years (confirm and cite).
+
+Early on, anthropologists also tackled the problem of suicide as manifested in the small, traditional socities in which they conducted their fieldwork. Suicide, they found, was commonly a form of protest, revenge, and/or appeal (e.g., Malinowski, 1985; Niehaus, 2012). Some ethnographers, such as Hezel (1987), conceptualized suicide as a form of anger, whereas others, such as Giddens (1964), conceptualized suicide as a form of social pressure. Counts (1980) emphasized the powerlessness of suicide victims. Common to almost all theoretical and empirical investigations of suicide is a focus on *completed* suicides, i.e., suicide deaths. @SymeEtAl2016, in contrast, argued that because the vast majority of suicidal behavior does not result in death, the proper focus should be on suicide ideation and suicide attempts, not deaths.
+
+Within anthropology, Raymond Firth was likely the first to put the focus on suicidality as a gamble to improve one's circumstances in the here and now. Based on observations that suicide attempts often followed social conflict or loss and varied substantially in their likelihood of death, he argued that a sizable subset of the suicide attempts among the Tikopia were not meant to end in death but instead were a means to elicit attention, status, and immediate reintegration into the community following negative events (Firth 1967[not original date]). Compared to suicide, however, anthropological explanations for depression are a much more recent occurrence (cite), despite frequent reports of depression or depression-like behavior in a wide range of societies (cite) and the potential for cross-cultural research to help understand depressive states (cite).
+
+and there is still substantial uncertainty about why both are as common as they are (cite). Likely due to  the suffering they cause, the vast majority of these approaches have been built on the assumption that they are the result of internal dysfunction (cite examples). However, a subset of anthropologists and evolutionary theorists have challenged this idea, suggesting that despite the subjective suffering they cause, they may function as a means to limit negative fitness outcomes in times of substantial adversity (Firth + others).
+
+
 
 ## Connection to Adversity
+
 Likely the most reliable finding when it comes to depression and suicidal behavior is that most cases are closely tied to major negative life events (Hammen, 2005 + others; citations for suicide). Compared to non-depressed individuals, those with depression tend to report at least twice as many instances of negative events in both community and clinical samples (Mazure, 1998) and more negative events than those with schizophrenia and bipolar depression across a wide range of studies (Paykel, 1994). In instances where depression is preceded by negative events, it's onset tends to quickly follow, often occurring within one month of the event (Kendler et al., 1999 [double check and find others]). 
 
 This strong connection between negative life events and depression along with the adversity and distress that likely accompanies these events has led to the suggestion that this relationship is causal (Kendler et al., 1999). Support for this comes from the fact that the relationship between negative events and depression holds true when looking solely at events outside of one's control, showing that the connection is unlikely to be driven solely by depressed individuals creating situations where negative events are likely to be common (Hammen, 2005; Kendler et al., 1999). In addition to this, twin studies have shown that one's history of negative events is still a strong predictor of major depression when controlling for genetic similarity and that part of the heritability of depression stems from the heritability of negative events, like divorce and family conflict (Kendler & Baker, 2007; Kendler et al., 1999).
@@ -231,7 +242,7 @@ vars <- c(
 kable(custom.summarize(d, vars), caption = "Summary statistics for study variables. Original 0-100 values scaled to 0-1. Indian participants reported income in rupees, which we converted to USD at the current exchange rate (1 rupee == 0.014 USD).") %>% kable_styling()
 ```
 
-## Distributions of beliefs and actions at time 1
+## Distributions of beliefs and actions at Time 1
 
 Power analyses prior to data collection showed that high proportions of participants scoring extremely high on belief or likelihood of helping at T1 would result in low power for this study's design, a problem which we appeared to largely avoid (word better) (see figure XX).
 
@@ -245,12 +256,17 @@ plot_T1Belief_T1Action
 
 As a whole, our predictions for the effect of signal cost on belief and likelihood of helping T2 were met, with costlier signals eliciting greater pro-signaler responses (reword). There was also support for an interaction between signal and T1Belief or T1Action, although the effect was not large (See figure 2). However, the effect of signal cost varied by vignette, with signal type having the greatest effect in the "basketball coach" and "brother-in-law" vignettes. When ordered according to cost, the greatest jump in support tended to occur between crying and mild-depression, with the next largest jump tending to occur between depression and suicide attempt. Overall, there was little difference between the effect of mild depression and the effect of depression.
 
-```{r beliefeffect, fig.width=8, fig.height=8, fig.cap="The effect of the signals on T2 Belief (top) and Action (bottom) controlling for T1 values of Belief and Action, respectively, with an interaction between T1 values and the signal. Estimated using generalized linear regression models with the quasibinomial family."}
+```{r beliefeffect, fig.width=8, fig.height=8, fig.cap="The effect of the signals on T2 Belief (top) and Action (bottom) controlling for T1 values of Belief and Action, respectively, with an interaction between T1 values and the signal. Fit using generalized linear regression models with the quasibinomial family."}
 (effectsPlots$m1bplot + theme(axis.text.x = element_blank()))/effectsPlots$m3bplot + plot_layout(ncol = 1) & theme(plot.margin = unit(c(0,0,0,0), units = 'mm'))
 ```
 
-```{r beliefvignette, fig.width=8, fig.height=8, fig.cap=paste0("The effect of the signals on T2 Belief (top) and Action (bottom) in each vignette, controlling for T1 values of Belief and Action, respectively. Effects computed with T1 values set to their median value (T1Belief=", median(d$T1Belief, na.rm=T), ", T1Action=", median(d$T1Action, na.rm=T), "). Estimated using generalized linear regression models with the quasibinomial family.")}
+```{r beliefvignette, fig.width=8, fig.height=8, fig.cap=paste0("The effect of the signals on T2 Belief (top) and Action (bottom) in each vignette, controlling for T1 values of Belief and Action, respectively. Effects computed with T1 values set to their median value (T1Belief=", median(d$T1Belief, na.rm=T), ", T1Action=", median(d$T1Action, na.rm=T), "). Fit using generalized linear regression models with the quasibinomial family.")}
 (effectsPlots$m2plot + theme(axis.text.x = element_blank()))/effectsPlots$m4plot + plot_layout(ncol = 1) & theme(plot.margin = unit(c(0,0,0,0), units = 'mm'))
+```
+
+
+```{r ecdf, fig.width=11, fig.height=6, fig.cap="Empirical cummulative distribution functions for Time 2 Belief (top) and Action (bottom) compared to their Time 1 baseline values (red), by signal and vignette. Dots indicate median values of Belief and Action, by signal and vignette."}
+ecdf_plot
 ```
 
 ## The effect of signals on action is largely mediated by belief
@@ -314,15 +330,34 @@ Briefly, Participants read a vignette that put them in situations in which an im
 
 ## Power from pilot study
 
-We estimated power using our pilot study data by comparing the effect of the *Depression* signal vs. the *Verbal request* signal on *Belief* (that the sister needed the money) at T2 controlling for *Belief* at T1 in a linear regression model. Specifically, we resampled the pilot data with replacement with sample sizes ranging from N=20 to N=100, fit the linear regression model, and extracted the p-value for the signal coefficient, repeating this 1000 times for each sample size. Power was computed as the proportion of p-values < 0.05. Power was about 80% for a sample size of about 35, and was about 90% for a sample size of about 45. 
+```{r}
+pwr80_90 <- 
+  power_curve %>% 
+  group_by(Base) %>% 
+  summarise(
+    pwr80 = min(sample_size[power>=.8]), 
+    pwr90 = min(sample_size[power>=.9])
+  )
+```
 
-```{r power}
-  ggplot(power_curve, aes(sample_size, power)) +
+
+We estimated power using our pilot study data to compared the effect of the *Depression* signal vs. the *Verbal request* signal on *Belief* (that the sister needed the money) at T2 controlling for *Belief* at T1 in a linear regression model. Specifically, we resampled the pilot data with replacement, fit the linear regression model, and extracted the p-value for the signal coefficient, repeating this 2000 times for each sample size ranging from N=20 to N=200. Power was computed as the proportion of p-values < 0.05. Power was about 80% for a sample size of about `r pwr80_90[2,2]`, and was about 90% for a sample size of about `r pwr80_90[2,3]`. We then repeated this entire procedure to compare *Depression* to a *Control* condition that was meant to not include any signaling (but which we realized, post hoc, did include a verbal request). Power was about 80% for a sample size of about `r pwr80_90[1,2]`, and was about 90% for a sample size of about `r pwr80_90[1,3]`. See Figure \@ref(fig:power).
+
+```{r power, fig.cap="Power curve for between-subjects effect of Depression vs. Verbal request signal on T2 Belief, controlling for T1 Belief."}
+  ggplot(power_curve, aes(sample_size, power, color=Base)) +
     geom_line() +
-    labs(x = '\n Sample size (2 conditions)', y = 'Power\n') +
+    labs(x = '\n Sample size', y = 'Power\n') +
     theme_minimal(15)
 ```
 
+<!-- Second, for participants in the *Depression* condition only, we compared their T2 Belief to their T1 Belief using a paired t-test (in the full pilot data, *Depression* increased belief by about 8 points on a 100 point scale). We again resampled our pilot data 2000 times for each sample size from N=20 to N=200. Power was about 80% for a sample size of 125, and about 90% for a sample size of 175. See Figure \@ref(fig:power2). -->
+
+```{r power2, fig.cap="Power curve for within-subjects effect of Depression signal on T2 Belief relative to T1 Belief."}
+  # ggplot(power_curve2, aes(sample_size, power)) +
+  #   geom_line() +
+  #   labs(x = '\n Sample size', y = 'Power\n') +
+  #   theme_minimal(15)
+```
 
 ## Sample size in each condition in the current study
 
@@ -332,28 +367,34 @@ as.data.frame.matrix(xtabs(~signal+vignette, d)) %>%
   kable_styling()
 ```
 
-## Distributions of T2 Belief and Action by signal and vignette
+<!-- ## Distributions of T2 Belief and Action by signal and vignette -->
 
 ```{r distbelief, fig.width=10, fig.height=10, fig.cap="Histograms of T2 Belief by signal and vignette."}
-ggplot(d, aes(x = T2Belief, fill=signal)) +
-  geom_histogram(colour='grey') +
-  scale_x_continuous(breaks = c(0, 0.5, 1)) +
-  facet_grid(vignette~signal) +
-  guides(fill='none') +
-  xlab('\n T2 Belief') +
-  theme_minimal(15) + 
-  theme(strip.text.y = element_text(angle=0, hjust=0))
+
+# h <- hist(d$T2Belief, breaks = "FD", plot = FALSE)
+# 
+# ggplot(d, aes(x = T2Belief, fill=signal)) +
+#   geom_histogram(colour='grey', breaks = h$breaks) +
+#   scale_x_continuous(breaks = c(0, 0.5, 1)) +
+#   facet_grid(signal~vignette, as.table = F) +
+#   guides(fill='none') +
+#   xlab('\n T2 Belief') +
+#   theme_minimal(15) +
+#   theme(strip.text.y = element_text(angle=0, hjust=0))
 ```
 
 ```{r distaction, fig.width=10, fig.height=10, fig.cap="Histograms of T2 Action by signal and vignette."}
-ggplot(d, aes(x = T2Action, fill=signal)) +
-  geom_histogram(colour='grey') +
-  scale_x_continuous(breaks = c(0, 0.5, 1)) +
-  facet_grid(vignette~signal) +
-  guides(fill='none') +  
-  xlab('\n T2 Action') +
-  theme_minimal(15) + 
-  theme(strip.text.y = element_text(angle=0, hjust=0))
+
+# h <- hist(d$T2Action, breaks = "FD", plot = FALSE)
+# 
+# ggplot(d, aes(x = T2Action, fill=signal)) +
+#   geom_histogram(colour='grey', breaks=h$breaks) +
+#   scale_x_continuous(breaks = c(0, 0.5, 1)) +
+#   facet_grid(signal~vignette, as.table = F) +
+#   guides(fill='none') +  
+#   xlab('\n T2 Action') +
+#   theme_minimal(15) + 
+#   theme(strip.text.y = element_text(angle=0, hjust=0))
 ```
 
 ## Signal effect sizes
@@ -372,7 +413,7 @@ ggplot(effect_sizes2, aes(effsize, fct_reorder(id, effsize), xmin=conf.low, xmax
   # scale_color_viridis_d(option='A') +
   guides(colour = guide_legend(override.aes = list(size = 1)), shape = guide_legend(title=NULL, override.aes = list(size = 1))) +
   # facet_wrap(~Outcome, ncol=1) +
-  labs(x="\nCohn's d (95% CI)", y=NULL) +
+  labs(x="\nCohen's d (95% CI)", y=NULL) +
   theme_minimal(15) +
   theme(legend.position = 'top')
 ```
@@ -388,7 +429,7 @@ ggplot(effect_sizes, aes(est, fct_reorder(id, est), xmin=low, xmax=high, colour 
   # scale_color_viridis_d(option='A') +
   guides(colour = guide_legend(override.aes = list(size = 1)), shape = guide_legend(title=NULL, override.aes = list(size = 1))) +
   # facet_wrap(~Outcome, ncol=1) +
-  labs(x="\nCohn's d (95% CI)", y=NULL) +
+  labs(x="\nCohen's d (95% CI)", y=NULL) +
   theme_minimal(15) +
   theme(legend.position = 'top')
 ```
@@ -423,12 +464,17 @@ ggmediation(med4)
 ## Raw beliefs and actions
 
 ```{r rawbeliefs, fig.width=10, fig.height=10, fig.cap="Change in beliefs from T1 to T2 for participants in each condition. Each grey line is one participant. Red lines are the mean change."}
-plot_raw_beliefs
+# plot_raw_beliefs
 ```
 
 ```{r rawactions, fig.width=10, fig.height=10, fig.cap="Change in actions from T1 to T2 for participants in each condition. Each grey line is one participant. Red lines are the mean change."}
-plot_raw_actions
+# plot_raw_actions
 ```
+
+```{r rawbeliefactions2d, fig.width=10, fig.height=10, fig.cap="Change in beliefs and actions from T1 (arrow base) to T2 arrow head) for participants in each condition. Each grey arrow is one participant. Red arrows are the mean change."}
+plot_raw_belief_action2d
+```
+
 
 ## T1 emotion vs vignette heatmap
 

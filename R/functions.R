@@ -10,7 +10,7 @@ T1Belief_Action_dist <- function(d){
     mutate(r = paste('r =', r))
 
   ggplot(d, aes(T1Belief, T1Action, colour = vignette)) +
-    geom_density2d(alpha = 0.5, show.legend = F) +
+    # geom_density2d(alpha = 0.5, show.legend = F) +
     geom_count(alpha = 0.5) +
     geom_smooth(se=F, method = 'lm', show.legend = F) +
     geom_text(data = dcor, aes(label = r), x = .15, y = 0.95, size=5, colour='black') +
@@ -157,6 +157,38 @@ emotion_plot <- function(d){
     theme(axis.title.y = element_text(angle = 0))
 }
 
+plot_ecdf <- function(d){
+  e <-
+    d %>%
+    dplyr::select(id, signal, vignette, T1Belief, T2Belief, T1Action, T2Action) %>%
+    pivot_longer(c(T1Belief, T2Belief, T1Action, T2Action), names_to = c('Time', 'Type'), names_sep = 2) %>%
+    mutate(
+      vignette = factor(vignette, levels = c('Thwarted marriage', 'Basketball coach', 'Romantic partner', 'Brother-in-law')),
+      signal = as.character(signal)
+    ) %>%
+    group_by(Type) %>%
+    mutate(
+      signal = ifelse(Time == 'T1', 'T1 Baseline', signal),
+      signal = factor(signal, levels = (c('T1 Baseline', 'Verbal request', 'Crying', 'Mild depression', 'Depression', 'Suicide attempt')))
+    )
+
+  emedian <-
+    e %>%
+    group_by(Type, vignette, signal) %>%
+    summarise(median = median(value))
+
+  ggplot(e, aes(value, colour = signal)) +
+    stat_ecdf() +
+    geom_segment(data=emedian, aes(x=median, xend=median, colour = signal), y=0, yend=0.5, linetype = 'dotted') +
+    geom_point(data=emedian, aes(x=median, colour = signal), y = 0.5) +
+    geom_point(data=emedian, aes(x=median, colour = signal), y = 0) +
+    guides(color=guide_legend(title=NULL, override.aes = list(size = 2))) +
+    facet_grid(Type~vignette, as.table = F) +
+    labs(x = '\nBelief/Action', y = '') +
+    theme_minimal(15) +
+    theme(strip.text.y = element_text(angle=0, hjust=0), legend.position = 'top')
+}
+
 plot_raw_data <- function(d, type){
   d <-
     d %>%
@@ -186,6 +218,34 @@ plot_raw_data <- function(d, type){
     theme(
       strip.text.y = element_text(angle = 0, hjust = 0),
       panel.spacing.x = unit(1, 'lines')
+    )
+}
+
+plot_raw_data2d <- function(d){
+
+  d2 <-
+    d %>%
+    group_by(signal, vignette) %>%
+    dplyr::summarise(
+      meanT1Belief = mean(T1Belief),
+      meanT1Action = mean(T1Action),
+      meanT2Belief = mean(T2Belief),
+      meanT2Action = mean(T2Action)
+    )
+
+  ggplot() +
+    geom_segment(data = d, aes(x = T1Belief, y = T1Action, xend = T2Belief, yend = T2Action), alpha = 0.25, arrow = arrow(length = unit(2, "mm"), type = 'closed')) +
+    geom_segment(data = d2, aes(x = meanT1Belief, y = meanT1Action, xend = meanT2Belief, yend = meanT2Action), colour='red', alpha = 1, size = 1, arrow = arrow(length = unit(3, "mm"), type = 'closed')) +
+    scale_x_continuous(breaks = c(0, 0.5, 1.0)) +
+    scale_y_continuous(breaks = c(0, 0.5, 1.0)) +
+    facet_grid(signal~vignette, as.table = F) +
+    labs(x = '\nBelief', y = 'Action\n') +
+    coord_fixed() +
+    theme_minimal(14) +
+    theme(
+      strip.text.y = element_text(angle = 0, hjust = 0),
+      panel.spacing.x = unit(1, 'lines'),
+      axis.title.y = element_text(angle = 0)
     )
 }
 
@@ -274,12 +334,12 @@ eff_sizes2 <- function(d){
 
 # Power -------------------------------------------------------------------
 
-pwr_curve <- function(signalingdata2018){
+pwr_curve0 <- function(signalingdata2018, control){
 
   e <-
     signalingdata2018 %>%
-    dplyr::filter(signal == "Depression:Sister" | signal == "VerbalRequest:Sister") %>%
-    mutate(signal = factor(signal, levels = c("VerbalRequest:Sister", "Depression:Sister")))
+    dplyr::filter(signal == "Depression:Sister" | signal == control) %>%
+    mutate(signal = factor(signal, levels = c(control, "Depression:Sister")))
 
   pwr <- function(sample_size){
     pvalues <- map_dbl(1:2000, ~summary(lm(needsmoneyt2 ~ needsmoneyt1 + signal, e[sample(1:nrow(e), sample_size, replace = T),]))$coefficients["signalDepression:Sister","Pr(>|t|)"])
@@ -287,9 +347,101 @@ pwr_curve <- function(signalingdata2018){
   }
 
   tibble(
-      sample_size = seq(20, 100, 5),
-      power = map_dbl(sample_size, pwr)
+    sample_size = seq(20, 200, 5),
+    power = map_dbl(sample_size, pwr)
     )
+}
+
+pwr_curve <- function(d){
+  bind_rows(list('Control' = pwr_curve0(d, 'Control:Sister'), 'Verbal' = pwr_curve0(d, 'VerbalRequest:Sister')), .id='Base')
+}
+
+pwr_curve2 <- function(signalingdata2018){
+  e <- signalingdata2018 %>% dplyr::filter(signal == "Depression:Sister")
+  pwr <- function(sample_size){
+    pvalues <- map_dbl(1:2000, ~{e2 <- e[sample(1:nrow(e), sample_size, replace = T),]; t.test(e2$needsmoneyt1, e2$needsmoneyt2, paired = T)$p.value})
+    sum(pvalues < 0.05)/length(pvalues)
+  }
+  tibble(
+    sample_size = seq(20, 200, 5),
+    power = map_dbl(sample_size, pwr)
+  )
+}
+
+# 2D densities ------------------------------------------------------------
+
+density2d <- function(d, res=150){
+  d %>%
+    group_by(vignette, signal) %>%
+    nest() %>%
+    rowwise() %>%
+    mutate(
+      matT1 = list(matrix(c(data$T1Belief, data$T1Action), ncol = 2, dimnames = list(c(), c('T1Belief', 'T1Action')))),
+      kdeT1 = list(kde.boundary(x=matT1, xmin=c(0,0), xmax=c(1,1), boundary.kernel="linear", gridsize = c(res,res))),
+      matT2 = list(matrix(c(data$T2Belief, data$T2Action), ncol = 2, dimnames = list(c(), c('T2Belief', 'T2Action')))),
+      kdeT2 = list(kde.boundary(x=matT2, xmin=c(0,0), xmax=c(1,1), boundary.kernel="linear", gridsize = c(res,res)))
+    ) %>%
+    ungroup() %>%
+    arrange(vignette, signal)
+}
+
+plot_densities <- function(d_density2d){
+  pdf(file = 'Figures/densities.pdf', width = 12, height = 6)
+  for (i in 1:nrow(d_density2d)){
+    title = paste0(d_density2d$vignette[i], ' ', d_density2d$signal[i])
+    par(mfrow=c(1,2), oma = c(0, 0, 2, 0))
+    plot(d_density2d$kdeT1[[i]], display='persp', theta=50, phi=20, main = 'T1')
+    plot(d_density2d$kdeT2[[i]], display='persp', theta=50, phi=20, main = 'T2')
+    mtext(title, outer = T)
+  }
+  dev.off()
+  return('Figures/densities.pdf')
+}
+
+ggplot_densities <- function(d_density2d){
+  pdf(file = 'Figures/ggdensities.pdf', width = 12, height = 6)
+  for (i in 1:nrow(d_density2d)){
+    print(ggT1T2(d_density2d[i,]))
+  }
+  dev.off()
+  return('Figures/ggdensities.pdf')
+}
+
+ggT1T2 <- function(d){
+  subtitle = d$vignette[[1]]
+  title = as.character(d$signal[[1]])
+  ggkde(d$kdeT1[[1]]) + (ggkde(d$kdeT2[[1]]) + theme(axis.title.y = element_blank(), axis.text.y = element_blank())) +
+    plot_annotation(
+      title = title,
+      subtitle = subtitle,
+      tag_levels = '1',
+      tag_prefix = 'T'
+    ) +
+    plot_layout(guides = 'collect') &
+    theme(legend.position='right') # , plot.margin = margin(0,0,0,0)
+}
+
+ggkde <- function(mkde){
+
+  varnms <- dimnames(mkde$x)[[2]]
+  d <- as_tibble(mkde$x)
+
+  rows <- length(mkde$eval.points[[1]])
+  cols <- length(mkde$eval.points[[2]])
+
+  d2 <- tibble(
+    x = rep(mkde$eval.points[[1]], times = rows),
+    y = rep(mkde$eval.points[[2]], each = cols),
+    z = c(mkde$estimate)
+  )
+
+  ggplot() +
+    geom_raster(data = d2, aes(x, y, fill = z), show.legend=F) +
+    geom_count(data = d, aes(.data[[varnms[1]]], .data[[varnms[2]]]), fill = 'white', colour = 'black', shape = 21) +
+    scale_fill_viridis_c(option = 'B') +
+    scale_size_area(limits = c(1, 15)) +
+    labs(x = '\nBelief', y = 'Action\n') +
+    theme_minimal(15)
 }
 
 ######### Alternate mediators ############

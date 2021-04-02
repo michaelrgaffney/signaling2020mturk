@@ -764,3 +764,77 @@ d_diff <- as.matrix(dT2signal[-1]) - as.matrix(dT1signal[-1])
 rownames(d_diff) <- dT2signal$name
 
 hagenheat(d_diff, rotate_labels = F, seriation_method = 'PCA_angle') + scale_fill_gradient2()
+
+
+  # ggplot() +
+  #   geom_segment(data = d_boot, aes(x = T1LowMood_mean, y = T1Manipulative_mean, xend = T2LowMood_mean, yend = T2Manipulative_mean, colour=signal), alpha = 0.02, arrow = arrow(length = unit(3, "mm"))) +
+  #   geom_segment(data = d_full, aes(x = T1LowMood_mean, y = T1Manipulative_mean, xend = T2LowMood_mean, yend = T2Manipulative_mean, colour=signal), alpha = 1, size = 1, arrow = arrow(length = unit(3, "mm"))) +
+  #   xlim(0, NA) +
+  #   facet_wrap(~vignette) +
+  #   labs(title = 'Change in mean emotions from T1 to T2', x = '\nLow mood', y = 'Manipulative\n') +
+  #   theme_bw(15) +
+  #   theme(axis.title.y = element_text(angle = 0))
+
+p1 <- as.ggplot(~plot(d_density2d$kdeT1[[9]], display='persp', theta=50, phi=20, main = 'T1: Pre-depression'))
+p2 <- as.ggplot(~plot(d_density2d$kdeT2[[9]], display='persp', theta=50, phi=20, main = 'T2: Post-depression'))
+p3 <- as.ggplot(~plot(d_density2d$kdeT1[[7]], display='persp', theta=50, phi=20, main = 'T1: Pre-crying'))
+p4 <- as.ggplot(~plot(d_density2d$kdeT2[[7]], display='persp', theta=50, phi=20, main = 'T2: Post-crying'))
+
+
+(p1+p2)/(p3+p4)
+
+# Do costly signals increase actions more than beliefs?
+
+tmp <-
+  d %>%
+  dplyr::select(id, signal, vignette, T1Belief, T1Action, T2Belief, T2Action) %>%
+  pivot_longer(T2Belief:T2Action) %>%
+  separate(name, into = c('time', 'type'), sep=2) %>%
+  mutate(signal = factor(as.character(signal), levels = rev(c('Verbal request', 'Crying', 'Mild depression', 'Depression', 'Suicide attempt'))))
+
+m <- glmer(
+  value ~
+    type*signal +
+    type*vignette +
+    T1Belief +
+    T1Action +
+    (1|id),
+  family = binomial,
+  tmp,
+  nAGQ = 0
+  )
+
+em <- emmeans::emmeans(m, specs='type', by='signal')
+plot(pairs(em)) + theme_minimal() + theme(strip.text.y = element_text(angle = 0, hjust=0))
+
+em <- emmeans::emmeans(m, specs='type', by='vignette')
+plot(pairs(em)) + theme_minimal() + theme(strip.text.y = element_text(angle = 0, hjust=0))
+
+
+
+e <- d_density2d$data[[10]]
+uv <- apply(e[c('T2Belief', 'T2Action')], 2, rank) / (nrow(e) + 1)
+fit <- kdecop(uv)
+plot(fit)
+
+
+dden <-
+  d %>%
+  group_by(signal) %>%
+  nest() %>%
+  rowwise() %>%
+  mutate(
+    matT1 = list(matrix(c(data$T1Belief, data$T1Action), ncol = 2, dimnames = list(c(), c('T1Belief', 'T1Action')))),
+    matT2 = list(matrix(c(data$T2Belief, data$T2Action), ncol = 2, dimnames = list(c(), c('T2Belief', 'T2Action'))))  ) %>%
+  ungroup() %>%
+  arrange(signal)
+
+uv <- apply(dden$matT1[[1]], 2, rank) / (nrow(dden$matT1[[1]]) + 1)
+fit <- kdecop(uv, method = 'TTPI')
+plot(fit)
+plot(fit, type='contour')
+
+uv <- apply(dden$matT2[[1]], 2, rank) / (nrow(dden$matT2[[1]]) + 1)
+fit <- kdecop(uv, method = 'TTPI')
+plot(fit)
+plot(fit, type='contour')
