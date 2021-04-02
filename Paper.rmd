@@ -23,6 +23,7 @@ library(hagenutils)
 tar_load(
   c(
     'd',
+    'signaling2018',
     'power_curve',
     'power_curve2',
     'models',
@@ -36,8 +37,13 @@ tar_load(
     'plot_raw_beliefs',
     'plot_raw_actions',
     'plot_raw_belief_action2d',
+    'med_prereg',
+    'med1',
     'med1b',
     'med4',
+    'med4b',
+    'm1_boot',
+    'm3_boot',
     'm1b_boot',
     'm3b_boot',
     'dfT1emotion_vignette',
@@ -135,13 +141,49 @@ As the amount of crying in those with depression is moderately associated with d
 
 ## Preregistration
 
-https://osf.io/g3s6n
+We preregistered four OLS linear regression models and one mediation model (https://osf.io/g3s6n). The first two regression models tested the effects of our ordinal signal variable on Time 2 *Belief* and *Action*, controlling for T1 *Belief* and *Action*, respectively (a pre-test/post-test design):
+
+`r extract_eq(models_prereg$Model$m1, intercept='beta', wrap=T)`
+`r extract_eq(models_prereg$Model$m3, intercept='beta', wrap=T)`
+
+The second two models added interaction terms between signal and T1 *Belief* and *Action*, with the rationale that the signals might have reduced effect for individuals who indicate high levels of belief and helping at baseline: 
+
+`r extract_eq(models_prereg$Model$m1b, intercept='beta', wrap=T)`
+`r extract_eq(models_prereg$Model$m3b, intercept='beta', wrap=T)`
+
+The mediation model is in Figure \@ref(fig:medmodel):
+
+```{r medmodel, fig.cap="Possible causal effects of the signal on helping behavior. A credible signal of need increases belief that the victim is telling the truth and needs help, which increase the likelihood of helping. The direct path from the signal to action represents other causal effects of the signal on observers, such as perceptions of the victim's emotional state (and other factors not measured in this study) that might alter observer behavior."}
+
+knitr::include_graphics('paths.svg')
+```
+
+Specifically, the mediation and outcome models, respectively, are:
+
+`r extract_eq(med_prereg$model.m, intercept='beta', wrap=T)`
+`r extract_eq(med_prereg$model.y, intercept='beta', wrap=T)`
+
+For reasons we explain in the *Statistical methods* section, we report the OLS models in the Supplementary Information (SI), and in the Results section instead report conceptually equivalent generalized linear regression models (GLMs).
+
+## Power analysis
+
+```{r}
+pwr80_90 <- 
+  power_curve %>% 
+  group_by(Base) %>% 
+  summarise(
+    pwr80 = min(sample_size[power>=.8]), 
+    pwr90 = min(sample_size[power>=.9])
+  )
+```
+
+The current study is a refinement of a pilot study (N=`r nrow(signalingdata2018)`) with very similar signals and outcomes. We used these pilot data to estimate the sample sizes needed to detect an effect of the *Depression* vs. *Verbal request* signal (two conditions) on *Belief* in the victim's need. Power was about 80% for a sample size of about `r pwr80_90[[2,2]]`, and was about 90% for a sample size of about `r pwr80_90[[2,3]]`. We also estimated the sample size needed to detect an effect of *Depression* vs. a *Control* condition that was meant to not include any signaling (but which we realized, post hoc, did include a verbal request). Power was about 80% for a sample size of about `r pwr80_90[[1,2]]`, and was about 90% for a sample size of about `r pwr80_90[[1,3]]`. See Figure \@ref(fig:power). Given our $1500 USD budget, we aimed for a sample size of 125 for two conditions, and 1250 for all conditions in the study. For more details, see the SI and XX.
 
 ## Sampling
 
 Participants for this study were recruited from Amazon Mechanical Turk, a crowdsourcing platform that allows for the creation of Human Intelligence Tasks (HITs) that workers can complete for pay. As Amazon provides the infrastructure, it allows for a relatively low-cost way of collecting data for academic research at the cost of the data not being representative of any real population (Thomas and Clifford 2017). Despite this limitation, it is more diverse than most convenience samples [@KennedyEtAl2018(2020 now); @DworkinEtAl2016; (Thomas and Clifford 2017)], with turkers in the US mainly differing in being younger, more educated, and lower income than the greater U.S. population [@RossEtAl2010]; Boas et al. 2018). Indian samples are also likely to be younger and more educated than the general population but differ from US samples in that they are less diverse, have higher incomes relative to other Indians, and are more likely to come from regions with good internet access (Boas et al. 2018)
 	
-Overall, the quality of data provided by MTurk workers tends to resemble that of university sample pools[@NeckaEtAl2016, Robinson et al. 2019], with there being some indication that it might outperform university samples due to its previously mentioned diversity (Thomas and Clifford 2017) or the overall attentiveness of turkers [@HauserSchwarz2016]. For this reason, concerns about data quality come primarily from the threat of bot use or respondents faking their location to take surveys in a language they do not understand well, with there being little evidence of the former [@KennedyEtAl2018] and the risk of the latter able to be minimized through well designed attention checks, timed responses, or general study design (Aguinis et al. 2020; Huang et al. 2015; Kennedy et al. 2020; Thomas and Clifford 2017).
+Overall, the quality of data provided by MTurk workers tends to resemble that of university sample pools [@NeckaEtAl2016, Robinson et al. 2019], with there being some indication that it might outperform university samples due to its previously mentioned diversity (Thomas and Clifford 2017) or the overall attentiveness of turkers [@HauserSchwarz2016]. For this reason, concerns about data quality come primarily from the threat of bot use or respondents faking their location to take surveys in a language they do not understand well, with there being little evidence of the former [@KennedyEtAl2018] and the risk of the latter able to be minimized through well designed attention checks, timed responses, or general study design (Aguinis et al. 2020; Huang et al. 2015; Kennedy et al. 2020; Thomas and Clifford 2017).
 	
 ## Sample
 
@@ -189,24 +231,21 @@ Table: (\#tab:outcomes) Outcome variables in each vignette.
 
 The final part of the survey was a brief demographic questionnaire which examined: (1) the age, (2) sex, (3) number of siblings, (4) number of sons, (5) number of daughters, (6) current relationship status, (7) highest level of education, and (8) the annual household income of each participant.
 
-## Confirmatory Analyses
+## Statistical analyses
 
-We used linear regression to analyze our results for the main effect of signal on belief in need and likelihood of help, controlling for baseline levels of belief in need and likelihood of help. (Need more detail)
+Our pre-test and post-test measures, *T1 & T2 Belief* and *T1 & T2 Action*, were all measured on a 0-100 point scale, which we rescaled to 0-1. A substantial number of participants rated their beliefs and actions as exactly 0 or exactly 1 at either T1 or T2. OLS linear regression models are not suitable for a closed and bounded distribution with so many values on the boundary because the residuals would not be normally distributed or have constant variance. Beta regression, a possible alternative, is only defined on the open interval, (0, 1), whereas our data had many values on the boundaries (a closed interval). A variant of beta regression, zero-one inflated beta, is inappropriate because it assumes separate processes for the generation of data on the boundaries vs. the interior, and we had no reason to believe that our zeros and ones were generated by a different process than the rest of our observations. 
 
-Belief in need t2 ~ Signal + Belief in need t1
-Likelihood of help t2 ~ Signal + Likelihood of help t1
+We therefore fit models of our two outcome variables in three ways. First, we used fractional regression models, introduced in a seminal paper by @papke1996 for outcomes on [0, 1], which, in brief, involve fitting a quasi-likelihood version of logistic regression with robust standard errors. This method is implemented in the R `frm` package [@ramalho2019]. Second, we fit GLM logistic regression models, computing 95% CI's via bootstrapping, using the R `glmmboot` package created to model outcomes on [0, 1] [@humphrey2020]. Finally, we fit GLM models with the quasibinomial family and logit link using the `glm` function in R stats library. The estimated coefficients, standard errors, and confidence intervals produced by the three methods were *very* similar, and often identical. We therefore proceeded to fit models using `glm` with the quasibinomilal family and logit link because model objects produced by this function are compatible with numerous other R packages for estimating and plotting effects.
 
-Based on advice from our statistical consultant, we also fit the following interaction models:
+Although two of our four preregistered OLS regression models included an interaction term, the rationale for it was less convincing for quasibinomial models using a logit link, which transforms [0, 1] to (-$\infty$, $\infty$). We therefore only included it if there was clear evidence of superior fit. Our intervention was *signal*, coded as an ordinal variable with the following preregistered rank order: verbal request, crying, mild depression, depression, suicide attempt. We used the default `glm` settings, which code such variables as orthogonal polynomial contrasts. Our primary confirmatory regression models were as follows (where the signal subscripts indicate polynomial degree):
 
-Belief in need t2 ~ Signal * Belief in need t1
-Likelihood of help t2 ~ Signal * Likelihood of help t1
+`r extract_eq(models$Model$m1, intercept='beta', wrap=T)`
+`r extract_eq(models$Model$m3, intercept='beta', wrap=T)`
 
-The rationale for the interaction is that for individuals who indicate high levels of belief and helping at baseline, the signals might have reduced effect.
+To test our hypothesis that the likelihood of acting to help the victim would be largely mediated by a signal's positive impact on the participant's beleif in the victim's need, we used the `mediation` package [@tingley2014] to fit a mediaton model for *Depression* vs. *Verbal request*. The mediation and outcome models, respectively, were:
 
-To examine our hypothesis that beneficial treatment would be largely due to a signal's positive impact on the participant's beleif in need we ran the following mediaton models for each pairwise combination of signals: 
-
-Mediator model: Belief in need t2 ~ Signal + Belief in need t1
-Outcome model: Likelihood of help t2  ~ Signal + Belief in need t2 + Likelihood of help t1 + Belief in need t1 
+`r extract_eq(med1$model.m, intercept='beta', wrap=T)`
+`r extract_eq(med1$model.y, intercept='beta', wrap=T)`
 
 ## Data availibility
 
@@ -257,8 +296,8 @@ plot_T1Belief_T1Action
 
 As a whole, our predictions for the effect of signal cost on belief and likelihood of helping T2 were met, with costlier signals eliciting greater pro-signaler responses (reword). There was also support for an interaction between signal and T1Belief or T1Action, although the effect was not large (See figure 2). However, the effect of signal cost varied by vignette, with signal type having the greatest effect in the "basketball coach" and "brother-in-law" vignettes. When ordered according to cost, the greatest jump in support tended to occur between crying and mild-depression, with the next largest jump tending to occur between depression and suicide attempt. Overall, there was little difference between the effect of mild depression and the effect of depression.
 
-```{r beliefeffect, fig.width=8, fig.height=8, fig.cap="The effect of the signals on T2 Belief (top) and Action (bottom) controlling for T1 values of Belief and Action, respectively, with an interaction between T1 values and the signal. Fit using generalized linear regression models with the quasibinomial family."}
-(effectsPlots$m1bplot + theme(axis.text.x = element_blank()))/effectsPlots$m3bplot + plot_layout(ncol = 1) & theme(plot.margin = unit(c(0,0,0,0), units = 'mm'))
+```{r beliefeffect, fig.width=8, fig.height=8, fig.cap="The effect of the signals on T2 Belief (top) and Action (bottom) controlling for T1 values of Belief and Action, respectively. Fit using generalized linear regression models with the quasibinomial family."}
+(effectsPlots$m1plot + theme(axis.text.x = element_blank()))/effectsPlots$m3plot + plot_layout(ncol = 1) & theme(plot.margin = unit(c(0,0,0,0), units = 'mm'))
 ```
 
 ```{r beliefvignette, fig.width=8, fig.height=8, fig.cap=paste0("The effect of the signals on T2 Belief (top) and Action (bottom) in each vignette, controlling for T1 values of Belief and Action, respectively. Effects computed with T1 values set to their median value (T1Belief=", median(d$T1Belief, na.rm=T), ", T1Action=", median(d$T1Action, na.rm=T), "). Fit using generalized linear regression models with the quasibinomial family.")}
@@ -273,11 +312,6 @@ ecdf_plot
 ## The effect of signals on action is largely mediated by belief
 
 According to our theoretical model, credible signals of need increase observers' belief that the victim is telling the truth. Increased belief then increases the likelihood of helping the victim (action). See Figure \@ref(fig:medmodel).
-
-```{r medmodel, fig.cap="Possible causal effects of the signal on helping behavior. A credible signal of need increases belief that the victim is telling the truth and needs help, which increase the likelihood of helping. The direct path from the signal to action represents other causal effects of the signal on observers, such as perceptions of the victim's emotional state (and other factors not measured in this study) that might alter observer behavior."}
-
-knitr::include_graphics('paths.svg')
-```
 
 The total effect of the *Depression* signal (treatment) vs. *Verbal request* (control) on the likelihood of *Action* was to increase it by `r 100*signif(med1b$tau.coef, 3)` points from T1 to T2 (on the original 100-point scale). Of this increase, `r 100*signif(med1b$n.avg, 2)`% was mediated by the increased *Belief* that the victim was telling the truth. See Figure \@ref(fig:mediation). The total effect of the *Suicide attempt* signal (treatment) vs. *Verbal request* (control) on the likelihood of *Action* was to increase it by `r 100*signif(med4b$tau.coef, 3)` points from T1 to T2. Of this increase, `r 100*signif(med4b$n.avg, 2)`% was mediated by the increased *Belief* that the victim was telling the truth (Check if med4 or med4b is correct; they look identical to me).
 
@@ -331,18 +365,7 @@ Briefly, Participants read a vignette that put them in situations in which an im
 
 ## Power from pilot study
 
-```{r}
-pwr80_90 <- 
-  power_curve %>% 
-  group_by(Base) %>% 
-  summarise(
-    pwr80 = min(sample_size[power>=.8]), 
-    pwr90 = min(sample_size[power>=.9])
-  )
-```
-
-
-We estimated power using our pilot study data to compared the effect of the *Depression* signal vs. the *Verbal request* signal on *Belief* (that the sister needed the money) at T2 controlling for *Belief* at T1 in a linear regression model. Specifically, we resampled the pilot data with replacement, fit the linear regression model, and extracted the p-value for the signal coefficient, repeating this 2000 times for each sample size ranging from N=20 to N=200. Power was computed as the proportion of p-values < 0.05. Power was about 80% for a sample size of about `r pwr80_90[2,2]`, and was about 90% for a sample size of about `r pwr80_90[2,3]`. We then repeated this entire procedure to compare *Depression* to a *Control* condition that was meant to not include any signaling (but which we realized, post hoc, did include a verbal request). Power was about 80% for a sample size of about `r pwr80_90[1,2]`, and was about 90% for a sample size of about `r pwr80_90[1,3]`. See Figure \@ref(fig:power).
+We estimated power using our pilot study data to compare the effect of the *Depression* signal vs. the *Verbal request* signal on *Belief* (that the sister needed the money) at T2 controlling for *Belief* at T1 in a linear regression model. Specifically, we resampled the pilot data with replacement, fit the linear regression model, and extracted the p-value for the signal coefficient, repeating this 2000 times for each sample size ranging from N=20 to N=200. Power was computed as the proportion of p-values < 0.05. Power was about 80% for a sample size of about `r pwr80_90[[2,2]]`, and was about 90% for a sample size of about `r pwr80_90[[2,3]]`. We then repeated this entire procedure to compare *Depression* to a *Control* condition that was meant to not include any signaling (but which we realized, post hoc, did include a verbal request). Power was about 80% for a sample size of about `r pwr80_90[[1,2]]`, and was about 90% for a sample size of about `r pwr80_90[[1,3]]`. See Figure \@ref(fig:power).
 
 ```{r power, fig.cap="Power curve for between-subjects effect of Depression vs. Verbal request signal on T2 Belief, controlling for T1 Belief."}
   ggplot(power_curve, aes(sample_size, power, color=Base)) +

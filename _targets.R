@@ -128,6 +128,26 @@ list(
 # Bootstrapped models -----------------------------------------------------
 
   tar_target(
+    m1_boot,
+    bootstrap_model(
+      base_model = glm(T2Belief ~ T1Belief + signal, family = binomial, d),
+      base_data = d,
+      resamples = 999,
+      parallelism = 'parallel'
+    )
+  ),
+
+  tar_target(
+    m3_boot,
+    bootstrap_model(
+      base_model = glm(T2Action ~ T1Action + signal, family = binomial, d),
+      base_data = d,
+      resamples = 999,
+      parallelism = 'parallel'
+    )
+  ),
+
+  tar_target(
     m1b_boot,
     bootstrap_model(
       base_model = glm(T2Belief ~ T1Belief * signal, family = binomial, d),
@@ -155,6 +175,18 @@ tar_target(
   ),
 
 # Mediation models --------------------------------------------------------
+
+  tar_target(
+    med_prereg,
+    signal_mediate(
+      data=d,
+      treat.value ='Depression',
+      med_f = 'T2Belief ~ signal + T1Belief',
+      out_f = 'T2Action ~ signal + T1Belief + T1Action + T2Belief',
+      mediator = 'T2Belief',
+      family = 'gaussian'
+    )
+  ),
 
   tar_target(
     med1,
