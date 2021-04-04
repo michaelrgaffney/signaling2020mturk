@@ -7,7 +7,7 @@ source("R/functions.R")
 
 # Set target-specific options such as packages.
 tar_option_set(
-  packages = c("signalingdata2018", "signaling2020data", "ks", "car", "hagenutils", "visreg", "effects", "glmmboot", "broom", "mediation", "gglm", "gt", "ggforce", "dplyr", "tidyr", "purrr", "ggplot2", "patchwork", "forcats", "stringr"),
+  packages = c("ks", "car", "margins", "hagenutils", "visreg", "effects", "glmmboot", "broom", "mediation", "frm", "gglm", "gt", "ggforce", "dplyr", "tidyr", "purrr", "ggplot2", "patchwork", "forcats", "stringr", "furrr"),
   imports = c("signalingdata2018", "signaling2020data")
   )
 
@@ -16,9 +16,15 @@ list(
 
 # Data preparation --------------------------------------------------------
 
-  tar_target(signalingdata2018, signalingdata2018::signalingdata2018),
+  tar_target(
+    signalingdata2018b,
+    prep_pilotdata(signalingdata2018::signalingdata2018)
+  ),
 
-  tar_target(signaling2020, signaling2020data::signaling2020),
+  tar_target(
+    signaling2020,
+    signaling2020data::signaling2020
+  ),
 
   tar_target(
   d_tmp,
@@ -74,7 +80,14 @@ list(
 
   tar_target(
     power_curve,
-    pwr_curve(signalingdata2018)
+    pwr_curve(signalingdata2018b)
+  ),
+
+# Pilot results -----------------------------------------------------------
+
+  tar_target(
+    pilot_results,
+    pilotResults(signalingdata2018b)
   ),
 
 # Models ------------------------------------------------------------------
@@ -157,15 +170,27 @@ list(
     )
   ),
 
-tar_target(
-  m3b_boot,
-  bootstrap_model(
-    base_model = glm(T2Action ~ T1Action * signal, family = binomial, d),
-    base_data = d,
-    resamples = 999,
-    parallelism = 'parallel'
-  )
-),
+  tar_target(
+    m3b_boot,
+    bootstrap_model(
+      base_model = glm(T2Action ~ T1Action * signal, family = binomial, d),
+      base_data = d,
+      resamples = 999,
+      parallelism = 'parallel'
+    )
+  ),
+
+# Fractional regression models --------------------------------------------
+
+  tar_target(
+    m1_frac,
+    fractional_model(models$Model$m1)
+  ),
+
+  tar_target(
+    m3_frac,
+    fractional_model(models$Model$m3)
+  ),
 
 # Effects plots -----------------------------------------------------------
 

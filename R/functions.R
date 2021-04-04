@@ -1,4 +1,55 @@
 
+prep_pilotdata <- function(d){
+
+  var_dict <-
+    c(
+    'Control:Sister' = 'Control',
+    'Schizophrenia:Sister' = 'Schizophrenia',
+    'VerbalRequest:Sister' = 'Verbal request',
+    'Anger:Sister' = 'Anger',
+    'FacialSadnesswithCrying:Sister' = 'Mild depression',
+    'Depression:Sister' = 'Depression',
+    'DepressionwithSuicideThreat:Sister' = 'Depression + Suicide threat',
+    'SuicideAttempt:Sister' = 'Suicide attempt'
+  )
+
+  d %>%
+    mutate(
+      signal = var_dict[signal],
+      signal = factor(signal, levels = var_dict)
+    )
+}
+
+pilotResults <- function(d){
+
+  d <-
+    d %>%
+    mutate(
+      MentallyIll = str_detect(MC2.3, 'Mentally ill')
+    )
+
+  rslts <- list(
+    m_pilot_belief = glm(needsmoneyt2/100 ~ needsmoneyt1 + signal, family = quasibinomial, d),
+    m_pilot_mentallyill = glm(MentallyIll ~ signal, family = binomial, d),
+    meanT1belief = mean(d$needsmoneyt1, na.rm = T),
+    medianT1belief = median(d$needsmoneyt1, na.rm = T)
+  )
+
+  rslts$effectplot <-
+    visreg(rslts$m_pilot_belief, xvar='signal', scale='response', rug=F, gg=T) +
+    labs(title = 'Pilot study results: Belief', x = '', y = '\nT2 Belief') +
+    coord_flip() +
+    theme_bw(15)
+
+  rslts$mentalplot <-
+    visreg(rslts$m_pilot_mentallyill, xvar = 'signal', scale = 'response', rug = F, gg = T) +
+    labs(title = 'Pilot study results: Mentally ill', x = '', y = '\nT2 Mentally ill') +
+    coord_flip() +
+    theme_bw(15)
+
+  return(rslts)
+}
+
 T1Belief_Action_dist <- function(d){
 
   dcor <-
@@ -9,10 +60,16 @@ T1Belief_Action_dist <- function(d){
     ) %>%
     mutate(r = paste('r =', r))
 
+  dmean <-
+    d %>%
+    group_by(vignette) %>%
+    summarise(T1Belief = mean(T1Belief, na.rm = T), T1Action = mean(T1Action, na.rm = T))
+
   ggplot(d, aes(T1Belief, T1Action, colour = vignette)) +
     # geom_density2d(alpha = 0.5, show.legend = F) +
     geom_count(alpha = 0.5) +
     geom_smooth(se=F, method = 'lm', show.legend = F) +
+    geom_point(data = dmean, aes(T1Belief, T1Action), colour = 'black', shape = 3, size = 3) +
     geom_text(data = dcor, aes(label = r), x = .15, y = 0.95, size=5, colour='black') +
     coord_fixed() +
     labs(x = '\nT1 Belief', y = 'T1 Action\n') +
@@ -26,20 +83,37 @@ T1Belief_Action_dist <- function(d){
 fit_models <- function(data, formulas, family = 'quasibinomial'){
   d <- tibble(
     Name = names(formulas),
-    Formula = unname(formulas),
+    Formulas = unname(formulas),
     Model = if(family == 'quasibinomial'){
-      map(Formula, ~glm(formula = .x, family = quasibinomial, data = data))
+      map(Formulas, ~glm(formula = .x, family = quasibinomial, data = data))
     } else {
-      map(Formula, ~lm(formula = .x, data = data))
+      map(Formulas, ~lm(formula = .x, data = data))
       },
     TidyModel = map(Model, ~tidy(.x, conf.int = T)),
     Anova = map(Model, ~Anova(.x, type = 3)),
-    TidyANOVA = map(Anova, ~tidy(.x, conf.int = T))
+    TidyANOVA = map(Anova, ~tidy(.x, conf.int = T)),
+    Margins = map(Model, ~summary(margins(.x, type = 'response')))
   )
+
   names(d$Model) <- d$Name
   names(d$TidyModel) <- d$Name
   names(d$TidyANOVA) <- d$Name
+  names(d$Margins) <- d$Name
+
   return(d)
+}
+
+fmt_margins <- function(m, var){
+  ame <- 100*signif(m[m$factor == var, 'AME'], 2)
+  lower <- 100*signif(m[m$factor == var, 'lower'], 2)
+  upper <- 100*signif(m[m$factor == var, 'upper'], 2)
+  glue("{ame} (95% CI: {lower}-{upper})")
+}
+
+fractional_model <- function(m, table = F){
+  # Fit fractional regression model based on standard glm model
+  x = model.matrix(m)[,-1] # remove intercept
+  frm(m$y, x, linkfrac = 'logit', table = table)
 }
 
 effect_plot <- function(m, ...){
@@ -338,26 +412,27 @@ pwr_curve0 <- function(signalingdata2018, control){
 
   e <-
     signalingdata2018 %>%
-    dplyr::filter(signal == "Depression:Sister" | signal == control) %>%
-    mutate(signal = factor(signal, levels = c(control, "Depression:Sister")))
+    dplyr::filter(signal == "Depression" | signal == control) %>%
+    mutate(signal = factor(signal, levels = c(control, "Depression")))
 
   pwr <- function(sample_size){
-    pvalues <- map_dbl(1:2000, ~summary(lm(needsmoneyt2 ~ needsmoneyt1 + signal, e[sample(1:nrow(e), sample_size, replace = T),]))$coefficients["signalDepression:Sister","Pr(>|t|)"])
+    pvalues <- map_dbl(1:2000, ~summary(lm(needsmoneyt2 ~ needsmoneyt1 + signal, e[sample(1:nrow(e), sample_size, replace = T),]))$coefficients["signalDepression","Pr(>|t|)"])
     sum(pvalues < 0.05)/length(pvalues)
   }
 
+  plan(multisession, workers = 3)
   tibble(
     sample_size = seq(20, 200, 5),
-    power = map_dbl(sample_size, pwr)
+    power = future_map_dbl(sample_size, pwr, .options = furrr_options(seed = T))
     )
 }
 
 pwr_curve <- function(d){
-  bind_rows(list('Control' = pwr_curve0(d, 'Control:Sister'), 'Verbal' = pwr_curve0(d, 'VerbalRequest:Sister')), .id='Base')
+  bind_rows(list('Control' = pwr_curve0(d, 'Control'), 'Verbal' = pwr_curve0(d, 'Verbal request')), .id='Base')
 }
 
 pwr_curve2 <- function(signalingdata2018){
-  e <- signalingdata2018 %>% dplyr::filter(signal == "Depression:Sister")
+  e <- signalingdata2018 %>% dplyr::filter(signal == "Depression")
   pwr <- function(sample_size){
     pvalues <- map_dbl(1:2000, ~{e2 <- e[sample(1:nrow(e), sample_size, replace = T),]; t.test(e2$needsmoneyt1, e2$needsmoneyt2, paired = T)$p.value})
     sum(pvalues < 0.05)/length(pvalues)

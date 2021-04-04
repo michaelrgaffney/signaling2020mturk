@@ -16,14 +16,17 @@ knitr::opts_chunk$set(echo = F, warning = F, error = F, message = F)
 library(equatiomatic)
 library(knitr)
 library(kableExtra)
+library(glue)
 library(ggplot2)
 library(patchwork)
 library(hagenutils)
 
 tar_load(
-  c(
+    c(
     'd',
-    'signaling2018',
+    'signalingdata2018b',
+    'signaling2020',
+    'pilot_results',
     'power_curve',
     'power_curve2',
     'models',
@@ -50,7 +53,7 @@ tar_load(
     'dfT1emotion_signal',
     'dfT2emotion_signal'
     )
-  )
+)
 
 ```
 
@@ -64,20 +67,23 @@ Durkheim’s pioneering study of suicide [@durkheim1897] helped launch sociology
 
 Early on, anthropologists also tackled the problem of suicide as manifested in the small traditional societies in which they conducted their fieldwork. Suicide, they found, was commonly a form of protest, revenge, and/or appeal [e.g., @Malinowski:1932; @niehaus2012]. Some ethnographers, such as @Hezel:1987, conceptualized suicide as a form of anger, whereas others, such as @Giddens:1964, conceptualized suicide as a form of social pressure. @Counts:1980 emphasized the powerlessness of suicide victims. Common to almost all theoretical and empirical investigations of suicide is a focus on *completed* suicides, i.e., suicide deaths. @SymeEtAl2016, in contrast, argued that because the vast majority of suicidal behavior does not result in death, the proper focus should be on suicide ideation and suicide attempts, with death as an unintended consequence. See Figure \@ref(fig:cdc).
 
-```{r cdc, fig.width=8, fig.cap="US Suicide attempt and completion rates by age and sex (2001-2011)."}
+```{r cdc, fig.width=8, fig.cap="US Suicide attempt and completion rates by age and sex (2001-2019)."}
 library(hrafsuicidedata)
-cdc %>% 
-  pivot_longer(c(`Suicide rate`, `Attempt rate`)) %>% 
-  ggplot(aes(age2, value, colour = sex, linetype = name)) + 
+cdc2 %>% 
+  na.omit() %>% 
+  ggplot(aes(Age, `Crude Rate`, colour = Sex, linetype = Type)) + 
   geom_line() +
   hagenutils::scale_color_binary() +
-  guides(colour = guide_legend(title='Sex'), linetype = guide_legend(title=NULL)) +
-  labs(x = '\nAge (years)', y = 'Rate\n(per 100,000)', hjust=0) +
+  guides(
+    colour = guide_legend(title=NULL),
+    linetype = guide_legend(title=NULL, reverse = T)
+  ) +
+  labs(x = '\nAge (years)', y = 'Annual rate\n(per 100,000)') +
   theme_minimal(15) +
-  theme(axis.title.y = element_text(angle = 0))
+  theme(axis.title.y = element_text(angle = 0, hjust=0))
 ```
 
-Within anthropology, Raymond Firth was likely the first to put the focus on suicidality as a gamble to improve one's circumstances in the here and now. Based on observations that suicide attempts often followed social conflict or loss, and varied substantially in their likelihood of death, he argued that a sizable subset of the suicide attempts among the Tikopia were not meant to end in death but instead were a means to elicit attention, status, and immediate reintegration into the community following negative events [@firth1936: @Firth:1961]. 
+Within anthropology, Raymond Firth was likely the first to conceputalize suicidality as a gamble to improve one's circumstances in the here and now. Based on observations that suicide attempts often followed social conflict or loss, and varied substantially in their likelihood of death, he argued that a sizable subset of the suicide attempts among the Tikopia were not meant to end in death but instead were a means to elicit attention, status, and immediate reintegration into the community following negative events [@firth1936; @Firth:1961]. 
 
 Suicidality is closely linked to depression. Suicidal ideation is one of nine diagnostic criteria for a major depressive episode [MDE, @dsm5], it is associated with depression across cultures [@haroz2017], and depression is a major risk factor for suicidal behavior [@hawton2013]. Compared to suicide, however, there are fewer anthropological investigations of depression [@kleinman1985] despite frequent reports of depression or depression-like behavior in a wide range of societies [@haroz2017; @liu2020] and the potential for cross-cultural research to help understand depressive states [@haroz2017].
 
@@ -145,7 +151,7 @@ add conclusion
 
 ## Design
 
-This study involved a between-subjects pretest-posttest design to examine how different emotional signals would influence (1) the degree participants believed a fictional character to be in need and (2) the likelihood they would provide help within a vignette study.
+This study utilized a between-subjects pretest-posttest design to examine how five different emotional signals would influence (1) the degree participants believed a fictional character to be in need (*Belief*) and (2) the likelihood they would provide help (*Action*) in four different vignettes, for a total of 20 conditions.
 
 ## Vignettes
 
@@ -163,9 +169,13 @@ The full vignettes are available in the SI.
 
 ## Signals
 
-The sole treatment in this study was the signal participants saw, with these signals including: (1) a verbal request without additional signaling, (2) crying, (3) mild-depression, (4) depression and, (5) a suicide attempt.
+The sole treatment in this study was the signal participants saw, with these signals including: (1) a verbal request without additional signaling, (2) crying, (3) mild-depression, (4) depression, and (5) a suicide attempt.
 
-As the amount of crying in those with depression is moderately associated with depression severity [@VingerhoetsEtAl2016] (check this. IIRC he might have a more recent paper saying it's not associated with depression as people tend to think) and depression is a major risk factor for suicide [@BostwickPankratz2000; @Kessler2012], each signal was designed to build off of the less costly signals so that each signal contained elements of any signal it was costlier than. The full text for the signals are availible in the SI.
+As the amount of crying in those with depression is moderately associated with depression severity [@VingerhoetsEtAl2016] (check this. IIRC he might have a more recent paper saying it's not associated with depression as people tend to think) and depression is a major risk factor for suicide [@BostwickPankratz2000; @Kessler2012], each signal was designed to build off the less costly signals so that each signal contained elements of each lower cost signal. The full text for the signals are availible in the SI.
+
+## Lessons learned from a pilot study
+
+The current study is a refinement of a vignette-based pilot study (N=`r nrow(signalingdata2018b)`) with very similar signals and outcomes. In the pilot study, there was a single vignette in which an imagined sister claims her child needs an expensive emergency medical procedure, and asks for a very large loan. We learned five major lessons from the pilot study that influenced the design of the current study. First, as predicted, belief in the sister's need was low in the *Verbal request* condition and high in the *Depression* condition, giving us confidence to continue this research (see Figure \@ref(fig:piloteffects)). Second, to rule out that believability and willingness to help were simply artifacts of the sister's psychiatric distress, we included a "signaling" condition in which the sister exhibited schizophrenic symptoms. As predicted, believability and willingness to help in this condition were dramatically lower than in any other condition, ruling out this alternative explanation. We therefore did not replicate the schizophrenic condition in the current study. Third, baseline (T1) believability was very high (mean = `r signif(pilot_results$meanT1belief, 2)`, median = `r signif(pilot_results$medianT1belief, 2)` on a 0-100 point scale), leaving little scope for signals to increase believability. In the current study we therefore endeavored to provide details in the vignettes that would undermine the victim's believability at baseline. Fourth, contrary to our hypothesis, the *Suicide threat* and *Suicide attempt* signals reduced believability relative to *Depression*. We surmised that the sister's adversity -- a sick child -- was not sufficient to justify a suicide attempt, thus undermining her believability. In the current study the signaler herself is therefore the victim, and the forms of adversity -- physical and sexual assault and thwarted and forced marriage -- are those that are frequently associated with suicidality. Fifth, the content of the vignette matters, so instead of a single vignette we decided to use four different vignettes to help determine the extent to which signaling effects were sensitive to seemingly irrelevant details of the vignettes.
 
 ## Preregistration
 
@@ -205,7 +215,7 @@ pwr80_90 <-
   )
 ```
 
-The current study is a refinement of a pilot study (N=`r nrow(signalingdata2018)`) with very similar signals and outcomes. We used these pilot data to estimate the sample sizes needed to detect an effect of the *Depression* vs. *Verbal request* signal (two conditions) on *Belief* in the victim's need. Power was about 80% for a sample size of about `r pwr80_90[[2,2]]`, and was about 90% for a sample size of about `r pwr80_90[[2,3]]`. We also estimated the sample size needed to detect an effect of *Depression* vs. a *Control* condition that was meant to not include any signaling (but which we realized, post hoc, did include a verbal request). Power was about 80% for a sample size of about `r pwr80_90[[1,2]]`, and was about 90% for a sample size of about `r pwr80_90[[1,3]]`. See Figure \@ref(fig:power). Given our $1500 USD budget, we aimed for a sample size of 125 for two conditions, and 1250 for all conditions in the study. For more details, see the SI and XX.
+We used the pilot data to estimate the sample sizes needed to detect an effect of the *Depression* vs. *Verbal request* signal (two conditions) on *Belief* in the victim's need. Power was about 80% for a sample size of about `r pwr80_90[[2,2]]`, and was about 90% for a sample size of about `r pwr80_90[[2,3]]`. We also estimated the sample size needed to detect an effect of *Depression* vs. a *Control* condition that was meant to not include any signaling (but which we realized, post hoc, did include a verbal request). Power was about 80% for a sample size of about `r pwr80_90[[1,2]]`, and was about 90% for a sample size of about `r pwr80_90[[1,3]]`. See Figure \@ref(fig:power). Given our $1500 USD budget, we aimed for a sample size of 125 for two conditions, and 1250 for all conditions in the study. For more details, see the SI and XX.
 
 ## Sampling
 
@@ -261,9 +271,9 @@ The final part of the survey was a brief demographic questionnaire which examine
 
 ## Statistical analyses
 
-Our pre-test and post-test measures, *T1 & T2 Belief* and *T1 & T2 Action*, were all measured on a 0-100 point scale, which we rescaled to 0-1. A substantial number of participants rated their beliefs and actions as exactly 0 or exactly 1 at either T1 or T2. OLS linear regression models are not suitable for a closed and bounded distribution with so many values on the boundary because the residuals would not be normally distributed or have constant variance. Beta regression, a possible alternative, is only defined on the open interval, (0, 1), whereas our data had many values on the boundaries (a closed interval). A variant of beta regression, zero-one inflated beta, is inappropriate because it assumes separate processes for the generation of data on the boundaries vs. the interior, and we had no reason to believe that our zeros and ones were generated by a different process than the rest of our observations. 
+Our pre-test and post-test measures, *T1 & T2 Belief* and *T1 & T2 Action*, were all measured on a 0-100 point scale, which we rescaled to 0-1. A substantial number of participants rated their beliefs and actions as exactly 0 or exactly 1 at either T1 or T2. OLS linear regression models are not suitable for a closed and bounded distribution with so many values on the boundary because the residuals would not be normally distributed or have constant variance. Beta regression, a possible alternative, is only defined on the open interval, (0, 1), whereas our data had many values on the boundaries (a closed interval). A variant of beta regression, zero-one inflated beta, is inappropriate because it assumes different processes for the generation of data on the boundaries vs. the interior, and we had no reason to believe that our zeros and ones were generated by a different process than the rest of our observations. 
 
-We therefore fit models of our two outcome variables in three ways. First, we used fractional regression models, introduced in a seminal paper by @papke1996 for outcomes on [0, 1], which, in brief, involve fitting a quasi-likelihood version of logistic regression with robust standard errors. This method is implemented in the R `frm` package [@ramalho2019]. Second, we fit GLM logistic regression models, computing 95% CI's via bootstrapping, using the R `glmmboot` package created to model outcomes on [0, 1] [@humphrey2020]. Finally, we fit GLM models with the quasibinomial family and logit link using the `glm` function in R stats library. The estimated coefficients, standard errors, and confidence intervals produced by the three methods were *very* similar, and often identical. We therefore proceeded to fit models using `glm` with the quasibinomilal family and logit link because model objects produced by this function are compatible with numerous other R packages for estimating and plotting effects.
+We therefore fit models of our two outcome variables in four ways. First, we fit the preregistered OLS models (reported in the SI). Second, we fit fractional regression models, introduced in a seminal paper by @papke1996 for outcomes on [0, 1], which, in brief, involve fitting a quasi-likelihood version of logistic regression with robust standard errors. This method is implemented in the R `frm` package [@ramalho2019]. Third, we fit GLM logistic regression models, computing 95% CI's via bootstrapping, using the R `glmmboot` package created to model outcomes on [0, 1] [@humphrey2020]. Finally, we fit GLM models with the quasibinomial family and logit link using the `glm` function in R stats library. The estimated coefficients, standard errors, and confidence intervals produced by the latter three methods were *very* similar, and often identical. We therefore proceeded to fit and report models using `glm` with the quasibinomilal family and logit link because model objects produced by this function are compatible with numerous other R packages for estimating and plotting effects.
 
 Although two of our four preregistered OLS regression models included an interaction term, the rationale for it was less convincing for quasibinomial models using a logit link, which transforms [0, 1] to (-$\infty$, $\infty$). We therefore only included it if there was clear evidence of superior fit. Our intervention was *signal*, coded as an ordinal variable with the following preregistered rank order: verbal request, crying, mild depression, depression, suicide attempt. We used the default `glm` settings, which code such variables as orthogonal polynomial contrasts. Our primary confirmatory regression models were as follows (where the signal subscripts indicate polynomial degree):
 
@@ -281,13 +291,17 @@ http://doi.org/10.5281/zenodo.4637904
 
 # Results
 
-1,950 participants started the study by clicking the link to Qualtrics (1,213 American and 737 Indian). After removing participants who did not finish the survey, failed attention checks, or moved through the study at an unrealistic pace, our sample dropped to N = 1,240 (937 American and 303 Indian). Basic summary statistics on the remaining N = 1,240 participants (Male = 759, Female = 479) can be found in table XX.
+```{r}
+nationT0 <- table(signaling2020$sample)
+removed <- sum(!signaling2020$CompleteSurvey)
+removed_pct <- 100*signif(removed/nrow(signaling2020), 2)
+nationT1 <- table(d$sample)
+sexT1 <- table(d$Sex)
+```
 
-## Summary statistics
+The study was started by N=`r nrow(signaling2020)` participants who clicked the link to Qualtrics (`r nationT0['American']` US and `r nationT0['Indian']` India). After removing participants who did not finish the survey, failed attention checks, or moved through the study at an unrealistic pace (N=`r removed`, `r removed_pct`%), our final sample was N = `r nrow(d)` (`r nationT1['American']` US and `r nationT1['Indian']` India), with `r sexT1['Male']` males and `r sexT1['Female']` females. For summary statistics, see Table \@ref(tab:sumtab).
 
 ```{r sumtab}
-
-# d$Income <- ifelse(d$CurrencyType == 'USD', d$Income, d$Income*0.014)
 
 d$minutes <- d$TotalTime/60
 
@@ -307,26 +321,37 @@ vars <- c(
   T2Manipulative = 'T2 Manipulative',
   T3Action = 'T3 Action'
 )
-kable(custom.summarize(d, vars), caption = "Summary statistics for study variables. Original 0-100 values scaled to 0-1. Indian participants reported income in rupees, which we converted to USD at the current exchange rate (1 rupee == 0.014 USD).") %>% kable_styling()
+kable(custom.summarize(d, vars), caption = "Summary statistics for study variables. Original 0-100 values scaled to 0-1. Indian participants reported income in rupees, which we converted to USD at the current exchange rate (1 rupee = 0.014 USD).") %>% kable_styling()
 ```
 
 ## Distributions of beliefs and actions at Time 1
 
-Power analyses prior to data collection showed that high proportions of participants scoring extremely high on belief or likelihood of helping at T1 would result in low power for this study's design, a problem which we appeared to largely avoid (word better) (see figure XX).
+Across the four vignettes, mean belief of the victim was relatively low at baseline (T1), Mean = `r signif(mean(d$T1Belief, na.rm = T), 2)`, albeit with wide variation, SD = `r signif(sd(d$T1Belief, na.rm=T), 2)`; `r sum(d$T1Belief==0)` participants (`r 100*signif(sum(d$T1Belief==0)/nrow(d), 2)`%) rated their belief = 0, and `r sum(d$T1Belief==1)` participants (`r 100*signif(sum(d$T1Belief==1)/nrow(d), 2)`%) rated it as = 1. The distribution of likelihood of helping the victim (action) was similar, Mean = `r signif(mean(d$T1Action, na.rm = T), 2)`, SD = `r signif(sd(d$T1Action, na.rm=T), 2)`, with `r sum(d$T1Action==0)` participants (`r 100*signif(sum(d$T1Action==0)/nrow(d), 2)`%) rating their action = 0, and `r sum(d$T1Action==1)` participants (`r 100*signif(sum(d$T1Action==1)/nrow(d), 2)`%) rated action as = 1. Although not a pre-registered prediction, T1 Belief and T1 Action were highly correlated across the four vignettes, consistent with help being worth providing if the signaler's claims were true (see Figure \@ref(fig:t1plot)).
 
-Although not a part of our pre-registered predictions, both T1Belief and T1Action were highly correlated across the four vignettes (enter correlation coefficients), consistent with help being worth providing if the signaler's claims were true (see figure XX).
-
-```{r t1plot, fig.width=10, fig.height=10, fig.cap="The distributions of Time 1 Belief vs. Time 1 Action, by vignette. Each dot is one participant. Original 0-100 values scaled to 0-1. Contour lines represent equal densities, estimated using a bivariate normal kernal (Venables and Ripley, 2002). Lines fit by linear regression. Dot size indicates the number of overlapping points."}
+```{r t1plot, fig.width=10, fig.height=10, fig.cap="The distributions of Time 1 Belief vs. Time 1 Action, by vignette. Each dot is one participant. Original 0-100 values rescaled to 0-1. Lines fit by linear regression. Dot size indicates the number of overlapping points. Black cross is the mean of each variable."}
 plot_T1Belief_T1Action
 ```
 
-## Effects of signals on beliefs and actions
+## Confirmatory: Effects of signals on beliefs and actions
 
-As a whole, our predictions for the effect of signal cost on belief and likelihood of helping T2 were met, with costlier signals eliciting greater pro-signaler responses (reword). There was also support for an interaction between signal and T1Belief or T1Action, although the effect was not large (See figure 2). However, the effect of signal cost varied by vignette, with signal type having the greatest effect in the "basketball coach" and "brother-in-law" vignettes. When ordered according to cost, the greatest jump in support tended to occur between crying and mild-depression, with the next largest jump tending to occur between depression and suicide attempt. Overall, there was little difference between the effect of mild depression and the effect of depression.
+```{r}
+suicide_belief_eff <- signif(models$Margins$m1$AME['signalSuicide attempt']/sd(d$T2Belief), 2)
 
-```{r beliefeffect, fig.width=8, fig.height=8, fig.cap="The effect of the signals on T2 Belief (top) and Action (bottom) controlling for T1 values of Belief and Action, respectively. Fit using generalized linear regression models with the quasibinomial family."}
+suicide_action_eff <- signif(models$Margins$m3$AME['signalSuicide attempt']/sd(d$T2Belief), 2)
+```
+
+
+As predicted, there was a strong statistically significant positive causal effect of the ordinal signal on T2 Belief and Action (controlling for T1 Belief and Action, respectively), with the effect of each signal increasing in the predicted rank order. The marginal between-subjects effect of the high cost *Suicide attempt* vs. low cost *Verbal request* signal on T2 *Belief* (averaging over all four vignettes and all values of T1 *Belief*) was an increase of `r fmt_margins(models$Margins$m1, 'signalSuicide attempt')` points on the original 0-100 point scale. The equivalent increase for T2 *Action* was `r fmt_margins(models$Margins$m3, 'signalSuicide attempt')` points. Given that the standard deviations of T2 *Belief* and *Action* are `r signif(sd(100*d$T2Belief), 2)` and `r signif(sd(100*d$T2Action), 2)`, respectively, these increases represent `r suicide_belief_eff` and `r suicide_action_eff` SD increases, respectively.
+
+There was modest evidence for a nonlinear effect of the signals on *Belief* and *Action*, which, based on visual inspection, was probably due to the *Mild depression* and *Depression* signals both having similar large effects compared to *Crying* and *Verbal request*. See Figure \@ref(fig:beliefeffect) and model m1 in Tables \@ref(tab:regressiontables) and \@ref(tab:anovatables).
+
+```{r beliefeffect, fig.width=6, fig.height=8, fig.cap="The effect of the signals on T2 Belief (top) and Action (bottom) controlling for T1 values of Belief and Action, respectively. Fit using generalized linear regression models with the quasibinomial family. For model coefficents, p-values, and other statistics, see Tables \\@ref(tab:regressiontables) and \\@ref(tab:anovatables)."}
 (effectsPlots$m1plot + theme(axis.text.x = element_blank()))/effectsPlots$m3plot + plot_layout(ncol = 1) & theme(plot.margin = unit(c(0,0,0,0), units = 'mm'))
 ```
+
+## Exploratory: effects of signals by vignette
+
+The effects of the signals varied substantially by vignette, with signal type having the greatest effect in the "basketball coach" and "brother-in-law" vignettes. Overall, there was little difference between the effect of mild depression and the effect of depression.
 
 ```{r beliefvignette, fig.width=8, fig.height=8, fig.cap=paste0("The effect of the signals on T2 Belief (top) and Action (bottom) in each vignette, controlling for T1 values of Belief and Action, respectively. Effects computed with T1 values set to their median value (T1Belief=", median(d$T1Belief, na.rm=T), ", T1Action=", median(d$T1Action, na.rm=T), "). Fit using generalized linear regression models with the quasibinomial family.")}
 (effectsPlots$m2plot + theme(axis.text.x = element_blank()))/effectsPlots$m4plot + plot_layout(ncol = 1) & theme(plot.margin = unit(c(0,0,0,0), units = 'mm'))
@@ -337,7 +362,7 @@ As a whole, our predictions for the effect of signal cost on belief and likeliho
 ecdf_plot
 ```
 
-## The effect of signals on action is largely mediated by belief
+## Confirmatory: The effect of signals on action is largely mediated by belief
 
 According to our theoretical model, credible signals of need increase observers' belief that the victim is telling the truth. Increased belief then increases the likelihood of helping the victim (action). See Figure \@ref(fig:medmodel).
 
@@ -347,7 +372,7 @@ The total effect of the *Depression* signal (treatment) vs. *Verbal request* (co
 ggmediation(med1b)
 ```
 
-## Effects of signals on victim's perceived emotional state
+## Exploratory: Effects of signals on victim's perceived emotional state
 
 We also examined the effect of signaling on how participants perceived the signaler's emotional state. To do this, we created four new variables: LowMood (T1 and T2) and Manipulative (T1 and T2). This was done by adding the dummy variables for whether a participant thought the signaler was depressed, distressed or sad for the LowMood variables and by adding the dummy variables for whether they thought the participant was Devious or Jealous for the Manipulative variables. For each original emotion variable, 0 indicated a participant did not select the emotion, while 1 indicated selection. 
 
@@ -389,7 +414,12 @@ Another limitation is our uncertainty over the data quality from the Indian samp
 
 ## Pilot study description
 
-Briefly, Participants read a vignette that put them in situations in which an imagined sister was requesting a loan of $50,000 from the participant that was originally saved for the participant's imagined daughter’s college education. The sister claims the money is needed for medical treatment for her own child, but she has incentives to deceive. The manipulations were signals very similar to those used in this study, and the outcomes were belief that the sister really needed the money and intention to load her the money. See XX for the full write-up. See https://osf.io/3rg8b for preregistration of the pilot study. See http://doi.org/10.5281/zenodo.4637883 for pilot data.
+Briefly, Participants read a vignette that put them in situations in which an imagined sister was requesting a loan of $50,000 from the participant that was originally saved for the participant's imagined daughter’s college education. The sister claims the money is needed for medical treatment for her own child, but she has incentives to deceive. The manipulations were signals very similar to those used in this study, and the outcomes were belief that the sister really needed the money and intention to loan her the money. See XX for the full write-up. See https://osf.io/3rg8b for preregistration of the pilot study. See http://doi.org/10.5281/zenodo.4637883 for pilot data.
+
+```{r piloteffects, fig.width=10, fig.cap="Pilot study effect of the signals. A. Effect on Belief at T2, controlling for Belief at T1. B: Proportion of participants who inferred the victim was mentally ill."}
+pilot_results$effectplot + (pilot_results$mentalplot + theme(axis.text.y = element_blank())) + plot_annotation(tag_levels = 'A')
+```
+
 
 ## Power from pilot study
 
@@ -448,6 +478,35 @@ as.data.frame.matrix(xtabs(~signal+vignette, d)) %>%
 #   theme_minimal(15) + 
 #   theme(strip.text.y = element_text(angle=0, hjust=0))
 ```
+
+## Socioeconomic distribution
+
+```{r socioeconomic, fig.width=8, fig.cap="Distribution of participants by age, income (USD), and nationality. A small number of participants who did not report income, or reported values < $10 USD, were removed from this plot. A small amount of jitter was added to reveal overlapping points."}
+
+clrs <- viridisLite::magma(11)[c(4, 8)]
+
+d %>% 
+  dplyr::filter(!is.na(Age), !is.na(Income), Income >= 10) %>% 
+  mutate(
+    Nationality = ifelse(sample == 'American', 'US', 'India'),
+    logIncome = log10(Income)
+  ) %>% 
+  ggplot(aes(Age, logIncome, colour = Nationality)) +
+  geom_jitter(width = 0.5) +
+  geom_hline(yintercept = log10(1670), linetype = 'dotted', colour = clrs[1]) +
+  geom_hline(yintercept = log10(35977), linetype = 'dotted', colour = clrs[2]) +
+  annotate('text', 15, log10(35977), label = 'Median US income', hjust = 1) +
+  annotate('text', 15, log10(1670), label = 'Median India income', hjust = 1) +
+  scale_color_binary() +
+  guides(colour = guide_legend(reverse = T)) +
+  coord_cartesian(clip = 'off') +
+  labs(x = '\nAge (years)', y = 'Log annual\nincome (USD)') +
+  theme_minimal(15) +
+  theme(axis.title.y = element_text(angle = 0, hjust=0))
+
+```
+
+
 
 ## Signal effect sizes
 
@@ -513,7 +572,7 @@ The total effect of the *Suicide attempt* signal (treatment) vs. *Verbal request
 ggmediation(med4)
 ```
 
-## Raw beliefs and actions
+## Change in beliefs and actions from T1 to T2
 
 ```{r rawbeliefs, fig.width=10, fig.height=10, fig.cap="Change in beliefs from T1 to T2 for participants in each condition. Each grey line is one participant. Red lines are the mean change."}
 # plot_raw_beliefs
