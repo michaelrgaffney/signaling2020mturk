@@ -92,7 +92,7 @@ fit_models <- function(data, formulas, family = 'quasibinomial'){
     TidyModel = map(Model, ~tidy(.x, conf.int = T)),
     Anova = map(Model, ~Anova(.x, type = 3)),
     TidyANOVA = map(Anova, ~tidy(.x, conf.int = T)),
-    Margins = map(Model, ~summary(margins(.x, type = 'response')))
+    Margins = map(Model, ~margins(.x, type = 'response'))
   )
 
   names(d$Model) <- d$Name
@@ -103,7 +103,8 @@ fit_models <- function(data, formulas, family = 'quasibinomial'){
   return(d)
 }
 
-fmt_margins <- function(m, var){
+fmt_margins <- function(m, var, by = NULL){
+  m <- summary(m)
   ame <- 100*signif(m[m$factor == var, 'AME'], 2)
   lower <- 100*signif(m[m$factor == var, 'lower'], 2)
   upper <- 100*signif(m[m$factor == var, 'upper'], 2)
@@ -168,7 +169,15 @@ effect_plots <- function(models, data){
       theme(axis.text.x = element_text(angle = 0)) + xlab('\nT2 Action'),
     m27plot = effect_plot(fit=models$m27, xvar='vignette', ylbl='T1 Mentally ill', data=data)
   )
-}#"T2Belief ~ T1Belief + Age + Sex * signal + vignette"
+}
+
+visreg_diff <- function(m, vignette, signal1, signal2, d, sig = 2){
+  obj <- visreg(m, xvar='signal', by = 'vignette', scale='response', data = d, plot = F)
+  fit <- obj$fit
+  v1 <- fit$visregFit[fit$signal==signal1 & fit$vignette==vignette]
+  v2 <- fit$visregFit[fit$signal==signal2 & fit$vignette==vignette]
+  signif(100*(v1 - v2), sig)
+}
 
 signal_mediate <- function(
   data = NULL,

@@ -34,6 +34,7 @@ list(
       id = MTurkID,
       across(.cols = c(contains('Belief'), contains('Action'), contains('Divide')), ~.x/100),
       signal = ordered(signal, levels = c('Verbal request', 'Crying', 'Mild depression', 'Depression', 'Suicide attempt')),
+      vignette = factor(vignette, levels = c('Thwarted marriage', 'Basketball coach', 'Romantic partner', 'Brother-in-law')),
       T1LowMood = T1Depressed + T1Distressed + T1Sad,
       T1Manipulative = T1Devious + T1Jealous,
       T2LowMood = T2Depressed + T2Distressed + T2Sad,
