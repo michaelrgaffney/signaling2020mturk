@@ -408,6 +408,13 @@
       "Repository": "CRAN",
       "Hash": "fd2844b3a43ae2d27e70ece2df1b4e2a"
     },
+    "emmeans": {
+      "Package": "emmeans",
+      "Version": "1.5.4",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "465cb35357c691c22df2b31a38f687fc"
+    },
     "equatiomatic": {
       "Package": "equatiomatic",
       "Version": "0.2.0",
@@ -590,15 +597,15 @@
     },
     "hagenutils": {
       "Package": "hagenutils",
-      "Version": "0.0.9",
+      "Version": "0.1.0",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
-      "RemoteRepo": "hagenutils",
       "RemoteUsername": "grasshoppermouse",
-      "RemoteRef": "HEAD",
-      "RemoteSha": "4231d0675272585871212ba0679991de5045317b",
-      "Hash": "ef81ad3e4322ae57223b650b9f2c388d"
+      "RemoteRepo": "hagenutils",
+      "RemoteRef": "master",
+      "RemoteSha": "0c0dd95c9da3c506bc1195126fad15080c3ec569",
+      "Hash": "85d02d8316882c2130b80ffb21566d9a"
     },
     "haven": {
       "Package": "haven",
@@ -620,6 +627,18 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "bf552cdd96f5969873afdac7311c7d0d"
+    },
+    "hrafsuicidedata": {
+      "Package": "hrafsuicidedata",
+      "Version": "1.1",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "hrafsuicidedata",
+      "RemoteUsername": "grasshoppermouse",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "4d673bec7bfa513467bb171c4904b257ab85e9c2",
+      "Hash": "678d126a59a2e6d95eeff64173ea7fb0"
     },
     "htmlTable": {
       "Package": "htmlTable",
@@ -1408,6 +1427,13 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "d4d71a75dd3ea9eb5fa28cc21f9585e2"
+    },
+    "xtable": {
+      "Package": "xtable",
+      "Version": "1.8-4",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "b8acdf8af494d9ec19ccb2481a9b11c2"
     },
     "yaml": {
       "Package": "yaml",
