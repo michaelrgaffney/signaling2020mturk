@@ -1347,15 +1347,15 @@
     },
     "signaling2020data": {
       "Package": "signaling2020data",
-      "Version": "0.0.0.9000",
+      "Version": "0.0.1",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
       "RemoteRepo": "signaling2020data",
       "RemoteUsername": "michaelrgaffney",
       "RemoteRef": "HEAD",
-      "RemoteSha": "72e49976a015c5bee91a98f3f669e3b38b66649e",
-      "Hash": "8b63993b816849201176e99a05f662b4"
+      "RemoteSha": "bf10c5f03e861ad88a701d18019325a393c390c8",
+      "Hash": "6410a3bafe32147e32227fb48788573f"
     },
     "signalingdata2018": {
       "Package": "signalingdata2018",
