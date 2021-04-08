@@ -169,7 +169,7 @@ The full vignettes are available in the SI.
 
 The sole randomized treatment in this study was the signal participants saw, with these signals being one of (1) the control condition: a verbal request without additional signaling, (2) crying, (3) mild-depression, (4) depression, and (5) a suicide attempt.
 
-As many depression scales include measures of crying [for discussion on the relationship between crying and depression see @bylsma2020] and depression is a major risk factor for suicide [@BostwickPankratz2000; @Kessler2012], each signal was designed to build off of the less costly signals so that each signal contained elements of any signal it was costlier than. Although referred to as signals throughout the paper, we expect that the hypothesized signals of need, like many signals in general, will also provide information to others in the form of cues. The full text for the signals are available in the SI.
+As many depression scales include measures of crying [for discussion on the relationship between crying and depression see @bylsma2020] and depression is a major risk factor for suicide [@BostwickPankratz2000; @Kessler2012], each signal was designed to build off of the less costly signals so that each signal contained elements of any signal it was costlier than. Although referred to as signals throughout the paper for brevity, we expect that the hypothesized signals of need, like many signals, will also provide information to others in the form of cues [For discussion on the evolution of cues from signals see: @biernaskie2018; @Tiokhin2016; @Steinkopf2015]. The full text for the signals are available in the SI.
 
 ## Lessons learned from a pilot study
 
