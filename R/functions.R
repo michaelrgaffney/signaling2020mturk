@@ -148,8 +148,6 @@ effect_plots <- function(models, data){
     m3plot = effect_plot(fit=models$m3, xvar='signal', ylbl='T2 Action', data=data),
     m3bplot = effect_plot(fit=models$m3b, xvar='signal', by='T1Action', ylbl='T2 Action', data=data),
     m4plot = effect_plot(fit=models$m4, xvar='signal', by='vignette', ylbl='T2 Action', data=data),
-    m7plot = effect_plot(fit=models$m7, xvar='signal', by='T1Divide', ylbl='T2 Division', data=data),
-    m8plot = effect_plot(fit=models$m8, xvar='Age', by='signal', ylbl='T2 Division', data=data),
     m12plot = effect_plot(fit=models$m12, xvar='Sex', by='signal', ylbl='T2 Belief', data=data),
     m13plot = effect_plot(fit=models$m13, xvar='Sex', by='vignette', ylbl='T2 Belief', data=data),
     m14plot = effect_plot(fit=models$m14, xvar='Sex', by='signal', ylbl='T2 Action', data=data),
@@ -168,6 +166,13 @@ effect_plots <- function(models, data){
     m26plot = effect_plot(fit=models$m26, xvar='T2Action', by='vignette', ylbl='T3 Action', data=data) +
       theme(axis.text.x = element_text(angle = 0)) + xlab('\nT2 Action'),
     m27plot = effect_plot(fit=models$m27, xvar='vignette', ylbl='T1 Mentally ill', data=data)
+  )
+}
+
+effect_plots_India <- function(models, data){
+  list(
+    m7plot = effect_plot(fit=models$m7, xvar='signal', by='T1Divide', ylbl='T2 Division', data=data),
+    m8plot = effect_plot(fit=models$m8, xvar='Age', by='signal', ylbl='T2 Division', data=data)
   )
 }
 

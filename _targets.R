@@ -1,5 +1,7 @@
 library(targets)
 library(tarchetypes)
+library(future)
+plan(multisession)
 
 # Define custom functions and other global objects.
 
@@ -71,11 +73,17 @@ list(
   ),
 
   tar_target(
-    d_thwarted,
+    d_India,
     d %>%
       dplyr::filter(vignette == 'Thwarted marriage')
   ),
 
+  tar_target(
+    d_US,
+    d %>%
+      dplyr::filter(vignette != 'Thwarted marriage') %>%
+      mutate(vignette = fct_drop(vignette))
+  ),
 
 # Power -------------------------------------------------------------------
 
@@ -104,8 +112,6 @@ list(
       m4 = "T2Action ~ T1Action + signal * vignette",
       m5 = "T3Action ~ T2Action * signal",
       m6 = "T3Action ~ T2Action * vignette + signal",
-      m7 = "T2Divide ~ T1Divide * signal",
-      m8 = "T2Divide ~ T1Divide + Age * signal",
       m9 = "T2Jealous ~ T1Jealous * signal",
       m10 = "T2Devious ~ T1Devious + signal",
       m11 = "T2Angry ~ T1Angry + signal",
@@ -129,8 +135,26 @@ list(
   ),
 
   tar_target(
+    model_formulas_India,
+    c(
+      m7 = "T2Divide ~ T1Divide * signal",
+      m8 = "T2Divide ~ T1Divide + Age * signal"
+    )
+  ),
+
+  tar_target(
     models,
-    fit_models(d, model_formulas, family = 'quasibinomial')
+    fit_models(d, c(model_formulas, model_formulas_India), family = 'quasibinomial')
+  ),
+
+  tar_target(
+    models_US,
+    fit_models(d_US, model_formulas, family = 'quasibinomial')
+  ),
+
+  tar_target(
+    models_India,
+    fit_models(d_India, model_formulas_India, family = 'quasibinomial')
   ),
 
   tar_target(
@@ -200,6 +224,16 @@ list(
     effect_plots(models$Model, d)
   ),
 
+  tar_target(
+    effectsPlots_US,
+    effect_plots(models_US$Model, d_US)
+  ),
+
+  tar_target(
+    effectsPlots_India,
+    effect_plots_India(models_India$Model, d_India)
+  ),
+
 # Mediation models --------------------------------------------------------
 
   tar_target(
@@ -248,7 +282,7 @@ list(
   tar_target(
     med3,
     signal_mediate(
-      data = d_thwarted,
+      data = d_India,
       treat.value = 'Depression',
       med_f = 'T2Belief ~ signal * T1Belief',
       out_f = 'T2Action ~ signal * T1Belief + T1Action + T2Belief',

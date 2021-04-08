@@ -207,10 +207,10 @@
     },
     "broom": {
       "Package": "broom",
-      "Version": "0.7.5",
+      "Version": "0.7.6",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "d5ab8846336cfb2e3c17e5a806eb3045"
+      "Hash": "06015476250468fc013c30022118ce3a"
     },
     "broom.mixed": {
       "Package": "broom.mixed",
@@ -228,10 +228,10 @@
     },
     "caTools": {
       "Package": "caTools",
-      "Version": "1.18.1",
+      "Version": "1.18.2",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "f5b3e8f693522708cd9444c839b432e0"
+      "Hash": "34d90fa5845004236b9eacafc51d07b2"
     },
     "cachem": {
       "Package": "cachem",
@@ -277,10 +277,10 @@
     },
     "cli": {
       "Package": "cli",
-      "Version": "2.3.1",
+      "Version": "2.4.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "3e3f28efcadfda442cd18651fbcbbecf"
+      "Hash": "be982c9bcbfbe9e59c0225b0ed37d47e"
     },
     "clipr": {
       "Package": "clipr",
@@ -340,10 +340,10 @@
     },
     "cpp11": {
       "Package": "cpp11",
-      "Version": "0.2.6",
+      "Version": "0.2.7",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "f08909ebdad90b19d8d3930da4220564"
+      "Hash": "730eebcc741a5c36761f7d4d0f5e37b8"
     },
     "crayon": {
       "Package": "crayon",
@@ -630,12 +630,12 @@
       "Version": "0.2.2",
       "Source": "GitHub",
       "RemoteType": "github",
-      "RemoteUsername": "rstudio",
-      "RemoteRepo": "gt",
-      "RemoteRef": "HEAD",
-      "RemoteSha": "11f250862ff252c8bf766154a833e0487d9ccf95",
       "RemoteHost": "api.github.com",
-      "Hash": "6a69cd82fa737cd0c400e289ca4e70d1"
+      "RemoteRepo": "gt",
+      "RemoteUsername": "rstudio",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "91c958d06a8806c77bf91d848f0e4648e09d2c1e",
+      "Hash": "36dd0fe6c7b8173ef0d047dfceb34303"
     },
     "gtable": {
       "Package": "gtable",
@@ -653,15 +653,15 @@
     },
     "hagenutils": {
       "Package": "hagenutils",
-      "Version": "0.1.0",
+      "Version": "0.1.1",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
-      "RemoteUsername": "grasshoppermouse",
       "RemoteRepo": "hagenutils",
-      "RemoteRef": "master",
-      "RemoteSha": "0c0dd95c9da3c506bc1195126fad15080c3ec569",
-      "Hash": "85d02d8316882c2130b80ffb21566d9a"
+      "RemoteUsername": "grasshoppermouse",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "b1012153e4a26b710ef3bfac3001a8d5acf44b42",
+      "Hash": "ffb8d1e9f71615bea2e412fb71c92a2e"
     },
     "haven": {
       "Package": "haven",
@@ -1521,10 +1521,10 @@
     },
     "vctrs": {
       "Package": "vctrs",
-      "Version": "0.3.6",
+      "Version": "0.3.7",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "5cf1957f93076c19fdc81d01409d240b"
+      "Hash": "5540dc30a203a43a1ce5dc6a89532b3b"
     },
     "viridis": {
       "Package": "viridis",
