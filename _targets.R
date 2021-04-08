@@ -115,20 +115,34 @@ list(
       m9 = "T2Jealous ~ T1Jealous * signal",
       m10 = "T2Devious ~ T1Devious + signal",
       m11 = "T2Angry ~ T1Angry + signal",
-      m12 = "T2Belief ~ T1Belief + vignette + Age + signal * Sex",
-      m13 = "T2Belief ~ T1Belief + signal + Age + vignette * Sex",
-      m14 = "T2Action ~ T1Action + vignette + Age + signal * Sex",
-      m15 = "T2Action ~ T1Action + signal + + Age + vignette * Sex",
-      m16 = "T2Belief ~ T1Belief + vignette + Sex + signal * Age",
-      m17 = "T2Action ~ T1Action + vignette + Sex + signal * Age",
-      m18 = "T2Belief ~ T1Belief + signal + Sex + vignette * Age",
-      m19 = "T2Action ~ T1Action + signal + Sex + vignette * Age",
+
+      # Demographic models
+      m12 = "T2Belief ~ T1Belief + vignette + signal + years_education + Income + Age + Sex", # Age, sex sig
+      m13 = "T2Action ~ T1Action + signal + vignette + years_education + Income + Age + Sex", # Age, sex sig
+
+      m14 = "T2Belief ~ T1Belief + vignette + Age + years_education + Income + signal * Sex", # Interaction not sig
+      m15 = "T2Action ~ T1Action + vignette + Age + years_education + Income + signal * Sex", # Interaction not sig
+
+      m16 = "T2Belief ~ T1Belief + vignette + Sex + years_education + Income + signal * Age", # Interaction not sig
+      m17 = "T2Action ~ T1Action + vignette + Sex + years_education + Income + signal * Age", # Interaction not sig
+
+      m18 = "T2Belief ~ T1Belief + signal + Age + years_education + Income + vignette * Sex", # Interaction not sig
+      m19 = "T2Action ~ T1Action + signal + Age + years_education + Income + vignette * Sex", # Interaction not sig
+
+      m24 = "T2Belief ~ T1Belief + signal + Sex + years_education + Income + vignette * Age", # Interaction not sig
+      m25 = "T2Action ~ T1Action + signal + Sex + years_education + Income + vignette * Age", # Interaction not sig
+
+      m28 = "T2Belief ~ T1Belief + signal + Age + Income + vignette + years_education * Sex", # Interaction not sig
+      m29 = "T2Action ~ T1Action + signal + Age + Income + vignette + years_education * Sex", # Interaction not sig
+
+      m30 = "T2Belief ~ T1Belief + signal + Sex + Income + vignette + years_education * Age", # Interaction not sig
+      m31 = "T2Action ~ T1Action + signal + Sex + Income + vignette + years_education * Age", # Interaction not sig
+
+            # Misc models
       m20 = "T2MentallyIll ~ T1MentallyIll + signal",
       m21 = "T2MentallyIll ~ T1MentallyIll + signal * vignette",
       m22 = "T2Belief ~ T1Belief * signal + PC1emotionT1 + PC2emotionT1",
       m23 = "T2Action ~ T1Action * signal + PC1emotionT1 + PC2emotionT1",
-      m24 = "T2Belief ~ T1Belief + Age + Sex * signal + vignette",
-      m25 = "T2Action ~ T1Action + Age + Sex + signal + vignette",
       m26 = 'T3Action ~ T2Action + vignette',
       m27 = 'T1MentallyIll ~ vignette'
     )
@@ -144,7 +158,7 @@ list(
 
   tar_target(
     models,
-    fit_models(d, c(model_formulas, model_formulas_India), family = 'quasibinomial')
+    fit_models(d, model_formulas, family = 'quasibinomial')
   ),
 
   tar_target(
@@ -154,7 +168,7 @@ list(
 
   tar_target(
     models_India,
-    fit_models(d_India, model_formulas_India, family = 'quasibinomial')
+    fit_models(d_India, c(model_formulas_India), family = 'quasibinomial')
   ),
 
   tar_target(
