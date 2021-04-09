@@ -472,7 +472,7 @@ Committee?
 Anne sounds like she will provide a lot of feedback, so her after that?
 
 # To do:
-- add vignettes to SI
+- add vignettes to SI (Mild depression = crying plus behavior change)
 - mention somewhere referring to them all as signals even though we know they provide info as cues too
 
 # Supplementary information
