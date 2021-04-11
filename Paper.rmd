@@ -233,8 +233,6 @@ Informed consent was given by proceeding with the study after reading the consen
 
 ## Survey
 
-After accepting the HIT on MTurk, every participant took the survey using Qualtrics. In every instance, the elements of the survey were laid out in the following order: 1) the consent form, 2) the vowel attention check, 3) the main body of the vignette, 3) the pre-test baseline measures (T1), 4) the story content attention check, 5)  the signal portion of the vignette, 7) the post-test outcome measures (T2-T3), 8) an attention check that did not filter out participants (T4), 9) a set of demographic questions, and 10) an open feedback prompt. The full survey can be found in the SI.
-
 ### Baseline measures (T1)
 
 In both samples, we recorded self-reports on how much participants believed the signaler to be telling the truth (T1Belief) and the likelihood of them helping the signaler as requested (T1Action). With the thwarted marriage vignette we also asked how they would split the money they had saved for the dowry between their daughters (T1Divide). In every instance, the order of the questions was randomized to avoid order effects [@KrosnickAlwin1987].
