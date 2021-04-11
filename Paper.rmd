@@ -31,6 +31,8 @@ tar_load(
     'power_curve2',
     'models',
     'models_prereg',
+    'belief_compare_plot',
+    'action_compare_plot',
     'effect_sizes',
     'effect_sizes2',
     'effectsPlots', 
@@ -44,9 +46,8 @@ tar_load(
     'plot_raw_belief_action2d',
     'med_prereg',
     'med1',
-    'med1b',
-    'med4',
-    'med4b',
+    'med2',
+    'all_mediations',
     'm1_boot',
     'm3_boot',
     'm1b_boot',
@@ -146,7 +147,7 @@ The primary aim of this study was to examine responses to various forms of emoti
 
 ## Design
 
-This study utilized a between-subjects pretest-posttest design to examine how four different emotional signals would influence (1) the degree participants believed a fictional character to be in need (*Belief*) and (2) the likelihood they would provide help (*Action*) relative to a simple verbal request (the control condition), in four different vignettes, for a total of 20 conditions. In this design, the outcomes are measured at pre-treatment (T1), participants are then randomized into either a control group or one or more treatment groups (one of the emotional signals), and the outcomes are measured again (T2). Regression models are used to determine the effect of the treatment conditions on the posttest outcome variables, relative to the control condition, controlling for pretest levels of the outcome variables. We also explored within-subjects effects of the signal on outcomes at T2 compared to T1.
+This study utilized a between-subjects pretest-posttest design to examine how four different emotional signals would influence (1) the degree participants believed a fictional character to be in need (*Belief*) and (2) the likelihood they would provide help (*Action*) relative to a simple *Verbal request* (the control condition), in four different vignettes, for a total of 20 conditions. In this design, the outcomes are measured at pre-treatment (T1), participants are then randomized into either a control group or one or more treatment groups (one of the emotional signals), and the outcomes are measured again (T2). Regression models are used to determine the effect of the treatment conditions on the posttest outcome variables, relative to the control condition, controlling for pretest levels of the outcome variables. We also explored within-subjects effects of the signal on outcomes at T2 compared to T1.
 
 ## Vignettes
 
@@ -210,7 +211,7 @@ pwr80_90 <-
   )
 ```
 
-We used the pilot data to estimate the sample sizes needed to detect an effect of the *Depression* vs. *Verbal request* signal (two conditions) on *Belief* in the victim's need. Power was about 80% for a sample size of about `r pwr80_90[[2,2]]`, and was about 90% for a sample size of about `r pwr80_90[[2,3]]`. We also estimated the sample size needed to detect an effect of *Depression* vs. a *Control* condition that was meant to not include any signaling (but which we realized, post hoc, did include a verbal request). Power was about 80% for a sample size of about `r pwr80_90[[1,2]]`, and was about 90% for a sample size of about `r pwr80_90[[1,3]]`. See Figure \@ref(fig:power). Given our $1500 USD budget, we aimed for a sample size of 125 for two conditions, and 1250 for all conditions in the study. For more details, see the SI and XX.
+We used the pilot data to estimate the sample sizes needed to detect an effect of the *Depression* signal vs. *Verbal request* control (two conditions) on *Belief* in the victim's need. Power was about 80% for a sample size of about `r pwr80_90[[2,2]]`, and was about 90% for a sample size of about `r pwr80_90[[2,3]]`. We also estimated the sample size needed to detect an effect of *Depression* vs. a *Control* condition that was meant to not include any signaling (but which we realized, post hoc, did include a verbal request). Power was about 80% for a sample size of about `r pwr80_90[[1,2]]`, and was about 90% for a sample size of about `r pwr80_90[[1,3]]`. See Figure \@ref(fig:power). Given our $1500 USD budget, we aimed for a sample size of 125 for two conditions, and 1250 for all conditions in the study. For more details, see the SI and XX.
 
 ## Sampling
 
@@ -268,19 +269,21 @@ The final part of the survey was a brief demographic questionnaire which examine
 
 Our pre-test and post-test measures, *T1 & T2 Belief* and *T1 & T2 Action*, were all measured on a 0-100 point scale. A substantial number of participants rated their beliefs and actions as exactly 0 or exactly 100 at either T1 or T2. OLS linear regression models are not suitable for a closed and bounded distribution with so many values on the boundary because the residuals would not be normally distributed or have constant variance. Beta regression, a possible alternative, is only defined on the open interval, (0, 1), whereas our data had many values on the boundaries (a closed interval). A variant of beta regression, zero-one inflated beta, is inappropriate because it assumes different processes for the generation of data on the boundaries vs. the interior, and we had no reason to believe that our zeros and ones were generated by a different process than the rest of our observations. 
 
-We therefore fit models of our two outcome variables (which we rescaled to the continuous interval [0, 1]) in four ways. First, we fit the preregistered OLS models (reported in the SI). Second, we fit fractional regression models, introduced in a seminal paper by @papke1996 for continuous outcomes on the interval [0, 1], which, in brief, involve fitting a quasi-likelihood version of logistic regression with robust standard errors. This method is implemented in the R `frm` package [@ramalho2019]. Third, we fit GLM logistic regression models, computing 95% CI's via bootstrapping, using the R `glmmboot` package created to model continuous outcomes on [0, 1] [@humphrey2020]. Finally, we fit GLM models with the quasibinomial family and logit link using the `glm` function in R stats library, which can accept continuous outcomes on [0, 1]. The estimated coefficients, standard errors, and confidence intervals produced by the latter three methods were *very* similar, and often identical. We therefore proceeded to fit and report models using `glm` with the quasibinomial family and logit link because model objects produced by this function are compatible with numerous other R packages for estimating and plotting effects.
+We therefore fit models of our two outcome variables (which we rescaled to the continuous interval [0, 1]) in four ways. First, we fit the preregistered OLS models (reported in the SI). Second, we fit fractional regression models, introduced in a seminal paper by @papke1996 for continuous outcomes on the interval [0, 1], which, in brief, involve fitting a quasi-likelihood version of logistic regression with robust standard errors. This method is implemented in the `frm` package [@ramalho2019]. Third, we fit GLM logistic regression models, computing 95% CI's via bootstrapping, using the `glmmboot` package created to model continuous outcomes on [0, 1] [@humphrey2020]. Finally, we fit GLM models with the quasibinomial family and logit link using the `glm` function in R stats library, which can fit continuous outcomes on [0, 1]. The estimated coefficients, standard errors, and confidence intervals produced by the latter three methods were *very* similar, and often identical (see Figure \@ref(fig:modelcompareplots). We therefore proceeded to fit and report models using `glm` with the quasibinomial family and logit link because model objects produced by this function are compatible with numerous other R packages for summarizing and plotting effects.
 
 Although two of our four preregistered OLS regression models included an interaction term, the rationale for it was less convincing for quasibinomial models using a logit link, which maps [0, 1] to (-$\infty$, $\infty$). The interaction would also increase the number of parameters to estimate, increasing the risk of overfitting. We therefore did not include it in the GLM models (but we still report OLS models with the interaction term).
 
-Our intervention was *signal*, an ordinal variable with the following preregistered rank order: verbal request, crying, mild depression, depression, suicide attempt. We used the default `glm` settings, which code such variables as orthogonal polynomial contrasts. Our primary confirmatory regression models were as follows (where the signal subscripts indicate polynomial degree):
+Our intervention was *signal*, an ordinal variable with the following preregistered rank order: verbal request (control), crying, mild depression, depression, suicide attempt. We used the default `glm` settings, which code such variables as orthogonal polynomial contrasts. Our primary confirmatory regression models were as follows (where the signal subscripts indicate polynomial degree):
 
 `r extract_eq(models$Model$m1, intercept='beta', wrap=T)`
 `r extract_eq(models$Model$m3, intercept='beta', wrap=T)`
 
-To test our hypothesis that the likelihood of acting to help the victim would be largely mediated by a signal's positive impact on the participant's belief in the victim's need, we used the `mediation` package [@tingley2014] to fit a mediation model for *Depression* vs. *Verbal request*. The mediation and outcome models, respectively, were:
+To test our hypothesis that the likelihood of acting to help the victim would be largely mediated by a signal's positive impact on the participant's belief in the victim's need, we used the `mediation` package [@tingley2014] to fit a mediation model for *Depression* treatment vs. *Verbal request* control. The mediation and outcome models, respectively, were:
 
 `r extract_eq(med1$model.m, intercept='beta', wrap=T)`
 `r extract_eq(med1$model.y, intercept='beta', wrap=T)`
+
+All analyses were conducted using `r R.version.string`.
 
 ## Data availibility
 
@@ -331,7 +334,7 @@ Across the four vignettes, mean belief of the victim was relatively low at basel
 plot_T1Belief_T1Action
 ```
 
-## Confirmatory: Effects of signals on beliefs and actions
+## Confirmatory: Signals increase beliefs and actions in the predicted rank order
 
 ```{r}
 sm1 <- summary(models$Margins$m1)
@@ -355,7 +358,7 @@ The marginal between-subjects effect of the high cost *Suicide attempt* vs. low 
 
 Within-subjects, the average effect across all signals on *Belief* at T2 compared to T1 was `r inline_ttest(signal_belief_ttest)`, and on *Action* was `r inline_ttest(signal_action_ttest)` (on the original 0-100 point scale). For the change in *Belief* and *Action* for, T1 to T2 for all participants in all conditions, see Figure \@ref(fig:rawbeliefactions2d).
 
-## Exploratory: effects of signals by vignette
+## Exploratory: Signals effects differ by vignette
 
 ```{r}
 
@@ -369,7 +372,6 @@ brother_sv_adiff <- visreg_diff(models$Model$m4, 'Brother-in-law', 'Suicide atte
 
 ```
 
-The effects of the signals varied substantially by vignette. Signals had the smallest effect in the "Thwarted marriage" vignette, where the effect of the *Suicide attempt* signal on *Belief* and *Action* relative to the *Verbal request* signal was only `r thwart_sv_bdiff` and `r thwart_sv_adiff` points, respectively (on the original 0-100 point scale). Signals had the largest effect in the "Brother-in-law" vignette, where the effect of the *Suicide attempt* signal on *Belief* and *Action* relative to the *Verbal request* signal was `r brother_sv_bdiff` and and `r brother_sv_adiff` points, respectively. See Figures \@ref(fig:beliefvignette) and \@ref(fig:ecdf).
 
 ```{r}
 bil_b_suicide <- signif(effect_sizes$est[effect_sizes$id=="Suicide attempt,Brother-in-law" & effect_sizes$Outcome=="Belief"], 2)
@@ -382,7 +384,7 @@ bil_a_verbal <- signif(effect_sizes2$effsize[effect_sizes2$id=="Verbal request,B
 
 ```
 
-Effect sizes (Cohen's d), between- and within-subjects, reveals a similar pattern. The largest between-subjects effect was *Suicide attempt* vs. *Verbal request* on *Belief* in the "Brother-in-law" vignette, d = `r bil_b_suicide`, and the smallest was the effect of *Crying* on *Belief* in the "Romantic partner" vignette, d =`r rom_b_crying`. The largest within-subjects effect was *Suicide attempt* vs. *Verbal request* on *Action* in the "Brother-in-law" vignette, d = `r bil_a_suicide`, and the smallest was the *negative* effect of *Verbal request* on *Action* in the "Brother-in-law" vignette, d =`r bil_a_verbal`. See Figures \@ref(fig:effectsizes) and \@ref(fig:effectsizes2).
+Effect sizes (Cohen's d), between- and within-subjects, reveals a similar pattern. The largest between-subjects effect was *Suicide attempt* vs. *Verbal request* control on *Belief* in the "Brother-in-law" vignette, d = `r bil_b_suicide`, and the smallest was the effect of *Crying* on *Belief* in the "Romantic partner" vignette, d =`r rom_b_crying`. The largest within-subjects effect was *Suicide attempt* on *Action* at T2 vs. T1 in the "Brother-in-law" vignette, d = `r bil_a_suicide`, and the smallest was the *negative* effect of *Verbal request* on *Action* at T2 vs. T1 in the "Brother-in-law" vignette, d =`r bil_a_verbal`. See Figures \@ref(fig:effectsizes) and \@ref(fig:effectsizes2).
 
 We note the following patterns, which we will return to in the Discussion section. First, as we intended, the distributions of *Belief* and *Action* in the *Verbal request* control condition were very similar to their distributions at T1 baseline across vignettes. In the "Basketball coach" and "Brother-in-law" vignettes, though, their distributions in the *Verbal request* condition were shifted to somewhat lower values relative to baseline (i.e., the verbal request slightly *reduced* belief and action in those vignettes). Second, in the "Romantic partner" and "Brother-in-law" vignettes, the effect of *Crying* differed little from *Verbal request*, but in the "Basketball coach" vignette, it differed little from the *Depression* and *Suicide attempt* signals. Third, the effect of the *Suicide attempt* signal on *Belief* was similar to that of *Depression* across all vignettes, but had a noticeably greater effect on *Action* in the "Romantic partner" and "Brother-in-law" vignettes. Fourth, there was little difference between the effect of the *Mild depression* vs. *Depression* signals. See Figures \@ref(fig:beliefvignette) and \@ref(fig:ecdf).
 
@@ -397,15 +399,30 @@ ecdf_plot
 
 ## Confirmatory: The effect of signals on action is largely mediated by belief
 
-According to our theoretical model, credible signals of need increase observers' belief that the victim is telling the truth. Increased belief then increases the likelihood of helping the victim (action). See Figure \@ref(fig:medmodel).
+```{r medresults}
+rslts <- all_mediations$results
 
-The total effect of the *Depression* signal (treatment) vs. *Verbal request* (control) on the likelihood of *Action* was to increase it by `r 100*signif(med1b$tau.coef, 3)` points from T1 to T2 (on the original 100-point scale). Of this increase, `r 100*signif(med1b$n.avg, 2)`% was mediated by the increased *Belief* that the victim was telling the truth. See Figure \@ref(fig:mediation). The total effect of the *Suicide attempt* signal (treatment) vs. *Verbal request* (control) on the likelihood of *Action* was to increase it by `r 100*signif(med4b$tau.coef, 3)` points from T1 to T2. Of this increase, `r 100*signif(med4b$n.avg, 2)`% was mediated by the increased *Belief* that the victim was telling the truth (Check if med4 or med4b is correct; they look identical to me).
+suicidetotal <- 100*signif(rslts$point[rslts$signal == 'Suicide attempt' & rslts$Stat == 'Total'], 2)
 
-```{r mediation, fig.height=4, fig.cap="The effect of Depression (treatment) vs. Verbal request (control) on Action (0-1 scale) is largely mediated by Belief. ACME: Average causal mediation effect. ADE: Average direct effect. The mediation model controlled for T1 Belief, and the outcome model controlled for T1 Belief and T1 Action. Both models were GLMs with the binomial family (the mediation package does not support the quasibinomial family)."}
-ggmediation(med1b)
+suicidemed <- 100*signif(rslts$n.avg[rslts$signal == 'Suicide attempt' & rslts$Stat == 'Total'], 2)
+
+depressiontotal <- 100*signif(rslts$point[rslts$signal == 'Depression' & rslts$Stat == 'Total'], 2)
+
+depressionmed <- 100*signif(rslts$n.avg[rslts$signal == 'Depression' & rslts$Stat == 'Total'], 2)
+
 ```
 
-## Exploratory: Effects of signals on victim's perceived emotional state
+According to our theoretical model, credible signals of need increase observers' belief that the victim is telling the truth. Increased belief then increases the likelihood of helping the victim (action). See Figure \@ref(fig:medmodel).
+
+The total effect of the *Suicide attempt* signal (treatment) vs. *Verbal request* (control) on the likelihood of *Action* was to increase it by `r suicidetotal` points from T1 to T2 (on the original 100-point scale). Of this increase, `r suicidemed`% was mediated by the increased *Belief* that the victim was telling the truth. The total effect of the *Depression* signal (treatment) vs. *Verbal request* (control) on the likelihood of *Action* was to increase it by `r depressiontotal` points from T1 to T2. Of this increase, `r depressionmed`% was mediated by the increased *Belief* that the victim was telling the truth. See Figure \@ref(fig:mediation).
+
+<!-- (Check if med4 or med4b is correct; they look identical to me). -->
+
+```{r mediation, fig.width=8, fig.height=4, fig.cap="The effect of each signal (treatment) vs. Verbal request (control) on Action, [0, 1] scale, is largely mediated by Belief (percent mediated on the right). The mediation model controlled for T1 Belief, and the outcome model controlled for T1 Belief and T1 Action. Both models were GLMs with the binomial family (the mediation package does not support the quasibinomial family). ACME: Average causal mediation effect. ADE: Average direct effect. Total: Total effect (ADE + ACME)."}
+all_mediations$plot
+```
+
+## Exploratory: Costlier signals decrease perceived manipulation and increase perceived low mood
 
 The proportion of participants inferring each emotion in each vignette at T1 is depicted in Figure \@ref(fig:t1emotionheatmap), after each signal at T2 in Figure \@ref(fig:t2emotionheatmap), and the change in proportions from T1 to T2 in Figure \@ref(fig:diffemotions). The increase in inferred depression in the *Depression* and *Suicide attempt* conditions, but not the *Verbal request* and *Crying* conditions, helps validate these manipulations, as does the increase in inferred suicidality in the *Suicide attempt* condition.
 
@@ -415,20 +432,40 @@ To further explore the effect of signaling on participants' inferences of the si
 plot_emotions
 ```
 
-## Exploratory: Demographic associations
+## Exploratory: Sociodemographic associations
 
-The demographic variables were strongly confounded with Nationality (Indian was younger, lower income, with more years of education than the US), which, in turn, was confounded with vignette (responses in the Thwarted marriage vignette differed substantially from those in the other vignettes). We therefore conducted our exploration of the sociodemographic variables within Nationalities.
+The sociodemographic variables were strongly confounded with nationality (Indian participants were younger, lower income, with more years of education than US), which, in turn, were confounded with vignette (responses in the Indian Thwarted marriage vignette differed substantially from those in the US vignettes). We therefore conducted our exploration of the sociodemographic variables separately by nationality.
 
-Overall, US women participants were more likely to believe and help the victim than US men, and younger participants were more likely to believe and help the victim than older participants. The caveats are that the sex differences in *Belief* only emerged for the costly signals and the sex differences in *Action* were quite small (but applied across all signals). We found no significant effects of *Income* or *Education* on *Belief* or *Action* (results not reported). See Figures \@ref(fig:demographicsignal), \@ref(fig:demovignettebelief), and \@ref(fig:demovignetteaction).
+In the US sample, women participants were more likely to believe and help the victim than men, and younger participants were more likely to believe and help the victim than older participants. We found no significant effects of *Income* or *Education* on *Belief* or *Action*. See Figure \@ref(fig:demographicsignal).
 
+```{r demographicsignal, fig.width=11, fig.height=8, fig.cap="Sociodemographic effects on *Belief* and *Action*. **Top**: Association of T2 Belief with Sex (left) and Age (right) controlling for T1 Belief, vignette, Education, and Income. **Bottom**: Association of T2 Action with Sex (left) and Age (right) controlling for T1 Action, vignette, Education, and Income. Estimated using generalized linear regression models with the quasibinomial family."}
 
-```{r demographicsignal, fig.width=11, fig.height=8, fig.cap="Demographic effects on *Belief* and *Action*. **Top**: Association of age with T2 Belief and Action, controlling for T1 Belief and Action, respectively, and sex and vignette. **Bottom, left**: Sex interacting with the effect of the signals on T2 Belief controlling for T1 Belief, age, and vignette. **Bottom, right**: Main effect of sex on T2 Action, controlling for T1 Action and age. Estimated using generalized linear regression models with the quasibinomial family."}
-# effectsPlots$m24plotAge / effectsPlots$m24plotSex 
-
-(effectsPlots_US$m24plotAge + ylim(0, 1) + effectsPlots_US$m25plotAge + ylim(0, 1))  / (effectsPlots_US$m24plotSex + effectsPlots_US$m25plotSex + plot_layout(widths = c(5,1)))
-
+effectsPlots_US$m12plot + 
+    theme(axis.text.x = element_blank()) +
+effectsPlots_US$m12bplot + 
+    theme(
+      axis.text = element_blank(), 
+      axis.title.y = element_blank(), 
+      axis.title.x = element_blank()
+      ) + 
+effectsPlots_US$m13plot + 
+effectsPlots_US$m13bplot +
+    theme(axis.text.y = element_blank(), axis.title.y = element_blank())
 ```
 
+In the Indian sample and vignette, in contrast, men were more likely to help the victim than women, those with more years of education were less likely to believe the victim, and there was a marked increase in likelihood of helping among older individuals in the suicide signal condition. We found no significant associations with age or income. See Figure \@ref(fig:indiademographics).
+
+```{r indiademographics, fig.width=10, fig.height=8, fig.cap="India participants (Thwarted marriage vignette). Sociodemographic associations with T2 Belief and Action. Each model included T1 Belief or Action, Income, Age, Sex, Years of education, and signal. Significant associations displayed here."}
+(effectsPlots_India$m12plot + xlab('Education (years)') + effectsPlots_India$m13plot) / effectsPlots_India$m17plot
+```
+
+## Validity check: T3 increase in Action with proof that victim was telling the truth
+
+```{r}
+t2t3actionttest <- t.test(d$T3Action, d$T2Action, paired = T)
+```
+
+As a partial check on the validity of our methods and results, at T3 we presented participants with strong evidence that the victim was telling the truth, and asked them to again rate their likelihood of acting to help the victim (T3Action). Compared to the mean T2Action (M=`r signif(mean(d$T2Action, na.rm=T), 2)`), mean T3Action increased substantially, `r inline_ttest(t2t3actionttest)`. Across the US vignettes, likelihood of acting at T3 increased to near-ceiling, regardless of participants' T2 Action values (M=`r signif(mean(d$T3Action[d$vignette != 'Thwarted marriage']), 2)`), indicating that propensity to act was indeed contingent on believing the victim. In the Indian Thwarted marriage vignette, however, there was little change in T3 Action compared to T2 action (Figure \@ref(fig:t3action)), perhaps because Indian participants' beliefs and actions were relatively insensitive to the signals to begin with (Figures \@ref(fig:beliefvignette) and \@ref(fig:ecdf)).
 
 # Discussion
 
@@ -485,9 +522,9 @@ pilot_results$effectplot + (pilot_results$mentalplot + theme(axis.text.y = eleme
 
 ## Power from pilot study
 
-We estimated power using our pilot study data to compare the effect of the *Depression* signal vs. the *Verbal request* signal on *Belief* (that the sister needed the money) at T2 controlling for *Belief* at T1 in a linear regression model. Specifically, we resampled the pilot data with replacement, fit the linear regression model, and extracted the p-value for the signal coefficient, repeating this 2000 times for each sample size ranging from N=20 to N=200. Power was computed as the proportion of p-values < 0.05. Power was about 80% for a sample size of about `r pwr80_90[[2,2]]`, and was about 90% for a sample size of about `r pwr80_90[[2,3]]`. We then repeated this entire procedure to compare *Depression* to a *Control* condition that was meant to not include any signaling (but which we realized, post hoc, did include a verbal request). Power was about 80% for a sample size of about `r pwr80_90[[1,2]]`, and was about 90% for a sample size of about `r pwr80_90[[1,3]]`. See Figure \@ref(fig:power).
+We estimated power using our pilot study data to compare the effect of the *Depression* signal vs. the *Verbal request* control on *Belief* (that the sister needed the money) at T2 controlling for *Belief* at T1 in a linear regression model. Specifically, we resampled the pilot data with replacement, fit the linear regression model, and extracted the p-value for the signal coefficient, repeating this 2000 times for each sample size ranging from N=20 to N=200. Power was computed as the proportion of p-values < 0.05. Power was about 80% for a sample size of about `r pwr80_90[[2,2]]`, and was about 90% for a sample size of about `r pwr80_90[[2,3]]`. We then repeated this entire procedure to compare *Depression* to a *Control* condition in the pilot study that was meant to not include any signaling (but which we realized, post hoc, did include a verbal request, and therefore was not used in the current study). Power was about 80% for a sample size of about `r pwr80_90[[1,2]]`, and was about 90% for a sample size of about `r pwr80_90[[1,3]]`. See Figure \@ref(fig:power).
 
-```{r power, fig.cap="Power curve for between-subjects effect of Depression vs. Verbal request signal on T2 Belief, controlling for T1 Belief."}
+```{r power, fig.cap="Power curve for between-subjects effect of Depression vs. Verbal request signal on T2 Belief, controlling for T1 Belief, and Depression vs. a Control condition that was unique to the pilot study."}
   ggplot(power_curve, aes(sample_size, power, color=Base)) +
     geom_line() +
     labs(x = '\n Sample size', y = 'Power\n') +
@@ -569,11 +606,9 @@ d %>%
 ```
 
 
-
 ## Signal effect sizes
 
-
-```{r effectsizes, fig.width=10, fig.height=7, fig.cap="Between-subjects Cohen's d (95% CI) for the effect of each signal on Belief and Action in each vignette relative to the Verbal request signal, ranked by effect size."}
+```{r effectsizes, fig.width=10, fig.height=7, fig.cap="Between-subjects Cohen's d (95% CI) for the effect of each signal on Belief and Action in each vignette relative to the Verbal request control condtion, ranked by effect size."}
 
 relbl <- function(lb){
   map_chr(lb, ~str_split(.x, ',')[[1]][2])
@@ -593,7 +628,7 @@ ggplot(effect_sizes, aes(est, fct_reorder(id, est), xmin=low, xmax=high, colour 
 ```
 
 
-```{r effectsizes2, fig.width=10, fig.height=7, fig.cap="Within-subjects Cohen's d (95% CI) for the effect of each signal on Belief and Action in each vignette relative to T1 baseline Belief and  Action, respectively, ranked by effect size."}
+```{r effectsizes2, fig.width=10, fig.height=7, fig.cap="Within-subjects Cohen's d (95% CI) for the effect of each signal on T2 Belief and Action in each vignette relative to T1 baseline Belief and Action, respectively, ranked by effect size."}
 
 ggplot(effect_sizes2, aes(effsize, fct_reorder(id, effsize), xmin=conf.low, xmax=conf.high, colour = signal, shape=Outcome)) +
   geom_pointrange(position = position_dodge(width = 0.7), lwd = 2.5, fatten = 1, alpha=0.5) +
@@ -609,27 +644,27 @@ ggplot(effect_sizes2, aes(effsize, fct_reorder(id, effsize), xmin=conf.low, xmax
 ```
 
 
-## Demographic effects
+<!-- ## Sociodemographic associations -->
 
 ```{r demoeffectsaction, fig.width=9, fig.height=8, fig.cap="Demographic effects on Action. **Top**: Association of age with T2 Action, controlling for T1 Action, sex, and vignette. **Bottom**: Association of sex with T2 Action controlling for T1 Action, age, and vignette. Estimated using a generalized linear regression model with the quasibinomial family."}
 # effectsPlots$m25plotAge / effectsPlots$m25plotSex
 ```
 
 ```{r demovignettebelief, fig.width=8, fig.height=8, fig.cap="Associations of age (top) and sex (bottom) with T2 Belief by vignette, controlling for T1 Belief and signal. Estimated using a generalized linear regression model with the quasibinomial family."}
-(effectsPlots_US$m18plot / effectsPlots_US$m13plot)
+# (effectsPlots_US$m18plot / effectsPlots_US$m13plot)
 ```
 
 
 ```{r demovignetteaction, fig.width=8, fig.height=8, fig.cap="Associations of age (top) and sex (bottom) with T2 Action by vignette, controlling for T1 Action and signal. Estimated using a generalized linear regression model with the quasibinomial family."}
-effectsPlots_US$m19plot / effectsPlots_US$m15plot
+# effectsPlots_US$m19plot / effectsPlots_US$m15plot
 ```
 
-## Mediation of Suicide attempt signal
+## Mediation of Suicide attempt relative to Depression signals
 
-The total effect of the *Suicide attempt* signal (treatment) vs. *Verbal request* (control) on the likelihood of *Action* was to increase it by `r 100*signif(med4$tau.coef, 3)` points from T1 to T2 (on the original 100-point scale). Of this increase, `r 100*signif(med4$n.avg, 2)`% was mediated by the increased *Belief* that the victim was telling the truth. See Figure \@ref(fig:mediationsuicide).
+The total effect of the *Suicide attempt* signal (treatment) vs. *Depression* (control) on the likelihood of *Action* was to increase it by `r 100*signif(med2$tau.coef, 3)` points from T1 to T2 (on the original 100-point scale). Of this increase, `r 100*signif(med2$n.avg, 2)`% was mediated by the increased *Belief* that the victim was telling the truth. See Figure \@ref(fig:mediationsuicide).
 
-```{r mediationsuicide, fig.height=4, fig.cap="The effect of a Suicide attempt (treatment) vs. Verbal request (control) on Action (0-1 scale) is largely mediated by Belief. ACME: Average causal mediation effect. ADE: Average direct effect. The mediation model controlled for T1 Belief, and the outcome model controlled for T1 Belief and T1 Action. Both models were GLMs with the binomial family (the mediation package does not support the quasibinomial family)."}
-ggmediation(med4)
+```{r mediationsuicide, fig.height=4, fig.cap="The effect of a Suicide attempt (treatment) vs. Depression (control) on Action, [0-1 scale], is only partially mediated by Belief. ACME: Average causal mediation effect. ADE: Average direct effect. The mediation model controlled for T1 Belief, and the outcome model controlled for T1 Belief and T1 Action. Both models were GLMs with the binomial family (the mediation package does not support the quasibinomial family)."}
+ggmediation(med2)
 ```
 
 ## Change in beliefs and actions from T1 to T2
@@ -686,17 +721,17 @@ effectsPlots$m21plot + ggtitle('Time 2')
 ## The effect of signals on T2 division in thwarted marriage vignette
 
 ```{r division, fig.width=9, fig.cap="Effect of signals on division of dowry between the daughters in the thwarted marriage vignette, with an interaction between T1 Division and signal. Means estimated with a generalized linear regression model with the quasibinomial family."}
-effectsPlots$m7
+effectsPlots_India$m7plot
 ```
 
 ```{r divisionage, fig.width=9, fig.cap="Interaction of age with signals on T2 Division of dowry between the daughters in the thwarted marriage vignette."}
-effectsPlots$m8
+effectsPlots_India$m8plot
 ```
 
 
-## T3 Action vs. T2 Action
+## Validity check: T3 Action vs. T2 Action
 
-```{r t2action, fig.width=10, fig.cap="The effect of post-signal (T3) information that the victim was telling the truth on the likelihood of acting to help her (T3 Action), controlling for T2 Action."}
+```{r t3action, fig.width=10, fig.cap="The effect of post-signal (T3) information that the victim was telling the truth on the likelihood of acting to help her (T3 Action), controlling for T2 Action, with a term for the interaction of T2 Action and vignette."}
 effectsPlots$m26plot + theme(panel.spacing = unit(1.5, "lines"))
 ```
 
@@ -771,14 +806,21 @@ bind_rows(models_prereg$TidyANOVA, .id = 'Model') %>%
 ## Differences between quasibinomial and bootstrapped confidence intervals
 
 ```{r}
-m1b_quasi <- models$TidyModel$m1b
-m1b_diff <- (m1b_boot[,'boot 97.5%'] - m1b_boot[,'boot 2.5%'])/(m1b_quasi$conf.high-m1b_quasi$conf.low)
+m1_quasi <- models$TidyModel$m1
+m1_diff <- (m1_boot[,'boot 97.5%'] - m1_boot[,'boot 2.5%'])/(m1_quasi$conf.high - m1_quasi$conf.low)
 
-m3b_quasi <- models$TidyModel$m3b
-m3b_diff <- (m3b_boot[,'boot 97.5%'] - m3b_boot[,'boot 2.5%'])/(m3b_quasi$conf.high-m3b_quasi$conf.low)
+m3_quasi <- models$TidyModel$m3
+m3_diff <- (m3_boot[,'boot 97.5%'] - m3_boot[,'boot 2.5%'])/(m3_quasi$conf.high - m3_quasi$conf.low)
 
-diff_sum <- summary(c(m1b_diff, m3b_diff))
+diff_sum <- summary(c(m1_diff, m3_diff))
 ```
+
+```{r modelcompareplots, fig.width=11, fig.cap="Comparison of the coefficients and 95% CIs of the quasibinomial glm, fractional, and bootstrapped logistic regression models of T2 Belief and Action (for details, see the Statistical methods section)."}
+
+belief_compare_plot + action_compare_plot + plot_layout(guides = 'collect')
+
+```
+
 
 
 # References

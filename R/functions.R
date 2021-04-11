@@ -148,21 +148,23 @@ effect_plots <- function(models, data){
     m3plot = effect_plot(fit=models$m3, xvar='signal', ylbl='T2 Action', data=data),
     m3bplot = effect_plot(fit=models$m3b, xvar='signal', by='T1Action', ylbl='T2 Action', data=data),
     m4plot = effect_plot(fit=models$m4, xvar='signal', by='vignette', ylbl='T2 Action', data=data),
-    m12plot = effect_plot(fit=models$m12, xvar='Sex', by='signal', ylbl='T2 Belief', data=data),
-    m13plot = effect_plot(fit=models$m13, xvar='Sex', by='vignette', ylbl='T2 Belief', data=data),
-    m14plot = effect_plot(fit=models$m14, xvar='Sex', by='signal', ylbl='T2 Action', data=data),
-    m15plot = effect_plot(fit=models$m15, xvar='Sex', by='vignette', ylbl='T2 Action', data=data),
-    m16plot = effect_plot(fit=models$m16, xvar='Age', by='signal', ylbl='T2 Belief', data=data),
-    m17plot = effect_plot(fit=models$m17, xvar='Age', by='signal', ylbl='T2 Action', data=data),
-    m18plot = effect_plot(fit=models$m18, xvar='Age', by='vignette', ylbl='T2 Belief', data=data),
-    m19plot = effect_plot(fit=models$m19, xvar='Age', by='vignette', ylbl='T2 Action', data=data),
+    m12plot = effect_plot(fit=models$m12, xvar='Sex', ylbl='T2 Belief', data=data),
+    m12bplot = effect_plot(fit=models$m12, xvar='Age', ylbl='T2 Belief', data=data),
+    m13plot = effect_plot(fit=models$m13, xvar='Sex', ylbl='T2 Action', data=data),
+    m13bplot = effect_plot(fit=models$m13, xvar='Age', ylbl='T2 Action', data=data),
+    # m14plot = effect_plot(fit=models$m14, xvar='Sex', by='signal', ylbl='T2 Action', data=data),
+    # m15plot = effect_plot(fit=models$m15, xvar='Sex', by='vignette', ylbl='T2 Action', data=data),
+    # m16plot = effect_plot(fit=models$m16, xvar='Age', by='signal', ylbl='T2 Belief', data=data),
+    # m17plot = effect_plot(fit=models$m17, xvar='Age', by='signal', ylbl='T2 Action', data=data),
+    # m18plot = effect_plot(fit=models$m18, xvar='Age', by='vignette', ylbl='T2 Belief', data=data),
+    # m19plot = effect_plot(fit=models$m19, xvar='Age', by='vignette', ylbl='T2 Action', data=data),
     m21plot = effect_plot(fit=models$m21, xvar='signal', by='vignette', ylbl = "T2 Mentally ill", data=data),
-    m24plotAge = visreg(fit=models$m24, xvar='Age', partial=F, rug=F, gg=T, scale='response', data=data) +
-      theme_bw(15) + theme(axis.title.y = element_text(angle = 0)),
-    m24plotSex = effect_plot(fit=models$m24, xvar='Sex', by = 'signal', ylbl='T2 Belief', data=data),
-    m25plotAge = visreg(fit=models$m25, xvar='Age', partial=F, rug=F, gg=T, scale='response', data=data) +
-      theme_bw(15) + theme(axis.title.y = element_text(angle = 0)),
-    m25plotSex = effect_plot(fit=models$m25, xvar='Sex', ylbl='T2 Action', data=data),
+    # m24plotAge = visreg(fit=models$m24, xvar='Age', partial=F, rug=F, gg=T, scale='response', data=data) +
+    #   theme_bw(15) + theme(axis.title.y = element_text(angle = 0)),
+    # m24plotSex = effect_plot(fit=models$m24, xvar='Sex', by = 'signal', ylbl='T2 Belief', data=data),
+    # m25plotAge = visreg(fit=models$m25, xvar='Age', partial=F, rug=F, gg=T, scale='response', data=data) +
+    #   theme_bw(15) + theme(axis.title.y = element_text(angle = 0)),
+    # m25plotSex = effect_plot(fit=models$m25, xvar='Sex', ylbl='T2 Action', data=data),
     m26plot = effect_plot(fit=models$m26, xvar='T2Action', by='vignette', ylbl='T3 Action', data=data) +
       theme(axis.text.x = element_text(angle = 0)) + xlab('\nT2 Action'),
     m27plot = effect_plot(fit=models$m27, xvar='vignette', ylbl='T1 Mentally ill', data=data)
@@ -172,7 +174,10 @@ effect_plots <- function(models, data){
 effect_plots_India <- function(models, data){
   list(
     m7plot = effect_plot(fit=models$m7, xvar='signal', by='T1Divide', ylbl='T2 Division', data=data),
-    m8plot = effect_plot(fit=models$m8, xvar='Age', by='signal', ylbl='T2 Division', data=data)
+    m8plot = effect_plot(fit=models$m8, xvar='Age', by='signal', ylbl='T2 Division', data=data),
+    m12plot = effect_plot(fit=models$m12, xvar='years_education', ylbl='T2 Belief', data=data),
+    m13plot = effect_plot(fit=models$m13, xvar='Sex', ylbl='T2 Action', data=data),
+    m17plot = effect_plot(fit=models$m17, xvar='signal', by='Age', ylbl='T2 Action', data=data)
   )
 }
 
@@ -202,8 +207,8 @@ signal_mediate <- function(
       )
 
   if (family == 'binomial'){
-    m_med <- glm(med_f, family = binomial, d)
-    m_out <- glm(out_f, family = binomial, d)
+    m_med <- suppressWarnings(glm(med_f, family = binomial, d))
+    m_out <- suppressWarnings(glm(out_f, family = binomial, d))
   } else if (family == 'gaussian'){
     m_med <- lm(med_f, d)
     m_out <- lm(out_f, d)
@@ -211,6 +216,64 @@ signal_mediate <- function(
   out <- mediate(m_med, m_out, treat = "signal", mediator = 'T2Belief', control.value = control.value, treat.value = treat.value, robustSE = T, sims = sims)
   return(out)
 }
+
+all_signals_mediate <- function(d){
+
+  signals <- as.character(levels(d$signal)[-1]) # Omit base level
+  names(signals) <- signals
+  stuff <- c('d.avg', 'd.avg.ci', 'z.avg', 'z.avg.ci', 'tau.coef', 'tau.ci', 'n.avg')
+
+  meds <-
+    map_df(
+      signals,
+      ~as_tibble(
+        signal_mediate(
+          sims = 2000,
+          data = d,
+          treat.value = .x,
+          med_f = 'T2Belief ~ signal + T1Belief',
+          out_f = 'T2Action ~ signal + T1Belief + T1Action + T2Belief',
+          mediator = 'T2Belief'
+        )[stuff]
+      ),
+      .id = 'signal'
+    ) %>%
+    mutate(
+      level = rep(c('low', 'high'), length(signals)),
+      signal = factor(signal, levels = c('Crying', 'Mild depression', 'Depression', 'Suicide attempt'))
+    ) %>%
+    pivot_wider(names_from = level, values_from = c(d.avg.ci, z.avg.ci, tau.ci)) %>%
+    rename(
+      signal = signal,
+      ACME.point = d.avg,
+      ADE.point = z.avg,
+      Total.point = tau.coef,
+      n.avg = n.avg,
+      ACME.low = d.avg.ci_low,
+      ACME.high = d.avg.ci_high,
+      ADE.low = z.avg.ci_low,
+      ADE.high = z.avg.ci_high,
+      Total.low = tau.ci_low,
+      Total.high = tau.ci_high
+    ) %>%
+    pivot_longer(-c(signal, n.avg)) %>%
+    separate(name, into = c("Stat", "type"), sep = "\\.") %>%
+    pivot_wider(names_from = type, values_from = value) %>%
+    mutate(Stat = factor(Stat, levels = c('ADE', 'ACME', 'Total')))
+
+  p <-
+    ggplot(meds, aes(point, signal, xmin = low, xmax = high, colour = Stat)) +
+    geom_pointrange(lwd = 2.5, fatten = 1, alpha = 0.75, position = position_dodge(width = .4)) +
+    geom_text(x = 0.32, aes(label = paste0(round(100*n.avg), '%')), colour='black') +
+    scale_color_viridis_d(option = 'B', end = 0.8) +
+    guides(color=guide_legend(reverse = TRUE, override.aes = list(size=1))) +
+    xlim(-0.02, 0.33) +
+    labs(x = "\nAction", y = "") +
+    theme_minimal(15)
+
+  list(results=meds, plot=p)
+}
+
 
 emotion_plot <- function(d){
 
@@ -530,6 +593,49 @@ ggkde <- function(mkde){
     scale_fill_viridis_c(option = 'B') +
     scale_size_area(limits = c(1, 15)) +
     labs(x = '\nBelief', y = 'Action\n') +
+    theme_minimal(15)
+}
+
+
+# Model comparison plot ---------------------------------------------------
+
+compare_plot <- function(mquasi, mboot, mfrac, title){
+
+  df_mquasi <- mquasi[c(1,2,6,7)]
+
+  df_mboot <-
+    as_tibble(mboot[,c(1:3)]) %>%
+    mutate(
+      term = rownames(mboot)
+    ) %>%
+    rename(
+      conf.low = `boot 2.5%`,
+      conf.high = `boot 97.5%`
+    ) %>%
+    relocate(term, .before = 1)
+
+  mfracSE <- sqrt(diag(mfrac$p.var))
+  df_mfrac <-
+    tibble(
+      term = names(mfrac$p),
+      estimate = mfrac$p,
+      conf.low = estimate - 2*(mfracSE),
+      conf.high = estimate + 2*(mfracSE)
+    ) %>%
+    mutate(
+      term = ifelse(term == 'INTERCEPT', '(Intercept)', term)
+    )
+
+  d <-
+    bind_rows(glm = df_mquasi, bootstrap = df_mboot, fractional = df_mfrac, .id = 'Model') %>%
+    mutate(
+      term = factor(term, levels = rev(df_mquasi$term))
+    )
+
+  ggplot(d, aes(estimate, term, xmin = conf.low, xmax = conf.high, colour = Model, shape = Model)) +
+    geom_pointrange(position = position_dodge(width = 0.5)) +
+    guides(colour = guide_legend(reverse = T), shape = guide_legend(reverse = T)) +
+    labs(title=title, y = '') +
     theme_minimal(15)
 }
 

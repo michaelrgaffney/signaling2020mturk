@@ -123,10 +123,10 @@
     },
     "TMB": {
       "Package": "TMB",
-      "Version": "1.7.19",
+      "Version": "1.7.20",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "47dcf908c560ace98bd71a6a7a055d14"
+      "Hash": "db241456677ae165b3095b6df5d79009"
     },
     "TSP": {
       "Package": "TSP",
@@ -653,15 +653,15 @@
     },
     "hagenutils": {
       "Package": "hagenutils",
-      "Version": "0.1.1",
+      "Version": "0.1.3",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
       "RemoteRepo": "hagenutils",
       "RemoteUsername": "grasshoppermouse",
       "RemoteRef": "HEAD",
-      "RemoteSha": "b1012153e4a26b710ef3bfac3001a8d5acf44b42",
-      "Hash": "ffb8d1e9f71615bea2e412fb71c92a2e"
+      "RemoteSha": "e12ab48b2c675f6794f1619abae7e53f9443e0a8",
+      "Hash": "4dc78033a3eb3b5c574e7166e8b2d456"
     },
     "haven": {
       "Package": "haven",
