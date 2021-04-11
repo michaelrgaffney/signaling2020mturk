@@ -112,8 +112,8 @@ list(
       m4 = "T2Action ~ T1Action + signal * vignette",
       m5 = "T3Action ~ T2Action * signal",
       m6 = "T3Action ~ T2Action * vignette + signal",
-      m9 = "T2Jealous ~ T1Jealous * signal",
-      m10 = "T2Devious ~ T1Devious + signal",
+      # m9 = "T2Jealous ~ T1Jealous * signal",
+      # m10 = "T2Devious ~ T1Devious + signal",
       m11 = "T2Angry ~ T1Angry + signal",
 
       # Demographic models
@@ -132,18 +132,12 @@ list(
       m24 = "T2Belief ~ T1Belief + signal + Sex + years_education + Income + vignette * Age", # Interaction not sig
       m25 = "T2Action ~ T1Action + signal + Sex + years_education + Income + vignette * Age", # Interaction not sig
 
-      m28 = "T2Belief ~ T1Belief + signal + Age + Income + vignette + years_education * Sex", # Interaction not sig
-      m29 = "T2Action ~ T1Action + signal + Age + Income + vignette + years_education * Sex", # Interaction not sig
-
-      m30 = "T2Belief ~ T1Belief + signal + Sex + Income + vignette + years_education * Age", # Interaction not sig
-      m31 = "T2Action ~ T1Action + signal + Sex + Income + vignette + years_education * Age", # Interaction not sig
-
-            # Misc models
+      # Misc models
       m20 = "T2MentallyIll ~ T1MentallyIll + signal",
       m21 = "T2MentallyIll ~ T1MentallyIll + signal * vignette",
       m22 = "T2Belief ~ T1Belief * signal + PC1emotionT1 + PC2emotionT1",
       m23 = "T2Action ~ T1Action * signal + PC1emotionT1 + PC2emotionT1",
-      m26 = 'T3Action ~ T2Action + vignette',
+      m26 = 'T3Action ~ T2Action * vignette',
       m27 = 'T1MentallyIll ~ vignette'
     )
   ),
@@ -152,7 +146,17 @@ list(
     model_formulas_India,
     c(
       m7 = "T2Divide ~ T1Divide * signal",
-      m8 = "T2Divide ~ T1Divide + Age * signal"
+      m8 = "T2Divide ~ T1Divide + Age * signal",
+
+      # Demographic models
+      m12 = "T2Belief ~ T1Belief + signal + years_education + Income + Age + Sex", # years sig
+      m13 = "T2Action ~ T1Action + signal + years_education + Income + Age + Sex", # Sex sig
+
+      m14 = "T2Belief ~ T1Belief + Age + years_education + Income + signal * Sex", # No interaction
+      m15 = "T2Action ~ T1Action + Age + years_education + Income + signal * Sex", # No interaction
+
+      m16 = "T2Belief ~ T1Belief + Sex + years_education + Income + signal * Age", # No interaction
+      m17 = "T2Action ~ T1Action + Sex + years_education + Income + signal * Age"  # Interaction
     )
   ),
 
@@ -231,6 +235,19 @@ list(
     fractional_model(models$Model$m3)
   ),
 
+
+# Model comparison plots --------------------------------------------------
+
+  tar_target(
+    belief_compare_plot,
+    compare_plot(models$TidyModel$m1, m1_boot, m1_frac, 'Belief models')
+  ),
+
+  tar_target(
+    action_compare_plot,
+    compare_plot(models$TidyModel$m3, m3_boot, m3_frac, 'Action models')
+  ),
+
 # Effects plots -----------------------------------------------------------
 
   tar_target(
@@ -262,26 +279,26 @@ list(
     )
   ),
 
-  tar_target(
-    med1,
-    signal_mediate(
-      data=d,
-      treat.value = 'Depression',
-      med_f = 'T2Belief ~ signal + T1Belief',
-      out_f = 'T2Action ~ signal + T1Belief + T1Action + T2Belief',
-      mediator = 'T2Belief'
-    )
-  ),
-  tar_target(
-    med1b,
-    signal_mediate(
-      data=d,
-      treat.value = 'Depression',
-      med_f = 'T2Belief ~ signal * T1Belief',
-      out_f = 'T2Action ~ signal * T1Belief + T1Action + T2Belief',
-      mediator = 'T2Belief'
-    )
-  ),
+  # tar_target(
+  #   med1,
+  #   signal_mediate(
+  #     data=d,
+  #     treat.value = 'Depression',
+  #     med_f = 'T2Belief ~ signal + T1Belief',
+  #     out_f = 'T2Action ~ signal + T1Belief + T1Action + T2Belief',
+  #     mediator = 'T2Belief'
+  #   )
+  # ),
+  # tar_target(
+  #   med1b,
+  #   signal_mediate(
+  #     data=d,
+  #     treat.value = 'Depression',
+  #     med_f = 'T2Belief ~ signal * T1Belief',
+  #     out_f = 'T2Action ~ signal * T1Belief + T1Action + T2Belief',
+  #     mediator = 'T2Belief'
+  #   )
+  # ),
   tar_target(
     med2,
     signal_mediate(
@@ -293,36 +310,41 @@ list(
       mediator = 'T2Belief'
     )
   ),
+  # tar_target(
+  #   med3,
+  #   signal_mediate(
+  #     data = d_India,
+  #     treat.value = 'Depression',
+  #     med_f = 'T2Belief ~ signal * T1Belief',
+  #     out_f = 'T2Action ~ signal * T1Belief + T1Action + T2Belief',
+  #     mediator = 'T2Belief'
+  #   )
+  # ),
+  # tar_target(
+  #   med4,
+  #   signal_mediate(
+  #     data=d,
+  #     treat.value = 'Suicide attempt',
+  #     med_f = 'T2Belief ~ signal + T1Belief',
+  #     out_f = 'T2Action ~ signal + T1Belief + T1Action + T2Belief',
+  #     mediator = 'T2Belief'
+  #   )
+  # ),
+  # tar_target(
+  #   med4b,
+  #   signal_mediate(
+  #     data=d,
+  #     treat.value = 'Suicide attempt',
+  #     med_f = 'T2Belief ~ signal * T1Belief',
+  #     out_f = 'T2Action ~ signal * T1Belief + T1Action + T2Belief',
+  #     mediator = 'T2Belief'
+  #   )
+  # ),
+
   tar_target(
-    med3,
-    signal_mediate(
-      data = d_India,
-      treat.value = 'Depression',
-      med_f = 'T2Belief ~ signal * T1Belief',
-      out_f = 'T2Action ~ signal * T1Belief + T1Action + T2Belief',
-      mediator = 'T2Belief'
-    )
+    all_mediations,
+    all_signals_mediate(d)
   ),
-  tar_target(
-    med4,
-    signal_mediate(
-      data=d,
-      treat.value = 'Suicide attempt',
-      med_f = 'T2Belief ~ signal + T1Belief',
-      out_f = 'T2Action ~ signal + T1Belief + T1Action + T2Belief',
-      mediator = 'T2Belief'
-    )
-  ),
-tar_target(
-  med4b,
-  signal_mediate(
-    data=d,
-    treat.value = 'Suicide attempt',
-    med_f = 'T2Belief ~ signal * T1Belief',
-    out_f = 'T2Action ~ signal * T1Belief + T1Action + T2Belief',
-    mediator = 'T2Belief'
-  )
-),
 
 # T1 plot -----------------------------------------------------------------
 
