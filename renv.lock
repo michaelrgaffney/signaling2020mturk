@@ -438,10 +438,15 @@
     },
     "equatiomatic": {
       "Package": "equatiomatic",
-      "Version": "0.2.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "dc3228e7bf33a76a7be5e285a416f0e1"
+      "Version": "0.2.0.9000",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "equatiomatic",
+      "RemoteUsername": "datalorax",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "d8f43cf3b7adbf96da1145bd561317c777d39ede",
+      "Hash": "01f07d4ec971f70d5ce380aba7f48694"
     },
     "estimability": {
       "Package": "estimability",

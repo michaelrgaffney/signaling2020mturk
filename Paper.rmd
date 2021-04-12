@@ -348,7 +348,7 @@ signal_action_ttest <- t.test(100*d$T2Action, 100*d$T1Action, paired = T)
 
 As predicted, there was a strong statistically significant positive causal effect of the ordinal signal on T2 Belief and Action (controlling for T1 Belief and Action, respectively), with the effect of each signal increasing in the predicted rank order. See Figure \@ref(fig:beliefeffect) and models m1 and m3 in Tables \@ref(tab:regressiontables) and \@ref(tab:anovatables).
 
-The marginal between-subjects effect of the high cost *Suicide attempt* vs. low cost *Verbal request* control on T2 *Belief* (averaging over all four vignettes and all values of T1 *Belief*) was an increase of `r fmt_margins(models$Margins$m1, 'signalSuicide attempt')` points on the original 0-100 point scale. The equivalent increase for T2 *Action* was `r fmt_margins(models$Margins$m3, 'signalSuicide attempt')` points. Given that the standard deviations of T2 *Belief* and *Action* are `r signif(sd(100*d$T2Belief), 2)` and `r signif(sd(100*d$T2Action), 2)`, respectively, these represent increases of `r suicide_belief_eff` and `r suicide_action_eff` SD's, respectively.
+The marginal between-subjects effect of the high cost *Suicide attempt* vs. the *Verbal request* control on T2 *Belief* (averaging over all four vignettes and all values of T1 *Belief*) was an increase of `r fmt_margins(models$Margins$m1, 'signalSuicide attempt')` points on the original 0-100 point scale. The equivalent increase for T2 *Action* was `r fmt_margins(models$Margins$m3, 'signalSuicide attempt')` points. Given that the standard deviations of T2 *Belief* and *Action* are `r signif(sd(100*d$T2Belief), 2)` and `r signif(sd(100*d$T2Action), 2)`, respectively, these represent increases of `r suicide_belief_eff` and `r suicide_action_eff` SD's, respectively.
 
 ```{r beliefeffect, fig.width=6, fig.height=8, fig.cap=paste0("The effect of the signals on T2 Belief (top) and Action (bottom) controlling for T1 values of Belief and Action, respectively. Effects plotted for T1 values set to their median value (T1Belief=", median(d$T1Belief, na.rm=T), ", T1Action=", median(d$T1Action, na.rm=T), "). Fit using generalized linear regression models with the quasibinomial family. For coefficents, p-values, and other statistics, see models m1 and m3 in Tables \\@ref(tab:regressiontables) and \\@ref(tab:anovatables).")}
 (effectsPlots$m1plot + theme(axis.text.x = element_blank()))/effectsPlots$m3plot + plot_layout(ncol = 1) & theme(plot.margin = unit(c(0,0,0,0), units = 'mm'))
@@ -382,7 +382,7 @@ bil_a_verbal <- signif(effect_sizes2$effsize[effect_sizes2$id=="Verbal request,B
 
 ```
 
-Effect sizes (Cohen's d), between- and within-subjects, reveals a similar pattern. The largest between-subjects effect was *Suicide attempt* vs. *Verbal request* control on *Belief* in the "Brother-in-law" vignette, d = `r bil_b_suicide`, and the smallest was the effect of *Crying* on *Belief* in the "Romantic partner" vignette, d =`r rom_b_crying`. The largest within-subjects effect was *Suicide attempt* on *Action* at T2 vs. T1 in the "Brother-in-law" vignette, d = `r bil_a_suicide`, and the smallest was the *negative* effect of *Verbal request* on *Action* at T2 vs. T1 in the "Brother-in-law" vignette, d =`r bil_a_verbal`. See Figures \@ref(fig:effectsizes) and \@ref(fig:effectsizes2).
+The largest between-subjects effect was *Suicide attempt* vs. *Verbal request* control on *Belief* in the "Brother-in-law" vignette, d = `r bil_b_suicide`, and the smallest was the effect of *Crying* on *Belief* in the "Romantic partner" vignette, d =`r rom_b_crying`. The largest within-subjects effect was *Suicide attempt* on *Action* at T2 vs. T1 in the "Brother-in-law" vignette, d = `r bil_a_suicide`, and the smallest was the *negative* effect of *Verbal request* on *Action* at T2 vs. T1 in the "Brother-in-law" vignette, d =`r bil_a_verbal`. See Figures \@ref(fig:effectsizes) and \@ref(fig:effectsizes2).
 
 We note the following patterns, which we will return to in the Discussion section. First, as we intended, the distributions of *Belief* and *Action* in the *Verbal request* control condition were very similar to their distributions at T1 baseline across vignettes. In the "Basketball coach" and "Brother-in-law" vignettes, though, their distributions in the *Verbal request* condition were shifted to somewhat lower values relative to baseline (i.e., the verbal request slightly *reduced* belief and action in those vignettes). Second, in the "Romantic partner" and "Brother-in-law" vignettes, the effect of *Crying* differed little from *Verbal request*, but in the "Basketball coach" vignette, it differed little from the *Depression* and *Suicide attempt* signals. Third, the effect of the *Suicide attempt* signal on *Belief* was similar to that of *Depression* across all vignettes, but had a noticeably greater effect on *Action* in the "Romantic partner" and "Brother-in-law" vignettes. Fourth, there was little difference between the effect of the *Mild depression* vs. *Depression* signals. See Figures \@ref(fig:beliefvignette) and \@ref(fig:ecdf).
 
@@ -578,7 +578,7 @@ as.data.frame.matrix(xtabs(~signal+vignette, d)) %>%
 
 ## Socioeconomic distribution
 
-```{r socioeconomic, fig.width=8, fig.cap="Distribution of participants by age, log income (USD), and nationality. A small number of participants who did not report income, or reported values < $10 USD, were removed from this plot. A small amount of jitter was added to reveal overlapping points."}
+```{r socioeconomic, fig.width=8, fig.cap="Distribution of participants by age, log annual income (USD), and nationality. Each dot is one participant. A small number of participants who did not report annual income, or reported values < $10 USD, were removed from this plot. A small amount of jitter was added to reveal overlapping points."}
 
 clrs <- viridisLite::magma(11)[c(4, 8)]
 
@@ -590,16 +590,20 @@ d %>%
   ) %>% 
   ggplot(aes(Age, logIncome, colour = Nationality)) +
   geom_jitter(width = 0.5, alpha = 0.35) +
-  geom_hline(yintercept = log10(1670), linetype = 'dotted', colour = clrs[1]) +
-  geom_hline(yintercept = log10(35977), linetype = 'dotted', colour = clrs[2]) +
-  annotate('text', 15, log10(35977), label = 'Median US income', hjust = 1) +
-  annotate('text', 15, log10(1670), label = 'Median India income', hjust = 1) +
+  geom_hline(yintercept = log10(2266), linetype = 'dotted', colour = clrs[1]) +
+  geom_hline(yintercept = log10(68703), linetype = 'dotted', colour = clrs[2]) +
+  annotate('text', 85, log10(68703), label = 'Median US\nincome', hjust = 0) +
+  annotate('text', 85, log10(2266), label = 'Median India\nincome', hjust = 0) +
   scale_color_binary() +
-  guides(colour = guide_legend(reverse = T, override.aes = list(alpha=1))) +
+  guides(colour = guide_legend(reverse = T, override.aes = list(alpha=1, size = 3))) +
   coord_cartesian(clip = 'off') +
   labs(x = '\nAge (years)', y = 'Log annual\nincome (USD)') +
   theme_minimal(15) +
-  theme(axis.title.y = element_text(angle = 0, hjust=0))
+  theme(
+    plot.margin = unit(c(1,5,1,1), "lines"),
+    axis.title.y = element_text(angle = 0, hjust=0), 
+    legend.position = 'top'
+    )
 
 ```
 
