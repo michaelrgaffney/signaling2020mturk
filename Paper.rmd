@@ -229,7 +229,7 @@ Participants for this study were recruited from Amazon Mechanical Turk, a crowds
 	
 Overall, the quality of data provided by MTurk workers tends to resemble that of university sample pools [@NeckaEtAl2016; @robinson2019], with there being some indication that it might outperform university samples due to its previously mentioned diversity [@thomas2017] or the overall attentiveness of turkers [@HauserSchwarz2016]. In vignette studies, MTurk data quality also compares favorably to that from much more expensive population-based samples [@weinberg2014]. For these reasons, concerns about data quality come primarily from the threat of bot use or respondents faking their location to take surveys in a language they do not understand well, with there being little evidence of the former [@kennedy2020] and the risk of the latter able to be minimized through well designed attention checks, timed responses, or general study design [@aguinis2020; @huang2015; @kennedy2020; @thomas2017].
 	
-## Sample
+## Participants
 
 All participants in the US sample were over 18, located in the United States, had a HIT approval rate of over 98%, and had successfully completed at least 100 HITs as anything less results in approval rates of 100% [@kennedy2020]. The Indian sample was the same except for only including participants who resided in India at the time of the study and the inclusion two participants who were included with a stricter HIT approval rate of over 99%.
 
@@ -295,7 +295,7 @@ All analyses were conducted using `r R.version.string`.
 
 ## Data availibility
 
-http://doi.org/10.5281/zenodo.4637904
+The data associated with this research are available at http://doi.org/10.5281/zenodo.4637904.
 
 # Results
 
@@ -493,9 +493,9 @@ Although this study was not designed to examine whether the costs of signaling w
 
 ## Limitations
 
-The main limitation of this study is its lack of ecological validity, something which had to be sacrificed for any experimental design involving depression and suicide attempts. It is almost certain that participants experienced this study differently than they would if the event actually happened to them. This may have biased results in a pro-signaler direction if the lack of meaningful costs made support feel less costly or if the likely inability of participants to imagine themselves in an anonymous scenario [@hagen2006] led them to take an opportunity to signal generosity cheaply. It may have also biased participants against helping if they could not fully imagine the characters in the story as kin or important cooperative partners, while the survey's short duration may have weakened the strength of the costlier signals as bargaining tools. However, the fact that the relationships among signal cost, belief in need, and likelihood of providing support all largely fit existing theory (narrow and broad) indicates that participants paid attention to the relevant details and responded in ways that suggest some degree of external validity (needs improvement). For this reason, the benefits of addressing causal relationships that came through our experimental vignette approach likely outweighed the costs.
+The main limitation of this study is its lack of ecological validity, something which had to be sacrificed for any experimental design involving depression and suicide attempts. It is almost certain that participants experienced this study differently than they would if the event actually happened to them. This may have biased results in a pro-signaler direction if the lack of meaningful costs made support feel less costly or if the likely inability of participants to imagine themselves in an anonymous scenario [@hagen2006] led them to take an opportunity to signal generosity cheaply. It may have also biased participants against helping if they could not fully imagine the characters in the story as kin or important cooperative partners, while the survey's short duration may have weakened the strength of the costlier signals as bargaining tools. However, the fact that the relationships among signal cost, belief in need, and likelihood of providing support all largely fit existing theory (narrow and broad) indicates that participants paid attention to the relevant details and responded in ways that suggest some degree of external validity. For this reason, the benefits of addressing causal relationships that came through our experimental vignette approach likely outweighed the costs.
 
-Another limitation is our uncertainty over the data quality from the Indian sample. Compared to the US sample, far more participants were filtered out by our attention checks, something which could be consistent with botting, unfamiliarity with English, or low effort responses [@kennedy2020]. Assuming this corresponded with lower-quality responses among those who passed the attention checks, the differences seen among those in the thwarted marriage vignette may simply be due to added noise rather than differences in the scenarios or the effectiveness of the signals among Indians compared to those in the US. 
+Another limitation is our uncertainty over the data quality from the Indian sample. Compared to the US sample, far more participants were filtered out by our attention checks, something which could be consistent with botting, unfamiliarity with English, or low effort responses [@kennedy2020]. Assuming this corresponded with lower-quality responses among those who passed the attention checks, the differences seen among those in the thwarted marriage vignette may simply be due to added noise rather than differences in the scenario or the effectiveness of the signals compared to those in the US. 
 
 # Conclusion
 
@@ -514,6 +514,12 @@ Anne sounds like she will provide a lot of feedback, so her after that?
 # To do:
 
 - victim or signaler?
+- add anger
+- check limitations (especially justification of vignette study)!
+- justifty pre-test post-test?
+- how to knit to word?
+- Intro "State the objectives of the work and provide an adequate background, avoiding a detailed literature survey or a summary of the results."
+- Discussion " This should explore the significance of the results of the work, not repeat them. A combined Results and Discussion section is often appropriate. Avoid extensive citations and discussion of published literature."
 
 # Supplementary information
 
