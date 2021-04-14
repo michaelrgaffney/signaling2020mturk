@@ -86,7 +86,7 @@ cdc2 %>%
   theme(axis.title.y = element_text(angle = 0, hjust=0))
 ```
 
-Within anthropology, Raymond Firth was likely the first to conceputalize suicidality as a gamble to improve one's circumstances in the here and now. Based on observations that suicide attempts often followed social conflict or loss, and varied substantially in their likelihood of death, he argued that a sizable subset of the suicide attempts among the Tikopia were not meant to end in death but instead were a means to elicit attention, status, and immediate reintegration into the community following negative events [@firth1936; @Firth:1961]. 
+Within anthropology, Raymond Firth was likely the first to conceptualize suicidality as a gamble to improve one's circumstances in the here and now. Based on observations that suicide attempts often followed social conflict or loss, and varied substantially in their likelihood of death, he argued that a sizable subset of the suicide attempts among the Tikopia were not meant to end in death but instead were a means to elicit attention, status, or immediate reintegration into the community following negative events [@firth1936; @Firth:1961]. 
 
 Suicidality is closely linked to depression. Suicidal ideation is one of nine diagnostic criteria for a major depressive episode [MDE, @dsm5], it is associated with depression across cultures [@haroz2017], and depression is a major risk factor for suicidal behavior [@hawton2013]. Compared to suicide, however, there are fewer anthropological investigations of depression [@kleinman1985] despite frequent reports of depression or depression-like behavior in a wide range of societies [@haroz2017; @liu2020] and the potential for cross-cultural research to help understand depressive states [@haroz2017].
 
@@ -269,7 +269,7 @@ Table: (\#tab:outcomes) Outcome variables in each vignette.
 
 ### Demographic Questions
 
-The final part of the survey was a brief demographic questionnaire which examined: (1) the age, (2) sex, (3) number of siblings, (4) number of sons, (5) number of daughters, (6) current relationship status, (7) highest level of education, and (8) the annual household income of each participant. The full survey can found in the SI.
+The final part of the survey was a brief demographic questionnaire which examined: (1) the age, (2) sex, (3) number of siblings, (4) number of sons, (5) number of daughters, (6) current relationship status, (7) highest level of education, and (8) the annual household income of each participant.
 
 ## Statistical analyses
 
@@ -510,7 +510,7 @@ Committee?
 Anne sounds like she will provide a lot of feedback, so her after that?
 
 # To do:
-- add vignettes to SI (Mild depression = crying plus behavior change)
+
 - victim or signaler?
 
 # Supplementary information
@@ -543,6 +543,271 @@ We estimated power using our pilot study data to compare the effect of the *Depr
   #   labs(x = '\n Sample size', y = 'Power\n') +
   #   theme_minimal(15)
 ```
+
+## Vignettes (main bodies and signals)
+
+### Basketball coach
+
+Imagine yourself in the following scenario:
+ 
+You are a college athletic director at a university with a long history of success in women’s basketball. Unfortunately, despite quality players, the team struggled for the first three years of your leadership. You came close to losing your job but were given two more years to turn things around. You immediately hired a new head coach who you had spotted coaching a low-ranked college team that punched above its weight. Two years later, your team is one of the best in the country and has attracted a top recruit who has become the star player on your team and is probably the best player in the country. You have been told that if the team makes it to the final rounds of the playoff tournament, the university will offer you a high paying contract extension.
+
+Your star player is hard to deal with, however. She is constantly jealous of other players, and often comes to your office to complain that the coach unfairly limits her playing time, claiming this will ruin her chances of going professional. The star player has also posted self-serving accounts of your discussions with her on social media.
+
+A few days ago, after the coach started a new player in one game, the star player went to the police and accused the coach, a physically powerful man, of cornering her in the locker room one night and forcibly kissing her and grabbing her body. The coach strongly denies the allegation, and the police said they do not have any evidence to corroborate the player’s accusation. 
+
+You reached out to other players on the team, all of whom say that the relationship between the coach and star player has always seemed professional, and they are shocked by the allegation. None of the other players have any complaints about the coach. On the contrary, the other players praise the coach for leading everyone into the playoffs. They mention that the star player is a prima donna, but they are worried that if either the coach or the star player miss the playoffs, it will hurt everyone’s chances of making it to the championships.
+
+You find out that the star player then told the university president that she feared the coach might attack her again, and asked her to replace the coach with one of his assistants, who you know wants the star player to have more playing time. The president refused, saying there was no evidence of wrongdoing.
+
+#### Signals
+
+##### Verbal request
+
+A week later the coach informs you that the star player’s performance in games is excellent, helping the team’s performance and her reputation with pro scouts. Later that day, there is a formal luncheon at the athlete dorm to introduce the coaches and members of each team to the alumni. The alumni are especially interested in meeting the basketball coach and members of the basketball team because they are in the playoffs. You notice your star player is not there, but you see her roommate, a member of the swim team. She tells you that you should talk to your star player in person, and she leads you to their dorm room.
+
+When you arrive, the two of you find her sitting on her bed. She appears fit, well-rested, and her room is clean. She looks calm with her hands folded as she asks you to replace the coach, saying she can’t attend the luncheon if he is there.
+
+##### Crying
+
+A week later the coach informs you that the star player’s performance in games is excellent, helping the team’s performance and her reputation with pro scouts. Later that day, there is a formal luncheon at the athlete dorm to introduce the coaches and members of each team to the alumni. The alumni are especially interested in meeting the basketball coach and members of the basketball team because they are in the playoffs. You notice your star player is not there, but you see her roommate, a member of the swim team. She tells you that you should talk to your star player in person, and she leads you to their dorm room.
+ 
+When you arrive, the two of you find her sitting on her bed. She appears fit and well-rested, and her room is clean. She looks sad and begins sobbing as she asks you to replace the coach, saying she can’t attend the luncheon if he is there.
+
+##### Mild-depression (crying with behavioral changes)
+
+A week later the coach informs you that the star player’s performance in games is OK and not harming the team’s performance and her reputation with pro scouts. Later that day, there is a formal luncheon at the athlete dorm to introduce the coaches and members of each team to the alumni. The alumni are especially interested in meeting the basketball coach and members of the basketball team because they are in the playoffs. You notice your star player is not there, but you see her roommate, a member of the swim team. She tells you that you should talk to your star player in person, and she leads you to their dorm room.
+ 
+When you arrive, the two of you find her sitting on her bed. Her room is a little messy and she appears a little less fit than you remember, while also seeming slightly tired. She looks sad and begins sobbing as she asks you to replace the coach, saying she can’t attend the luncheon if he is there.
+
+##### Depression
+
+A week later the coach informs you that the star player’s performance in games is poor, harming the team’s performance and her reputation with pro scouts. Later that day, there is a formal luncheon at the athlete dorm to introduce the coaches and members of each team to the alumni. The alumni are especially interested in meeting the basketball coach and members of the basketball team because they are in the playoffs. You notice your star player is not there, but you see her roommate, a member of the swim team. She tells you that you should talk to your star player in person, and she leads you to their dorm room.
+ 
+When you arrive, the two of you find her slouched on her bed. Her room is a mess, and you notice she has lost weight and looks fatigued. She looks sad and begins sobbing and wringing her hands as she asks you to replace the coach, saying she can’t attend the luncheon if he is there.
+
+##### Suicide attempt
+
+A week later the coach informs you that the star player’s performance in games is poor, harming the team’s performance and her reputation with pro scouts. Later that day, there is a formal luncheon at the athlete dorm to introduce the coaches and members of each team to the alumni. The alumni are especially interested in meeting the basketball coach and members of the basketball team because they are in the playoffs. You notice your star player is not there, but you see her roommate, a member of the swim team. She tells you that you should talk to your star player in person, and she leads you to their dorm room.
+ 
+When you arrive, the two of you find her passed out on her bed. The room is a mess, and you notice she has lost weight. Her roommate tries to wake her up, but she doesn’t respond. You see an empty bottle of OxyContin painkillers on the table and immediately call 911. That evening you visit her in the hospital. Her doctor tells you she almost died, and then leaves the two of you alone. The star player begins sobbing as she asks you to replace the coach.
+
+### Brother-in-law 
+Imagine yourself in the following scenario:
+ 
+You are the single parent of a 15-year-old girl. Your relationship with her has always been full of conflict. She is very self-centered, and the two of you fight frequently.
+
+Recently, your sister lost her house in a fire and was having difficulty finding a place for her family to live because many other families also lost their homes. You are very close with your sister and brother-in-law, who helped you escape your abusive ex-partner. You have a large house with several extra bedrooms, so you decide to let your sister, your brother-in-law, and your teenage niece move in while they look for more permanent housing.
+
+(page break)
+
+Unfortunately, your daughter and your niece are not getting along. They have to share a bathroom, and your daughter complains constantly that she is in there too long. Your daughter is also jealous that her cousin has expensive clothes, a designer handbag, and a new iPhone, all of which are nicer than your daughter’s. 
+
+One day your daughter had a party at your house with many of her friends. You noticed that your niece was very popular and got a lot of attention, especially from your daughter’s friends and boyfriend. You could tell that your daughter was upset. After the party, your daughter tells you that her cousin is a bitch who is trying to steal her boyfriend. However, you saw that your niece was trying to avoid interacting with the boyfriend.
+
+(page break)
+
+Later, your daughter complained that your brother-in-law was looking at her body. A few days later, while grocery shopping, you got a text from your daughter saying that your brother-in-law tried to get into the bathroom while she was showering and came into her room while she was changing. She says that she does not feel safe and wants your sister and her family to leave. However, you know your daughter will exaggerate to get her way.
+
+The next week, your daughter comes to you saying your brother-in-law groped her as they passed in the hallway and that she wants your sister’s family to leave immediately. You confront your brother-in-law due to the severity of your daughter’s allegation. He strongly denies it.
+
+That night, you call your mother who says your daughter has long been jealous of her cousin. She reminds you that you’ve taken your daughter’s side before and been burned when you found out your daughter wasn’t telling the whole truth. She reminds you of the difficult situation your sister’s family is in.
+
+#### Signals
+
+##### Verbal request
+
+Your daughter has appeared normal since her claims about your brother-in-law. She has still looked fit and put the same amount of effort into her appearance, always wearing clean clothes and spending time on her hair. She has also slept about the same amount of time as normal and remained active throughout the day. 
+ 
+Her demeanor has also remained normal. She has generally appeared calm and has been able to maintain her concentration. She has also done her homework on time and maintained an A in all her classes as she always has in the past.
+
+When the two of you talk about your brother-in-law, she remains calm and asks you to kick him out.
+
+##### Crying
+
+Your daughter has appeared normal since her claims about your brother-in-law. She has still looked fit and put the same amount of effort into her appearance, always wearing clean clothes and spending time on her hair. She has also slept about the same amount of time as normal and remained active throughout the day. 
+ 
+Her demeanor has also remained normal. She has generally appeared calm and has been able to maintain her concentration. She has also done her homework on time and maintained an A in all her classes as she always has in the past.
+
+When the two of you talk about your brother-in-law, she starts sobbing and asks you to kick him out.
+
+##### Mild-depression (crying with behavioral changes)
+
+Your daughter has appeared sad since her claims about your brother-in-law. She has looked a little less fit and has put less effort into her appearance, occasionally wearing dirty clothes and sometimes not doing her hair. She has also sometimes woken up late and has seemed a little less active than normal. 
+ 
+Her demeanor has also changed slightly. She has occasionally gotten distressed and has seemed distracted. She has also missed a few assignments and her grades dropped from straight A’s to a B average for the first time in her life. 
+
+When the two of you talk about your brother-in-law, she starts sobbing and asks you to kick him out.
+
+##### Depression
+
+Your daughter started to appear noticeably different since her claims about your brother-in-law. She has lost weight and has been putting no effort into her appearance, often wearing dirty clothes and rarely doing her hair. She has also slept more than normal but still seemed tired and inactive.
+
+Her demeanor also changed drastically. She has often gotten distressed and has had difficulty maintaining her concentration. She has also missed multiple assignments, and her grades dropped from straight A’s to a C average for the first time in her life. 
+
+When the two of you talk about your brother-in-law, she starts sobbing and asks you to kick him out.
+
+##### Suicide attempt
+
+Your daughter started to appear noticeably different since her claims about your brother-in-law. She has lost weight and has been putting no effort into her appearance, often wearing dirty clothes and rarely doing her hair. She has also slept more than normal but still seemed tired and inactive.
+ 
+Her demeanor also changed drastically. She has often gotten distressed and has had difficulty maintaining her concentration. She has also missed multiple assignments, and her grades dropped from straight A’s to a C average for the first time in her life. 
+
+When the two of you talk about your brother-in-law, she starts sobbing and asks you to kick him out. Then, this past week, you and your daughter went through a traumatic experience when your daughter attempted suicide. You rushed her to the hospital, where she was placed in critical but stable condition.
+
+### Romantic Partner (pronouns match sex participants reported primary attraction to)
+
+Imagine yourself in the following scenario:
+
+You are a single parent of a 13-year-old girl. The two of you have lived alone together for the past five years since your breakup with her [father/mother]. During this time, finding potential partners has been difficult.
+
+Recently, you have gotten closer with a new [man/woman]. [He/She] is very attractive, has a good job, and has treated you better than anyone before. Confident that you will marry soon, the two of you decide to move in together.
+
+Your daughter, who wants you to get back together with her [dad/mom], is not happy about this. She frequently complains whenever your boyfriend comes over and is extremely rude and avoidant. In previous relationships, such behavior has driven others away. However, your partner says [he/she] is committed to this relationship and to establishing a bond with your daughter.
+
+After a month of living together with your partner, things have only gotten worse. Your daughter is almost always upset and has treated you partner worse than others in the past. 
+
+One night, she accused your partner of hitting her multiple times. You ask if she has any bruises or injuries, but she says she doesn't. Despite this, she maintains that she was hit and says she doesn’t know why there aren’t any marks on her.
+
+You bring up the accusation with your partner, and [he/she] denies it, saying that [he/she] would never hurt her and that this is just a way for her to split the two of you up.
+
+### Signals
+
+##### Verbal request
+
+Your daughter has appeared normal since her claims about your partner. She has still looked fit and put the same amount of effort into her appearance, always wearing clean clothes and spending time on her hair. She has also slept about the same amount of time as normal and remained active throughout the day. 
+ 
+Her demeanor has also remained normal. She has generally appeared calm and has been able to maintain her concentration. She has also done her homework on time and maintained an A in all her classes as she always has in the past.
+
+When the two of you talk about your partner, she remains calm and asks you to kick your partner out. 
+
+##### Crying
+
+Your daughter has appeared normal since her claims about your partner. She has still looked fit and put the same amount of effort into her appearance, always wearing clean clothes and spending time on her hair. She has also slept about the same amount of time as normal and remained active throughout the day. 
+
+Her demeanor has also remained normal. She has generally appeared calm and has been able to maintain her concentration. She has also done her homework on time and maintained an A in all her classes as she always has in the past.
+
+When the two of you talk about your partner, she starts sobbing and asks you to kick your partner out.
+
+##### Mild-depression (crying with behavioral changes)
+
+Your daughter has appeared sad since her claims about your partner. She has looked a little less fit and has put less effort into her appearance, occasionally wearing dirty clothes and sometimes not doing her hair. She has also sometimes woken up late and has seemed a little less active than normal. 
+ 
+Her demeanor has also changed slightly. She has occasionally gotten distressed and has seemed distracted. She has also missed a few assignments and her grades dropped from straight A’s to a B average for the first time in her life. 
+
+When the two of you talk about your partner, she starts sobbing and asks you to kick your partner out.
+
+##### Depression
+
+Your daughter started to appear noticeably different since her claims about your partner. She has lost weight and has been putting no effort into her appearance, often wearing dirty clothes and rarely doing her hair. She has also slept more than normal but still seemed tired and inactive.
+
+Her demeanor also changed drastically. She has often gotten distressed and has had difficulty maintaining her concentration. She has also missed multiple assignments, and her grades dropped from straight A’s to a C average for the first time in her life. 
+
+When the two of you talk about your partner, she starts sobbing and asks you to kick your partner out.
+
+##### Suicide attempt
+
+Your daughter started to appear noticeably different since her claims about your partner. She has lost weight and has been putting no effort into her appearance, often wearing dirty clothes and rarely doing her hair. She has also slept more than normal but still seemed tired and inactive.
+ 
+Her demeanor also changed drastically. She has often gotten distressed and has had difficulty maintaining her concentration. She has also missed multiple assignments, and her grades dropped from straight A’s to a C average for the first time in her life. 
+
+When the two of you talk about your partner, she starts sobbing and asks you to kick your partner out. Then, this past week, you and your daughter went through a traumatic experience when your daughter attempted suicide. You rushed her to the hospital, where she was placed in critical but stable condition.
+
+#### Thwarted Marriage
+
+Imagine you are the parent of two daughters, ages 19 and 21, and you have no sons.
+ 
+Your younger daughter is very sweet. Your older daughter is hard to deal with, however. She is very jealous of her younger sister, and constantly accuses you of favoring her, even when your older daughter receives more.
+
+You live in a community where marriages are arranged and dowries are paid. Recently, you and your partner have been attempting to arrange a marriage for your older daughter with a man she is already in love with. The man, who comes from a good family and is in the same caste as yours, appears to be equally interested in your daughter, and his family seems receptive.
+
+(page break)
+
+As your younger daughter is also not far from marriage, you and your partner decide to divide the money you have saved for dowries in half, with equal amounts for both daughters. At first, an equal split of your savings seemed possible. However, the family of the man your older daughter wants to marry is getting offers of marriage from other families, and it now appears that his family is expecting a much larger dowry.
+ 
+Since providing a large enough dowry to compete with the other offers would leave little savings for your younger daughter’s dowry, you decide to look for another husband for your older daughter.
+
+(page break)
+
+After a few months of searching, you are confident you found a good man for your older daughter. He is very devout, kind, and comes from a good family in the same caste as yours. He is a bit younger than your daughter, and has less money than typical for your caste, but his family appears to be willing to accept a smaller dowry that would leave a fair amount for your younger daughter.
+ 
+You ask your older daughter what she thinks of the man, and she is immediately disappointed. She complains that she already loves the man you originally intended her to marry. She says the second man is younger than she is and not attractive. You explain that she might not be able to marry the man she loves because it would require a much larger dowry, leaving too little for her sister. 
+
+(page break)
+
+You encourage your daughter to spend some time with the second man, and she begrudgingly agrees. After each date, she becomes more insistent that there is no chemistry between them, he is immature, has no sense of humor, and just isn’t right for her. She also complains that the family of the man she loves is seeking other marriage partners and that she is afraid he will become interested in his other marriage options.
+ 
+Your partner is not sure if your daughter really thinks the other man is a poor choice, or if she just wants to get her way as usual.
+
+(page break)
+
+Your family talks to the first man’s family again but the amount they want is almost all you have saved. Your partner tells your older daughter that it’s just not fair to spend so much on her because saving enough for your younger daughter’s dowry would be almost impossible in the next two or three years. For this reason, your family begins to hold more serious discussions with the family of the second man despite your older daughter’s objections.
+
+Two days later, your family receives word that the first man’s family is finalizing an agreement for him to marry another woman.
+
+#### Signals
+
+##### Verbal request
+
+Your older daughter has appeared normal since your attempts at finding another potential husband for her. She has still looked fit and put the same amount of effort into her appearance, always wearing clean clothes and spending time on her hair. She has also slept about the same amount of time as normal and remained active throughout the day. 
+ 
+Her demeanor has also remained normal. She has generally appeared calm and has been able to maintain her concentration. She has also done her homework on time and maintained an A in all her classes as she always has in the past.
+
+When the two of you talk about the arranged marriage, she remains calm and asks you to pay the amount the family of the man she loves wants.
+
+##### Crying
+
+Your older daughter has appeared normal since your attempts at finding another potential husband for her. She has still looked fit and put the same amount of effort into her appearance, always wearing clean clothes and spending time on her hair. She has also slept about the same amount of time as normal and remained active throughout the day. 
+
+Her demeanor has also remained normal. She has generally appeared calm and has been able to maintain her concentration. She has also done her homework on time and maintained an A in all her classes as she always has in the past.
+
+When the two of you talk about the arranged marriage, she starts sobbing and asks you to pay the amount the family of the man she loves wants. 
+
+##### Mild-depression (crying with behavioral changes)
+
+Your older daughter has appeared sad since your attempts at finding another potential husband for her. She has looked a little less fit and has put less effort into her appearance, occasionally wearing dirty clothes and sometimes not doing her hair. She has also sometimes woken up late and has seemed a little less active than normal. 
+
+Her demeanor has also changed slightly. She has occasionally gotten distressed and has seemed distracted. She has also missed a few assignments and her grades dropped from straight A’s to a B average for the first time in her life. 
+
+When the two of you talk about the arranged marriage, she starts sobbing and asks you to pay the amount the family of the man she loves wants.
+
+##### Depression
+
+Your older daughter started to appear noticeably different since your attempts at finding another potential husband for her. She has lost weight and has been putting no effort into her appearance, often wearing dirty clothes and rarely doing her hair. She has also slept more than normal but still seemed tired and inactive.
+
+Her demeanor also changed drastically. She has often gotten distressed and has had difficulty maintaining her concentration. She has also missed multiple assignments, and her grades dropped from straight A’s to a C average for the first time in her life. 
+
+When the two of you talk about the arranged marriage, she starts sobbing and asks you to pay the amount the family of the man she loves wants.
+
+##### Suicide attempt
+
+Your older daughter started to appear noticeably different since your attempts at finding another potential husband for her. She has lost weight and has been putting no effort into her appearance, often wearing dirty clothes and rarely doing her hair. She has also slept more than normal but still seemed tired and inactive.
+ 
+Her demeanor also changed drastically. She has often gotten distressed and has had difficulty maintaining her concentration. She has also missed multiple assignments, and her grades dropped from straight A’s to a C average for the first time in her life. 
+
+When the two of you talk about the arranged marriage, she starts sobbing and asks you to pay the amount the family of  the man she loves wants. Then, this past week, you and your daughter went through a traumatic experience when your daughter attempted suicide. You rushed her to the hospital, where she was placed in critical but stable condition.
+
+## Emotion Checklist
+
+How do you think [the star player / your daughter] feels? Click **all** that apply.
+
+Angry
+Sad
+Suicidal
+Mentally ill
+Depressed
+Guilty  
+Calm 
+Neutral
+Scared
+Tired
+Distressed
+Devious
+Jealous
+Confident
+Traumatized
+Violated
+None of the above
 
 ## Sample size in each condition in the current study
 
