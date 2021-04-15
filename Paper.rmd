@@ -4,7 +4,7 @@ author: "Michael R. Gaffney, Kai Adams, Kristen L. Syme, and Edward H. Hagen"
 date: '`r format(Sys.Date(), "%B %d, %Y")`'
 always_allow_html: true
 output: 
-  bookdown::word_document2:
+  bookdown::html_document2:
     number_sections: false
 bibliography: MTBib.bib
 csl: apa-6th-edition.csl
@@ -177,11 +177,11 @@ As many depression scales include measures of crying [for discussion on the rela
 
 ## Lessons learned from two pilot studies
 
-The current study is a refinement of a large MTurk experimental vignette pilot study (N=`r nrow(signalingdata2018b)`) that used a different vignette but very similar signals and outcomes, and a much smaller pilot study posted to reddit.com (N=28) that used draft versions of 3 vignettes used here, along with the same signals and outcomes. In the MTurk pilot study, there was a single vignette in which an imagined sister claims her child needs an expensive emergency medical procedure, and asks for a very large loan. In the small reddit.com study, participants viewed and responded to two vignettes used here, each with a different signal.
+The current study is a refinement of a large MTurk experimental vignette pilot study (N=`r nrow(signalingdata2018b)`) that used a different vignette but very similar signals and outcomes, and a much smaller pilot study posted to [reddit.com/r/SampleSize/](https://www.reddit.com/r/SampleSize/) (N=28) that used draft versions of 3 vignettes used here, along with the same signals and outcomes. In the MTurk pilot study, there was a single vignette in which an imagined sister claims her child needs an expensive emergency medical procedure, and asks for a very large loan. In the small reddit.com study, participants viewed and responded to two vignettes used here, each with a different signal.
 
 We learned five major lessons from the MTurk pilot study that influenced the design of the current study. First, as predicted, belief in the sister's need was highest in the *Depression* condition and lowest in the *Verbal request* condition, giving us confidence to continue this research (see Figure \@ref(fig:piloteffects)). Second, to rule out that believability and willingness to help were simply artifacts of the sister's psychiatric distress, we included a "signaling" condition in which the sister exhibited schizophrenic symptoms. As predicted, believability and willingness to help in this condition were dramatically lower than in any other condition, ruling out this alternative explanation. We therefore did not include the schizophrenic condition in the current study. Third, baseline (T1) believability was very high (mean = `r signif(pilot_results$meanT1belief, 2)` and median = `r signif(pilot_results$medianT1belief, 2)` on a 0-100 point scale), leaving little scope for signals to increase believability. In the current study we therefore endeavored to provide details in the vignettes that would undermine the victim's believability at baseline. Fourth, contrary to our hypothesis, the *Suicide threat* and *Suicide attempt* signals reduced believability relative to *Depression*. We surmised that the sister's adversity -- a sick child -- was not sufficient to justify a suicide attempt, thus undermining her believability. In the current study the signaler herself is therefore the victim, and the forms of adversity -- physical and sexual assault and thwarted and forced marriage -- are those that are frequently associated with suicidality. Fifth, the content of the vignette matters, so instead of a single vignette we decided to use four different vignettes to help determine the extent to which signaling effects were sensitive to seemingly irrelevant details of the vignettes.
 
-In the reddit.com pilot study, participants viewed two vignettes (with different signals in each one), and responded with lower belief to the second vignette compared to the first (regardless of the vignette or signal). To avoid such order effects, which are a problem in vignette studies that use multiple vignettes [@su2020], we decided to present each participant in the current study with a single vignette and single signal.
+In the reddit.com pilot study, participants viewed two vignettes (with different signals in each one), and responded with lower belief to the second vignette compared to the first (regardless of the vignette or signal). To avoid such order effects, which are a common problem in vignette studies that use multiple vignettes [@su2020], we decided to present each participant in the current study with a single vignette and signal.
 
 ## Preregistration
 
@@ -295,7 +295,7 @@ All analyses were conducted using `r R.version.string`.
 
 ## Data availibility
 
-The data associated with this research are available at http://doi.org/10.5281/zenodo.4637904.
+The data are available at http://doi.org/10.5281/zenodo.4637904
 
 # Results
 

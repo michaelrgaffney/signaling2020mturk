@@ -838,3 +838,11 @@ uv <- apply(dden$matT2[[1]], 2, rank) / (nrow(dden$matT2[[1]]) + 1)
 fit <- kdecop(uv, method = 'TTPI')
 plot(fit)
 plot(fit, type='contour')
+
+
+d_US2 <-
+  d_US %>%
+  dplyr::filter(RelStatus != 'Widowed') %>%
+  mutate(
+    RelStatus = ifelse(str_detect(RelStatus, 'Previously'), 'Divorced', RelStatus)
+  )
