@@ -639,6 +639,143 @@ compare_plot <- function(mquasi, mboot, mfrac, title){
     theme_minimal(15)
 }
 
+# Feedback ----------------------------------------------------------------
+
+feedback <- function(d){
+
+  nocomment <- c(
+    'no',
+    'none',
+    'nothing',
+    'n/a',
+    'na',
+    'n/a - thanks',
+    'n/a- thanks',
+    'no comments',
+    'no feedback',
+    'nope',
+    '-',
+    "i don't have any additional feedback thank you",
+    "i do not have any additional comments",
+    "i have no additional feedback",
+    "i have none",
+    "none thank you",
+    'no additional feedback by me',
+    'no comment',
+    'no comments at the current time',
+    'no comments or feedback',
+    "no comments thanks for asking though ;)",
+    'no comments!',
+    'no comments everything went well thank you',
+    'no feedback about this study',
+    'no feedback, but good luck woth the project!',
+    'no thanks',
+    'none, thanks',
+    'nothing comes to mind',
+    'nothing else',
+    'nothing whatsoever',
+    'xxx',
+    'none at this time, thank you',
+    "none, but thanks for asking for feedback!",
+    "no, i wish you well with your study",
+    "no issues",
+    "no problems"
+  )
+
+  uninformative <- c(
+    'cool beans',
+    'happy holidays!!!',
+    'stay safe out there',
+    'best of luck in your research!',
+    'this survey is very satisfaction'
+  )
+
+  goodstudy <- c(
+    "just that everything was lucid and clearly presented",
+    "i appreciate studies like this one, thank you",
+    "thank you for this important study i hope i can participate in more in the future",
+    "everything ran smoothly have a wonderful day!" ,
+    "everything ran well i hope you find my input helpful",
+    "loved this study, best of luck in your research!",
+    "i had zero problems with the survey either technically or in understanding the questions good job! it was well done thank you for the opportunity",
+    "everything was perfect and clear i wrongly input my partner worker id in the previous page this is my worker id:a2rwm6ybcomwrq  can you kindly consider this worker id",
+    "everything worked fine, no problems have a good day!",
+    "excellent survey i've enjoyed a lot",
+    "this study was such a nice making experience",
+    "good study,thanks for giving this opportunity for me",
+    "i like this task  because i imagine i am in the story  that feeling is good experience for my life",
+    "i love doing surveys that help me express myself",
+    "good survey and i learnt about everything in this survey",
+    "as like such good one survey",
+    "everything was clear and worked smoothly",
+    "i like the story",
+    "i like this story very much"
+  )
+
+  interestingstudy <- c(
+    "i like this study it was more interesting to make decision",
+    "very interesting and i hope i give my best in the task without any distractions",
+    "interesting and enjoyable thanks for the opportunity to contribute to your research best wishes, r",
+    "i found this study to be very interesting and thought provoking thank you for the opportunity to participate in it",
+    "this was an interesting study and leaves me thoughtful about my perspective good luck with your research thank you",
+    "this was a very interesting study , it made me think and reflect a lot !",
+    "i think participating in this study was important and i would like to participate in more",
+    "this study was very interesting to work",
+    "i thought the story was very well done and interesting thank you for an informative study",
+    "the story is very interesting and make the survey feels good",
+    "this study was such a nice decision making experience every think was very interesting and smart thoughts",
+    "it is an interesting study i put myself in that situation and decide accordingly",
+    "it is the very interesting and easy to the survey",
+    "it is the very interesting in the survey",
+    "the story in the study was interesting :)",
+    "this study gives me lesson on making wise decision",
+    "i like this survey very much it is very interesting to do please give more survey like this",
+    "it was quite an engaging study"
+  )
+
+  thanks <- c(
+    "thanks for the opportunity to participate, good luck with your research and stay safe!",
+    "thank you for allowing me to participate",
+    "thank you for letting me participate",
+    "thank you, i enjoyed this study",
+    "thanks good luck with your work"
+  )
+
+  d <-
+    d %>%
+    mutate(
+      Feedback = str_squish(Feedback),
+      Feedback = str_remove_all(Feedback, '\\.'),
+      Feedback = str_to_lower(Feedback),
+      Feedback_wc = str_count(Feedback, '\\w+'),
+      Feedback2 = case_when(
+        Feedback %in% nocomment ~ NA_character_,
+        str_detect(Feedback, 'attention') ~ 'Attention_check',
+        Feedback %in% uninformative ~ 'uninformative',
+        Feedback_wc <= 5 & str_detect(Feedback, c('good|great|nice|excellent|wonderful|fine|amazing|well done')) ~ 'good',
+        Feedback %in% goodstudy ~ 'good',
+        Feedback_wc <= 5 & str_detect(Feedback, c('thank')) ~ 'thanks',
+        Feedback %in% thanks ~ 'thanks',
+        Feedback_wc <= 6 & str_detect(Feedback, c('interest|intersting')) ~ 'interesting',
+        Feedback %in% interestingstudy ~ 'interesting',
+        TRUE ~ Feedback
+      ),
+      Feedback_wc = str_count(Feedback2, '\\w+'),
+      Feedback3 = case_when(
+        is.na(Feedback2) ~ 'None',
+        Feedback2 %in% c('good', 'interesting', 'thanks', 'uninformative') ~ 'Generic',
+        Feedback2 == 'Attention_check' ~ 'Attention check',
+        TRUE ~ 'Informative'
+      ),
+      Feedback3 = factor(Feedback3, levels = c('None', 'Generic', 'Attention check', 'Informative'))
+    )
+
+  ggplot(d) +
+    geom_mosaic(aes(x = product(Feedback3, vignette), fill = Feedback3), show.legend = F) +
+    labs(title = 'Feedback', x = '', y = '') +
+    theme_minimal(15)
+}
+
 ######### Alternate mediators ############
 
 # tmp <-

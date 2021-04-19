@@ -9,7 +9,7 @@ source("R/functions.R")
 
 # Set target-specific options such as packages.
 tar_option_set(
-  packages = c("ks", "car", "margins", "hagenutils", "visreg", "effects", "glmmboot", "broom", "mediation", "frm", "gglm", "gt", "ggforce", "dplyr", "tidyr", "purrr", "ggplot2", "patchwork", "forcats", "stringr", "furrr"),
+  packages = c("ks", "car", "margins", "hagenutils", "visreg", "effects", "glmmboot", "broom", "mediation", "frm", "gglm", "gt", "ggforce", "ggmosaic", "dplyr", "tidyr", "purrr", "ggplot2", "patchwork", "forcats", "stringr", "furrr"),
   imports = c("signalingdata2018", "signaling2020data")
   )
 
@@ -429,6 +429,14 @@ list(
   tar_target(
     effect_sizes2,
     eff_sizes2(d)
+  ),
+
+
+# Feedback plot -----------------------------------------------------------
+
+  tar_target(
+    plot_feedback,
+    feedback(d)
   ),
 
 # Paper -------------------------------------------------------------------

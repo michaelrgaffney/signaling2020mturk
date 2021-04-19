@@ -846,3 +846,26 @@ d_US2 <-
   mutate(
     RelStatus = ifelse(str_detect(RelStatus, 'Previously'), 'Divorced', RelStatus)
   )
+
+m <- glm(T2Belief ~ T1Belief + vignette + signal * RelStatus + Age , family = quasibinomial(), d_US2)
+Anova(m, type = 3)
+visreg(m, xvar='signal', by='RelStatus', scale = 'response', rug = F, gg = T) + coord_flip() + theme_bw()
+
+m <- glm(T2Belief ~ T1Belief + signal + vignette * RelStatus + Age , family = quasibinomial(), d_US2)
+Anova(m, type = 3)
+
+m <- glm(T2Action ~ T1Action + vignette + signal * RelStatus + Age , family = quasibinomial(), d_US2)
+Anova(m, type = 3)
+visreg(m, xvar='signal', by='RelStatus', scale = 'response', rug = F, gg = T) + coord_flip() + theme_bw()
+
+m <- glm(T2Action ~ T1Action + signal + vignette * RelStatus + Age , family = quasibinomial(), d_US2)
+Anova(m, type = 3)
+
+
+
+m <- glm(T2Belief ~ T1Belief + Sons + signal + vignette*Daughters + Age , family = quasibinomial(), d_US)
+Anova(m, type = 3)
+
+m <- glm(T2Action ~ T1Action + Sons + signal + vignette * Daughters + Age , family = quasibinomial(), d_US)
+Anova(m, type = 3)
+

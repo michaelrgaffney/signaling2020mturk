@@ -44,6 +44,7 @@ tar_load(
     'plot_raw_beliefs',
     'plot_raw_actions',
     'plot_raw_belief_action2d',
+    'plot_feedback',
     'med_prereg',
     'med1',
     'med2',
@@ -63,8 +64,7 @@ tar_load(
 # Abstract
 
 Major depression and suicide are generally viewed as pathological responses to stress that elicit aversive responses from others. Alternatively, depression and suicide attempts might involve honest 
-signals of need in response to stress and help to bargain for increased support from reluctant 
-others. To address this hypothesis, we examined responses to emotional signals in an experimental vignette study involving claims of substantial need in the presence of conflicts of interest and private information about whether the signaler was actually in need. In our sample of 1,240 participants recruited from Amazon Mechanical Turk, costlier signals like depression and suicide attempts resulted in greater perceptions of need and increased likelihood of support compared to simple verbal requests and crying without further symptoms. Additionally, the effect of signal type on likelihood of support was largely mediated by the effect of signaling on belief in need as predicted. Our results suggest that depression and suicide attempts, apparent human universals, are relatively successful ways of signaling honest need and eliciting support, consistent with costly signaling explanations.
+signals of need in response to stress and help to bargain for increased support from reluctant others. To address this hypothesis, we examined responses to emotional signals in an experimental vignette study involving claims of substantial need in the presence of conflicts of interest and private information about whether the signaler was actually in need. In our sample of 1,240 participants recruited from Amazon Mechanical Turk, costlier signals like depression and suicide attempts resulted in greater perceptions of need and increased likelihood of support compared to simple verbal requests and crying without further symptoms. Additionally, the effect of signal type on likelihood of support was largely mediated by the effect of signaling on belief in need as predicted. Our results suggest that depression and suicide attempts, apparent human universals, are relatively successful ways of signaling honest need and eliciting support, consistent with costly signaling explanations.
 
 # Introduction
 
@@ -305,18 +305,25 @@ removed_pct <- 100*signif(removed/nrow(signaling2020), 2)
 nationT1 <- table(d$sample)
 sexT1 <- table(d$Sex)
 n_cond <- xtabs(~signal+vignette, d)
+
+relstatus <- ifelse(str_detect(d$RelStatus, 'Previously'), 'Divorced', d$RelStatus)
+relstatus <- ifelse(str_detect(relstatus, 'Unmarried'), 'Divorced', relstatus)
+relstats <- table(relstatus)
+
 ```
 
-The study was started by N=`r nrow(signaling2020)` participants who clicked the link to Qualtrics (`r nationT0['American']` US and `r nationT0['Indian']` India). After removing participants who did not finish the survey, failed attention checks, or moved through the study at an unrealistic pace (N=`r removed`, `r removed_pct`%), our final sample was N = `r nrow(d)` (`r nationT1['American']` US and `r nationT1['Indian']` India), with `r sexT1['Male']` males and `r sexT1['Female']` females. The median number of participants per condition was `r median(n_cond)` (min=`r min(n_cond)`, max=`r max(n_cond)`). For the number of participants in each condition, see Table \@ref(tab:conditions). For summary statistics, see Table \@ref(tab:sumtab). For the distributions of participants by age, income, and nationality, see Figure \@ref(fig:socioeconomic).
+The study was started by N=`r nrow(signaling2020)` participants who clicked the link to Qualtrics (`r nationT0['American']` US and `r nationT0['Indian']` India). After removing participants who did not finish the survey, failed attention checks, or moved through the study at an unrealistic pace (N=`r removed`, `r removed_pct`%), our final sample was N = `r nrow(d)` (`r nationT1['American']` US and `r nationT1['Indian']` India), with `r sexT1['Male']` males and `r sexT1['Female']` females, `r relstatus['Married']` of whom were married or in a long-term relationship, `r relstatus['Divorced']` who were divorced, `r relstatus['Single']` who were single, and `r relstatus['Widowed']`. The median number of participants per condition was `r median(n_cond)` (min=`r min(n_cond)`, max=`r max(n_cond)`). For the number of participants in each condition, see Table \@ref(tab:conditions). For summary statistics, see Table \@ref(tab:sumtab). For the distributions of participants by age, income, and nationality, see Figure \@ref(fig:socioeconomic).
 
 ```{r sumtab}
 
 d$minutes <- d$TotalTime/60
+d$Children <- d$Sons + d$Daughters
 
 vars <- c(
   Age = 'Age (years)',
   Income = 'Income (USD)',
   years_education = 'Education (years)',
+  Children = 'Number of children',
   minutes = 'Time to complete (minutes)',
   T1Belief = 'T1 Belief',
   T1Action = 'T1 Action',
@@ -443,7 +450,7 @@ plot_emotions
 
 The sociodemographic variables were strongly confounded with nationality (Indian participants were younger, lower income, with more years of education than US), which, in turn, were confounded with vignette (responses in the Indian Thwarted marriage vignette differed substantially from those in the US vignettes). We therefore conducted our exploration of the sociodemographic variables separately by nationality.
 
-In the US sample, women participants were more likely to believe and help the victim than men, and younger participants were more likely to believe and help the victim than older participants. We found no significant effects of *Income* or *Education* on *Belief* or *Action*. See Figure \@ref(fig:demographicsignal).
+In the US sample, women participants were more likely to believe and help the victim than men, and younger participants were more likely to believe and help the victim than older participants. We found no significant effects of *Income*, *Education*, relationship status (e.g., married, single), or number of sons or daughters on *Belief* or *Action*. See Figure \@ref(fig:demographicsignal).
 
 ```{r demographicsignal, fig.width=11, fig.height=8, fig.cap="Sociodemographic effects on *Belief* and *Action*. **Top**: Association of T2 Belief with Sex (left) and Age (right) controlling for T1 Belief, vignette, Education, and Income. **Bottom**: Association of T2 Action with Sex (left) and Age (right) controlling for T1 Action, vignette, Education, and Income. Estimated using generalized linear regression models with the quasibinomial family."}
 
@@ -986,7 +993,7 @@ hagenheat(dfT2emotion_signal, rotate_labels = F, seriation_method = 'PCA_angle',
 d_diff <- as.matrix(dfT2emotion_signal[-1]) - as.matrix(dfT1emotion_signal[-1])
 rownames(d_diff) <- dfT2emotion_signal$name
 
-hagenheat(d_diff, rotate_labels = F, seriation_method = 'PCA_angle') + scale_fill_gradient2()
+hagenheat(d_diff, rotate_labels = F, seriation_method = 'PCA_angle') + scale_fill_gradient2(low='blue', high='red')
 
 ```
 
@@ -1017,6 +1024,12 @@ effectsPlots_India$m8plot
 
 ```{r t3action, fig.width=10, fig.cap="The effect of post-signal (T3) information that the victim was telling the truth on the likelihood of acting to help her (T3 Action), controlling for T2 Action, with a term for the interaction of T2 Action and vignette."}
 effectsPlots$m26plot + theme(panel.spacing = unit(1.5, "lines"))
+```
+
+## Feedback distribution by vignette
+
+```{r feedbackplot, fig.width=9, fig.cap="The distribution of optional feedback provided at the end of the study. None: no feedback provided (includes, e.g., 'none', 'no', 'N/A'). Generic: A few short words, such as 'nice study', or 'thanks'. Attention check: question or comment on the attention checks. Informative: one or two sentences commenting on specific aspects of the survey."}
+plot_feedback
 ```
 
 
