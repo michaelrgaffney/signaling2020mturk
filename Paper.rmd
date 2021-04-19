@@ -128,7 +128,7 @@ The costs of depression and suicidal behavior may be particularly important in t
 
 ### Determining the impact of cues versus signals
 
-Distinguishing between the information provided by signals versus cues is a major challenge for signaling approaches to behavior. A signal differs from a cue in that it is intentionally sent by an organism to alter the perceptions and behaviors of others, while a cue is any piece of information that influences an individual's behavior or physiological state that was not created for communicative effect [@MaynardSmithHarper1995]. Regarding the signals of interest, suicide attempts are more likely to take the form of pure, external signals than other symptoms of depression. This is because low mood's impact on behavior for non-signaling benefits likely conveys information as cues in addition to what might exist for signaling purposes. In other words, the signaling component of depression may come from the upregulation of symptoms beyond what would be optimal for non-signaling purposes rather than the creation of entirely new symptoms. Suicidality is likely an exception to this, due to the likelihood most suicide attempts likely do not have non-signaling functions [see @deCatanzaro1991 for a possible exception].
+Distinguishing between the information provided by signals versus cues is a major challenge for signaling approaches to behavior. A signal differs from a cue in that it is intentionally sent by an organism to alter the perceptions and behaviors of others, while a cue is any piece of information that influences an individual's behavior or physiological state that was not created for communicative effect [@MaynardSmithHarper1995]. Regarding the signals of interest, suicide attempts are more likely to take the form of pure, external signals than other symptoms of depression. This is because low mood's impact on behavior for non-signaling benefits likely conveys information as cues in addition to what might exist for signaling purposes. In other words, the signaling component of depression may come from the upregulation of symptoms beyond what would be optimal for non-signaling purposes rather than the creation of entirely new symptoms. Suicidality is likely an exception to this, due to the likelihood most suicide attempts do not have non-signaling functions [see @deCatanzaro1991 for a possible exception].
 
 <!-- ## Responses to depression and suicidal behavior  -->
 
@@ -172,7 +172,7 @@ The full vignettes are available in the SI.
 
 The sole randomized treatment in this study was the signal participants saw, with these signals being one of (1) the control condition: a verbal request without additional signaling, (2) crying, (3) mild-depression, (4) depression, and (5) a suicide attempt, with the order of the conditions here moving from low to high cost.
 
-As many depression scales include measures of crying [for discussion on the relationship between crying and depression see @bylsma2020] and depression is a major risk factor for suicide [@BostwickPankratz2000; @Kessler2012], each signal was designed to build off of the less costly signals so that each signal contained elements of any signal it was costlier than. Although referred to as signals throughout the paper for brevity, we expect that the hypothesized signals of need, like many signals, will also provide information to others in the form of cues [for discussion on the evolution of cues from signals see: @biernaskie2018; @Tiokhin2016; @Steinkopf2015]. The full text for the signals are available in the SI.
+As many depression scales include measures of crying [for discussion on the relationship between crying and depression see @bylsma2020] and depression is a major risk factor for suicide [@BostwickPankratz2000; @Kessler2012], each signal was designed to build off of the less costly signals so that each signal contained elements of any signal it was costlier than. Although referred to as signals throughout the paper for brevity, we expect that the hypothesized signals of need, like many signals, will also provide information to others in the form of cues [for discussion on the evolution of signals from cues see: @biernaskie2018; @Tiokhin2016; @Steinkopf2015]. The full text for the signals are available in the SI.
 
 ## Lessons learned from two pilot studies
 
@@ -518,11 +518,9 @@ Anne sounds like she will provide a lot of feedback, so her after that?
 
 - victim or signaler?
 - add anger
-- check limitations (especially justification of vignette study)!
-- justifty pre-test post-test?
-- how to knit to word?
 - Intro "State the objectives of the work and provide an adequate background, avoiding a detailed literature survey or a summary of the results."
 - Discussion " This should explore the significance of the results of the work, not repeat them. A combined Results and Discussion section is often appropriate. Avoid extensive citations and discussion of published literature."
+- mention asking for prefered sex
 
 # Supplementary information
 
@@ -819,6 +817,24 @@ Confident
 Traumatized
 Violated
 None of the above
+
+## T3 Evidence
+
+### Basketball Coach
+
+Since your last response, it was discovered that a security camera captured the assault happening, just as the star player had described.
+
+### Brother-in-law
+
+Since your last response, your daughter has come to you with a video she secretly took which showed your brother-in-law trying to grope her as she had described previously.
+
+### Romantic partner
+
+Since your last response, your daughter has come to you with a video she secretly took which showed your partner hitting her as she had described previously.
+
+### Thwarted marriage
+
+Just now in the market, you saw the man whose family is willing to accept a smaller dowry (the man your daughter does not want to marry). You heard him insult your daughter and your family.
 
 ## Sample size in each condition in the current study
 
