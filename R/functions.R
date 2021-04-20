@@ -30,7 +30,7 @@ pilotResults <- function(d){
 
   rslts <- list(
     m_pilot_belief = glm(needsmoneyt2/100 ~ needsmoneyt1 + signal, family = quasibinomial, d),
-    m_pilot_mentallyill = glm(MentallyIll ~ signal, family = binomial, d),
+    m_pilot_mentallyill = suppressWarnings(glm(MentallyIll ~ signal, family = binomial, d)),
     meanT1belief = mean(d$needsmoneyt1, na.rm = T),
     medianT1belief = median(d$needsmoneyt1, na.rm = T)
   )
@@ -741,16 +741,113 @@ feedback <- function(d){
     "thanks good luck with your work"
   )
 
-  d <-
-    d %>%
+  study_criticism <- c(
+    "please increase the pay",
+    "the questionnaires seemed to be repetitive",
+    "the sliders are not resetting on every page that made me a little confused",
+    "if there were more details then i'd be able to make a better decision before having to see video evidence",
+    'there is no reason to ask how many sons or daughters one has "do you have any children?" "yes", "no" that is all that needs to be asked',
+    "this was kind of depressing, so you might want to add that little warning you normally do for content warnings about things about abuse, or if it's there, i don't think it was displayed by itself enough to notice",
+    "i found it odd that my theoretical niece had fancy belongings after a house fire",
+    "can’t imagine how this teenage girl could possibly have a video of bro-in-law groping her, seems implausible, but the text stated that she did have it, so i changed my view accordingly - thanks",
+    "scenario was somewhat difficult to understand",
+    'people don\'t like being treated like children cut your "attention checks" down significantly you just come across as extremely paranoid',
+    "those attention checks were ridiculous",
+    "hello, just wanted to say that i did not miss that attention check at the end of the survey before demographics the slider however seemed to be broken and i couldn't move it! i tried refreshing the page and using the keyboard instead of the mouse but it seemed stuck i hope this does not cause a rejection please check the slider for future turkers",
+    "the last attention check seemed unnecessary",
+    "just a minor comment, but you may receive some false positives with regards to the last attention check question qualtrics sometimes fails to register a response and reusing the last the question for the check may prompt participants to think that their response was not recorded at first glance at first glance, leading them to try clicking again i think changing the question text may be a better filter as it would still require careful reading but it does not leave the possibility of a participant thinking that there was a qualtrics error"
+  )
+
+  study_comment <- c(
+    "the survey is very usefull",
+    "thank you for this meaningful study!",
+    'thank you for including the most accurate demographic descriptor of my current relationship than i have seen in any other surveys so frustrating to just be classified as simply "divorced" when in a long-term unmarried relationship after a divorce awesome job!',
+    "good study on how we feel about evidence",
+    "very interesting study overall thanks for conducting research on important topics such as this stay safe during this corona pandemic and keep up the great research",
+    "very difficult survey",
+    'i think you should add the following question in future surveys" how many granddaughters/grandsons do you have',
+    "the questons are too short it was good",
+    "the survey is clear and interesting there are different options that could be considered if one thinks that the brother in law should not be kicked out the options include having a talk with the brother in law, threatening to kick him out if it happens again, etc what option would participants select?",
+    "i hope i didn't miss anything on the ac's, thank you for letting me take this!",
+    "i think i may have missed an attention check toward the end, i am not sure",
+    "attention checking questions are easy to answer",
+    "i accidentally skipped an attention check because my internet is going so slow, i noticed it but it was too late to stop the next page loading",
+    "it is easy to understand the story to answer the attention question and it was very interesting"
+  )
+
+  vignette_endorsement <- c(
+    "it is like a current situation in every family",
+    "real life",
+    "this survey makes sense with the place of the word",
+    "this survey makes sense with me",
+    "the study is very good and describes an even which is happening frequently in india",
+    "this survey just like my family two daughters are same as this survey like",
+    "many family ,members have this type of troubles",
+    "dowry is a major problems to women, and this situation happened to many family",
+    "i think this was a great study i actually kicked my boyfriend out because of my daughters accusations she did get depressed and i will always believe my child",
+    "this kind of thing did happen to my daughter and i it was horrible","i went through this exact scenario as a kid i wound up homeless",
+    "that hit really close to home i tried to imagine myself as the person in the scenario outlined, but i think a lot of me got into it and that affected my feelings and decision-making",
+    "thanks for asking challenging, thoughtful questions sexual abuse in families is more prevalent than many people think",
+    "i was in this situation growing up no one believed me, not even social workers but i was very much telling the truth and it destroyed me i never got trusted professional help with it and for it today i am a barely functioning adult with depression and other emotional problems"
+  )
+
+  vignette_comment <- c(
+    "dowry system needs to be abolished women should be made self-dependent, they should not be using their parents money if they want to get settled with the person they love, they should mutually share all the expenses",
+    "man who wants more money really wants the money not the daughter",
+    "the beginning of the survey said the event didn't happen, but then there's video that it did?",
+    "this was an interesting scenario overall i honestly do not know how i would react if my partner started hitting out daughter",
+    "this would depend more on you and your daughter's relationship my real daughter would never lie about this, so i would have believed her from the beginning",
+    "the moment my daughter's grades dropped i would start considering getting rid of the partner no partner is worth ruining a person's life",
+    "i would probably have set up a hidden camera in this situation to see what is going on when i am not around",
+    "very disturbing to imagine myself in this situation!!",
+    "i would have probably have been keeping a closer eye on the brother-in-law and my daughter, even having her sleep in the same room as me while they were there at her first accusation even if i was doubting she was telling the truth i wouldn't risk someone potentially harming her, and i know this has occurred many times before when strange men are brought into a home with other children",
+    "i'd ask my mom to take my daughter for a bit",
+    "i am not sure hat i would throw him out right away, but i would investigate 100%! also, i would put cams in every room of the home without letting him know so that i could see if he did do anything and i can get it on cam, i would also have him arrested i would also explain to my daughter that, crying wolf can make it so that people are concerned about whether you can be trusted later, too i would also tell her to come get me immediately, take video, etc to help me research"
+  )
+
+  decision_explanation <- c(
+    "actually my decision is the man who really loves the woman does not expect money from her except her pure love  so it seems unfair to me that getting dowry for marriages i strongly denied that concept in my culture",
+    "i questioned the student's honest throughout because she has exaggerated before it's tough to judge a person as honest when they have not been honest before",
+    "unfortunate scenario with the star player, but to me, people are innocent until proven guilty",
+    "this was interesting, as i thought i was more confident standing by women who accuses others or rape, but this story shows otherwise i should've stood by her at the beginning but chose not to because of her attitude and behavior this study reminded me that that should not matter when it comes to sexual assaults accusations",
+    "i made my decision by clear evidence seriously, i concerned this study",
+    "this definitely was a bit challenging! however, i err on the side of victims, because bad things can still happen to bad people, and i have never really seen someone putting out a rape accusation when it could harm their own career unless the situation is serious -- usually it's the exact opposite that occurs",
+    "i know we are always supposed to believe the victim, but without any other information that what i had on hand, i'd make the same decision again",
+    "without evidence it hard to believe someone",
+    "the behavior and personality of the star athlete made it hard to believe her allegation",
+    "i know that some children would lie to get what they wanted if my daughter came to me and said that someone i was with hit her there would be a little doubt in my mind but i would pack his stuff immediately and kick him out i don't think my daughter would lie about an issue like that, and i definitely wouldn't take any chances",
+    "i would want to believe my daughter and my partner, but with the evidence the daughter took, i'd believe her over him and most likely kick him out to protect her",
+    "interesting hit, thanks i'd always err on the side of caution and in the initial scenario, even if i wasn't fully sure she was telling the truth, i'd kick the brother in law out i'd rather be wrong than let him stay if he were actually molesting her",
+    "despite of how passive aggressive my daughter is, any allegation of that nature would always warrant a reaction of my part i believe there is always truth behind bold allegation so that nature i would definitely kicked my brother in law only from the beginning, reason why i put the slider at 72 i would have asked my sister and niece to stay there should be a explanation box as to why the rating one gave to further explain",
+    "considering the daughter's past incidences of lying, the video evidence would be necessary for me to believe her",
+    "yes thank you my sister and her daughter could stay they be welcome her husband on the other hand would have been long gone he could have went to my mothers if she though he was telling the truth also in that circumstance i rather believe my daughter"
+  )
+
+  T3reaction <- c(
+    "okay, now i would want to beat the snot out of that coach for all he put her through and for all the stress he put me through",
+    "that last part was surprising",
+    "i feel bad about not believing my fictional daughter",
+    "that was a surprising twist to the story i thought the star player was lying until the video",
+    "guess i should have believed her!",
+    "i feel bad because i chose love over the child in the beginning",
+    "if there was video proof of my girlfriend hitting my daughter than i would almost certainly break up with her",
+    "i feel very guilty on not believing my hypothetical daughter the first time if this ever happens to me i will side with my child first thank you for the eye opener",
+    "had me fooled for a little bit",
+    "well now i feel awful for not believing my fake daughter!",
+    "that twist in the scenario really messed with my head i feel bad about not believing the girl that was my daughter in the scenario"
+  )
+
+  d %>%
     mutate(
       Feedback = str_squish(Feedback),
+      Feedback_original = Feedback,
       Feedback = str_remove_all(Feedback, '\\.'),
       Feedback = str_to_lower(Feedback),
+      Feedback_raw = Feedback,
       Feedback_wc = str_count(Feedback, '\\w+'),
       Feedback2 = case_when(
         Feedback %in% nocomment ~ NA_character_,
-        str_detect(Feedback, 'attention') ~ 'Attention_check',
+        # str_detect(Feedback, "attention|ac\\'s") ~ 'Attention_check',
         Feedback %in% uninformative ~ 'uninformative',
         Feedback_wc <= 5 & str_detect(Feedback, c('good|great|nice|excellent|wonderful|fine|amazing|well done')) ~ 'good',
         Feedback %in% goodstudy ~ 'good',
@@ -764,16 +861,23 @@ feedback <- function(d){
       Feedback3 = case_when(
         is.na(Feedback2) ~ 'None',
         Feedback2 %in% c('good', 'interesting', 'thanks', 'uninformative') ~ 'Generic',
-        Feedback2 == 'Attention_check' ~ 'Attention check',
+        # Feedback2 == 'Attention_check' ~ 'Attention check',
         TRUE ~ 'Informative'
       ),
-      Feedback3 = factor(Feedback3, levels = c('None', 'Generic', 'Attention check', 'Informative'))
+      Feedback3 = factor(Feedback3, levels = c('None', 'Generic', 'Informative'))
+    ) %>%
+    mutate(
+      Informative = case_when(
+        Feedback3 != 'Informative' ~ NA_character_,
+        Feedback_raw %in% study_criticism ~ 'Study criticism',
+        Feedback_raw %in% study_comment ~ 'Study comment',
+        Feedback_raw %in% vignette_endorsement ~ 'Vignette endorsement',
+        Feedback_raw %in% vignette_comment ~ 'Vignette comment',
+        Feedback_raw %in% decision_explanation ~ 'Decision explanation',
+        Feedback_raw %in% T3reaction ~ 'T3 reaction',
+        TRUE ~ 'Failed match'
+      )
     )
-
-  ggplot(d) +
-    geom_mosaic(aes(x = product(Feedback3, vignette), fill = Feedback3), show.legend = F) +
-    labs(title = 'Feedback', x = '', y = '') +
-    theme_minimal(15)
 }
 
 ######### Alternate mediators ############

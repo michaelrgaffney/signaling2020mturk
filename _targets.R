@@ -9,7 +9,7 @@ source("R/functions.R")
 
 # Set target-specific options such as packages.
 tar_option_set(
-  packages = c("ks", "car", "margins", "hagenutils", "visreg", "effects", "glmmboot", "broom", "mediation", "frm", "gglm", "gt", "ggforce", "ggmosaic", "dplyr", "tidyr", "purrr", "ggplot2", "patchwork", "forcats", "stringr", "furrr"),
+  packages = c("ks", "car", "margins", "hagenutils", "visreg", "effects", "glmmboot", "broom", "mediation", "frm", "gglm", "gt", "ggforce", "dplyr", "tidyr", "purrr", "ggplot2", "patchwork", "forcats", "stringr", "furrr"),
   imports = c("signalingdata2018", "signaling2020data")
   )
 
@@ -41,7 +41,8 @@ list(
       T1Manipulative = T1Devious + T1Jealous,
       T2LowMood = T2Depressed + T2Distressed + T2Sad,
       T2Manipulative = T2Devious + T2Jealous
-    )
+    ) %>%
+    feedback()
   ),
 
 # PCA ---------------------------------------------------------------------
@@ -186,7 +187,7 @@ list(
   tar_target(
     m1_boot,
     bootstrap_model(
-      base_model = glm(T2Belief ~ T1Belief + signal, family = binomial, d),
+      base_model = suppressWarnings(glm(T2Belief ~ T1Belief + signal, family = binomial, d)),
       base_data = d,
       resamples = 999,
       parallelism = 'parallel'
@@ -196,7 +197,7 @@ list(
   tar_target(
     m3_boot,
     bootstrap_model(
-      base_model = glm(T2Action ~ T1Action + signal, family = binomial, d),
+      base_model = suppressWarnings(glm(T2Action ~ T1Action + signal, family = binomial, d)),
       base_data = d,
       resamples = 999,
       parallelism = 'parallel'
@@ -206,7 +207,7 @@ list(
   tar_target(
     m1b_boot,
     bootstrap_model(
-      base_model = glm(T2Belief ~ T1Belief * signal, family = binomial, d),
+      base_model = suppressWarnings(glm(T2Belief ~ T1Belief * signal, family = binomial, d)),
       base_data = d,
       resamples = 999,
       parallelism = 'parallel'
@@ -216,7 +217,7 @@ list(
   tar_target(
     m3b_boot,
     bootstrap_model(
-      base_model = glm(T2Action ~ T1Action * signal, family = binomial, d),
+      base_model = suppressWarnings(glm(T2Action ~ T1Action * signal, family = binomial, d)),
       base_data = d,
       resamples = 999,
       parallelism = 'parallel'

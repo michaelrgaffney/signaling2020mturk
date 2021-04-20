@@ -278,7 +278,7 @@ Our pre-test and post-test measures, *T1 & T2 Belief* and *T1 & T2 Action*, were
 
 We therefore fit models of our two outcome variables (which we rescaled to the continuous interval [0, 1]) in four ways. First, we fit the preregistered OLS models (reported in the SI). Second, we fit fractional regression models, introduced in a seminal paper by @papke1996 for continuous outcomes on the interval [0, 1], which, in brief, involve fitting a quasi-likelihood version of logistic regression with robust standard errors. This method is implemented in the `frm` package [@ramalho2019]. Third, we fit GLM logistic regression models, computing 95% CI's via bootstrapping, using the `glmmboot` package created to model continuous outcomes on [0, 1] [@humphrey2020]. Finally, we fit GLM models with the quasibinomial family and logit link using the `glm` function in R stats library, which can fit continuous outcomes on [0, 1]. The estimated coefficients, standard errors, and confidence intervals produced by the latter three methods were *very* similar, and often identical (see Figure \@ref(fig:modelcompareplots). We therefore proceeded to fit and report models using `glm` with the quasibinomial family and logit link because model objects produced by this function are compatible with numerous other R packages for summarizing and plotting effects.
 
-Although two of our four preregistered OLS regression models included an interaction term, the rationale for it was less convincing for quasibinomial models using a logit link, which maps [0, 1] to (-$\infty$, $\infty$). The interaction would also increase the number of parameters to estimate, increasing the risk of overfitting. We therefore did not include it in the GLM models (but we still report OLS models with the interaction term).
+Although two of our four preregistered OLS regression models included an interaction term, the rationale for it was less convincing for quasibinomial models using a logit link because the expected interaction -- reduced effect of signals in individuals with high baseline belief -- is "built in" to logistic regression (i.e., the effect of a predictor on the outcome necessarily diminishes as the outcome approaches 1). Because our theory does not predict an interaction beyond that already present in a logistic regression model, we did not include an interaction term in the GLM models (but we still report OLS models with the interaction term).
 
 Our intervention was *signal*, an ordinal variable with the following preregistered rank order: verbal request (control), crying, mild depression, depression, suicide attempt. We used the default `glm` settings, which code such variables as orthogonal polynomial contrasts. Our primary confirmatory regression models were as follows (where the signal subscripts indicate polynomial degree):
 
@@ -1044,8 +1044,22 @@ effectsPlots$m26plot + theme(panel.spacing = unit(1.5, "lines"))
 
 ## Feedback distribution by vignette
 
-```{r feedbackplot, fig.width=9, fig.cap="The distribution of optional feedback provided at the end of the study. None: no feedback provided (includes, e.g., 'none', 'no', 'N/A'). Generic: A few short words, such as 'nice study', or 'thanks'. Attention check: question or comment on the attention checks. Informative: one or two sentences commenting on specific aspects of the survey."}
-plot_feedback
+```{r feedbackplot, fig.width=9, fig.cap="The distribution of optional feedback provided at the end of the study. None: no feedback provided (includes, e.g., 'none', 'no', 'N/A'). Generic: A few short words, such as 'nice study', or 'thanks'. Informative: one or two sentences commenting on specific aspects of the survey."}
+
+hagenutils::ggxtabs(xtabs(~Feedback3 + vignette, d), cell_counts = T) + xlab('')
+```
+
+```{r informativeplot, fig.width=9, fig.cap="The distribution of informative feedback provided at the end of the study. See Figure \\@ref(fig:feedbackplot) for other types of feedback. See Table \\@ref(tab:informativetab) for all informative statements."}
+hagenutils::ggxtabs(xtabs(~Informative + vignette, d), cell_counts = T) + xlab('')
+```
+
+```{r informativetab}
+d %>% 
+  dplyr::select(Informative, vignette, Feedback_original) %>% 
+  dplyr::filter(!is.na(Informative)) %>% 
+  arrange(Informative, vignette) %>% 
+  kable(caption="Informative feedback provided by participants after T3 (the end of the study). Categorization required some judgement calls.") %>% 
+  kable_styling()
 ```
 
 
@@ -1116,7 +1130,7 @@ bind_rows(models_prereg$TidyANOVA, .id = 'Model') %>%
 
 ```
 
-## Differences between quasibinomial and bootstrapped confidence intervals
+## Comparison of estimates and confidence intervals of GLM, Fractional, and bootstrapped models
 
 ```{r}
 m1_quasi <- models$TidyModel$m1
