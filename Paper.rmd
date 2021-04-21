@@ -158,7 +158,7 @@ In principle, pretest-posttest designs, by controlling for pretest variation in 
 
 Four vignettes were used in this study in which both the presence of conflicts of interest and the existence of private information about one's need were emphasized. Due to the expectation that depression and suicide are likely too costly of signals for relatively minor instances of need, we designed this study to involve severe scenarios associated with suicide attempts both ethnographically and clinically (i.e, sexual assault, non-sexual assault, and thwarted marriage).
 
-Participants in the US sample were randomly assigned to either the "basketball coach," "romantic partner," or "brother-in-law" vignettes. In the "basketball coach" scenario, the star player on a university basketball team comes to the participant (who is asked to imagine themselves as the athletic director at a university) and claims she was sexually assaulted by the coach. However, there are indications the player might be lying to get more playing time.
+Participants in the US sample were randomly assigned to either the "basketball coach," "romantic partner," or "brother-in-law" vignettes. In the "basketball coach" scenario, the star player on a university basketball team comes to the participant (who is asked to imagine themselves as the athletic director at a university) and claims she was sexually assaulted by her coach. However, there are indications the player might be lying to get more playing time.
 
 The "brother-in-law" vignette involved participants imagining that they let their sister, brother-in-law, and niece move in with the participant and their 15-year-old daughter after their sister's family lost their house in a fire. During this time, the participant's daughter becomes jealous of her cousin before accusing her uncle of sexually assaulting her.
 
@@ -528,6 +528,13 @@ Anne sounds like she will provide a lot of feedback, so her after that?
 - Intro "State the objectives of the work and provide an adequate background, avoiding a detailed literature survey or a summary of the results."
 - Discussion " This should explore the significance of the results of the work, not repeat them. A combined Results and Discussion section is often appropriate. Avoid extensive citations and discussion of published literature."
 - mention asking for prefered sex
+
+# Notes from my meeting with Anne
+
+- Table detailing the cooperative endeavor (maybe word as boundedness of fate), conflict of interest, and what the private information is about would be useful.
+- Calling verbal request control when it's a treatment?
+- Can shift much of the pilot studies info to SI with some detail post line 279 in draft she saw.
+- Cumulative distribution plot: needs more info in captions. could benefit from fig6a and fig6b (confusion over x and y axes)
 
 # Supplementary information
 
