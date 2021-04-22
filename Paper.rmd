@@ -63,14 +63,15 @@ tar_load(
 
 # Abstract
 
-Major depression and suicide are generally viewed as pathological responses to stress that elicit aversive responses from others. Alternatively, depression and suicide attempts might involve honest 
-signals of need in response to stress and help to bargain for increased support from reluctant others. To address this hypothesis, we examined responses to emotional signals in an experimental vignette study involving claims of substantial need in the presence of conflicts of interest and private information about whether the signaler was actually in need. In our sample of 1,240 participants recruited from Amazon Mechanical Turk, costlier signals like depression and suicide attempts resulted in greater perceptions of need and increased likelihood of support compared to simple verbal requests and crying without further symptoms. Additionally, the effect of signal type on likelihood of support was largely mediated by the effect of signaling on belief in need as predicted. Our results suggest that depression and suicide attempts, apparent human universals, are relatively successful ways of signaling honest need and eliciting support, consistent with costly signaling explanations.
+Major depression and suicide are generally viewed as pathological responses to stress that elicit aversive responses from others. Alternatively, depression and suicide attempts might involve honest signals of need in response to stress and help to bargain for increased support from reluctant others. To address this hypothesis, we examined responses to emotional signals in an experimental vignette study involving claims of substantial need in the presence of conflicts of interest and private information about whether the signaler was actually in need. In our sample of 1,240 participants recruited from Amazon Mechanical Turk, costlier signals like depression and suicide attempts resulted in greater perceptions of need and increased likelihood of support compared to simple verbal requests and crying without further symptoms. Additionally, the effect of signal type on likelihood of support was largely mediated by the effect of signaling on belief in need as predicted. Our results suggest that depression and suicide attempts, apparent human universals, are relatively successful ways of signaling honest need and eliciting support, consistent with costly signaling explanations.
 
 # Introduction
 
-Durkheim’s pioneering study of suicide [@durkheim1897] helped launch sociology as a quantitative discipline. Sociological investigations of suicide flourished through much of the 20th century, but were supplanted by medical and public health approaches as the biomedical model of mental health took hold in the late 1970's and early 1980's [@wray2011; @syme2020]. The biomedical model tends to frame suicide as a problem with the individual, e.g., as one involving psychiatric disturbance, drug addiction, or stress sensitivity [@wray2011]. This theoretical approach has made little progress: rates of suicide, which vary widely by country, have remained relatively flat in countries for which there are long-term data, such as the US, UK, Japan, and Sweden [@owidsuicide].
+Durkheim's pioneering study of suicide [@durkheim1897] helped launch sociology as a quantitative discipline. Sociological investigations of suicide flourished through much of the 20th century, but were supplanted by medical and public health approaches as the biomedical model of mental health took hold in the late 1970's and early 1980's [@wray2011; @syme2020]. The biomedical model tends to frame suicide as a problem with the individual, e.g., as one involving psychiatric disturbance, drug addiction, or stress sensitivity [@wray2011]. This theoretical approach has made little progress: rates of suicide, which vary widely by country, have remained relatively flat in countries for which there are long-term data, such as the US, UK, Japan, and Sweden [@owidsuicide].
 
-Early on, anthropologists also tackled the problem of suicide as manifested in the small traditional societies in which they conducted their fieldwork. Suicide, they found, was commonly a form of protest, revenge, and/or appeal [e.g., @Malinowski:1932; @niehaus2012]. Some ethnographers, such as @Hezel:1987, conceptualized suicide as a form of anger, whereas others, such as @Giddens:1964, conceptualized suicide as a form of social pressure. @Counts:1980 emphasized the powerlessness of suicide victims. Common to almost all theoretical and empirical investigations of suicide is a focus on *completed* suicides, i.e., suicide deaths. @SymeEtAl2016, in contrast, argued that because the vast majority of suicidal behavior does not result in death, the proper focus should be on suicide ideation and suicide attempts, with death as an unintended consequence. See Figure \@ref(fig:cdc).
+## Conflict plays a central role in suicidality and depression
+
+Early on, anthropologists also tackled the problem of suicide as manifested in the small traditional societies in which they conducted their fieldwork. Suicide, they found, was commonly a form of protest, revenge, and/or appeal [e.g., @Malinowski:1932; @niehaus2012]. Some ethnographers, such as @Hezel:1987, conceptualized suicide as a form of anger, whereas others, such as @Giddens:1964, conceptualized suicide as a form of social pressure. @Counts:1980 emphasized the powerlessness of suicide victims. Common to almost all theoretical and empirical investigations of suicide is a focus on *completed* suicides, i.e., suicide deaths. @SymeEtAl2016, in contrast, argued that because the vast majority of suicidal behavior does not result in death, the proper focus should be on suicide ideation and suicide attempts (see Figure \@ref(fig:cdc)). Suicide attempts, as we explain next, are a gamble to improve one's life by taking a low but non-zero risk of death. Most suicides deaths, especially in young, physically healthy individuals, are therefore the inevitable consequence that some individuals lose this gamble.
 
 ```{r cdc, fig.width=8, fig.cap="US Suicide attempt and completion rates by age and sex (2001-2019)."}
 library(hrafsuicidedata)
@@ -88,7 +89,7 @@ cdc2 %>%
   theme(axis.title.y = element_text(angle = 0, hjust=0))
 ```
 
-Within anthropology, Raymond Firth was likely the first to conceptualize suicidality as a gamble to improve one's circumstances in the here and now. Based on observations that suicide attempts often followed social conflict or loss, and varied substantially in their likelihood of death, he argued that a sizable subset of the suicide attempts among the Tikopia were not meant to end in death but instead were a means to elicit attention, status, or immediate reintegration into the community following negative events [@firth1936; @Firth:1961]. 
+Within anthropology, Raymond Firth was likely the first to conceptualize suicidality as a gamble to improve one's circumstances in the here and now. Based on observations that suicide attempts often followed social conflict or loss, and varied substantially in their likelihood of death, he argued that a sizable subset of the suicide attempts among the Tikopia were not meant to end in death but instead were a means to elicit attention, status, or immediate reintegration into the community following negative events [@firth1936; @Firth:1961]. Human communites are highly interdependent [\@]
 
 Suicidality is closely linked to depression. Suicidal ideation is one of nine diagnostic criteria for a major depressive episode [MDE, @dsm5], it is associated with depression across cultures [@haroz2017], and depression is a major risk factor for suicidal behavior [@hawton2013]. Compared to suicide, however, there are fewer anthropological investigations of depression [@kleinman1985] despite frequent reports of depression or depression-like behavior in a wide range of societies [@haroz2017; @liu2020] and the potential for cross-cultural research to help understand depressive states [@haroz2017].
 
@@ -96,33 +97,33 @@ Evolutionary theories of depression tend to either ignore suicidality, or take i
 
 <!-- and anthropological explanations for low mood have become more common. In general, these approaches see sadness and minor depression as ways to motivate adaptive behavior changes in response to negative outcomes in one's environment (cite Nesse and others), mainly differing in how they view major depression. While some approaches present most forms of major depression as dysfunctional (inflammation and some of Nesse), others have extended the logic on the benefits of low mood and reduced behavior to more severe instances of sadness. Of the possible benefits, the ability of depression to help solve fitness-relevant in times of social conflict is the most emphasized, with depression being suggested to help by reallocating resources with the body for problem solving (cite ARH), reducing the costs of interacting with higher status individuals (cite), or serving as a means to both signal one's need and bargain for increased support (cite).  -->
 
-
 <!-- As with suicide, research on depression since the 1980's has been dominated by biomedical approaches of limited success [@patten2016; @ormel2019].  -->
 
-
 <!-- and there is still substantial uncertainty about why both are as common as they are (cite). Likely due to  the suffering they cause, the vast majority of these approaches have been built on the assumption that they are the result of internal dysfunction (cite examples). However, a subset of anthropologists and evolutionary theorists have challenged this idea, suggesting that despite the subjective suffering they cause, they may function as a means to limit negative fitness outcomes in times of substantial adversity (Firth + others). -->
-
 
 ## Connection to Adversity
 
 <!-- Likely the most reliable finding regarding depression and suicidality is that most cases are closely tied to major negative life events [@Hammen2005; @Mazure1998; @devries2011; @ellsberg2008]. Compared to non-depressed individuals, those with depression tend to report at least twice as many instances of negative events than non-depressed individuals [@Mazure1998] and more negative events than those with schizophrenia and bipolar depression across multiple studies [@Paykel1994]. In longitudinal studies, the onset of depression has been reported to quickly follow the negative event [@KendlerEtAl1999] or coincide with periods where conflict is likely to increase prior to it (e.g., depression starting before a divorce rather than after; @rosenstrom2017).  -->
-<!-- <!-- look for other longitudinal studies --> -->
+
+<!-- <!-- look for other longitudinal studies -->
+
+--\>
 
 <!-- This strong connection between negative life events and depression along with the adversity and distress that likely accompanies these events has led to the suggestion that this relationship is causal [@KendlerEtAl1999]. Support for this comes from the fact that the relationship between negative events and depression holds true when looking solely at events outside of one's control, showing that the connection is unlikely to be driven solely by individuals who are already depressed creating situations where negative events are likely to be common [@Hammen2005; @KendlerEtAl1999]. In addition to this, twin studies have shown that one's history of negative events is still a strong predictor of major depression when controlling for genetic similarity and that part of the heritability of depression stems from the heritability of negative events, like divorce and family conflict [@KendlerBaker2007; @KendlerEtAl1999]. -->
 
-Likely the most reliable finding regarding depression and suicidality is that most cases are closely tied to major negative life events [@Hammen2005; @Mazure1998; @devries2011; @ellsberg2008], with such events likely causing depressive states based on twin studies and examinations involving negative events outside of one's control[@Hammen2005; @KendlerEtAl1999]. Of the types of negative life events associated with depression, those which involve conflict tend to be more strongly associated with depression [@Hammen2005; @Mazure1998]. Marital problems, bullying, and the existence of abusive relationships are all commonly cited risk factors for depression [@KendlerEtAl1995; @KendlerEtAl1999; @klomek2007; @klomek2019], with  assault (both sexual and non-sexual), in particular, greatly increasing one's risk of depression [@KendlerEtAl1995; @KendlerEtAl1999].  Other notable risk factors like loss of a loved one, financial problems, job loss, or severe or prolonged illness, might seem less related to conflict. However, the ability for others to provide meaningful support to limit the harm caused in times of need [@SugiyamaSugiyama2003] combined with the ubiquity of conflicts of interests mean that many types of problems will eventually involve social conflict even if they did not start that way [@Hagen2003]. In line with this reasoning, conflict, as a whole, was found to be associated with depression among the Tsimane, particularly when it involved non-kin [@StieglitzEtAl2015a].
+Likely the most reliable finding regarding depression and suicidality is that most cases are closely tied to major negative life events [@Hammen2005; @Mazure1998; @devries2011; @ellsberg2008], with such events likely causing depressive states based on twin studies and examinations involving negative events outside of one's control[@Hammen2005; @KendlerEtAl1999]. Of the types of negative life events associated with depression, those which involve conflict tend to be more strongly associated with depression [@Hammen2005; @Mazure1998]. Marital problems, bullying, and the existence of abusive relationships are all commonly cited risk factors for depression [@KendlerEtAl1995; @KendlerEtAl1999; @klomek2007; @klomek2019], with assault (both sexual and non-sexual), in particular, greatly increasing one's risk of depression [@KendlerEtAl1995; @KendlerEtAl1999]. Other notable risk factors like loss of a loved one, financial problems, job loss, or severe or prolonged illness, might seem less related to conflict. However, the ability for others to provide meaningful support to limit the harm caused in times of need [@SugiyamaSugiyama2003] combined with the ubiquity of conflicts of interests mean that many types of problems will eventually involve social conflict even if they did not start that way [@Hagen2003]. In line with this reasoning, conflict, as a whole, was found to be associated with depression among the Tsimane, particularly when it involved non-kin [@StieglitzEtAl2015a].
 
-Due to depression's relationship to sucide [@who2001; @hawton2013], it should not be surprising that suicidality also often coincides with social adversity and conflict. Grief over the loss of a loved one [@firth1936: @Firth:1961; @devries2011], bullying [@alavi2017; @butler2019; @ford2017; @wang2020], and instances of social transgression [@Firth:1961; @Malinowski:1932; @SymeHagen2018; @lester1997] have all been reported to lead to suicidal behavior in both industrialized and traditional societies. Of the recorded instances of suicide attempts in the Human Relations Area Files (HRAF), 77.4% of attempts were found to be linked to times of social conflict, 88.7% were linked to fitness threats in general, and 84.9% were linked to situations in which attempters were powerless to resolve their situation alone [@SymeEtAl2016]. As with depression, assault is an particularly powerful risk factor for suicidal behavior based on multiple large-scale multi-country studies [@devries2011; @ellsberg2008] and more localized examinations [@reigstad2017]. 
+Due to depression's relationship to sucide [@who2001; @hawton2013], it should not be surprising that suicidality also often coincides with social adversity and conflict. Grief over the loss of a loved one [@firth1936: @Firth:1961; @devries2011], bullying [@alavi2017; @butler2019; @ford2017; @wang2020], and instances of social transgression [@Firth:1961; @Malinowski:1932; @SymeHagen2018; @lester1997] have all been reported to lead to suicidal behavior in both industrialized and traditional societies. Of the recorded instances of suicide attempts in the Human Relations Area Files (HRAF), 77.4% of attempts were found to be linked to times of social conflict, 88.7% were linked to fitness threats in general, and 84.9% were linked to situations in which attempters were powerless to resolve their situation alone [@SymeEtAl2016]. As with depression, assault is an particularly powerful risk factor for suicidal behavior based on multiple large-scale multi-country studies [@devries2011; @ellsberg2008] and more localized examinations [@reigstad2017].
 
-## Depression and suicide attempts as both signals and bargaining tools 
+## Depression and suicide attempts as both signals and bargaining tools
 
 One possible reason for the connection between depression, suicide, and social adversity is that some instances of depression and suicide attempts serve as means to elicit increased support from others [@andrews2006; @Hagen2002; @Hagen2003; @HagenEtAl2008; @nock2008; @Rosenthal1993; @Stengel1956; @SymeEtAl2016], particularly in times when an individual cannot solve substantial fitness-relevant challenges on their own [@Hagen2003; @SymeEtAl2016]. According to the bargaining models of depression and suicide, the small groups humans lived in for much of our evolutionary history created many situations in which certain forms of cooperation were unlikely to be easily replaced by others while also allowing for harmful or unfair social relationships to develop [@Hagen2003; @SymeEtAl2016]. In these instances, one's monopoly on one or more types of cooperation could be leveraged to change how one is treated if others valued an individual's cooperation sufficiently and believed them to be in genuine need.
 
-Due to the ease with which signals can be faked [@Zahavi1975; @mokkonen2016] and the costs of accepting a deceptive signal as reliable [@dawkins1978; @johnstone1993; @Hasson1994], demonstrating that one’s need is genuine has likely been a recurrent adaptive problem since humans evolved the capacity to provide instrumental support to one another. One potential solution to this is to produce signals that are unprofitable to fake [@Zahavi1975]. This is possible whenever the benefits of signaling outweigh the costs for those who have the relevant underlying quality but the costs outweigh the benefits for those who lack the quality or possess it to a lesser degree [@zahavi1977; @grafen1990]. In particular, if the benefits of sending the signal are the same for signalers regardless of condition, but the signal cost outweighs this benefit for signalers without the underlying quality (a "costly signal"), then individuals with the underlying quality can evolve to send the signal and receivers can evolve to respond in mutually beneficial ways to the signal.
+Due to the ease with which signals can be faked [@Zahavi1975; @mokkonen2016] and the costs of accepting a deceptive signal as reliable [@dawkins1978; @johnstone1993; @Hasson1994], demonstrating that one's need is genuine has likely been a recurrent adaptive problem since humans evolved the capacity to provide instrumental support to one another. One potential solution to this is to produce signals that are unprofitable to fake [@Zahavi1975]. This is possible whenever the benefits of signaling outweigh the costs for those who have the relevant underlying quality but the costs outweigh the benefits for those who lack the quality or possess it to a lesser degree [@zahavi1977; @grafen1990]. In particular, if the benefits of sending the signal are the same for signalers regardless of condition, but the signal cost outweighs this benefit for signalers without the underlying quality (a "costly signal"), then individuals with the underlying quality can evolve to send the signal and receivers can evolve to respond in mutually beneficial ways to the signal.
 
 Depression and suicidal behavior fit this criterion as both are relatively costly for those not facing adversity than those who are. In the case of depression, the large-scale reduction in one's normal routine of fitness enhancing behavior is relatively less costly for those whose situations result in a limited ability to obtain fitness-relevant benefits, with depression likely adding no additional costs in instances of extreme deprivation [@Hagen2003]. When it comes to suicide, the bulk of the costs associated with suicide attempts are only felt in times that result in death or severe bodily harm. For this reason, the way others view and respond to suicide attempts is likely to be strongly influenced by the probability that the attempt would result in death or severe injury [@Rosenthal1993]. Despite this difference, the previously mentioned logic still applies with increased risk of death being relatively more costly for those able to advance their fitness prospects in their day-to-day lives.
 
-The costs of depression and suicidal behavior may be particularly important in times of conflict or when the level of support needed to address one’s situation is substantial, both of which should be expected to increase the payoff of manipulating others through fake signals. When either condition applies, less costly signals like verbal requests, facial sadness, and crying are likely to be less reliable as their low costs can easily be made up for with increased social support, thereby favoring the use of costlier signals so long as the costs of signaling are outweighed by the benefits [@SymeHagen2021]. 
+The costs of depression and suicidal behavior may be particularly important in times of conflict or when the level of support needed to address one's situation is substantial, both of which should be expected to increase the payoff of manipulating others through fake signals. When either condition applies, less costly signals like verbal requests, facial sadness, and crying are likely to be less reliable as their low costs can easily be made up for with increased social support, thereby favoring the use of costlier signals so long as the costs of signaling are outweighed by the benefits [@SymeHagen2021].
 
 <!-- Beyond signaling need to those invested in the well-being of the signaler, depression and suicidal behavior may also help an individual bargain for increased support [@Hagen2003]. This is possible due to the reduced investment in others that frequently accompanies depression or the threat to future cooperation that comes from suicide. In these instances, depression and suicide attempts may function analogously to a labor strike, sending the message that one’s need is genuine and that if the target of the signal wanted to continue receiving benefits from the depressed, they would need to increase support towards the signaler. Due to this bargaining component, aversive responses from the targets of the signal to the signaler are expected throughout the bargaining process, with potential helpers likely signaling the costliness of providing support. Importantly, such responses do not prevent the delivery of meaningful benefits, they are simply expected to reduce the risk of helpers providing too much support for too little need. -->
 
@@ -144,13 +145,13 @@ Most of the limited literature on social responses to depression and suicidality
 
 Experimental vignette studies, which employ "a short, carefully constructed description of a person, object, or situation, representing a systematic combination of characteristics" [@atzmuller2010, p.128], aim to approach the ecological validity of observational studies by presenting participants with rich, real-world scenarios, while at the same time allowing researchers to randomize participants into conditions in which theoretically relevant dimensions of the vignettes are systematically manipulated, thus enabling robust causal inferences [@atzmuller2010]. Experimental vignette studies are conducted in a broad range of disciplines, including psychology, economics, sociology, management studies, political science, and education [@atzmuller2010; @aguinis2014].
 
-The primary aim of this study was to examine responses to various forms of emotional signaling in an experimental vignette study. As the costs of a signal are expected to correspond to the reliability of the information provided, we predicted that costlier signals would (1) increase self-reported belief in the signaler's claims and (2) increase the likelihood of participants providing help, with (3) changes in likelihood of support being largely mediated by changes in the participants' belief in the signaler's need from pre-signal to post-signal. 
+The primary aim of this study was to examine responses to various forms of emotional signaling in an experimental vignette study. As the costs of a signal are expected to correspond to the reliability of the information provided, we predicted that costlier signals would (1) increase self-reported belief in the signaler's claims and (2) increase the likelihood of participants providing help, with (3) changes in likelihood of support being largely mediated by changes in the participants' belief in the signaler's need from pre-signal to post-signal.
 
 # Materials and methods
 
 ## Design
 
-This study utilized a between-subjects pretest-posttest design to examine how four different emotional signals (treatments) would influence (1) the degree participants believed a fictional character to be in need (*Belief*) and (2) the likelihood they would provide help (*Action*) relative to a simple *Verbal request* (the control condition), in four different vignettes, for a total of 20 conditions. In this design, the outcomes are measured at pre-treatment (T1), participants are then randomized into either a control group or a treatment group (one of the emotional signals), and the outcomes are measured again (T2). Regression models are used to determine the effect of the treatment conditions on the posttest outcome variables, relative to the control condition, controlling for pretest levels of the outcome variables (we also explored within-subjects effects of the signal on outcomes at T2 compared to T1). 
+This study utilized a between-subjects pretest-posttest design to examine how four different emotional signals (treatments) would influence (1) the degree participants believed a fictional character to be in need (*Belief*) and (2) the likelihood they would provide help (*Action*) relative to a simple *Verbal request* (the control condition), in four different vignettes, for a total of 20 conditions. In this design, the outcomes are measured at pre-treatment (T1), participants are then randomized into either a control group or a treatment group (one of the emotional signals), and the outcomes are measured again (T2). Regression models are used to determine the effect of the treatment conditions on the posttest outcome variables, relative to the control condition, controlling for pretest levels of the outcome variables (we also explored within-subjects effects of the signal on outcomes at T2 compared to T1).
 
 In principle, pretest-posttest designs, by controlling for pretest variation in the outcome, increase the precision of the estimate of the treatment effect on the outcome [@dimitrov2003]. In survey experiments, however, researchers often favor posttest-only designs over pretest-posttest designs because they worry that the pre-treatment measurement of the outcome will influence the treatment effect on the outcome (i.e., the effects of asking the same question twice) due to, e.g., demand effects, in which participants try to conform to experimenter expectations, or to consistency pressures, in which participants try to provide consistent responses regardless of treatments [@clifford2021]. In a study with six experiments that randomly assigned respondents to alternative designs (e.g., pretest-posttest, posttest only) @clifford2021 found these concerns to be overblown. In all cases, the pretest-posttest design had substantially greater precision than the posttest-only design, with little evidence that pretest measurement altered the treatment effect.
 
@@ -174,6 +175,21 @@ The sole randomized treatment in this study was the signal participants saw, wit
 
 As many depression scales include measures of crying [for discussion on the relationship between crying and depression see @bylsma2020] and depression is a major risk factor for suicide [@BostwickPankratz2000; @Kessler2012], each signal was designed to build off of the less costly signals so that each signal contained elements of any signal it was costlier than. Although referred to as signals throughout the paper for brevity, we expect that the hypothesized signals of need, like many signals, will also provide information to others in the form of cues [for discussion on the evolution of signals from cues see: @biernaskie2018; @Tiokhin2016; @Steinkopf2015]. The full text for the signals are available in the SI.
 
+Table: (\#tab:design) The cooperative endeavor, conflict of interest, and private information in each vignette
+
++-------------------+--------------------------------------+---------------------------------------------------------------+--------------------------------------------+
+| Vignette          | Cooperative Endeavor                 | Conflict of interest                                          | Private information                        |
++===================+======================================+===============================================================+============================================+
+| Thwarted marriage | Inclusive fitness (parent-offspring) | Parental investment in sibling                                | Value of arranged marriage with second man |
++-------------------+--------------------------------------+---------------------------------------------------------------+--------------------------------------------+
+| Basketball coach  | Winning the championship             | Coach's investment in other players; keeping the coach        | Did sexual assault happen?                 |
++-------------------+--------------------------------------+---------------------------------------------------------------+--------------------------------------------+
+| Romantic partner  | Inclusive fitness (parent-offspring) | Investment in offspring vs. romantic partner                  | Did physical assault happen?               |
++-------------------+--------------------------------------+---------------------------------------------------------------+--------------------------------------------+
+| Brother-in-law    | Inclusive fitness (parent-offspring) | Investment in child vs. investment in adult sibling and niece | Did sexual assault happen?                 |
++-------------------+--------------------------------------+---------------------------------------------------------------+--------------------------------------------+
+
+
 ## Lessons learned from two pilot studies
 
 The current study is a refinement of a large MTurk experimental vignette pilot study (N=`r nrow(signalingdata2018b)`) that used a different vignette but very similar signals and outcomes, and a much smaller pilot study posted to [reddit.com/r/SampleSize/](https://www.reddit.com/r/SampleSize/) (N=28) that used draft versions of 3 vignettes used here, along with the same signals and outcomes. In the MTurk pilot study, there was a single vignette in which an imagined sister claims her child needs an expensive emergency medical procedure, and asks for a very large loan. In the small reddit.com study, participants viewed and responded to two vignettes used here, each with a different signal.
@@ -184,15 +200,13 @@ In the reddit.com pilot study, participants viewed two vignettes (with different
 
 ## Preregistration
 
-We preregistered four OLS linear regression models and one mediation model (https://osf.io/g3s6n). The first two regression models tested the effects of our ordinal signal variable on Time 2 *Belief* and *Action*, controlling for T1 *Belief* and *Action*, respectively (a pre-test/post-test design):
+We preregistered four OLS linear regression models and one mediation model (<https://osf.io/g3s6n>). The first two regression models tested the effects of our ordinal signal variable on Time 2 *Belief* and *Action*, controlling for T1 *Belief* and *Action*, respectively (a pre-test/post-test design):
 
-`r extract_eq(models_prereg$Model$m1, intercept='beta', wrap=T)`
-`r extract_eq(models_prereg$Model$m3, intercept='beta', wrap=T)`
+`r extract_eq(models_prereg$Model$m1, intercept='beta', wrap=T)` `r extract_eq(models_prereg$Model$m3, intercept='beta', wrap=T)`
 
-The second two models added interaction terms between signal and T1 *Belief* and *Action*, with the rationale that the signals might have reduced effect for individuals who indicate high levels of belief and helping at baseline: 
+The second two models added interaction terms between signal and T1 *Belief* and *Action*, with the rationale that the signals might have reduced effect for individuals who indicate high levels of belief and helping at baseline:
 
-`r extract_eq(models_prereg$Model$m1b, intercept='beta', wrap=T)`
-`r extract_eq(models_prereg$Model$m3b, intercept='beta', wrap=T)`
+`r extract_eq(models_prereg$Model$m1b, intercept='beta', wrap=T)` `r extract_eq(models_prereg$Model$m3b, intercept='beta', wrap=T)`
 
 The mediation model is in Figure \@ref(fig:medmodel):
 
@@ -203,8 +217,7 @@ knitr::include_graphics('paths.svg')
 
 Specifically, the mediation and outcome models, respectively, are:
 
-`r extract_eq(med_prereg$model.m, intercept='beta', wrap=T)`
-`r extract_eq(med_prereg$model.y, intercept='beta', wrap=T)`
+`r extract_eq(med_prereg$model.m, intercept='beta', wrap=T)` `r extract_eq(med_prereg$model.y, intercept='beta', wrap=T)`
 
 For reasons we explain in the *Statistical methods* section, we report the OLS models in the Supplementary Information (SI), and in the Results section instead report conceptually equivalent generalized linear regression models (GLMs).
 
@@ -220,23 +233,23 @@ pwr80_90 <-
   )
 ```
 
-We used the pilot data to estimate the sample sizes needed to detect an effect of the *Depression* signal vs. *Verbal request* control (two conditions) on *Belief* in the victim's need. Power was about 80% for a sample size of about `r pwr80_90[[2,2]]`, and was about 90% for a sample size of about `r pwr80_90[[2,3]]`. We also estimated the sample size needed to detect an effect of *Depression* vs. a *Control* condition that was meant to not include any signaling (but which we realized, post hoc, did include a verbal request). Power was about 80% for a sample size of about `r pwr80_90[[1,2]]`, and was about 90% for a sample size of about `r pwr80_90[[1,3]]`. See Figure \@ref(fig:power). Given our $1500 USD budget, we aimed for a sample size of 125 for two conditions, and 1250 for all conditions in the study. For more details, see the SI and /.
+We used the pilot data to estimate the sample sizes needed to detect an effect of the *Depression* signal vs. *Verbal request* control (two conditions) on *Belief* in the victim's need. Power was about 80% for a sample size of about `r pwr80_90[[2,2]]`, and was about 90% for a sample size of about `r pwr80_90[[2,3]]`. We also estimated the sample size needed to detect an effect of *Depression* vs. a *Control* condition that was meant to not include any signaling (but which we realized, post hoc, did include a verbal request). Power was about 80% for a sample size of about `r pwr80_90[[1,2]]`, and was about 90% for a sample size of about `r pwr80_90[[1,3]]`. See Figure \@ref(fig:power). Given our \$1500 USD budget, we aimed for a sample size of 125 for two conditions, and 1250 for all conditions in the study. For more details, see the SI and /.
 
 ## Sampling
 
 Participants for this study were recruited from Amazon Mechanical Turk, a crowdsourcing platform that allows for the creation of Human Intelligence Tasks (HITs) that workers can complete for pay. As Amazon provides the infrastructure, it allows for a relatively low-cost way of collecting data for academic research at the cost of the data not being representative of any real population [@thomas2017]. Despite this limitation, it is more diverse than most convenience samples [@kennedy2020; @DworkinEtAl2016; @thomas2017], with turkers in the US mainly differing in being younger, more educated, and lower income than the greater U.S. population [@RossEtAl2010; @boas2020]. Indian samples are also likely to be younger and more educated than the general population but differ from US samples in that they are less diverse, have higher incomes relative to other Indians, and are more likely to come from regions with good internet access [@boas2020].
-	
+
 Overall, the quality of data provided by MTurk workers tends to resemble that of university sample pools [@NeckaEtAl2016; @robinson2019], with there being some indication that it might outperform university samples due to its previously mentioned diversity [@thomas2017] or the overall attentiveness of turkers [@HauserSchwarz2016]. In vignette studies, MTurk data quality also compares favorably to that from much more expensive population-based samples [@weinberg2014]. For these reasons, concerns about data quality come primarily from the threat of bot use or respondents faking their location to take surveys in a language they do not understand well, with there being little evidence of the former [@kennedy2020] and the risk of the latter able to be minimized through well designed attention checks, timed responses, or general study design [@aguinis2020; @huang2015; @kennedy2020; @thomas2017].
-	
+
 ## Participants
 
 All participants in the US sample were over 18, located in the United States, had a HIT approval rate of over 98%, and had successfully completed at least 100 HITs as anything less results in approval rates of 100% [@kennedy2020]. The Indian sample was the same except for only including participants who resided in India at the time of the study and the inclusion two participants who were included with a stricter HIT approval rate of over 99%.
 
-To reduce the risk of low quality responses, we used a variety of attention checks, which we clearly labeled as such to avoid demand characteristics on the outcomes of interest. The first was shown immediately after the consent form and provided participants with a random word and asked them to enter the vowels in the order in which they are found in the word. Capitalization did not matter and no word contained repeat vowels. Failure to enter the correct vowels in order resulted in the participants being filtered out of the study. The second followed the vignette and involved asking three questions about the story that were easy to answer for anyone paying attention. 
+To reduce the risk of low quality responses, we used a variety of attention checks, which we clearly labeled as such to avoid demand characteristics on the outcomes of interest. The first was shown immediately after the consent form and provided participants with a random word and asked them to enter the vowels in the order in which they are found in the word. Capitalization did not matter and no word contained repeat vowels. Failure to enter the correct vowels in order resulted in the participants being filtered out of the study. The second followed the vignette and involved asking three questions about the story that were easy to answer for anyone paying attention.
 
 We also filtered out those who read the vignette faster than one-third the time it took MG to read it as fast as possible without concern for comprehension. This occurred immediately after participants finished the vignette.
 
-Informed consent was given by proceeding with the study after reading the consent form, and all participants who passed the attention checks were paid $1 for their time, with us estimating it would take 4-8 minutes before data collection. This study was certified exempt by the Washington State University Human Research Protection Program (certification number: 18528-001).
+Informed consent was given by proceeding with the study after reading the consent form, and all participants who passed the attention checks were paid \$1 for their time, with us estimating it would take 4-8 minutes before data collection. This study was certified exempt by the Washington State University Human Research Protection Program (certification number: 18528-001).
 
 ## Survey
 
@@ -250,23 +263,33 @@ We also asked which emotions participants felt the signaler was experiencing usi
 
 ### Post-treatment measures (T2-T4)
 
-We asked questions identical to those asked at T1 as the main post-treatment variables of interest (T2). For the *Belief*, *Action*, and *Divide* variables, the position of the slider starting where participants placed it at T1. For the T2 emotion variables this involved no changes from the T1 version. 
+We asked questions identical to those asked at T1 as the main post-treatment variables of interest (T2). For the *Belief*, *Action*, and *Divide* variables, the position of the slider starting where participants placed it at T1. For the T2 emotion variables this involved no changes from the T1 version.
 
 As both a validity check and a way to understand the degree participants would be willing to help if they believed the participant completely, we presented participants with strong evidence that the claims were true (T3Action). In the US sample, this involved video evidence of the event in question occurring or a similar event after the fact. With the thwarted marriage vignette, this involved the participant seeing the man their daughter wants to marry trash talk their daughter and their family. As a final attention check, we presented participants with the T3Action question but included instructions to ignore this and drag the slider all the way to the left (T4AttentionCheck). We did not exclude anyone from the study for failing this nor did we withhold payment.
 
-Variable | Vignette | Wording | Coding 
----------|----------|---------|-------
-T1Belief | Basketball | How much do you believe the star player is telling the truth about the coach? | 0: Not at all; 100: Completely
-T1Belief | Brother-in-law | How much do you believe your daughter is telling the truth about your brother-in-law? | 0: Not at all; 100: Completely
-T1Belief | Romantic partner | How much do you believe your daughter is telling the truth about your partner? | 0: Not at all; 100: Completely
-T1Belief | Thwarted Marriage | How much do you believe your older(bold) daughter is telling the truth about the second man not being a good match for her?  | 0: Not at all; 100: Completely
-T1Action | Basketball | How likely are you to recommend that the president of the university should suspend the coach? | 0: Very unlikely; 100: Very likely
-T1Action | Brother-in-law | How likely are you to kick your brother-in-law out? | 0: Very unlikely; 100: Very likely
-T1Action | Romantic partner | How likely are you to kick your partner out? | 0: Very unlikely; 100: Very likely
-T1Action | Thwarted Marriage | How likely are you to provide the large dowry so your older(bold) daughter can marry the man she is in love with?  | 0: Very unlikely; 100: Very likely
-T1Divide | Thwarted Marriage | How would you plan on dividing the money between your daughters?  | 0: Much more for the younger daughter; 50: Even division; 100: Much more for the older daughter
++-----------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+| Variable        | Vignette          | Wording                                                                                                                     | Coding                                                                                          |
++=================+===================+=============================================================================================================================+=================================================================================================+
+| T1Belief        | Basketball        | How much do you believe the star player is telling the truth about the coach?                                               | 0: Not at all; 100: Completely                                                                  |
++-----------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+| T1Belief        | Brother-in-law    | How much do you believe your daughter is telling the truth about your brother-in-law?                                       | 0: Not at all; 100: Completely                                                                  |
++-----------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+| T1Belief        | Romantic partner  | How much do you believe your daughter is telling the truth about your partner?                                              | 0: Not at all; 100: Completely                                                                  |
++-----------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+| T1Belief        | Thwarted Marriage | How much do you believe your older(bold) daughter is telling the truth about the second man not being a good match for her? | 0: Not at all; 100: Completely                                                                  |
++-----------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+| T1Action        | Basketball        | How likely are you to recommend that the president of the university should suspend the coach?                              | 0: Very unlikely; 100: Very likely                                                              |
++-----------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+| T1Action        | Brother-in-law    | How likely are you to kick your brother-in-law out?                                                                         | 0: Very unlikely; 100: Very likely                                                              |
++-----------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+| T1Action        | Romantic partner  | How likely are you to kick your partner out?                                                                                | 0: Very unlikely; 100: Very likely                                                              |
++-----------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+| T1Action        | Thwarted Marriage | How likely are you to provide the large dowry so your older(bold) daughter can marry the man she is in love with?           | 0: Very unlikely; 100: Very likely                                                              |
++-----------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+| T1Divide        | Thwarted Marriage | How would you plan on dividing the money between your daughters?                                                            | 0: Much more for the younger daughter; 50: Even division; 100: Much more for the older daughter |
++-----------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
 
-Table: (\#tab:outcomes) Outcome variables in each vignette.
+: (\#tab:outcomes) Outcome variables in each vignette.
 
 ### Demographic Questions
 
@@ -274,27 +297,25 @@ The final part of the survey was a brief demographic questionnaire which examine
 
 ## Statistical analyses
 
-Our pre-test and post-test measures, *T1 & T2 Belief* and *T1 & T2 Action*, were all measured on a 0-100 point scale. A substantial number of participants rated their beliefs and actions as exactly 0 or exactly 100 at either T1 or T2. OLS linear regression models are not suitable for a closed and bounded distribution with so many values on the boundary because the residuals would not be normally distributed or have constant variance. Beta regression, a possible alternative, is only defined on the open interval, (0, 1), whereas our data had many values on the boundaries (a closed interval). A variant of beta regression, zero-one inflated beta, is inappropriate because it assumes different processes for the generation of data on the boundaries vs. the interior, and we had no reason to believe that our zeros and ones were generated by a different process than the rest of our observations. 
+Our pre-test and post-test measures, *T1 & T2 Belief* and *T1 & T2 Action*, were all measured on a 0-100 point scale. A substantial number of participants rated their beliefs and actions as exactly 0 or exactly 100 at either T1 or T2. OLS linear regression models are not suitable for a closed and bounded distribution with so many values on the boundary because the residuals would not be normally distributed or have constant variance. Beta regression, a possible alternative, is only defined on the open interval, (0, 1), whereas our data had many values on the boundaries (a closed interval). A variant of beta regression, zero-one inflated beta, is inappropriate because it assumes different processes for the generation of data on the boundaries vs. the interior, and we had no reason to believe that our zeros and ones were generated by a different process than the rest of our observations.
 
 We therefore fit models of our two outcome variables (which we rescaled to the continuous interval [0, 1]) in four ways. First, we fit the preregistered OLS models (reported in the SI). Second, we fit fractional regression models, introduced in a seminal paper by @papke1996 for continuous outcomes on the interval [0, 1], which, in brief, involve fitting a quasi-likelihood version of logistic regression with robust standard errors. This method is implemented in the `frm` package [@ramalho2019]. Third, we fit GLM logistic regression models, computing 95% CI's via bootstrapping, using the `glmmboot` package created to model continuous outcomes on [0, 1] [@humphrey2020]. Finally, we fit GLM models with the quasibinomial family and logit link using the `glm` function in R stats library, which can fit continuous outcomes on [0, 1]. The estimated coefficients, standard errors, and confidence intervals produced by the latter three methods were *very* similar, and often identical (see Figure \@ref(fig:modelcompareplots). We therefore proceeded to fit and report models using `glm` with the quasibinomial family and logit link because model objects produced by this function are compatible with numerous other R packages for summarizing and plotting effects.
 
-Although two of our four preregistered OLS regression models included an interaction term, the rationale for it was less convincing for quasibinomial models using a logit link because the expected interaction -- reduced effect of signals in individuals with high baseline belief -- is "built in" to logistic regression (i.e., the effect of a predictor on the outcome necessarily diminishes as the outcome approaches 1). Because our theory does not predict an interaction beyond that already present in a logistic regression model, we did not include an interaction term in the GLM models (but we still report OLS models with the interaction term).
+Although two of our four preregistered OLS regression models included an interaction term, the rationale for it was less convincing for quasibinomial models using a logit link because the expected interaction -- reduced effect of signals in individuals with high baseline belief -- is inherent to logistic regression: the effect of a predictor on the outcome necessarily diminishes as the outcome approaches 1. Our theory does not predict an interaction beyond that already present in a logistic regression model, so we did not include an interaction term in the GLM models (but we still report OLS models with the interaction term).
 
 Our intervention was *signal*, an ordinal variable with the following preregistered rank order: verbal request (control), crying, mild depression, depression, suicide attempt. We used the default `glm` settings, which code such variables as orthogonal polynomial contrasts. Our primary confirmatory regression models were as follows (where the signal subscripts indicate polynomial degree):
 
-`r extract_eq(models$Model$m1, intercept='beta', wrap=T)`
-`r extract_eq(models$Model$m3, intercept='beta', wrap=T)`
+`r extract_eq(models$Model$m1, intercept='beta', wrap=T)` `r extract_eq(models$Model$m3, intercept='beta', wrap=T)`
 
 To test our hypothesis that the likelihood of acting to help the victim would be largely mediated by a signal's positive impact on the participant's belief in the victim's need, we used the `mediation` package [@tingley2014] to fit a mediation model for *Depression* treatment vs. *Verbal request* control. The mediation and outcome models, respectively, were:
 
-`r extract_eq(med1$model.m, intercept='beta', wrap=T)`
-`r extract_eq(med1$model.y, intercept='beta', wrap=T)`
+`r extract_eq(med1$model.m, intercept='beta', wrap=T)` `r extract_eq(med1$model.y, intercept='beta', wrap=T)`
 
 All analyses were conducted using `r R.version.string`.
 
 ## Data availibility
 
-The data are available at http://doi.org/10.5281/zenodo.4637904
+The data are available at <http://doi.org/10.5281/zenodo.4637904>
 
 # Results
 
@@ -386,7 +407,6 @@ brother_sv_adiff <- visreg_diff(models$Model$m4, 'Brother-in-law', 'Suicide atte
 
 ```
 
-
 ```{r}
 bil_b_suicide <- signif(effect_sizes$est[effect_sizes$id=="Suicide attempt,Brother-in-law" & effect_sizes$Outcome=="Belief"], 2)
 
@@ -402,12 +422,11 @@ The largest between-subjects effect was *Suicide attempt* vs. *Verbal request* c
 
 We note the following patterns, which we will return to in the Discussion section. First, as we intended, the distributions of *Belief* and *Action* in the *Verbal request* control condition were very similar to their distributions at T1 baseline across vignettes. In the "Basketball coach" and "Brother-in-law" vignettes, though, their distributions in the *Verbal request* condition were shifted to somewhat lower values relative to baseline (i.e., the verbal request slightly *reduced* belief and action in those vignettes). Second, in the "Romantic partner" and "Brother-in-law" vignettes, the effect of *Crying* differed little from *Verbal request*, but in the "Basketball coach" vignette, it differed little from the *Depression* and *Suicide attempt* signals. Third, the effect of the *Suicide attempt* signal on *Belief* was similar to that of *Depression* across all vignettes, but had a noticeably greater effect on *Action* in the "Romantic partner" and "Brother-in-law" vignettes. Fourth, there was little difference between the effect of the *Mild depression* vs. *Depression* signals. See Figures \@ref(fig:beliefvignette) and \@ref(fig:ecdf).
 
-```{r beliefvignette, fig.width=8, fig.height=8, fig.cap=paste0("The effect of the signals on T2 Belief (top) and Action (bottom) in each vignette, controlling for T1 values of Belief and Action, respectively. Effects plotted for T1 values set to their median value (T1Belief=", median(d$T1Belief, na.rm=T), ", T1Action=", median(d$T1Action, na.rm=T), "). Fit using generalized linear regression models with the quasibinomial family. For coefficents, p-values, and other statistics, see models m2 and m4 in Tables \\@ref(tab:regressiontables) and \\@ref(tab:anovatables).")}
+```{r beliefvignette, fig.width=8, fig.height=8, fig.cap=paste0("The effect of the signals on T2 Belief (top) and Action (bottom) in each vignette, controlling for T1 values of Belief and Action, respectively. Ratings rescaled to [0, 1]. Effects plotted for T1 values set to their median value (T1Belief=", median(d$T1Belief, na.rm=T), ", T1Action=", median(d$T1Action, na.rm=T), "). Fit using generalized linear regression models with the quasibinomial family. For coefficents, p-values, and other statistics, see models m2 and m4 in Tables \\@ref(tab:regressiontables) and \\@ref(tab:anovatables).")}
 (effectsPlots$m2plot + theme(axis.text.x = element_blank()))/effectsPlots$m4plot + plot_layout(ncol = 1) & theme(plot.margin = unit(c(0,0,0,0), units = 'mm'))
 ```
 
-
-```{r ecdf, fig.width=11, fig.height=6, fig.cap="Empirical cummulative distribution functions for Time 2 Belief (top) and Action (bottom) compared to their Time 1 baseline values (red), by signal and vignette. Dots indicate median values of Belief and Action, by signal and vignette."}
+```{r ecdf, fig.width=11, fig.height=6, fig.cap="Empirical cummulative distribution functions for Time 2 Belief (top) and Action (bottom) compared to their Time 1 baseline values (red), by signal and vignette. Y-values indicate the fraction of all ratings equal to or less than a given x-value. Ratings rescaled to [0, 1]. Dots indicate median values of Belief and Action, by signal and vignette."}
 ecdf_plot
 ```
 
@@ -442,7 +461,7 @@ The proportion of participants inferring each emotion in each vignette at T1 is 
 
 To further explore the effect of signaling on participants' inferences of the signaler's emotional state, we created four new variables: *Low mood* (T1 and T2) was the sum of the binary variables *Depressed*, *Distressed* and *Sad*; and *Manipulative* (T1 and T2) was the sum of the binary variables *Devious* and *Jealous.* The mean change in the *Low mood* and *Manipulative* variables from T1 to T2 for each signal in each vignette reveals a large decrease in inferred *Manipulation* for costly signals, and a large increase in inferred *Low mood* (with the exception of the Thwarted marriage vignette, in which changes are small). See Figure \@ref(fig:emotionsplot)).
 
-```{r emotionsplot, fig.width=10, fig.height=8, fig.cap="The within-subjects effect of the signals on participants' inferred *Manipulative* and *LowMood* emotional states of the victim, from T1 (arrow base) to T2 (arrow head), for each signal in each of the four vignettes. Thick arrows: mean change. Thin arrows: means of 500 bootstrap resamples."}
+```{r emotionsplot, fig.width=10, fig.height=8, fig.cap="The within-subjects effect of the signals on participants' inferred *Manipulative* and *LowMood* emotional states of the victim, from T1 (arrow base) to T2 (arrow head), for each signal in each of the four vignettes. Low mood: higher values indicate lower perceived mood. Manipulative: higher values indicate higher perceived manipulativeness. Thick arrows: mean change. Thin arrows: means of 500 bootstrap resamples."}
 plot_emotions
 ```
 
@@ -485,27 +504,27 @@ As a partial check on the validity of our methods and results, at T3 we presente
 
 ## The effect of signaling on belief and likelihood of support
 
-Consistent with costly signaling theory, costlier signals resulted in greater perceptions of need and increased the likelihood of participants helping the signaler than the less costly signals. This effect was largest in the "brother-in-law" and "romantic partner" vignettes, both of which involved claims of assault against participants' imagined daughters. Compared to these scenarios, the effect of signal type was much smaller in both the "basketball coach" and the "thwarted marriage" vignette. In the "basketball coach" vignette, part of the reason for this may have been the lack of relatedness between participants and the alleged victim. However, this was still a surprising finding due to the relatively small size of the request (i.e., recommend the coach be suspended rather than kick out family members or a romantic partner). 
+Consistent with costly signaling theory, costlier signals resulted in greater perceptions of need and increased the likelihood of participants helping the signaler than the less costly signals. This effect was largest in the "brother-in-law" and "romantic partner" vignettes, both of which involved claims of assault against participants' imagined daughters. Compared to these scenarios, the effect of signal type was much smaller in both the "basketball coach" and the "thwarted marriage" vignette. In the "basketball coach" vignette, part of the reason for this may have been the lack of relatedness between participants and the alleged victim. However, this was still a surprising finding due to the relatively small size of the request (i.e., recommend the coach be suspended rather than kick out family members or a romantic partner).
 
 The weak signal effect in the Thwarted marriage condition, which involved the Indian sample, could indicate that our results do not generalize across cultures, undermining our adaptationist hypothesis. It could also reflect our poor understanding of contemporary Indian culture regarding dowry. The fact that support came at the cost of one's younger daughter may explain the relatively small effect of signal strength. However, data from the Indian sample appears to be of lower quality, limiting our confidence in this interpretation (see limitations for more information).
 
-In the "brother-in-law" and "romantic partner" scenarios, *Crying* had little effect on the magnitude of pro-signaler responses relative to *Verbal request*, suggesting it was not costly enough to serve as a reliable signal in times of substantial conflicts of interests. In contrast, both *Depression* conditions increased support, albeit to similar degrees. One potential reason for this is the increase in symptoms from mild depression to depression was not costly enough to result in a large effect as the symptoms only differed in severity (e.g., grades dropping from As to Bs [mild depression] or Cs [depression]). Such small changes may be less impactful in vignette form than in real-life scenarios in which the effects of signaling may increase in severity and be prolonged over a lengthy period of time.
+In the "brother-in-law" and "romantic partner" scenarios, *Crying* had little effect on the magnitude of pro-signaler responses relative to *Verbal request*, suggesting it was not costly enough to serve as a reliable signal in times of substantial conflicts of interests. In contrast, both *Depression* conditions increased support, albeit to similar degrees. One potential reason for this is the increase in symptoms from mild depression to depression was not costly enough to result in a large effect as the symptoms only differed in severity (e.g., grades dropping from As to Bs [mild depression] or Cs [depression](#depression-3)). Such small changes may be less impactful in vignette form than in real-life scenarios in which the effects of signaling may increase in severity and be prolonged over a lengthy period of time.
 
 While the effect of *Suicide attempt* on belief at T2 was similar to the *Depression* conditions across vignettes, it resulted in greater likelihood of support. This may be due to our decision to measure belief in need as the degree participants believed the claims of the signaler (e.g., if the assaults actually happened) rather than a more inclusive measure. For this reason, signal cost may have provided additional information about the costliness of the signaler's adversity on top of information relevant to whether the event claimed actually happened.
 
 Support for this interpretation comes from our mediation analyses, which showed that the likelihood of help was largely, but not entirely, mediated by signal's effect on belief in need in this study but totally mediated by belief in need when measured as need of financial support in the pilot study when comparing *Depression* to *Verbal request*. However, another possibility is that participants viewed the signal as providing information about adversity outside of the signaler's claims. For example, participants who saw the "brother-in-law" vignette may have thought the daughter was lying about the assault due to jealously over her cousin, with the stronger signals still conveying the severity of the competition between her and her cousin.
 
-Overall, our results on the connection between belief in need and likelihood of help are consistent with costly signaling and bargaining approaches to depression and suicide. At T1, *Belief* and *Action* were highly correlated yet distinct; while at T2, the effect of signal on both *Belief* and *Action* was to increase the magnitude of pro-signaler responses, with the effect of signal on *T2Action* being largely mediated by signal's effect on belief in need. This relationship between belief in need and likelihood of support and the importance of signal cost should be expected in scenarios when a target of a signal of need would benefit from helping if the signaler's need was genuine but face substantial net costs if it was not. Importantly, such scenarios appear to be common among modern humans and have likely been since individuals could increase their inclusive fitness through supporting kin or important cooperative partners who could return to providing benefits to supporters once their situation returned to normal [@SugiyamaSugiyama2003; @tooby1996]. 
+Overall, our results on the connection between belief in need and likelihood of help are consistent with costly signaling and bargaining approaches to depression and suicide. At T1, *Belief* and *Action* were highly correlated yet distinct; while at T2, the effect of signal on both *Belief* and *Action* was to increase the magnitude of pro-signaler responses, with the effect of signal on *T2Action* being largely mediated by signal's effect on belief in need. This relationship between belief in need and likelihood of support and the importance of signal cost should be expected in scenarios when a target of a signal of need would benefit from helping if the signaler's need was genuine but face substantial net costs if it was not. Importantly, such scenarios appear to be common among modern humans and have likely been since individuals could increase their inclusive fitness through supporting kin or important cooperative partners who could return to providing benefits to supporters once their situation returned to normal [@SugiyamaSugiyama2003; @tooby1996].
 
 Although this study was not designed to examine whether the costs of signaling would be made up for by the increased support stemming from depression and suicide attempts directly, the results are consistent with this hypothesis. In general, the costs required to honestly convey one's qualities should be expected to increase with the potential payoffs of deception and the number of defectors within the broader population [@Rosenthal1993], with the vignettes in this study emphasizing the existence of private information and sizable conflicts of interest to increase the perceived risk of being taken advantage of. In similar real-world scenarios, this difficulty of signaling honest need would coincide with the substantial fitness-relevant benefits of preventing future assaults or being able to marry the partner of one's choice. These benefits coupled with the fact that depression and suicide attempts become relatively less costly to one's fitness prospects with increased need [@Hagen2003], suggest that the increased support seen in this study may be worth the costs required to signal need more often than is often appreciated when counting the entire costs of depression as the signal rather than only the upregulation of symptoms for a communicative purpose.
 
 ## Limitations
 
-The main limitation of this study is that is has less ecological validity than real-world observations of depressed individuals interacting with their social partners. It is almost certain that participants experienced this study differently than they would if the event actually happened to them. This may have biased results in a pro-signaler direction if the lack of real costs of helping made support feel less costly or if there was a social desirability bias toward helping [@grimm2010]. It may have also biased participants against helping if they could not fully imagine the characters in the story as kin or important cooperative partners, while the survey's short duration may have weakened the strength of the costlier signals as bargaining tools. 
+The main limitation of this study is that is has less ecological validity than real-world observations of depressed individuals interacting with their social partners. It is almost certain that participants experienced this study differently than they would if the event actually happened to them. This may have biased results in a pro-signaler direction if the lack of real costs of helping made support feel less costly or if there was a social desirability bias toward helping [@grimm2010]. It may have also biased participants against helping if they could not fully imagine the characters in the story as kin or important cooperative partners, while the survey's short duration may have weakened the strength of the costlier signals as bargaining tools.
 
 <!-- However, the fact that the relationships among signal cost, belief in need, and likelihood of providing support all largely fit existing theory (narrow and broad) indicates that participants paid attention to the relevant details and responded in ways that suggest some degree of external validity. For this reason, the benefits of addressing causal relationships that came through our experimental vignette approach likely outweighed the costs. -->
 
-Another limitation is that, compared to the US sample, far more Indian participants were filtered out by our attention checks, something which could be consistent with botting, unfamiliarity with English, or low effort responses [@kennedy2020]. Assuming this corresponded with lower-quality responses among those who passed the attention checks, the weak signal effect in the thwarted marriage vignette may simply be due to added noise rather than differences in the scenario or the effectiveness of the signals compared to those in the US. 
+Another limitation is that, compared to the US sample, far more Indian participants were filtered out by our attention checks, something which could be consistent with botting, unfamiliarity with English, or low effort responses [@kennedy2020]. Assuming this corresponded with lower-quality responses among those who passed the attention checks, the weak signal effect in the thwarted marriage vignette may simply be due to added noise rather than differences in the scenario or the effectiveness of the signals compared to those in the US.
 
 # Conclusion
 
@@ -515,34 +534,29 @@ The need to explain suicide's connection to depression is often overlooked by ex
 
 This study was funded through a Washington State University, Vancouver research mini grant.
 
-Who to thank:
-Lab group?
-Arpita?
-Committee? 
-Anne sounds like she will provide a lot of feedback, so her after that?
+Who to thank: Lab group? Arpita? Committee? Anne sounds like she will provide a lot of feedback, so her after that?
 
 # To do:
 
-- victim or signaler?
-- add anger
-- Intro "State the objectives of the work and provide an adequate background, avoiding a detailed literature survey or a summary of the results."
-- Discussion " This should explore the significance of the results of the work, not repeat them. A combined Results and Discussion section is often appropriate. Avoid extensive citations and discussion of published literature."
-- mention asking for prefered sex
+-   victim or signaler?
+-   add anger
+-   Intro "State the objectives of the work and provide an adequate background, avoiding a detailed literature survey or a summary of the results."
+-   Discussion " This should explore the significance of the results of the work, not repeat them. A combined Results and Discussion section is often appropriate. Avoid extensive citations and discussion of published literature."
+-   mention asking for prefered sex
 
 # Supplementary information
 
 ## Pilot study description
 
-Briefly, Participants read a vignette that put them in situations in which an imagined sister was requesting a loan of $50,000 from the participant that was originally saved for the participant's imagined daughter’s college education. The sister claims the money is needed for medical treatment for her own child, but she has incentives to deceive. The manipulations were signals very similar to those used in this study, and the outcomes were belief that the sister really needed the money and intention to loan her the money. See XX for the full write-up. See https://osf.io/3rg8b for preregistration of the pilot study. See http://doi.org/10.5281/zenodo.4637883 for pilot data.
+Briefly, Participants read a vignette that put them in situations in which an imagined sister was requesting a loan of \$50,000 from the participant that was originally saved for the participant's imagined daughter's college education. The sister claims the money is needed for medical treatment for her own child, but she has incentives to deceive. The manipulations were signals very similar to those used in this study, and the outcomes were belief that the sister really needed the money and intention to loan her the money. See XX for the full write-up. See <https://osf.io/3rg8b> for preregistration of the pilot study. See <http://doi.org/10.5281/zenodo.4637883> for pilot data.
 
 ```{r piloteffects, fig.width=10, fig.cap="Pilot study effect of the signals. A. Effect of signal on Belief at T2, controlling for Belief at T1. B: Proportion of participants who inferred the victim was mentally ill. Fit with a generalized linear model with the quasibinomial family."}
 pilot_results$effectplot + (pilot_results$mentalplot + theme(axis.text.y = element_blank())) + plot_annotation(tag_levels = 'A')
 ```
 
-
 ## Power from pilot study
 
-We estimated power using our pilot study data to compare the effect of the *Depression* signal vs. the *Verbal request* control on *Belief* (that the sister needed the money) at T2 controlling for *Belief* at T1 in a linear regression model. Specifically, we resampled the pilot data with replacement, fit the linear regression model, and extracted the p-value for the signal coefficient, repeating this 2000 times for each sample size ranging from N=20 to N=200. Power was computed as the proportion of p-values < 0.05. Power was about 80% for a sample size of about `r pwr80_90[[2,2]]`, and was about 90% for a sample size of about `r pwr80_90[[2,3]]`. We then repeated this entire procedure to compare *Depression* to a *Control* condition in the pilot study that was meant to not include any signaling (but which we realized, post hoc, did include a verbal request, and therefore was not used in the current study). Power was about 80% for a sample size of about `r pwr80_90[[1,2]]`, and was about 90% for a sample size of about `r pwr80_90[[1,3]]`. See Figure \@ref(fig:power).
+We estimated power using our pilot study data to compare the effect of the *Depression* signal vs. the *Verbal request* control on *Belief* (that the sister needed the money) at T2 controlling for *Belief* at T1 in a linear regression model. Specifically, we resampled the pilot data with replacement, fit the linear regression model, and extracted the p-value for the signal coefficient, repeating this 2000 times for each sample size ranging from N=20 to N=200. Power was computed as the proportion of p-values \< 0.05. Power was about 80% for a sample size of about `r pwr80_90[[2,2]]`, and was about 90% for a sample size of about `r pwr80_90[[2,3]]`. We then repeated this entire procedure to compare *Depression* to a *Control* condition in the pilot study that was meant to not include any signaling (but which we realized, post hoc, did include a verbal request, and therefore was not used in the current study). Power was about 80% for a sample size of about `r pwr80_90[[1,2]]`, and was about 90% for a sample size of about `r pwr80_90[[1,3]]`. See Figure \@ref(fig:power).
 
 ```{r power, fig.cap="Power curve for between-subjects effect of Depression vs. Verbal request signal on T2 Belief, controlling for T1 Belief, and Depression vs. a Control condition that was unique to the pilot study."}
   ggplot(power_curve, aes(sample_size, power, color=Base)) +
@@ -551,7 +565,7 @@ We estimated power using our pilot study data to compare the effect of the *Depr
     theme_minimal(15)
 ```
 
-<!-- Second, for participants in the *Depression* condition only, we compared their T2 Belief to their T1 Belief using a paired t-test (in the full pilot data, *Depression* increased belief by about 8 points on a 100 point scale). We again resampled our pilot data 2000 times for each sample size from N=20 to N=200. Power was about 80% for a sample size of 125, and about 90% for a sample size of 175. See Figure \@ref(fig:power2). -->
+<!-- Second, for participants in the *Depression* condition only, we compared their T2 Belief to their T1 Belief using a paired t-test (in the full pilot data, *Depression* increased belief by about 8 points on a 100 point scale). We again resampled our pilot data 2000 times for each sample size from N=20 to N=200. Power was about 80% for a sample size of 125, and about 90% for a sample size of 175. See Figure @ref(fig:power2). -->
 
 ```{r power2, fig.cap="Power curve for within-subjects effect of Depression signal on T2 Belief relative to T1 Belief."}
   # ggplot(power_curve2, aes(sample_size, power)) +
@@ -565,14 +579,14 @@ We estimated power using our pilot study data to compare the effect of the *Depr
 ### Basketball coach
 
 Imagine yourself in the following scenario:
- 
-You are a college athletic director at a university with a long history of success in women’s basketball. Unfortunately, despite quality players, the team struggled for the first three years of your leadership. You came close to losing your job but were given two more years to turn things around. You immediately hired a new head coach who you had spotted coaching a low-ranked college team that punched above its weight. Two years later, your team is one of the best in the country and has attracted a top recruit who has become the star player on your team and is probably the best player in the country. You have been told that if the team makes it to the final rounds of the playoff tournament, the university will offer you a high paying contract extension.
+
+You are a college athletic director at a university with a long history of success in women's basketball. Unfortunately, despite quality players, the team struggled for the first three years of your leadership. You came close to losing your job but were given two more years to turn things around. You immediately hired a new head coach who you had spotted coaching a low-ranked college team that punched above its weight. Two years later, your team is one of the best in the country and has attracted a top recruit who has become the star player on your team and is probably the best player in the country. You have been told that if the team makes it to the final rounds of the playoff tournament, the university will offer you a high paying contract extension.
 
 Your star player is hard to deal with, however. She is constantly jealous of other players, and often comes to your office to complain that the coach unfairly limits her playing time, claiming this will ruin her chances of going professional. The star player has also posted self-serving accounts of your discussions with her on social media.
 
-A few days ago, after the coach started a new player in one game, the star player went to the police and accused the coach, a physically powerful man, of cornering her in the locker room one night and forcibly kissing her and grabbing her body. The coach strongly denies the allegation, and the police said they do not have any evidence to corroborate the player’s accusation. 
+A few days ago, after the coach started a new player in one game, the star player went to the police and accused the coach, a physically powerful man, of cornering her in the locker room one night and forcibly kissing her and grabbing her body. The coach strongly denies the allegation, and the police said they do not have any evidence to corroborate the player's accusation.
 
-You reached out to other players on the team, all of whom say that the relationship between the coach and star player has always seemed professional, and they are shocked by the allegation. None of the other players have any complaints about the coach. On the contrary, the other players praise the coach for leading everyone into the playoffs. They mention that the star player is a prima donna, but they are worried that if either the coach or the star player miss the playoffs, it will hurt everyone’s chances of making it to the championships.
+You reached out to other players on the team, all of whom say that the relationship between the coach and star player has always seemed professional, and they are shocked by the allegation. None of the other players have any complaints about the coach. On the contrary, the other players praise the coach for leading everyone into the playoffs. They mention that the star player is a prima donna, but they are worried that if either the coach or the star player miss the playoffs, it will hurt everyone's chances of making it to the championships.
 
 You find out that the star player then told the university president that she feared the coach might attack her again, and asked her to replace the coach with one of his assistants, who you know wants the star player to have more playing time. The president refused, saying there was no evidence of wrongdoing.
 
@@ -580,78 +594,79 @@ You find out that the star player then told the university president that she fe
 
 ##### Verbal request
 
-A week later the coach informs you that the star player’s performance in games is excellent, helping the team’s performance and her reputation with pro scouts. Later that day, there is a formal luncheon at the athlete dorm to introduce the coaches and members of each team to the alumni. The alumni are especially interested in meeting the basketball coach and members of the basketball team because they are in the playoffs. You notice your star player is not there, but you see her roommate, a member of the swim team. She tells you that you should talk to your star player in person, and she leads you to their dorm room.
+A week later the coach informs you that the star player's performance in games is excellent, helping the team's performance and her reputation with pro scouts. Later that day, there is a formal luncheon at the athlete dorm to introduce the coaches and members of each team to the alumni. The alumni are especially interested in meeting the basketball coach and members of the basketball team because they are in the playoffs. You notice your star player is not there, but you see her roommate, a member of the swim team. She tells you that you should talk to your star player in person, and she leads you to their dorm room.
 
-When you arrive, the two of you find her sitting on her bed. She appears fit, well-rested, and her room is clean. She looks calm with her hands folded as she asks you to replace the coach, saying she can’t attend the luncheon if he is there.
+When you arrive, the two of you find her sitting on her bed. She appears fit, well-rested, and her room is clean. She looks calm with her hands folded as she asks you to replace the coach, saying she can't attend the luncheon if he is there.
 
 ##### Crying
 
-A week later the coach informs you that the star player’s performance in games is excellent, helping the team’s performance and her reputation with pro scouts. Later that day, there is a formal luncheon at the athlete dorm to introduce the coaches and members of each team to the alumni. The alumni are especially interested in meeting the basketball coach and members of the basketball team because they are in the playoffs. You notice your star player is not there, but you see her roommate, a member of the swim team. She tells you that you should talk to your star player in person, and she leads you to their dorm room.
- 
-When you arrive, the two of you find her sitting on her bed. She appears fit and well-rested, and her room is clean. She looks sad and begins sobbing as she asks you to replace the coach, saying she can’t attend the luncheon if he is there.
+A week later the coach informs you that the star player's performance in games is excellent, helping the team's performance and her reputation with pro scouts. Later that day, there is a formal luncheon at the athlete dorm to introduce the coaches and members of each team to the alumni. The alumni are especially interested in meeting the basketball coach and members of the basketball team because they are in the playoffs. You notice your star player is not there, but you see her roommate, a member of the swim team. She tells you that you should talk to your star player in person, and she leads you to their dorm room.
+
+When you arrive, the two of you find her sitting on her bed. She appears fit and well-rested, and her room is clean. She looks sad and begins sobbing as she asks you to replace the coach, saying she can't attend the luncheon if he is there.
 
 ##### Mild-depression (crying with behavioral changes)
 
-A week later the coach informs you that the star player’s performance in games is OK and not harming the team’s performance and her reputation with pro scouts. Later that day, there is a formal luncheon at the athlete dorm to introduce the coaches and members of each team to the alumni. The alumni are especially interested in meeting the basketball coach and members of the basketball team because they are in the playoffs. You notice your star player is not there, but you see her roommate, a member of the swim team. She tells you that you should talk to your star player in person, and she leads you to their dorm room.
- 
-When you arrive, the two of you find her sitting on her bed. Her room is a little messy and she appears a little less fit than you remember, while also seeming slightly tired. She looks sad and begins sobbing as she asks you to replace the coach, saying she can’t attend the luncheon if he is there.
+A week later the coach informs you that the star player's performance in games is OK and not harming the team's performance and her reputation with pro scouts. Later that day, there is a formal luncheon at the athlete dorm to introduce the coaches and members of each team to the alumni. The alumni are especially interested in meeting the basketball coach and members of the basketball team because they are in the playoffs. You notice your star player is not there, but you see her roommate, a member of the swim team. She tells you that you should talk to your star player in person, and she leads you to their dorm room.
+
+When you arrive, the two of you find her sitting on her bed. Her room is a little messy and she appears a little less fit than you remember, while also seeming slightly tired. She looks sad and begins sobbing as she asks you to replace the coach, saying she can't attend the luncheon if he is there.
 
 ##### Depression
 
-A week later the coach informs you that the star player’s performance in games is poor, harming the team’s performance and her reputation with pro scouts. Later that day, there is a formal luncheon at the athlete dorm to introduce the coaches and members of each team to the alumni. The alumni are especially interested in meeting the basketball coach and members of the basketball team because they are in the playoffs. You notice your star player is not there, but you see her roommate, a member of the swim team. She tells you that you should talk to your star player in person, and she leads you to their dorm room.
- 
-When you arrive, the two of you find her slouched on her bed. Her room is a mess, and you notice she has lost weight and looks fatigued. She looks sad and begins sobbing and wringing her hands as she asks you to replace the coach, saying she can’t attend the luncheon if he is there.
+A week later the coach informs you that the star player's performance in games is poor, harming the team's performance and her reputation with pro scouts. Later that day, there is a formal luncheon at the athlete dorm to introduce the coaches and members of each team to the alumni. The alumni are especially interested in meeting the basketball coach and members of the basketball team because they are in the playoffs. You notice your star player is not there, but you see her roommate, a member of the swim team. She tells you that you should talk to your star player in person, and she leads you to their dorm room.
+
+When you arrive, the two of you find her slouched on her bed. Her room is a mess, and you notice she has lost weight and looks fatigued. She looks sad and begins sobbing and wringing her hands as she asks you to replace the coach, saying she can't attend the luncheon if he is there.
 
 ##### Suicide attempt
 
-A week later the coach informs you that the star player’s performance in games is poor, harming the team’s performance and her reputation with pro scouts. Later that day, there is a formal luncheon at the athlete dorm to introduce the coaches and members of each team to the alumni. The alumni are especially interested in meeting the basketball coach and members of the basketball team because they are in the playoffs. You notice your star player is not there, but you see her roommate, a member of the swim team. She tells you that you should talk to your star player in person, and she leads you to their dorm room.
- 
-When you arrive, the two of you find her passed out on her bed. The room is a mess, and you notice she has lost weight. Her roommate tries to wake her up, but she doesn’t respond. You see an empty bottle of OxyContin painkillers on the table and immediately call 911. That evening you visit her in the hospital. Her doctor tells you she almost died, and then leaves the two of you alone. The star player begins sobbing as she asks you to replace the coach.
+A week later the coach informs you that the star player's performance in games is poor, harming the team's performance and her reputation with pro scouts. Later that day, there is a formal luncheon at the athlete dorm to introduce the coaches and members of each team to the alumni. The alumni are especially interested in meeting the basketball coach and members of the basketball team because they are in the playoffs. You notice your star player is not there, but you see her roommate, a member of the swim team. She tells you that you should talk to your star player in person, and she leads you to their dorm room.
 
-### Brother-in-law 
+When you arrive, the two of you find her passed out on her bed. The room is a mess, and you notice she has lost weight. Her roommate tries to wake her up, but she doesn't respond. You see an empty bottle of OxyContin painkillers on the table and immediately call 911. That evening you visit her in the hospital. Her doctor tells you she almost died, and then leaves the two of you alone. The star player begins sobbing as she asks you to replace the coach.
+
+### Brother-in-law
+
 Imagine yourself in the following scenario:
- 
+
 You are the single parent of a 15-year-old girl. Your relationship with her has always been full of conflict. She is very self-centered, and the two of you fight frequently.
 
 Recently, your sister lost her house in a fire and was having difficulty finding a place for her family to live because many other families also lost their homes. You are very close with your sister and brother-in-law, who helped you escape your abusive ex-partner. You have a large house with several extra bedrooms, so you decide to let your sister, your brother-in-law, and your teenage niece move in while they look for more permanent housing.
 
 (page break)
 
-Unfortunately, your daughter and your niece are not getting along. They have to share a bathroom, and your daughter complains constantly that she is in there too long. Your daughter is also jealous that her cousin has expensive clothes, a designer handbag, and a new iPhone, all of which are nicer than your daughter’s. 
+Unfortunately, your daughter and your niece are not getting along. They have to share a bathroom, and your daughter complains constantly that she is in there too long. Your daughter is also jealous that her cousin has expensive clothes, a designer handbag, and a new iPhone, all of which are nicer than your daughter's.
 
-One day your daughter had a party at your house with many of her friends. You noticed that your niece was very popular and got a lot of attention, especially from your daughter’s friends and boyfriend. You could tell that your daughter was upset. After the party, your daughter tells you that her cousin is a bitch who is trying to steal her boyfriend. However, you saw that your niece was trying to avoid interacting with the boyfriend.
+One day your daughter had a party at your house with many of her friends. You noticed that your niece was very popular and got a lot of attention, especially from your daughter's friends and boyfriend. You could tell that your daughter was upset. After the party, your daughter tells you that her cousin is a bitch who is trying to steal her boyfriend. However, you saw that your niece was trying to avoid interacting with the boyfriend.
 
 (page break)
 
 Later, your daughter complained that your brother-in-law was looking at her body. A few days later, while grocery shopping, you got a text from your daughter saying that your brother-in-law tried to get into the bathroom while she was showering and came into her room while she was changing. She says that she does not feel safe and wants your sister and her family to leave. However, you know your daughter will exaggerate to get her way.
 
-The next week, your daughter comes to you saying your brother-in-law groped her as they passed in the hallway and that she wants your sister’s family to leave immediately. You confront your brother-in-law due to the severity of your daughter’s allegation. He strongly denies it.
+The next week, your daughter comes to you saying your brother-in-law groped her as they passed in the hallway and that she wants your sister's family to leave immediately. You confront your brother-in-law due to the severity of your daughter's allegation. He strongly denies it.
 
-That night, you call your mother who says your daughter has long been jealous of her cousin. She reminds you that you’ve taken your daughter’s side before and been burned when you found out your daughter wasn’t telling the whole truth. She reminds you of the difficult situation your sister’s family is in.
+That night, you call your mother who says your daughter has long been jealous of her cousin. She reminds you that you've taken your daughter's side before and been burned when you found out your daughter wasn't telling the whole truth. She reminds you of the difficult situation your sister's family is in.
 
 #### Signals
 
 ##### Verbal request
 
-Your daughter has appeared normal since her claims about your brother-in-law. She has still looked fit and put the same amount of effort into her appearance, always wearing clean clothes and spending time on her hair. She has also slept about the same amount of time as normal and remained active throughout the day. 
- 
+Your daughter has appeared normal since her claims about your brother-in-law. She has still looked fit and put the same amount of effort into her appearance, always wearing clean clothes and spending time on her hair. She has also slept about the same amount of time as normal and remained active throughout the day.
+
 Her demeanor has also remained normal. She has generally appeared calm and has been able to maintain her concentration. She has also done her homework on time and maintained an A in all her classes as she always has in the past.
 
 When the two of you talk about your brother-in-law, she remains calm and asks you to kick him out.
 
 ##### Crying
 
-Your daughter has appeared normal since her claims about your brother-in-law. She has still looked fit and put the same amount of effort into her appearance, always wearing clean clothes and spending time on her hair. She has also slept about the same amount of time as normal and remained active throughout the day. 
- 
+Your daughter has appeared normal since her claims about your brother-in-law. She has still looked fit and put the same amount of effort into her appearance, always wearing clean clothes and spending time on her hair. She has also slept about the same amount of time as normal and remained active throughout the day.
+
 Her demeanor has also remained normal. She has generally appeared calm and has been able to maintain her concentration. She has also done her homework on time and maintained an A in all her classes as she always has in the past.
 
 When the two of you talk about your brother-in-law, she starts sobbing and asks you to kick him out.
 
 ##### Mild-depression (crying with behavioral changes)
 
-Your daughter has appeared sad since her claims about your brother-in-law. She has looked a little less fit and has put less effort into her appearance, occasionally wearing dirty clothes and sometimes not doing her hair. She has also sometimes woken up late and has seemed a little less active than normal. 
- 
-Her demeanor has also changed slightly. She has occasionally gotten distressed and has seemed distracted. She has also missed a few assignments and her grades dropped from straight A’s to a B average for the first time in her life. 
+Your daughter has appeared sad since her claims about your brother-in-law. She has looked a little less fit and has put less effort into her appearance, occasionally wearing dirty clothes and sometimes not doing her hair. She has also sometimes woken up late and has seemed a little less active than normal.
+
+Her demeanor has also changed slightly. She has occasionally gotten distressed and has seemed distracted. She has also missed a few assignments and her grades dropped from straight A's to a B average for the first time in her life.
 
 When the two of you talk about your brother-in-law, she starts sobbing and asks you to kick him out.
 
@@ -659,15 +674,15 @@ When the two of you talk about your brother-in-law, she starts sobbing and asks 
 
 Your daughter started to appear noticeably different since her claims about your brother-in-law. She has lost weight and has been putting no effort into her appearance, often wearing dirty clothes and rarely doing her hair. She has also slept more than normal but still seemed tired and inactive.
 
-Her demeanor also changed drastically. She has often gotten distressed and has had difficulty maintaining her concentration. She has also missed multiple assignments, and her grades dropped from straight A’s to a C average for the first time in her life. 
+Her demeanor also changed drastically. She has often gotten distressed and has had difficulty maintaining her concentration. She has also missed multiple assignments, and her grades dropped from straight A's to a C average for the first time in her life.
 
 When the two of you talk about your brother-in-law, she starts sobbing and asks you to kick him out.
 
 ##### Suicide attempt
 
 Your daughter started to appear noticeably different since her claims about your brother-in-law. She has lost weight and has been putting no effort into her appearance, often wearing dirty clothes and rarely doing her hair. She has also slept more than normal but still seemed tired and inactive.
- 
-Her demeanor also changed drastically. She has often gotten distressed and has had difficulty maintaining her concentration. She has also missed multiple assignments, and her grades dropped from straight A’s to a C average for the first time in her life. 
+
+Her demeanor also changed drastically. She has often gotten distressed and has had difficulty maintaining her concentration. She has also missed multiple assignments, and her grades dropped from straight A's to a C average for the first time in her life.
 
 When the two of you talk about your brother-in-law, she starts sobbing and asks you to kick him out. Then, this past week, you and your daughter went through a traumatic experience when your daughter attempted suicide. You rushed her to the hospital, where she was placed in critical but stable condition.
 
@@ -681,9 +696,9 @@ Recently, you have gotten closer with a new [man/woman]. [He/She] is very attrac
 
 Your daughter, who wants you to get back together with her [dad/mom], is not happy about this. She frequently complains whenever your boyfriend comes over and is extremely rude and avoidant. In previous relationships, such behavior has driven others away. However, your partner says [he/she] is committed to this relationship and to establishing a bond with your daughter.
 
-After a month of living together with your partner, things have only gotten worse. Your daughter is almost always upset and has treated you partner worse than others in the past. 
+After a month of living together with your partner, things have only gotten worse. Your daughter is almost always upset and has treated you partner worse than others in the past.
 
-One night, she accused your partner of hitting her multiple times. You ask if she has any bruises or injuries, but she says she doesn't. Despite this, she maintains that she was hit and says she doesn’t know why there aren’t any marks on her.
+One night, she accused your partner of hitting her multiple times. You ask if she has any bruises or injuries, but she says she doesn't. Despite this, she maintains that she was hit and says she doesn't know why there aren't any marks on her.
 
 You bring up the accusation with your partner, and [he/she] denies it, saying that [he/she] would never hurt her and that this is just a way for her to split the two of you up.
 
@@ -691,15 +706,15 @@ You bring up the accusation with your partner, and [he/she] denies it, saying th
 
 ##### Verbal request
 
-Your daughter has appeared normal since her claims about your partner. She has still looked fit and put the same amount of effort into her appearance, always wearing clean clothes and spending time on her hair. She has also slept about the same amount of time as normal and remained active throughout the day. 
- 
+Your daughter has appeared normal since her claims about your partner. She has still looked fit and put the same amount of effort into her appearance, always wearing clean clothes and spending time on her hair. She has also slept about the same amount of time as normal and remained active throughout the day.
+
 Her demeanor has also remained normal. She has generally appeared calm and has been able to maintain her concentration. She has also done her homework on time and maintained an A in all her classes as she always has in the past.
 
-When the two of you talk about your partner, she remains calm and asks you to kick your partner out. 
+When the two of you talk about your partner, she remains calm and asks you to kick your partner out.
 
 ##### Crying
 
-Your daughter has appeared normal since her claims about your partner. She has still looked fit and put the same amount of effort into her appearance, always wearing clean clothes and spending time on her hair. She has also slept about the same amount of time as normal and remained active throughout the day. 
+Your daughter has appeared normal since her claims about your partner. She has still looked fit and put the same amount of effort into her appearance, always wearing clean clothes and spending time on her hair. She has also slept about the same amount of time as normal and remained active throughout the day.
 
 Her demeanor has also remained normal. She has generally appeared calm and has been able to maintain her concentration. She has also done her homework on time and maintained an A in all her classes as she always has in the past.
 
@@ -707,9 +722,9 @@ When the two of you talk about your partner, she starts sobbing and asks you to 
 
 ##### Mild-depression (crying with behavioral changes)
 
-Your daughter has appeared sad since her claims about your partner. She has looked a little less fit and has put less effort into her appearance, occasionally wearing dirty clothes and sometimes not doing her hair. She has also sometimes woken up late and has seemed a little less active than normal. 
- 
-Her demeanor has also changed slightly. She has occasionally gotten distressed and has seemed distracted. She has also missed a few assignments and her grades dropped from straight A’s to a B average for the first time in her life. 
+Your daughter has appeared sad since her claims about your partner. She has looked a little less fit and has put less effort into her appearance, occasionally wearing dirty clothes and sometimes not doing her hair. She has also sometimes woken up late and has seemed a little less active than normal.
+
+Her demeanor has also changed slightly. She has occasionally gotten distressed and has seemed distracted. She has also missed a few assignments and her grades dropped from straight A's to a B average for the first time in her life.
 
 When the two of you talk about your partner, she starts sobbing and asks you to kick your partner out.
 
@@ -717,22 +732,22 @@ When the two of you talk about your partner, she starts sobbing and asks you to 
 
 Your daughter started to appear noticeably different since her claims about your partner. She has lost weight and has been putting no effort into her appearance, often wearing dirty clothes and rarely doing her hair. She has also slept more than normal but still seemed tired and inactive.
 
-Her demeanor also changed drastically. She has often gotten distressed and has had difficulty maintaining her concentration. She has also missed multiple assignments, and her grades dropped from straight A’s to a C average for the first time in her life. 
+Her demeanor also changed drastically. She has often gotten distressed and has had difficulty maintaining her concentration. She has also missed multiple assignments, and her grades dropped from straight A's to a C average for the first time in her life.
 
 When the two of you talk about your partner, she starts sobbing and asks you to kick your partner out.
 
 ##### Suicide attempt
 
 Your daughter started to appear noticeably different since her claims about your partner. She has lost weight and has been putting no effort into her appearance, often wearing dirty clothes and rarely doing her hair. She has also slept more than normal but still seemed tired and inactive.
- 
-Her demeanor also changed drastically. She has often gotten distressed and has had difficulty maintaining her concentration. She has also missed multiple assignments, and her grades dropped from straight A’s to a C average for the first time in her life. 
+
+Her demeanor also changed drastically. She has often gotten distressed and has had difficulty maintaining her concentration. She has also missed multiple assignments, and her grades dropped from straight A's to a C average for the first time in her life.
 
 When the two of you talk about your partner, she starts sobbing and asks you to kick your partner out. Then, this past week, you and your daughter went through a traumatic experience when your daughter attempted suicide. You rushed her to the hospital, where she was placed in critical but stable condition.
 
 #### Thwarted Marriage
 
 Imagine you are the parent of two daughters, ages 19 and 21, and you have no sons.
- 
+
 Your younger daughter is very sweet. Your older daughter is hard to deal with, however. She is very jealous of her younger sister, and constantly accuses you of favoring her, even when your older daughter receives more.
 
 You live in a community where marriages are arranged and dowries are paid. Recently, you and your partner have been attempting to arrange a marriage for your older daughter with a man she is already in love with. The man, who comes from a good family and is in the same caste as yours, appears to be equally interested in your daughter, and his family seems receptive.
@@ -740,90 +755,75 @@ You live in a community where marriages are arranged and dowries are paid. Recen
 (page break)
 
 As your younger daughter is also not far from marriage, you and your partner decide to divide the money you have saved for dowries in half, with equal amounts for both daughters. At first, an equal split of your savings seemed possible. However, the family of the man your older daughter wants to marry is getting offers of marriage from other families, and it now appears that his family is expecting a much larger dowry.
- 
-Since providing a large enough dowry to compete with the other offers would leave little savings for your younger daughter’s dowry, you decide to look for another husband for your older daughter.
+
+Since providing a large enough dowry to compete with the other offers would leave little savings for your younger daughter's dowry, you decide to look for another husband for your older daughter.
 
 (page break)
 
 After a few months of searching, you are confident you found a good man for your older daughter. He is very devout, kind, and comes from a good family in the same caste as yours. He is a bit younger than your daughter, and has less money than typical for your caste, but his family appears to be willing to accept a smaller dowry that would leave a fair amount for your younger daughter.
- 
-You ask your older daughter what she thinks of the man, and she is immediately disappointed. She complains that she already loves the man you originally intended her to marry. She says the second man is younger than she is and not attractive. You explain that she might not be able to marry the man she loves because it would require a much larger dowry, leaving too little for her sister. 
+
+You ask your older daughter what she thinks of the man, and she is immediately disappointed. She complains that she already loves the man you originally intended her to marry. She says the second man is younger than she is and not attractive. You explain that she might not be able to marry the man she loves because it would require a much larger dowry, leaving too little for her sister.
 
 (page break)
 
-You encourage your daughter to spend some time with the second man, and she begrudgingly agrees. After each date, she becomes more insistent that there is no chemistry between them, he is immature, has no sense of humor, and just isn’t right for her. She also complains that the family of the man she loves is seeking other marriage partners and that she is afraid he will become interested in his other marriage options.
- 
+You encourage your daughter to spend some time with the second man, and she begrudgingly agrees. After each date, she becomes more insistent that there is no chemistry between them, he is immature, has no sense of humor, and just isn't right for her. She also complains that the family of the man she loves is seeking other marriage partners and that she is afraid he will become interested in his other marriage options.
+
 Your partner is not sure if your daughter really thinks the other man is a poor choice, or if she just wants to get her way as usual.
 
 (page break)
 
-Your family talks to the first man’s family again but the amount they want is almost all you have saved. Your partner tells your older daughter that it’s just not fair to spend so much on her because saving enough for your younger daughter’s dowry would be almost impossible in the next two or three years. For this reason, your family begins to hold more serious discussions with the family of the second man despite your older daughter’s objections.
+Your family talks to the first man's family again but the amount they want is almost all you have saved. Your partner tells your older daughter that it's just not fair to spend so much on her because saving enough for your younger daughter's dowry would be almost impossible in the next two or three years. For this reason, your family begins to hold more serious discussions with the family of the second man despite your older daughter's objections.
 
-Two days later, your family receives word that the first man’s family is finalizing an agreement for him to marry another woman.
+Two days later, your family receives word that the first man's family is finalizing an agreement for him to marry another woman.
 
 #### Signals
 
 ##### Verbal request
 
-Your older daughter has appeared normal since your attempts at finding another potential husband for her. She has still looked fit and put the same amount of effort into her appearance, always wearing clean clothes and spending time on her hair. She has also slept about the same amount of time as normal and remained active throughout the day. 
- 
+Your older daughter has appeared normal since your attempts at finding another potential husband for her. She has still looked fit and put the same amount of effort into her appearance, always wearing clean clothes and spending time on her hair. She has also slept about the same amount of time as normal and remained active throughout the day.
+
 Her demeanor has also remained normal. She has generally appeared calm and has been able to maintain her concentration. She has also done her homework on time and maintained an A in all her classes as she always has in the past.
 
 When the two of you talk about the arranged marriage, she remains calm and asks you to pay the amount the family of the man she loves wants.
 
 ##### Crying
 
-Your older daughter has appeared normal since your attempts at finding another potential husband for her. She has still looked fit and put the same amount of effort into her appearance, always wearing clean clothes and spending time on her hair. She has also slept about the same amount of time as normal and remained active throughout the day. 
+Your older daughter has appeared normal since your attempts at finding another potential husband for her. She has still looked fit and put the same amount of effort into her appearance, always wearing clean clothes and spending time on her hair. She has also slept about the same amount of time as normal and remained active throughout the day.
 
 Her demeanor has also remained normal. She has generally appeared calm and has been able to maintain her concentration. She has also done her homework on time and maintained an A in all her classes as she always has in the past.
 
-When the two of you talk about the arranged marriage, she starts sobbing and asks you to pay the amount the family of the man she loves wants. 
+When the two of you talk about the arranged marriage, she starts sobbing and asks you to pay the amount the family of the man she loves wants.
 
 ##### Mild-depression (crying with behavioral changes)
 
-Your older daughter has appeared sad since your attempts at finding another potential husband for her. She has looked a little less fit and has put less effort into her appearance, occasionally wearing dirty clothes and sometimes not doing her hair. She has also sometimes woken up late and has seemed a little less active than normal. 
+Your older daughter has appeared sad since your attempts at finding another potential husband for her. She has looked a little less fit and has put less effort into her appearance, occasionally wearing dirty clothes and sometimes not doing her hair. She has also sometimes woken up late and has seemed a little less active than normal.
 
-Her demeanor has also changed slightly. She has occasionally gotten distressed and has seemed distracted. She has also missed a few assignments and her grades dropped from straight A’s to a B average for the first time in her life. 
+Her demeanor has also changed slightly. She has occasionally gotten distressed and has seemed distracted. She has also missed a few assignments and her grades dropped from straight A's to a B average for the first time in her life.
 
 When the two of you talk about the arranged marriage, she starts sobbing and asks you to pay the amount the family of the man she loves wants.
 
-##### Depression
+##### Depression {#depression-3}
 
 Your older daughter started to appear noticeably different since your attempts at finding another potential husband for her. She has lost weight and has been putting no effort into her appearance, often wearing dirty clothes and rarely doing her hair. She has also slept more than normal but still seemed tired and inactive.
 
-Her demeanor also changed drastically. She has often gotten distressed and has had difficulty maintaining her concentration. She has also missed multiple assignments, and her grades dropped from straight A’s to a C average for the first time in her life. 
+Her demeanor also changed drastically. She has often gotten distressed and has had difficulty maintaining her concentration. She has also missed multiple assignments, and her grades dropped from straight A's to a C average for the first time in her life.
 
 When the two of you talk about the arranged marriage, she starts sobbing and asks you to pay the amount the family of the man she loves wants.
 
 ##### Suicide attempt
 
 Your older daughter started to appear noticeably different since your attempts at finding another potential husband for her. She has lost weight and has been putting no effort into her appearance, often wearing dirty clothes and rarely doing her hair. She has also slept more than normal but still seemed tired and inactive.
- 
-Her demeanor also changed drastically. She has often gotten distressed and has had difficulty maintaining her concentration. She has also missed multiple assignments, and her grades dropped from straight A’s to a C average for the first time in her life. 
 
-When the two of you talk about the arranged marriage, she starts sobbing and asks you to pay the amount the family of  the man she loves wants. Then, this past week, you and your daughter went through a traumatic experience when your daughter attempted suicide. You rushed her to the hospital, where she was placed in critical but stable condition.
+Her demeanor also changed drastically. She has often gotten distressed and has had difficulty maintaining her concentration. She has also missed multiple assignments, and her grades dropped from straight A's to a C average for the first time in her life.
+
+When the two of you talk about the arranged marriage, she starts sobbing and asks you to pay the amount the family of the man she loves wants. Then, this past week, you and your daughter went through a traumatic experience when your daughter attempted suicide. You rushed her to the hospital, where she was placed in critical but stable condition.
 
 ## Emotion Checklist
 
 How do you think [the star player / your daughter] feels? Click **all** that apply.
 
-Angry
-Sad
-Suicidal
-Mentally ill
-Depressed
-Guilty  
-Calm 
-Neutral
-Scared
-Tired
-Distressed
-Devious
-Jealous
-Confident
-Traumatized
-Violated
-None of the above
+Angry Sad Suicidal Mentally ill Depressed Guilty\
+Calm Neutral Scared Tired Distressed Devious Jealous Confident Traumatized Violated None of the above
 
 ## T3 Evidence
 
@@ -912,7 +912,6 @@ d %>%
 
 ```
 
-
 ## Signal effect sizes
 
 ```{r effectsizes, fig.width=10, fig.height=7, fig.cap="Between-subjects Cohen's d (95% CI) for the effect of each signal on Belief and Action in each vignette relative to the Verbal request control condtion, ranked by effect size."}
@@ -934,7 +933,6 @@ ggplot(effect_sizes, aes(est, fct_reorder(id, est), xmin=low, xmax=high, colour 
   theme(legend.position = 'top')
 ```
 
-
 ```{r effectsizes2, fig.width=10, fig.height=7, fig.cap="Within-subjects Cohen's d (95% CI) for the effect of each signal on T2 Belief and Action in each vignette relative to T1 baseline Belief and Action, respectively, ranked by effect size."}
 
 ggplot(effect_sizes2, aes(effsize, fct_reorder(id, effsize), xmin=conf.low, xmax=conf.high, colour = signal, shape=Outcome)) +
@@ -950,7 +948,6 @@ ggplot(effect_sizes2, aes(effsize, fct_reorder(id, effsize), xmin=conf.low, xmax
   theme(legend.position = 'top')
 ```
 
-
 <!-- ## Sociodemographic associations -->
 
 ```{r demoeffectsaction, fig.width=9, fig.height=8, fig.cap="Demographic effects on Action. **Top**: Association of age with T2 Action, controlling for T1 Action, sex, and vignette. **Bottom**: Association of sex with T2 Action controlling for T1 Action, age, and vignette. Estimated using a generalized linear regression model with the quasibinomial family."}
@@ -960,7 +957,6 @@ ggplot(effect_sizes2, aes(effsize, fct_reorder(id, effsize), xmin=conf.low, xmax
 ```{r demovignettebelief, fig.width=8, fig.height=8, fig.cap="Associations of age (top) and sex (bottom) with T2 Belief by vignette, controlling for T1 Belief and signal. Estimated using a generalized linear regression model with the quasibinomial family."}
 # (effectsPlots_US$m18plot / effectsPlots_US$m13plot)
 ```
-
 
 ```{r demovignetteaction, fig.width=8, fig.height=8, fig.cap="Associations of age (top) and sex (bottom) with T2 Action by vignette, controlling for T1 Action and signal. Estimated using a generalized linear regression model with the quasibinomial family."}
 # effectsPlots_US$m19plot / effectsPlots_US$m15plot
@@ -988,7 +984,6 @@ ggmediation(med2)
 plot_raw_belief_action2d
 ```
 
-
 ## T1 emotion vs vignette heatmap
 
 ```{r t1emotionheatmap, fig.width=8, fig.cap="Time 1 inference of victim's emotional state in each vignette. Each cell represents the proportion of participants who inferred that emotion. Participants could check multiple emotions from the list. Rows and columns ordered with the PCA angle method in the seriation package."}
@@ -1013,13 +1008,11 @@ hagenheat(d_diff, rotate_labels = F, seriation_method = 'PCA_angle') + scale_fil
 
 ```
 
-
 ## Mentally ill
 
 ```{r mentallyillT1, fig.width=8, fig.cap="Proportion of participants in each vignette who thought that the victim was mentally ill at T1. Means estimated with a generalized linear regression model with the quasibinomial family."}
 effectsPlots$m27plot + ggtitle('Time 1')
 ```
-
 
 ```{r mentallyillT2, fig.width=8, fig.cap="Proportion of participants in each condition who thought that the victim was mentally ill at T2, controlling for perceptions of mental illness at T1. Means estimated with a generalized linear regression model with the quasibinomial family."}
 effectsPlots$m21plot + ggtitle('Time 2')
@@ -1035,7 +1028,6 @@ effectsPlots_India$m7plot
 effectsPlots_India$m8plot
 ```
 
-
 ## Validity check: T3 Action vs. T2 Action
 
 ```{r t3action, fig.width=10, fig.cap="The effect of post-signal (T3) information that the victim was telling the truth on the likelihood of acting to help her (T3 Action), controlling for T2 Action, with a term for the interaction of T2 Action and vignette."}
@@ -1049,7 +1041,7 @@ effectsPlots$m26plot + theme(panel.spacing = unit(1.5, "lines"))
 hagenutils::ggxtabs(xtabs(~Feedback3 + vignette, d), cell_counts = T) + xlab('')
 ```
 
-```{r informativeplot, fig.width=9, fig.cap="The distribution of informative feedback provided at the end of the study. See Figure \\@ref(fig:feedbackplot) for other types of feedback. See Table \\@ref(tab:informativetab) for all informative statements."}
+```{r informativeplot, fig.width=9, fig.cap="The distribution of informative feedback provided at the end of the study. See Figure \\@ref(fig:feedbackplot) for other types of feedback. See Table \\@ref(tab:informativetab) for the text of all informative statements."}
 hagenutils::ggxtabs(xtabs(~Informative + vignette, d), cell_counts = T) + xlab('')
 ```
 
@@ -1062,7 +1054,6 @@ d %>%
   kable_styling()
 ```
 
-
 ## Regression tables
 
 ```{r regressiontables}
@@ -1071,7 +1062,6 @@ tmp <- models %>%
 
 regressiontable(tmp$Model, caption = 'Regression coefficients')
 ```
-
 
 ## ANOVA tables
 
@@ -1099,7 +1089,6 @@ p2 <- effect_plot(fit=models_prereg$Model$m3, xvar='signal', ylbl='T2 Action', d
 (p1 + theme(axis.text.x = element_blank()))/p2 + plot_layout(ncol = 1) & theme(plot.margin = unit(c(0,0,0,0), units = 'mm'))
 ```
 
-
 ```{r preregbeliefB, fig.width=8, fig.height=8, fig.cap="The effect of the signals on T2 Belief (top) and Action (bottom) controlling for T1 values of Belief and Action, respectively, with an interaction between T1 values and the signal. Estimated using OLS linear regression models (gaussian)."}
 p1 <- effect_plot(fit=models_prereg$Model$m1b, xvar='signal', by='T1Belief', ylbl='T2 Belief', data=d)
 
@@ -1109,7 +1098,6 @@ p2 <- effect_plot(fit=models_prereg$Model$m3b, xvar='signal', by='T1Action', ylb
 ```
 
 ### OLS regression tables
-
 
 ```{r preregtables}
 regressiontable(models_prereg$Model, caption = 'OLS regression coefficients for preregistered linear regression models.')
@@ -1147,7 +1135,5 @@ diff_sum <- summary(c(m1_diff, m3_diff))
 belief_compare_plot + action_compare_plot + plot_layout(guides = 'collect')
 
 ```
-
-
 
 # References

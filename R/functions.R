@@ -335,9 +335,12 @@ plot_ecdf <- function(d){
     geom_point(data=emedian, aes(x=median, colour = signal), y = 0) +
     guides(color=guide_legend(title=NULL, override.aes = list(size = 2))) +
     facet_grid(Type~vignette, as.table = F) +
-    labs(x = '\nBelief/Action', y = '') +
-    theme_minimal(15) +
-    theme(strip.text.y = element_text(angle=0, hjust=0), legend.position = 'top')
+    labs(x = '\nRating', y = 'Cummulative fraction\nof observations') +
+    theme_bw(15) +
+    theme(
+      axis.title.y = element_text(angle=0, hjust=1),
+      strip.text.y = element_text(angle=0, hjust=0),
+      legend.position = 'top')
 }
 
 plot_raw_data <- function(d, type){
