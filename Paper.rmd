@@ -65,6 +65,16 @@ tar_load(
 
 Major depression and suicide are generally viewed as pathological responses to stress that elicit aversive responses from others. Alternatively, depression and suicide attempts might involve honest signals of need in response to stress and help to bargain for increased support from reluctant others. To address this hypothesis, we examined responses to emotional signals in an experimental vignette study involving claims of substantial need in the presence of conflicts of interest and private information about whether the signaler was actually in need. In our sample of 1,240 participants recruited from Amazon Mechanical Turk, costlier signals like depression and suicide attempts resulted in greater perceptions of need and increased likelihood of support compared to simple verbal requests and crying without further symptoms. Additionally, the effect of signal type on likelihood of support was largely mediated by the effect of signaling on belief in need as predicted. Our results suggest that depression and suicide attempts, apparent human universals, are relatively successful ways of signaling honest need and eliciting support, consistent with costly signaling explanations.
 
+### alternate start
+
+Conflicts of interest are ubiquitous among living things, even among closely related individuals. The result of this is often situations in which one individual benefits greatly from another while providing little benefits or substantial costs in return. In species which rely heavily on cooperation, like our own, this often manifests in substantial outward conflict about levels of investment the harm an individual is inflicting on another.
+
+Both depression and suicide attempts are more common outcomes of these sorts of conflict than is often appreciated by the biomedical approach (Syme and Hagen 2021). With notable exceptions (Kendler; Mazure; Hammen), the biomedical model tends to frame both suicide and depression as a problem with the individual, e.g., as one involving psychiatric disturbance, drug addiction, or stress sensitivity [@wray2011 (changed wording to include depression]. This theoretical approach has made little progress: rates of suicide, which vary widely by country, have remained relatively flat in countries for which there are long-term data, such as the US, UK, Japan, and Sweden [@owidsuicide] (tweak for depression).
+
+## Anthropology of depression and suicide 
+Anthropology, in contrast, has long viewed depression and suicide attempts as largely stemming from social problems. Continue from below Durkheim
+
+
 # Introduction
 
 Durkheim's pioneering study of suicide [@durkheim1897] helped launch sociology as a quantitative discipline. Sociological investigations of suicide flourished through much of the 20th century, but were supplanted by medical and public health approaches as the biomedical model of mental health took hold in the late 1970's and early 1980's [@wray2011; @syme2020]. The biomedical model tends to frame suicide as a problem with the individual, e.g., as one involving psychiatric disturbance, drug addiction, or stress sensitivity [@wray2011]. This theoretical approach has made little progress: rates of suicide, which vary widely by country, have remained relatively flat in countries for which there are long-term data, such as the US, UK, Japan, and Sweden [@owidsuicide].
