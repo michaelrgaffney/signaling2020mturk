@@ -1458,15 +1458,10 @@
     },
     "targets": {
       "Package": "targets",
-      "Version": "0.2.0.9000",
-      "Source": "GitHub",
-      "RemoteType": "github",
-      "RemoteUsername": "ropensci",
-      "RemoteRepo": "targets",
-      "RemoteRef": "HEAD",
-      "RemoteSha": "e987fb9c8877f1b4f035dfc886f7f325d675540a",
-      "RemoteHost": "api.github.com",
-      "Hash": "527d2a159bdb6c6b50fe2782c7076f03"
+      "Version": "0.4.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "c9d498ecf81ec31152b417dfb1178ee5"
     },
     "tibble": {
       "Package": "tibble",

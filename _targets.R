@@ -440,6 +440,13 @@ list(
     feedback(d)
   ),
 
+
+# Package references ------------------------------------------------------
+
+  tar_render(
+    package_references, 'Packages.rmd'
+  ),
+
 # Paper -------------------------------------------------------------------
 
   tar_render(
