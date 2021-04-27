@@ -75,7 +75,7 @@ There is equally strong evidence that depression is closely associated with ange
 
 Other notable risk factors like loss of a loved one or severe or prolonged illness, might seem less related to conflict. In these situations, however, individuals will often need increased investment from social partners, who might not be able, or want, to provide more investment than they already are. The ability for others to provide meaningful support to limit the harm in times of need [@SugiyamaSugiyama2003] combined with the ubiquity of conflicts of interests mean that many types of problems will eventually involve social conflict even if they did not start that way [@Hagen2003]. There is indeed increasing evidence that loss of a loved one is often followed by increased family conflict [see @SymeHagen2021 for a brief review].
 
-# Bargaining: Credibly signaling need under conflict
+## Bargaining: Credibly signaling need under conflict
 
 Individuals who have suffered a negative life event will often need help to mitigate the fitness cost. To obtain this help, they must signal need, e.g., by verbally requests, sad facial expressions, and crying. But if they have conflicts of interest with social partners who could provide that help, and if their need is private information, their signals might not be believed if the signals, like crying, could easily be faked [@Zahavi1975; @mokkonen2016] and if the cost of believing a deceptive signal was high [@dawkins1978; @johnstone1993; @Hasson1994].
 
