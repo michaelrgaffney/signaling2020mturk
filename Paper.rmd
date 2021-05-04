@@ -208,21 +208,31 @@ In principle, pretest-posttest designs, by controlling for pretest variation in 
 
 The current study is a refinement of a large MTurk experimental vignette pilot study (N=`r nrow(signalingdata2018b)`) that used a different vignette but very similar signals and outcomes, and a much smaller pilot study posted to [reddit.com/r/SampleSize/](https://www.reddit.com/r/SampleSize/) (N=28) that used draft versions of three vignettes used in the current study, along with the same signals and outcomes. One major goal of the MTurk pilot study was to determine if believability and willingness to help were simply artifacts of the fictional victim's psychiatric distress. We therefore included a "signaling" condition in which the victim exhibited schizophrenic symptoms. As predicted, believability and willingness to help in this condition were dramatically lower than in any other condition (see Figure \@ref(fig:piloteffects)), ruling out this alternative explanation. We therefore did not include the schizophrenic condition in the current study. See the SI for more details on the pilot studies.
 
+## Power analysis
+
+```{r}
+pwr80_90 <- 
+  power_curve %>% 
+  group_by(Base) %>% 
+  summarise(
+    pwr80 = min(sample_size[power>=.8]), 
+    pwr90 = min(sample_size[power>=.9])
+  )
+```
+
+We used the pilot data to estimate the sample sizes needed to detect an effect of the *Depression* signal vs. *Verbal request* control on *Belief* in the victim's need. Power was about 80% for a sample size of about `r pwr80_90[[2,2]]`, and was about 90% for a sample size of about `r pwr80_90[[2,3]]`. We also estimated the sample size needed to detect an effect of *Depression* vs. a *Control* condition that was meant to not include any signaling (but which we realized, post hoc, did include a verbal request). Power was about 80% for a sample size of about `r pwr80_90[[1,2]]`, and was about 90% for a sample size of about `r pwr80_90[[1,3]]`. See Figure \@ref(fig:power). Given our \$1500 USD budget, we aimed for a sample size of 124 for treatment plus control conditions, and 1240 for all conditions in the study. For more details, see the SI.
+
 ## Sampling
 
-Participants for this study were recruited from Amazon Mechanical Turk, a crowdsourcing platform that allows for the creation of Human Intelligence Tasks (HITs) that workers can complete for pay. As Amazon provides the infrastructure, it allows for a relatively low-cost way of collecting data for academic research at the cost of the data not being representative of any real population [@thomas2017]. Despite this limitation, it is more diverse than most convenience samples [@kennedy2020; @DworkinEtAl2016; @thomas2017], with turkers in the US mainly differing in being younger, more educated, and lower income than the greater U.S. population [@RossEtAl2010; @boas2020]. 
+Participants for this study were recruited from Amazon Mechanical Turk, a crowdsourcing platform that allows for the creation of Human Intelligence Tasks (HITs) that workers can complete for pay. As Amazon provides the infrastructure, it allows for a relatively low-cost way of collecting data for academic research at the cost of the data not being representative of any real population [@thomas2017]. Despite this limitation, it is more diverse than most convenience samples [@kennedy2020; @DworkinEtAl2016; @thomas2017], with Turkers in the US mainly differing in being younger, more educated, and lower income than the greater U.S. population [@RossEtAl2010; @boas2020]. 
 
-To test emotional signals in an arranged marriage vignette, we recruited an Indian MTurk sample. Indian samples are also likely to be younger and more educated than the general population but differ from US samples in that they are less diverse, have higher incomes relative to other Indians, and are more likely to come from regions with good internet access [@boas2020].
+To test emotional signals in an arranged marriage vignette, we recruited an Indian MTurk sample. Indian samples are also likely to be younger, more educated, and have higher income than the general Indian population, and are more likely to come from regions with good internet access [@boas2020].
 
-Overall, the quality of data provided by MTurk workers tends to resemble that of university sample pools [@NeckaEtAl2016; @robinson2019], with there being some indication that it might outperform university samples due to its previously mentioned diversity [@thomas2017] or the overall attentiveness of turkers [@HauserSchwarz2016]. In vignette studies, MTurk data quality also compares favorably to that from much more expensive population-based samples [@weinberg2014]. For these reasons, concerns about data quality come primarily from the threat of bot use or respondents faking their location to take surveys in a language they do not understand well, with there being little evidence of the former [@kennedy2020] and the risk of the latter able to be minimized through well designed attention checks, timed responses, or general study design [@aguinis2020; @huang2015; @kennedy2020; @thomas2017].
+Overall, the quality of data provided by MTurk workers tends to resemble that of university sample pools [@NeckaEtAl2016; @robinson2019; @thomas2017], with some studies reporting that MTurk samples are more attentive than samples of university students [@HauserSchwarz2016]. In vignette studies, MTurk data quality also compares favorably to that from much more expensive population-based samples [@weinberg2014]. For these reasons, concerns about data quality come primarily from the threat of bot use or respondents faking their location to take surveys in a language they do not understand well, with there being little evidence of the former [@kennedy2020] and the risk of the latter able to be minimized through well designed attention checks, timed responses, and good study design [@aguinis2020; @huang2015; @kennedy2020; @thomas2017].
 
 ## Participants
 
-All participants in the US sample were over 18, located in the United States, had a HIT approval rate of over 98%, and had successfully completed at least 100 HITs as anything less results in approval rates of 100% [@kennedy2020]. The Indian sample was the same except for only including participants who resided in India at the time of the study and the inclusion two participants who were included with a stricter HIT approval rate of over 99%.
-
-To reduce the risk of low quality responses, we used a variety of attention checks, which we clearly labeled as such to avoid demand characteristics on the outcomes of interest. The first was shown immediately after the consent form and provided participants with a random word and asked them to enter the vowels in the order in which they are found in the word. Capitalization did not matter and no word contained repeat vowels. Failure to enter the correct vowels in order resulted in the participants being filtered out of the study. The second followed the vignette and involved asking three questions about the story that were easy to answer for anyone paying attention.
-
-We also filtered out those who read the vignette faster than one-third the time it took MG to read it as fast as possible without concern for comprehension. This occurred immediately after participants finished the vignette.
+All participants were over 18, located in the United States or India, and had high quality MTurk metrics [completed at least 100 HITs with a HIT approval rate of over 98%; @kennedy2020]. Participants were excluded from the study if (1) they read the vignette too quickly (one-third of the time it took MG to read it), and (2) they failed clearly labeled attentions checks. The first attention check was shown immediately after the consent form and provided participants with a random word and asked them to enter the vowels in the order in which they are found in the word. The second attention check followed the vignette and involved asking three questions about the story that were easy to answer for anyone paying attention.
 
 ## Ethics
 
@@ -306,7 +316,25 @@ As both a validity check and a way to understand the degree participants would b
 
 ### Demographic Questions
 
-The final part of the survey was a brief demographic questionnaire which examined: (1) the age, (2) sex, (3) number of siblings, (4) number of sons, (5) number of daughters, (6) current relationship status, (7) highest level of education, and (8) the annual household income of each participant.
+The final part of the survey was a brief demographic questionnaire which asked for (1) the age, (2) sex, (3) number of siblings, (4) number of sons, (5) number of daughters, (6) current relationship status, (7) highest level of education, and (8) the annual household income of each participant.
+
+## Statistical analyses
+
+Our pre-test and post-test measures, *T1 & T2 Belief* and *T1 & T2 Action*, were all measured on a 0-100 point scale. A substantial number of participants rated their beliefs and actions as exactly 0 or exactly 100 at either T1 or T2. OLS linear regression models are not suitable for a closed and bounded distribution with so many values on the boundary because the residuals would not be normally distributed or have constant variance. Beta regression, a possible alternative, is only defined on the open interval, (0, 1), whereas our data had many values on the boundaries (a closed interval). A variant of beta regression, zero-one inflated beta, is inappropriate because it assumes different processes for the generation of data on the boundaries vs. the interior, and we had no reason to believe that our zeros and ones were generated by a different process than the rest of our observations.
+
+We therefore fit models of our two outcome variables (which we rescaled to the continuous interval [0, 1]) in four ways. First, we fit the preregistered OLS models (reported in the SI). Second, we fit fractional regression models, introduced in a seminal paper by @papke1996 for continuous outcomes on the interval [0, 1], which, in brief, involve fitting a quasi-likelihood version of logistic regression with robust standard errors. This method is implemented in the `frm` package [@ramalho2019]. Third, we fit GLM logistic regression models, computing 95% CI's via bootstrapping, using the `glmmboot` package created to model continuous outcomes on [0, 1] [@humphrey2020]. Finally, we fit GLM models with the quasibinomial family and logit link using the `glm` function in R stats library, which can fit continuous outcomes on [0, 1]. The estimated coefficients, standard errors, and confidence intervals produced by the latter three methods were *very* similar, and often identical (see Figure \@ref(fig:modelcompareplots). We therefore proceeded to fit and report models using `glm` with the quasibinomial family and logit link because model objects produced by this function are compatible with numerous other R packages for summarizing and plotting effects.
+
+Although two of our four preregistered OLS regression models included an interaction term, the rationale for it was less convincing for quasibinomial models using a logit link because the expected interaction -- reduced effect of signals in individuals with high baseline belief -- is inherent to logistic regression: the effect of a predictor on the outcome necessarily diminishes as the outcome approaches 1. Our theory does not predict an interaction beyond that already present in a logistic regression model, so we did not include an interaction term in the GLM models (but we still report OLS models with the interaction term).
+
+Our intervention was *signal*, an ordinal variable with the following preregistered rank order: verbal request (control), crying, mild depression, depression, suicide attempt. We used the default `glm` settings, which code such variables as orthogonal polynomial contrasts. Our primary confirmatory regression models were as follows (where the signal subscripts indicate polynomial degree):
+
+`r extract_eq(models$Model$m1, intercept='beta', wrap=T)` `r extract_eq(models$Model$m3, intercept='beta', wrap=T)`
+
+To test our hypothesis that the likelihood of acting to help the victim would be largely mediated by a signal's positive impact on the participant's belief in the victim's need, we used the `mediation` package [@tingley2014] to fit a mediation model for *Depression* treatment vs. *Verbal request* control. The mediation and outcome models, respectively, were:
+
+`r extract_eq(med1$model.m, intercept='beta', wrap=T)` `r extract_eq(med1$model.y, intercept='beta', wrap=T)`
+
+All analyses were conducted using `r R.version.string`.
 
 ## Preregistration
 
@@ -330,39 +358,6 @@ Specifically, the mediation and outcome models, respectively, are:
 `r extract_eq(med_prereg$model.m, intercept='beta', wrap=T)` `r extract_eq(med_prereg$model.y, intercept='beta', wrap=T)`
 
 For reasons we explain in the *Statistical methods* section, we report the OLS models in the Supplementary Information (SI), and in the Results section instead report conceptually equivalent generalized linear regression models (GLMs).
-
-## Power analysis
-
-```{r}
-pwr80_90 <- 
-  power_curve %>% 
-  group_by(Base) %>% 
-  summarise(
-    pwr80 = min(sample_size[power>=.8]), 
-    pwr90 = min(sample_size[power>=.9])
-  )
-```
-
-We used the pilot data to estimate the sample sizes needed to detect an effect of the *Depression* signal vs. *Verbal request* control (two conditions) on *Belief* in the victim's need. Power was about 80% for a sample size of about `r pwr80_90[[2,2]]`, and was about 90% for a sample size of about `r pwr80_90[[2,3]]`. We also estimated the sample size needed to detect an effect of *Depression* vs. a *Control* condition that was meant to not include any signaling (but which we realized, post hoc, did include a verbal request). Power was about 80% for a sample size of about `r pwr80_90[[1,2]]`, and was about 90% for a sample size of about `r pwr80_90[[1,3]]`. See Figure \@ref(fig:power). Given our \$1500 USD budget, we aimed for a sample size of 125 for two conditions, and 1250 for all conditions in the study. For more details, see the SI and /.
-
-
-## Statistical analyses
-
-Our pre-test and post-test measures, *T1 & T2 Belief* and *T1 & T2 Action*, were all measured on a 0-100 point scale. A substantial number of participants rated their beliefs and actions as exactly 0 or exactly 100 at either T1 or T2. OLS linear regression models are not suitable for a closed and bounded distribution with so many values on the boundary because the residuals would not be normally distributed or have constant variance. Beta regression, a possible alternative, is only defined on the open interval, (0, 1), whereas our data had many values on the boundaries (a closed interval). A variant of beta regression, zero-one inflated beta, is inappropriate because it assumes different processes for the generation of data on the boundaries vs. the interior, and we had no reason to believe that our zeros and ones were generated by a different process than the rest of our observations.
-
-We therefore fit models of our two outcome variables (which we rescaled to the continuous interval [0, 1]) in four ways. First, we fit the preregistered OLS models (reported in the SI). Second, we fit fractional regression models, introduced in a seminal paper by @papke1996 for continuous outcomes on the interval [0, 1], which, in brief, involve fitting a quasi-likelihood version of logistic regression with robust standard errors. This method is implemented in the `frm` package [@ramalho2019]. Third, we fit GLM logistic regression models, computing 95% CI's via bootstrapping, using the `glmmboot` package created to model continuous outcomes on [0, 1] [@humphrey2020]. Finally, we fit GLM models with the quasibinomial family and logit link using the `glm` function in R stats library, which can fit continuous outcomes on [0, 1]. The estimated coefficients, standard errors, and confidence intervals produced by the latter three methods were *very* similar, and often identical (see Figure \@ref(fig:modelcompareplots). We therefore proceeded to fit and report models using `glm` with the quasibinomial family and logit link because model objects produced by this function are compatible with numerous other R packages for summarizing and plotting effects.
-
-Although two of our four preregistered OLS regression models included an interaction term, the rationale for it was less convincing for quasibinomial models using a logit link because the expected interaction -- reduced effect of signals in individuals with high baseline belief -- is inherent to logistic regression: the effect of a predictor on the outcome necessarily diminishes as the outcome approaches 1. Our theory does not predict an interaction beyond that already present in a logistic regression model, so we did not include an interaction term in the GLM models (but we still report OLS models with the interaction term).
-
-Our intervention was *signal*, an ordinal variable with the following preregistered rank order: verbal request (control), crying, mild depression, depression, suicide attempt. We used the default `glm` settings, which code such variables as orthogonal polynomial contrasts. Our primary confirmatory regression models were as follows (where the signal subscripts indicate polynomial degree):
-
-`r extract_eq(models$Model$m1, intercept='beta', wrap=T)` `r extract_eq(models$Model$m3, intercept='beta', wrap=T)`
-
-To test our hypothesis that the likelihood of acting to help the victim would be largely mediated by a signal's positive impact on the participant's belief in the victim's need, we used the `mediation` package [@tingley2014] to fit a mediation model for *Depression* treatment vs. *Verbal request* control. The mediation and outcome models, respectively, were:
-
-`r extract_eq(med1$model.m, intercept='beta', wrap=T)` `r extract_eq(med1$model.y, intercept='beta', wrap=T)`
-
-All analyses were conducted using `r R.version.string`.
 
 ## Data availibility
 
