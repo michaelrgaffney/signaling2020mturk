@@ -1,5 +1,5 @@
 ---
-title: "Depression and suicidality as costly signals of need"
+title: "Depression and suicidality as credible signals of need"
 author: "Michael R. Gaffney, Kai Adams, Kristen L. Syme, and Edward H. Hagen"
 date: '`r format(Sys.Date(), "%B %d, %Y")`'
 always_allow_html: true
@@ -24,6 +24,8 @@ library(hagenutils)
 tar_load(
     c(
     'd',
+    'd_US',
+    'd_India',
     'signalingdata2018b',
     'signaling2020',
     'pilot_results',
