@@ -226,27 +226,23 @@ We also filtered out those who read the vignette faster than one-third the time 
 
 All participants provided informed consent, and the consent form warned that some content might involve sexual assault. We estimated the study would take 4-8 minutes to complete for participants who did not take breaks. All participants who passed the attention checks were paid \$1 for their time, for an estimated rate of \$7.50/hr to \$15/hr (75% of US participants completed in `r signif(quantile(d_US$TotalTime, 0.75)/60, 2)` minutes; 75% of Indian participants completed in `r signif(quantile(d_India$TotalTime, 0.75)/60, 2)` minutes). This study was certified exempt by the Washington State University Human Research Protection Program.
 
-## Vignettes
+## Survey
 
-Four vignettes were used in this study that involved (1) claims of severe adversity that were private information, (2) conflicts of interest that would undermine believability of these claims, and (3) emotional signals. The vignette scenarios involved potentially severe types of adversity, such as sexual and non-sexual assault and thwarted marriage, that often precede cases of depression and suicidality in the ethnographic and clinical record.
+Four vignettes were used in this study that involved (1) a female's claim of severe adversity that was private information, (2) conflicts of interest between the victim and the participant that would undermine the believability of her claims, and (3) her emotional signals. The vignette scenarios involved potentially severe types of adversity, such as sexual and non-sexual assault and thwarted marriage, that often precede cases of depression and suicidality in the ethnographic and clinical record. See Table \@ref(tab:design).
 
 ### Time 1: Claim of need in a conflictual relationship
 
-Participants in the US sample were randomly assigned to either the "basketball coach," "romantic partner," or "brother-in-law" vignettes. In the "basketball coach" scenario, the star player on a university basketball team comes to the participant, who is asked to imagine themselves as the athletic director at a university, and claims she was sexually assaulted by her head coach, a physically powerful man. However, there has been a history of conflict between the star player and the coach over playing time, and police are unable to find evidence that corroborate her claims.
+At Time 1 (T1) participants in the US sample were randomly assigned to either the "basketball coach," "romantic partner," or "brother-in-law" vignettes, and the Indian sample was assigned to the Thwarted marriage vignette.
 
-The "brother-in-law" vignette involved participants imagining that they let their sister, brother-in-law, and niece move in with the participant and their 15-year-old daughter after their sister's family lost their house in a fire. During this time, the participant's daughter becomes jealous of her cousin, who appears to be a social competitor. A few weeks after claiming her cousin was trying to still her boyfriend, she then accuses her uncle of sexually assaulting her.
+**Basketball coach vignette**: Each participant was asked to imagine that they are a university athletic director. The star player on the women's basketball team comes to the participant and claims she was sexually assaulted by her head coach, a physically powerful man. However, there is a history of conflict between the star player and the coach over playing time, and police are unable to find evidence to corroborate her claims.
 
-The "romantic partner" vignette had participants imagine that they found a highly desirable partner after years of being single. However, their 13-year-old daughter, who has a history of trying to get in the way of their relationships, is clearly not happy with this. After a period of sustained conflict with both the participants and the romantic partner, she accuses the romantic partner of physically assaulting her but cannot produce any evidence.
+**Brother-in-law vignette**: Each participant was asked to imagine that they let their sister, brother-in-law, and niece move in with them after their sister's family lost their house in a fire. During this time, the participant's 15 year old daughter becomes jealous of her cousin, who appears to be a social competitor. A few weeks after claiming her cousin was trying to steal her boyfriend, the participant's daughter accuses her uncle of sexually assaulting her.
 
-Those in the Indian sample only saw the "thwarted marriage vignette." In this scenario, the participant and their family are described as trying to arrange a dowry for their older daughter so she can marry a man she already loves. After the man's family demands more money, the participant's family tries to find a second man, who the older daughter claims to find unattractive. Due to the younger daughter in the story only being two years younger, any additional investment in the dowry will come at the younger daughter's expense.
+**Romantic partner vignette**: Each participant was asked to imagine that they found a highly desirable romantic partner after years of being single. However, the participant's 13-year-old daughter, who has a history of interfering with the participant's past relationships, is clearly unhappy with the new partner. After a period of sustained conflict with both the participant and the romantic partner, she accuses the romantic partner of physically assaulting her, but cannot produce any evidence.
+
+**Thwarted marriage vignette**: Indian sample only. Each participant was asked to imagine that their family was trying to arrange a dowry for their older daughter so she can marry a man she already loves, while still saving enough money for their younger daughter's dowry. After the man's family demands more money, the participant's family tries to find a second man, who the older daughter claims to find unattractive. Any increase in the dowry will come at the younger daughter's expense. The participant therefore proceeds to arrange a marriage to the second man as the first man's family makes arrangements with a different woman.
 
 The full vignettes are available in the SI.
-
-### Time 2: Signals
-
-The sole randomized treatment in this study was the signal participants saw, with these signals being one of (1) the control condition: a verbal request without additional signaling, (2) crying, (3) mild-depression, (4) depression, and (5) a suicide attempt, with the order of the conditions here moving from low to high cost.
-
-As many depression scales include measures of crying [for discussion on the relationship between crying and depression see @bylsma2020] and depression is a major risk factor for suicide [@BostwickPankratz2000; @Kessler2012], each signal was designed to build off of the less costly signals so that each signal contained elements of any signal it was costlier than. Although referred to as signals throughout the paper for brevity, we expect that the hypothesized signals of need, like many signals, will also provide information to others in the form of cues [for discussion on the evolution of signals from cues see: @biernaskie2018; @Tiokhin2016; @Steinkopf2015]. The full text for the signals are available in the SI.
 
 Table: (\#tab:design) The cooperative endeavor, conflict of interest, and private information in each vignette
 
@@ -262,6 +258,53 @@ Table: (\#tab:design) The cooperative endeavor, conflict of interest, and privat
 | Brother-in-law    | Inclusive fitness (parent-offspring) | Investment in child vs. investment in adult sibling and niece | Did sexual assault happen?                 |
 +-------------------+--------------------------------------+---------------------------------------------------------------+--------------------------------------------+
 
+### Baseline measures (T1)
+
+After reading the vignettes, participants rated their belief the signaler to be telling the truth (T1Belief: 0-100) and the likelihood of them helping the signaler as requested (T1Action: 0-100). With the thwarted marriage vignette we also asked how they would split the money they had saved for the dowry between their daughters (T1Divide: 0-100; 50 is equal split). In every instance, the order of the questions was randomized to avoid order effects [@KrosnickAlwin1987].
+
+Responses were recorded with sliders due to the fact they allow for finer grained changes than categorical scales [@KlimekEtAl2017]. Based on findings that a slider's starting position may bias results [@liu2019], we had concerns that participants would be less likely to move away from intermediate starting values than they would be in reality. For this reason, we set each T1 slider to start fully to the left (0). For the exact wording of the question and the labels on the sliders, see table 1.
+
+We also asked which emotions participants felt the signaler was experiencing using a multiple choice question in which they could select as many options as they would like. This included emotions directly related to the signals (e.g., sad, depressed, and suicidal), states which suggest genuine need (traumatized and violated), and states which suggest deception (e.g., deviousness or jealousy). The complete list can be found in the SI.
+
+### Time 2: Signals
+
+After rating their beliefs and actions, participants were randomized into either the control condition or one of four emotional signals by the victim (in order of increasing signal cost): (1) control condition: a verbal request without additional signaling; (2) crying; (3) mild-depression; (4) depression; and (5) a suicide attempt. The signals involve the participant encountering the victim some time after the adverse event and observing, e.g., crying, sad expressions, or poor personal hygiene. These descriptions do not use the terms depression, depressed, suicidal, or mental health.
+
+The signals were cumulative: crying can be an important feature of depression [for discussion on the relationship between crying and depression see @bylsma2020], and depression is a major risk factor for suicide [@BostwickPankratz2000; @Kessler2012]. Accordingly, components of less-costly signals were included in more-costly signals. Although we use the term 'signals' throughout the paper for brevity, we expect that the hypothesized signals of need, like many signals, would also provide information to others in the form of cues [for discussion on the evolution of signals from cues see: @biernaskie2018; @Tiokhin2016; @Steinkopf2015]. The full text for the signals are available in the SI.
+
+### Post-treatment measures (T2-T3)
+
+After reading the signaling text, participants answered questions identical to those asked at T1 as the main post-treatment variables of interest (T2). For the *Belief*, *Action*, and *Divide* variables, the position of the slider starting where participants placed it at T1. T2 emotion multiple-choice questions were identical to those used in T1.
+
+As both a validity check and a way to understand the degree participants would be willing to help if they believed the participant completely, we presented participants with strong evidence that the claims were true (T3Action). In the US sample, this involved telling participants there was video evidence of the event in question occurring or a similar event after the fact. With the thwarted marriage vignette, this involved the participant seeing the man their daughter wants to marry trash talk their daughter and their family.
+
++-----------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+| Variable        | Vignette          | Wording                                                                                                                     | Coding                                                                                          |
++=================+===================+=============================================================================================================================+=================================================================================================+
+| T1Belief        | Basketball        | How much do you believe the star player is telling the truth about the coach?                                               | 0: Not at all; 100: Completely                                                                  |
++-----------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+| T1Belief        | Brother-in-law    | How much do you believe your daughter is telling the truth about your brother-in-law?                                       | 0: Not at all; 100: Completely                                                                  |
++-----------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+| T1Belief        | Romantic partner  | How much do you believe your daughter is telling the truth about your partner?                                              | 0: Not at all; 100: Completely                                                                  |
++-----------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+| T1Belief        | Thwarted Marriage | How much do you believe your older(bold) daughter is telling the truth about the second man not being a good match for her? | 0: Not at all; 100: Completely                                                                  |
++-----------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+| T1Action        | Basketball        | How likely are you to recommend that the president of the university should suspend the coach?                              | 0: Very unlikely; 100: Very likely                                                              |
++-----------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+| T1Action        | Brother-in-law    | How likely are you to kick your brother-in-law out?                                                                         | 0: Very unlikely; 100: Very likely                                                              |
++-----------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+| T1Action        | Romantic partner  | How likely are you to kick your partner out?                                                                                | 0: Very unlikely; 100: Very likely                                                              |
++-----------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+| T1Action        | Thwarted Marriage | How likely are you to provide the large dowry so your older(bold) daughter can marry the man she is in love with?           | 0: Very unlikely; 100: Very likely                                                              |
++-----------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+| T1Divide        | Thwarted Marriage | How would you plan on dividing the money between your daughters?                                                            | 0: Much more for the younger daughter; 50: Even division; 100: Much more for the older daughter |
++-----------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+
+: (\#tab:outcomes) Outcome variables in each vignette.
+
+### Demographic Questions
+
+The final part of the survey was a brief demographic questionnaire which examined: (1) the age, (2) sex, (3) number of siblings, (4) number of sons, (5) number of daughters, (6) current relationship status, (7) highest level of education, and (8) the annual household income of each participant.
 
 ## Preregistration
 
@@ -300,49 +343,6 @@ pwr80_90 <-
 
 We used the pilot data to estimate the sample sizes needed to detect an effect of the *Depression* signal vs. *Verbal request* control (two conditions) on *Belief* in the victim's need. Power was about 80% for a sample size of about `r pwr80_90[[2,2]]`, and was about 90% for a sample size of about `r pwr80_90[[2,3]]`. We also estimated the sample size needed to detect an effect of *Depression* vs. a *Control* condition that was meant to not include any signaling (but which we realized, post hoc, did include a verbal request). Power was about 80% for a sample size of about `r pwr80_90[[1,2]]`, and was about 90% for a sample size of about `r pwr80_90[[1,3]]`. See Figure \@ref(fig:power). Given our \$1500 USD budget, we aimed for a sample size of 125 for two conditions, and 1250 for all conditions in the study. For more details, see the SI and /.
 
-## Survey
-
-### Baseline measures (T1)
-
-In both samples, we recorded self-reports on how much participants believed the signaler to be telling the truth (T1Belief) and the likelihood of them helping the signaler as requested (T1Action). With the thwarted marriage vignette we also asked how they would split the money they had saved for the dowry between their daughters (T1Divide). In every instance, the order of the questions was randomized to avoid order effects [@KrosnickAlwin1987].
-
-Responses were recorded with sliders due to the fact they allow for finer grained changes than categorical scales [@KlimekEtAl2017]. Based on findings that a slider's starting position may bias results [@liu2019], we had concerns that participants would be less likely to move away from intermediate starting values than they would be in reality. For this reason, we set each T1 slider to start fully to the left (0). For the exact wording of the question and the labels on the sliders, see table 1.
-
-We also asked which emotions participants felt the signaler was experiencing using a multiple choice question in which they could select as many options as they would like. This included emotions directly related to the signals (e.g., sad, depressed, and suicidal), states which suggest genuine need (traumatized and violated), and states which suggest deception (e.g., deviousness or jealousy). The complete list can be found in the SI.
-
-### Post-treatment measures (T2-T4)
-
-We asked questions identical to those asked at T1 as the main post-treatment variables of interest (T2). For the *Belief*, *Action*, and *Divide* variables, the position of the slider starting where participants placed it at T1. For the T2 emotion variables this involved no changes from the T1 version.
-
-As both a validity check and a way to understand the degree participants would be willing to help if they believed the participant completely, we presented participants with strong evidence that the claims were true (T3Action). In the US sample, this involved video evidence of the event in question occurring or a similar event after the fact. With the thwarted marriage vignette, this involved the participant seeing the man their daughter wants to marry trash talk their daughter and their family. As a final attention check, we presented participants with the T3Action question but included instructions to ignore this and drag the slider all the way to the left (T4AttentionCheck). We did not exclude anyone from the study for failing this nor did we withhold payment.
-
-+-----------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
-| Variable        | Vignette          | Wording                                                                                                                     | Coding                                                                                          |
-+=================+===================+=============================================================================================================================+=================================================================================================+
-| T1Belief        | Basketball        | How much do you believe the star player is telling the truth about the coach?                                               | 0: Not at all; 100: Completely                                                                  |
-+-----------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
-| T1Belief        | Brother-in-law    | How much do you believe your daughter is telling the truth about your brother-in-law?                                       | 0: Not at all; 100: Completely                                                                  |
-+-----------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
-| T1Belief        | Romantic partner  | How much do you believe your daughter is telling the truth about your partner?                                              | 0: Not at all; 100: Completely                                                                  |
-+-----------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
-| T1Belief        | Thwarted Marriage | How much do you believe your older(bold) daughter is telling the truth about the second man not being a good match for her? | 0: Not at all; 100: Completely                                                                  |
-+-----------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
-| T1Action        | Basketball        | How likely are you to recommend that the president of the university should suspend the coach?                              | 0: Very unlikely; 100: Very likely                                                              |
-+-----------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
-| T1Action        | Brother-in-law    | How likely are you to kick your brother-in-law out?                                                                         | 0: Very unlikely; 100: Very likely                                                              |
-+-----------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
-| T1Action        | Romantic partner  | How likely are you to kick your partner out?                                                                                | 0: Very unlikely; 100: Very likely                                                              |
-+-----------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
-| T1Action        | Thwarted Marriage | How likely are you to provide the large dowry so your older(bold) daughter can marry the man she is in love with?           | 0: Very unlikely; 100: Very likely                                                              |
-+-----------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
-| T1Divide        | Thwarted Marriage | How would you plan on dividing the money between your daughters?                                                            | 0: Much more for the younger daughter; 50: Even division; 100: Much more for the older daughter |
-+-----------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
-
-: (\#tab:outcomes) Outcome variables in each vignette.
-
-### Demographic Questions
-
-The final part of the survey was a brief demographic questionnaire which examined: (1) the age, (2) sex, (3) number of siblings, (4) number of sons, (5) number of daughters, (6) current relationship status, (7) highest level of education, and (8) the annual household income of each participant.
 
 ## Statistical analyses
 
