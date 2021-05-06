@@ -70,6 +70,7 @@ Major depression and suicide are generally viewed as pathological responses to s
 # Introduction
 
 <!-- ## Connection to Adversity -->
+
 Almost all individuals will suffer adversity, such as injury or loss of material or social resources, at some point in their lives. Psychological pain, such as sadness and low mood, probably evolved to motivate victims of adversity to shift their attention to the causes of adversity so as to mitigate its negative fitness consequences and to learn to avoid future such adverse events [@thornhill1989; @andrews2010; @Nesse1990]. In many cases, social partners could help, and therefore signals of psychological pain, such as sad expressions and crying, probably evolved to indicate need [e.g., @balsters2013].
 
 There is strong evidence that most cases of depression are caused by major negative life events [@Hammen2005; @Mazure1998; @devries2011; @ellsberg2008]. Compared to non-depressed individuals, those with depression report about twice as many instances of negative events than non-depressed individuals [@Mazure1998] and more negative events than those with schizophrenia and bipolar depression across multiple studies [@Paykel1994]. In longitudinal studies, depression onsets soon after a negative event [@KendlerEtAl1999] or coincides with periods where adversity is likely to increase prior to it [e.g., depression starting before a divorce rather than after; @rosenstrom2017]. Additional support for the causal role of negative life events comes from the fact that the relationship between negative events and depression holds true when looking at events outside of one's control, showing that the connection is unlikely to be driven solely by individuals who are already depressed creating situations where negative events are likely to be common [@Hammen2005; @KendlerEtAl1999]. Additionally, twin studies have shown that one's history of negative events is still a strong predictor of major depression when controlling for genetic similarity, and that part of the heritability of depression stems from the heritability of negative events like divorce and family conflict [@KendlerBaker2007; @KendlerEtAl1999]. For these and other reasons, most cases of depression are probably not due to mental illness but are instead functional instances of psychological pain [@Hagen:1999; @Hagen2003; @horwitz_loss_2007; @andrews2010; @SymeHagen2021].
@@ -90,24 +91,23 @@ With a cooperative species like our own, the ubiquity of conflicts of interests 
 
 @Hagen2003 proposed that physical aggression and depression were complementary strategies to resolve conflicts in interdependent relationships. @SellEtAl2009 found that physically formidable individuals were more prone to anger, prevailed more in conflicts of interest, and considered themselves entitled to better treatment. Physically or socially weaker individuals, though, are not without options to resolve conflicts in their favor. An individual with monopoly power over the benefits she contributes to a critical cooperative endeavor can withhold those benefits, or put them at risk, until her partners change their behaviors in ways that benefit her. Depression is characterized, in part by a profound loss of interest in virtually all activities [@dsm5], a symptom that is probably responsible for a sharp reduction in productivity [for review, see @SymeHagen2021]. Depression might therefore be a bargaining strategy for relatively powerless individuals in the wake of adversity and social conflict [@Hagen2003; @SymeHagen2021; see also @Watson:2002].
 
-Formal models of bargaining highlight the role of private information regarding the value each party places the cooperative endeavor. Withholding or risking one's contributions to a cooperative endeavor can be conceptualized as credibly signaling private information about one's need. Cooperation generates benefits over time. Thus, withholding or risking contributions incurs a *cost of delay* -- the more one values the endeavor, the greater the cost of delay. In a classic non-cooperative game theory model of bargaining over the division of benefits, @Rubenstein:1982 showed that two parties can come to an immediate agreement over division of benefits despite conflicts of interest if the parties' valuations of cooperation are not private information: in this case, each party knows exactly what division of benefits the other will accept, and can therefore make that offer immediately, avoiding the cost of delay. If valuations are private information, however, then immediate agreement might not be possible because each party has an incentive to request an amount greater than their actual valuation, which would harm the other party. A willingness to delay is a credible signal that one has a low valuation of the endeavor, and is therefore genuinely in need, because for those with a low valuation the benefit of waiting for a better offer outweighs the low cost of delay whereas for those for those with a high valuation the benefit of waiting for a better offer does not outweigh the higher cost of delay. Once valuations are known, the game reduces to the one in @Rubenstein:1982, and the parties can reach an agreement on the division of benefits [@KennanWilson1993; @feinberg2005]. @Hagen2003 proposed that the substantial reduction in productivity in depression corresponds to a willingness to delay, and is therefore a credible signal of need. In other words, reduced productivity is relatively less costly for those whose efforts are currently not yielding many fitness-relevant benefits than for those whose efforts are yielding substantial benefits [@Hagen2003].
+Formal models of bargaining highlight the role of private information regarding the value each party places the cooperative endeavor. Withholding or risking one's contributions to a cooperative endeavor can be conceptualized as credibly signaling private information about one's need. Cooperation generates benefits over time. Thus, withholding or risking contributions incurs a *cost of delay* -- the more one values the endeavor, the greater the cost of delay. In a classic non-cooperative game theory model of bargaining over the division of benefits, @rubinstein1982 showed that two parties can come to an immediate agreement over division of benefits despite conflicts of interest if the parties' valuations of cooperation are not private information: in this case, each party knows exactly what division of benefits the other will accept, and can therefore make that offer immediately, avoiding the cost of delay. If valuations are private information, however, then immediate agreement might not be possible because each party has an incentive to request an amount greater than their actual valuation, which would harm the other party. A willingness to delay is a credible signal that one has a low valuation of the endeavor, and is therefore genuinely in need, because for those with a low valuation the benefit of waiting for a better offer outweighs the low cost of delay whereas for those for those with a high valuation the benefit of waiting for a better offer does not outweigh the higher cost of delay. Once valuations are known, the game reduces to the one in @rubinstein1982, and the parties can reach an agreement on the division of benefits [@KennanWilson1993; @feinberg2005]. @Hagen2003 proposed that the substantial reduction in productivity in depression corresponds to a willingness to delay, and is therefore a credible signal of need. In other words, reduced productivity is relatively less costly for those whose efforts are currently not yielding many fitness-relevant benefits than for those whose efforts are yielding substantial benefits [@Hagen2003].
 
 ## Suicidality
 
-Suicidality is closely linked to depression. Suicidal ideation is one of nine diagnostic criteria for a major depressive episode [MDE, @dsm5], it is associated with depression across cultures [@haroz2017], and depression is a major risk factor for suicidal behavior [@hawton2013]. 
+Suicidality is closely linked to depression. Suicidal ideation is one of nine diagnostic criteria for a major depressive episode [MDE, @dsm5], it is associated with depression across cultures [@haroz2017], and depression is a major risk factor for suicidal behavior [@hawton2013].
 
-Anthropology has long viewed suicidality as largely the result of social problems. Early in the field’s history, anthropologists tackled the problem of suicide as manifested in the small, traditional societies in which they conducted their fieldwork. Suicide, they found, was commonly a form of protest, revenge, and/or appeal (e.g., Malinowski, 1932; Niehaus, 2012). Some ethnographers, such as Hezel (1987), conceptualized suicide as a form of anger, whereas others, such as Giddens (1964), conceptualized suicide as a form of social pressure. Counts (1980) emphasized the powerlessness of suicide victims.
+Anthropology has long viewed suicidality as largely the result of social problems. Early in the field's history, anthropologists tackled the problem of suicide as manifested in the small, traditional societies in which they conducted their fieldwork. Suicide, they found, was commonly a form of protest, revenge, and/or appeal (e.g., Malinowski, 1932; Niehaus, 2012). Some ethnographers, such as Hezel (1987), conceptualized suicide as a form of anger, whereas others, such as Giddens (1964), conceptualized suicide as a form of social pressure. Counts (1980) emphasized the powerlessness of suicide victims.
 
-Common to almost all theoretical and empirical investigations of suicide is a focus on *completed* suicides, i.e., suicide deaths. The vast majority of suicidal behavior, however, does not result in death. In young adult women in the US, for example, there are hundreds of attempts for every death (see Figure \@ref(fig:cdc)). @SymeEtAl2016 therefore argued that the scientific focus should be on suicide ideation and suicide attempts. 
+Common to almost all theoretical and empirical investigations of suicide is a focus on *completed* suicides, i.e., suicide deaths. The vast majority of suicidal behavior, however, does not result in death. In young adult women in the US, for example, there are hundreds of attempts for every death (see Figure \@ref(fig:cdc)). @SymeEtAl2016 therefore argued that the scientific focus should be on suicide ideation and suicide attempts.
 
 Raymond Firth was one of the first to view suicidality as a gamble to improve one's circumstances in the here and now. Based on observations that suicide attempts often followed loss or conflict and varied substantially in their likelihood of death, he argued that a sizable subset of the suicide attempts among the Tikopia were not meant to end in death but instead were a means to elicit attention, status, or immediate reintegration into the community following negative events (Firth 1936; 1961).
 
 @Rosenthal1993 proposed a credible signaling model of what he, like Firth, viewed as 'gambling-type' suicide attempts. In the Rosenthal model, as long as that risk is greater than or equal to the net benefit a non-needy person would realize by sending the signal (discounted by the risk of death), social partners can trust that signal senders are genuinely in need despite conflicts of interest [@Rosenthal1993]. Most suicides deaths, especially in young, physically healthy individuals, would therefore be the inevitable consequence that some individuals lose this gamble. These and similar ideas [@andrews2006; @HagenEtAl2008; @nock2008; @Stengel1956] suggest that depression symptoms that put one's value to others at risk, such as suicidality and loss of interest, might be credible signals of need.
 
-
 <!-- Compared to suicide, however, there are fewer anthropological investigations of depression [@kleinman1985] despite frequent reports of depression or depression-like behavior in a wide range of societies [@haroz2017; @liu2020] and the potential for cross-cultural research to help understand depressive states [@haroz2017]. -->
 
-```{r cdc, fig.width=8, fig.cap="US Suicide attempt and completion rates by age and sex (2001-2019)."}
+```{r cdc, fig.width=8, fig.cap="US Suicidality non-fatal injury and death rates by age and sex (2001-2019)."}
 library(hrafsuicidedata)
 cdc2 %>% 
   na.omit() %>% 
@@ -122,7 +122,6 @@ cdc2 %>%
   theme_minimal(15) +
   theme(axis.title.y = element_text(angle = 0, hjust=0))
 ```
-
 
 <!-- As they are prohibitively costly for those in minor need, the costs of depression and suicidal behavior may be particularly important in times of substantial conflicts of interest or when the level of support needed to address one's situation is substantial, both of which should be expected to increase the payoff of manipulating others through fake signals. When either condition applies, less costly signals like verbal requests, facial sadness, and crying are likely to be less reliable as their low costs can easily be made up for with increased social support, thereby favoring the use of costlier signals so long as the costs of signaling are outweighed by the benefits [@SymeHagen2021]. -->
 
@@ -146,7 +145,7 @@ cdc2 %>%
 
 <!-- ## Conflict plays a central role in suicidality and depression -->
 
-<!-- Early on, anthropologists also tackled the problem of suicide as manifested in the small traditional societies in which they conducted their fieldwork. Suicide, they found, was commonly a form of protest, revenge, and/or appeal [e.g., @Malinowski:1932; @niehaus2012]. Some ethnographers, such as @Hezel:1987, conceptualized suicide as a form of anger, whereas others, such as @Giddens:1964, conceptualized suicide as a form of social pressure. @Counts:1980 emphasized the powerlessness of suicide victims. Common to almost all theoretical and empirical investigations of suicide is a focus on *completed* suicides, i.e., suicide deaths. @SymeEtAl2016, in contrast, argued that because the vast majority of suicidal behavior does not result in death, the proper focus should be on suicide ideation and suicide attempts (see Figure \@ref(fig:cdc)). Suicide attempts, as we explain next, are a gamble to improve one's life by taking a low but non-zero risk of death. Most suicides deaths, especially in young, physically healthy individuals, are therefore the inevitable consequence that some individuals lose this gamble. -->
+<!-- Early on, anthropologists also tackled the problem of suicide as manifested in the small traditional societies in which they conducted their fieldwork. Suicide, they found, was commonly a form of protest, revenge, and/or appeal [e.g., @Malinowski:1932; @niehaus2012]. Some ethnographers, such as @Hezel:1987, conceptualized suicide as a form of anger, whereas others, such as @Giddens:1964, conceptualized suicide as a form of social pressure. @Counts:1980 emphasized the powerlessness of suicide victims. Common to almost all theoretical and empirical investigations of suicide is a focus on *completed* suicides, i.e., suicide deaths. @SymeEtAl2016, in contrast, argued that because the vast majority of suicidal behavior does not result in death, the proper focus should be on suicide ideation and suicide attempts (see Figure @ref(fig:cdc)). Suicide attempts, as we explain next, are a gamble to improve one's life by taking a low but non-zero risk of death. Most suicides deaths, especially in young, physically healthy individuals, are therefore the inevitable consequence that some individuals lose this gamble. -->
 
 <!-- Within anthropology, Raymond Firth was likely the first to conceptualize suicidality as a gamble to improve one's circumstances in the here and now. Based on observations that suicide attempts often followed social conflict or loss, and varied substantially in their likelihood of death, he argued that a sizable subset of the suicide attempts among the Tikopia were not meant to end in death but instead were a means to elicit attention, status, or immediate reintegration into the community following negative events [@firth1936; @Firth:1961]. Human communites are highly interdependent [\@] -->
 
@@ -159,8 +158,6 @@ cdc2 %>%
 <!-- As with suicide, research on depression since the 1980's has been dominated by biomedical approaches of limited success [@patten2016; @ormel2019].  -->
 
 <!-- and there is still substantial uncertainty about why both are as common as they are (cite). Likely due to  the suffering they cause, the vast majority of these approaches have been built on the assumption that they are the result of internal dysfunction (cite examples). However, a subset of anthropologists and evolutionary theorists have challenged this idea, suggesting that despite the subjective suffering they cause, they may function as a means to limit negative fitness outcomes in times of substantial adversity (Firth + others). -->
-
-
 
 <!-- Due to depression's relationship to suicide [@who2001; @hawton2013], it should not be surprising that suicidality also often coincides with social adversity and conflict. Grief over the loss of a loved one [@firth1936: @Firth:1961; @devries2011], bullying [@alavi2017; @butler2019; @ford2017; @wang2020], and instances of social transgression [@Firth:1961; @Malinowski:1932; @SymeHagen2018; @lester1997] have all been reported to lead to suicidal behavior in both industrialized and traditional societies. Of the recorded instances of suicide attempts in the Human Relations Area Files (HRAF), 77.4% of attempts were found to be linked to times of social conflict, 88.7% were linked to fitness threats in general, and 84.9% were linked to situations in which attempters were powerless to resolve their situation alone [@SymeEtAl2016]. As with depression, assault is an particularly powerful risk factor for suicidal behavior based on multiple large-scale multi-country studies [@devries2011; @ellsberg2008] and more localized examinations [@reigstad2017]. -->
 
@@ -224,7 +221,7 @@ We used the pilot data to estimate the sample sizes needed to detect an effect o
 
 ## Sampling
 
-Participants for this study were recruited from Amazon Mechanical Turk, a crowdsourcing platform that allows for the creation of Human Intelligence Tasks (HITs) that workers can complete for pay. As Amazon provides the infrastructure, it allows for a relatively low-cost way of collecting data for academic research at the cost of the data not being representative of any real population [@thomas2017]. Despite this limitation, it is more diverse than most convenience samples [@kennedy2020; @DworkinEtAl2016; @thomas2017], with Turkers in the US mainly differing in being younger, more educated, and lower income than the greater U.S. population [@RossEtAl2010; @boas2020]. 
+Participants for this study were recruited from Amazon Mechanical Turk, a crowdsourcing platform that allows for the creation of Human Intelligence Tasks (HITs) that workers can complete for pay. As Amazon provides the infrastructure, it allows for a relatively low-cost way of collecting data for academic research at the cost of the data not being representative of any real population [@thomas2017]. Despite this limitation, it is more diverse than most convenience samples [@kennedy2020; @DworkinEtAl2016; @thomas2017], with Turkers in the US mainly differing in being younger, more educated, and lower income than the greater U.S. population [@RossEtAl2010; @boas2020].
 
 To test emotional signals in an arranged marriage vignette, we recruited an Indian MTurk sample. Indian samples are also likely to be younger, more educated, and have higher income than the general Indian population, and are more likely to come from regions with good internet access [@boas2020].
 
@@ -256,8 +253,6 @@ At Time 1 (T1) participants in the US sample were randomly assigned to either th
 
 The full vignettes are available in the SI.
 
-Table: (\#tab:design) The cooperative endeavor, conflict of interest, and private information in each vignette
-
 +-------------------+--------------------------------------+---------------------------------------------------------------+--------------------------------------------+
 | Vignette          | Cooperative Endeavor                 | Conflict of interest                                          | Private information                        |
 +===================+======================================+===============================================================+============================================+
@@ -270,13 +265,39 @@ Table: (\#tab:design) The cooperative endeavor, conflict of interest, and privat
 | Brother-in-law    | Inclusive fitness (parent-offspring) | Investment in child vs. investment in adult sibling and niece | Did sexual assault happen?                 |
 +-------------------+--------------------------------------+---------------------------------------------------------------+--------------------------------------------+
 
+: (\#tab:design) The cooperative endeavor, conflict of interest, and private information in each vignette
+
 ### Baseline measures (T1)
 
-After reading the vignettes, participants rated their belief the signaler to be telling the truth (T1Belief: 0-100) and the likelihood of them helping the signaler as requested (T1Action: 0-100). With the thwarted marriage vignette we also asked how they would split the money they had saved for the dowry between their daughters (T1Divide: 0-100; 50 is equal split). In every instance, the order of the questions was randomized to avoid order effects [@KrosnickAlwin1987].
+After reading the vignettes, participants rated their belief the signaler to be telling the truth (*T1 Belief*: 0-100) and the likelihood of them helping the signaler as requested (*T1 Action*: 0-100). With the thwarted marriage vignette we also asked how they would split the money they had saved for the dowry between their daughters (*T1 Divide*: 0-100; 50 is equal split). In every instance, the order of the questions was randomized to avoid order effects [@KrosnickAlwin1987].
 
-Responses were recorded with sliders due to the fact they allow for finer grained changes than categorical scales [@KlimekEtAl2017]. Based on findings that a slider's starting position may bias results [@liu2019], we had concerns that participants would be less likely to move away from intermediate starting values than they would be in reality. For this reason, we set each T1 slider to start fully to the left (0). For the exact wording of the question and the labels on the sliders, see table 1.
+Responses were recorded with sliders due to the fact they allow for finer grained changes than categorical scales [@KlimekEtAl2017]. Based on findings that a slider's starting position may bias results [@liu2019], we had concerns that participants would be less likely to move away from intermediate starting values than they would be in reality. For this reason, we set each T1 slider to start fully to the left (0). For the exact wording of the question and the labels on the sliders, see Table \@ref(tab:outcomes).
 
-We also asked which emotions participants felt the signaler was experiencing using a multiple choice question in which they could select as many options as they would like. This included emotions directly related to the signals (e.g., sad, depressed, and suicidal), states which suggest genuine need (traumatized and violated), and states which suggest deception (e.g., deviousness or jealousy). The complete list can be found in the SI.
++-------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+| Variable    | Vignette          | Wording                                                                                                                     | Coding                                                                                          |
++=============+===================+=============================================================================================================================+=================================================================================================+
+| *T1 Belief* | Basketball        | How much do you believe the star player is telling the truth about the coach?                                               | 0: Not at all; 100: Completely                                                                  |
++-------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+| *T1 Belief* | Brother-in-law    | How much do you believe your daughter is telling the truth about your brother-in-law?                                       | 0: Not at all; 100: Completely                                                                  |
++-------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+| *T1 Belief* | Romantic partner  | How much do you believe your daughter is telling the truth about your partner?                                              | 0: Not at all; 100: Completely                                                                  |
++-------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+| *T1 Belief* | Thwarted Marriage | How much do you believe your older(bold) daughter is telling the truth about the second man not being a good match for her? | 0: Not at all; 100: Completely                                                                  |
++-------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+| *T1 Action* | Basketball        | How likely are you to recommend that the president of the university should suspend the coach?                              | 0: Very unlikely; 100: Very likely                                                              |
++-------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+| *T1 Action* | Brother-in-law    | How likely are you to kick your brother-in-law out?                                                                         | 0: Very unlikely; 100: Very likely                                                              |
++-------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+| *T1 Action* | Romantic partner  | How likely are you to kick your partner out?                                                                                | 0: Very unlikely; 100: Very likely                                                              |
++-------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+| *T1 Action* | Thwarted Marriage | How likely are you to provide the large dowry so your older(bold) daughter can marry the man she is in love with?           | 0: Very unlikely; 100: Very likely                                                              |
++-------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+| *T1 Divide* | Thwarted Marriage | How would you plan on dividing the money between your daughters?                                                            | 0: Much more for the younger daughter; 50: Even division; 100: Much more for the older daughter |
++-------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+
+: (\#tab:outcomes) Outcome variables in each vignette.
+
+We also asked which emotions participants felt the signaler was experiencing using a multiple choice question in which they could select as many options as they would like. This included emotions directly related to the signals (e.g., sad, depressed, and suicidal), states which suggest genuine need (traumatized and violated), and states which suggest deception (e.g., deviousness or jealousy). The complete list can be found in the SI. To further explore the effect of signaling on participants' inferences of the signaler's emotional state, we created two new variables: *Low mood* was the sum of the binary variables *Depressed*, *Distressed* and *Sad*; and *Manipulative* was the sum of the binary variables *Devious* and *Jealous.*
 
 ### Time 2: Signals
 
@@ -286,78 +307,48 @@ The signals were cumulative: crying can be an important feature of depression [f
 
 ### Post-treatment measures (T2-T3)
 
-After reading the signaling text, participants answered questions identical to those asked at T1 as the main post-treatment variables of interest (T2). For the *Belief*, *Action*, and *Divide* variables, the position of the slider starting where participants placed it at T1. T2 emotion multiple-choice questions were identical to those used in T1.
+After reading the signaling text, participants answered questions identical to those asked at T1 as the main post-treatment variables of interest (T2). For the *Belief*, *Action*, and *Divide* variables, the position of the slider starting where participants placed it at T1. T2 emotion multiple-choice questions were identical to those used in T1, as were the composite variables *Low mood* and *Manipulative*.
 
-As both a validity check and a way to understand the degree participants would be willing to help if they believed the participant completely, we presented participants with strong evidence that the claims were true (T3Action). In the US sample, this involved telling participants there was video evidence of the event in question occurring or a similar event after the fact. With the thwarted marriage vignette, this involved the participant seeing the man their daughter wants to marry trash talk their daughter and their family.
-
-+-----------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
-| Variable        | Vignette          | Wording                                                                                                                     | Coding                                                                                          |
-+=================+===================+=============================================================================================================================+=================================================================================================+
-| T1Belief        | Basketball        | How much do you believe the star player is telling the truth about the coach?                                               | 0: Not at all; 100: Completely                                                                  |
-+-----------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
-| T1Belief        | Brother-in-law    | How much do you believe your daughter is telling the truth about your brother-in-law?                                       | 0: Not at all; 100: Completely                                                                  |
-+-----------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
-| T1Belief        | Romantic partner  | How much do you believe your daughter is telling the truth about your partner?                                              | 0: Not at all; 100: Completely                                                                  |
-+-----------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
-| T1Belief        | Thwarted Marriage | How much do you believe your older(bold) daughter is telling the truth about the second man not being a good match for her? | 0: Not at all; 100: Completely                                                                  |
-+-----------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
-| T1Action        | Basketball        | How likely are you to recommend that the president of the university should suspend the coach?                              | 0: Very unlikely; 100: Very likely                                                              |
-+-----------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
-| T1Action        | Brother-in-law    | How likely are you to kick your brother-in-law out?                                                                         | 0: Very unlikely; 100: Very likely                                                              |
-+-----------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
-| T1Action        | Romantic partner  | How likely are you to kick your partner out?                                                                                | 0: Very unlikely; 100: Very likely                                                              |
-+-----------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
-| T1Action        | Thwarted Marriage | How likely are you to provide the large dowry so your older(bold) daughter can marry the man she is in love with?           | 0: Very unlikely; 100: Very likely                                                              |
-+-----------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
-| T1Divide        | Thwarted Marriage | How would you plan on dividing the money between your daughters?                                                            | 0: Much more for the younger daughter; 50: Even division; 100: Much more for the older daughter |
-+-----------------+-------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
-
-: (\#tab:outcomes) Outcome variables in each vignette.
+As both a validity check and a way to understand the degree participants would be willing to help if they believed the participant completely, we presented participants with strong evidence that the claims were true (*T3 Action*). In the US sample, this involved telling participants there was video evidence of the event in question occurring or a similar event after the fact. With the thwarted marriage vignette, this involved the participant seeing the man their daughter wants to marry trash talk their daughter and their family.
 
 ### Demographic Questions
 
 The final part of the survey was a brief demographic questionnaire which asked for (1) the age, (2) sex, (3) number of siblings, (4) number of sons, (5) number of daughters, (6) current relationship status, (7) highest level of education, and (8) the annual household income of each participant.
 
-## Statistical analyses
+## Statistical analyses: Preregistered and modified
 
-Our pre-test and post-test measures, *T1 & T2 Belief* and *T1 & T2 Action*, were all measured on a 0-100 point scale. A substantial number of participants rated their beliefs and actions as exactly 0 or exactly 100 at either T1 or T2. OLS linear regression models are not suitable for a closed and bounded distribution with so many values on the boundary because the residuals would not be normally distributed or have constant variance. Beta regression, a possible alternative, is only defined on the open interval, (0, 1), whereas our data had many values on the boundaries (a closed interval). A variant of beta regression, zero-one inflated beta, is inappropriate because it assumes different processes for the generation of data on the boundaries vs. the interior, and we had no reason to believe that our zeros and ones were generated by a different process than the rest of our observations.
+Our intervention was *signal*, an ordinal variable with the following preregistered rank order: verbal request (control), crying, mild depression, depression, suicide attempt. We coded this 5-level ordinal factor variable using default 4th-order orthogonal polynomial contrasts. We preregistered a test of our hypothesis that used ordinary least squares (OLS) regression models with the following form:
+
+$$
+\begin{aligned}
+\operatorname{Belief}_{T2} &= \beta_{0} + \beta_{1}(\operatorname{Belief}_{T1}) + \beta_{2}(\operatorname{signal}_{\operatorname{.L}}) + \beta_{3}(\operatorname{signal}_{\operatorname{.Q}})\ + \\
+&\quad \beta_{4}(\operatorname{signal}_{\operatorname{.C}}) + \beta_{5}(\operatorname{signal}_{\operatorname{\text{^}4}})
+\end{aligned}
+$$ 
+
+$$
+\begin{aligned}
+\operatorname{Action}_{T2} &= \beta_{0} + \beta_{1}(\operatorname{Action}_{T1}) + \beta_{2}(\operatorname{signal}_{\operatorname{.L}}) + \beta_{3}(\operatorname{signal}_{\operatorname{.Q}})\ + \\
+&\quad \beta_{4}(\operatorname{signal}_{\operatorname{.C}}) + \beta_{5}(\operatorname{signal}_{\operatorname{\text{^}4}})
+\end{aligned}
+$$ 
+
+We predicted that there would be a statistically significant monotonically increasing effect of the signal on *Belief* and *Action*.
+
+We decided to use generalized linear regression models instead of OLS, however, for the following reasons. Our pre-test and post-test measures, *T1 & T2 Belief* and *T1 & T2 Action*, were all measured on a 0-100 point scale. A substantial number of participants rated their beliefs and actions as exactly 0 or exactly 100 at either T1 or T2. OLS linear regression models are not suitable for a closed and bounded distribution with so many values on the boundary because the residuals would not be normally distributed or have constant variance. Beta regression, a possible alternative, is only defined on the open interval, (0, 1), whereas our data had many values on the boundaries (a closed interval). A variant of beta regression, zero-one inflated beta, is inappropriate because it assumes different processes for the generation of data on the boundaries vs. the interior, and we had no reason to believe that our zeros and ones were generated by a different process than the rest of our observations.
 
 We therefore fit models of our two outcome variables (which we rescaled to the continuous interval [0, 1]) in four ways. First, we fit the preregistered OLS models (reported in the SI). Second, we fit fractional regression models, introduced in a seminal paper by @papke1996 for continuous outcomes on the interval [0, 1], which, in brief, involve fitting a quasi-likelihood version of logistic regression with robust standard errors. This method is implemented in the `frm` package [@ramalho2019]. Third, we fit GLM logistic regression models, computing 95% CI's via bootstrapping, using the `glmmboot` package created to model continuous outcomes on [0, 1] [@humphrey2020]. Finally, we fit GLM models with the quasibinomial family and logit link using the `glm` function in R stats library, which can fit continuous outcomes on [0, 1]. The estimated coefficients, standard errors, and confidence intervals produced by the latter three methods were *very* similar, and often identical (see Figure \@ref(fig:modelcompareplots). We therefore proceeded to fit and report models using `glm` with the quasibinomial family and logit link because model objects produced by this function are compatible with numerous other R packages for summarizing and plotting effects.
 
-Although two of our four preregistered OLS regression models included an interaction term, the rationale for it was less convincing for quasibinomial models using a logit link because the expected interaction -- reduced effect of signals in individuals with high baseline belief -- is inherent to logistic regression: the effect of a predictor on the outcome necessarily diminishes as the outcome approaches 1. Our theory does not predict an interaction beyond that already present in a logistic regression model, so we did not include an interaction term in the GLM models (but we still report OLS models with the interaction term).
+Two of our four preregistered OLS regression models included interaction terms between signal and T1 *Belief* and *Action*, with the rationale that the signals might have reduced effect for individuals who indicate high levels of belief and helping at baseline. This rationale was less convincing for quasibinomial models using a logit link because the expected interaction -- reduced effect of signals in individuals with high baseline belief -- is inherent to logistic regression: the effect of a predictor on the outcome necessarily diminishes as the outcome approaches 1. Our theory does not predict an interaction beyond that already present in a logistic regression model, so we did not include an interaction term in the GLM models (but we still report OLS models with the interaction term).
 
-Our intervention was *signal*, an ordinal variable with the following preregistered rank order: verbal request (control), crying, mild depression, depression, suicide attempt. We used the default `glm` settings, which code such variables as orthogonal polynomial contrasts. Our primary confirmatory regression models were as follows (where the signal subscripts indicate polynomial degree):
-
-`r extract_eq(models$Model$m1, intercept='beta', wrap=T)` `r extract_eq(models$Model$m3, intercept='beta', wrap=T)`
-
-To test our hypothesis that the likelihood of acting to help the victim would be largely mediated by a signal's positive impact on the participant's belief in the victim's need, we used the `mediation` package [@tingley2014] to fit a mediation model for *Depression* treatment vs. *Verbal request* control. The mediation and outcome models, respectively, were:
-
-`r extract_eq(med1$model.m, intercept='beta', wrap=T)` `r extract_eq(med1$model.y, intercept='beta', wrap=T)`
-
-All analyses were conducted using `r R.version.string`.
-
-## Preregistration
-
-We preregistered four OLS linear regression models and one mediation model (<https://osf.io/g3s6n>). The first two regression models tested the effects of our ordinal signal variable on Time 2 *Belief* and *Action*, controlling for T1 *Belief* and *Action*, respectively (a pre-test/post-test design):
-
-`r extract_eq(models_prereg$Model$m1, intercept='beta', wrap=T)` `r extract_eq(models_prereg$Model$m3, intercept='beta', wrap=T)`
-
-The second two models added interaction terms between signal and T1 *Belief* and *Action*, with the rationale that the signals might have reduced effect for individuals who indicate high levels of belief and helping at baseline:
-
-`r extract_eq(models_prereg$Model$m1b, intercept='beta', wrap=T)` `r extract_eq(models_prereg$Model$m3b, intercept='beta', wrap=T)`
-
-The mediation model is in Figure \@ref(fig:medmodel):
+To test our preregistered hypothesis that the likelihood of acting to help the victim would be largely mediated by a signal's positive impact on the participant's belief in the victim's need, we used the `mediation` package [@tingley2014] to fit a mediation model for *Depression* treatment vs. *Verbal request* control. See Figure \@ref(fig:medmodel).
 
 ```{r medmodel, fig.cap="Possible causal effects of the signal on helping behavior. A credible signal of need increases belief that the victim is telling the truth and needs help, which increase the likelihood of helping. The direct path from the signal to action represents other causal effects of the signal on observers, such as perceptions of the victim's emotional state (and other factors not measured in this study) that might alter observer behavior."}
 
 knitr::include_graphics('paths.svg')
 ```
 
-Specifically, the mediation and outcome models, respectively, are:
-
-`r extract_eq(med_prereg$model.m, intercept='beta', wrap=T)` `r extract_eq(med_prereg$model.y, intercept='beta', wrap=T)`
-
-For reasons we explain in the *Statistical methods* section, we report the OLS models in the Supplementary Information (SI), and in the Results section instead report conceptually equivalent generalized linear regression models (GLMs).
+For specifications of all regression models, see the SI. Our preregistration is here: <https://osf.io/g3s6n>
 
 ## Data availibility
 
@@ -404,14 +395,14 @@ vars <- c(
   T2Manipulative = 'T2 Manipulative',
   T3Action = 'T3 Action'
 )
-kable(custom.summarize(d, vars), caption = "Summary statistics for study variables. Original 0-100 values scaled to 0-1. Indian participants reported income in rupees, which we converted to USD at the current exchange rate (1 rupee = 0.014 USD).") %>% kable_styling()
+kable(custom.summarize(d, vars), caption = "Summary statistics for study variables. Values that were on a 0-100 scale were rescaled to 0-1. Indian participants reported income in rupees, which we converted to USD at the current exchange rate (1 rupee = 0.014 USD).") %>% kable_styling()
 ```
 
 ## Distributions of beliefs and actions at Time 1
 
-Across the four vignettes, mean belief of the victim was relatively low at baseline (T1), Mean = `r signif(mean(d$T1Belief, na.rm = T), 2)`, albeit with wide variation, SD = `r signif(sd(d$T1Belief, na.rm=T), 2)`; `r sum(d$T1Belief==0)` participants (`r 100*signif(sum(d$T1Belief==0)/nrow(d), 2)`%) rated their belief = 0, and `r sum(d$T1Belief==1)` participants (`r 100*signif(sum(d$T1Belief==1)/nrow(d), 2)`%) rated it as = 1. The distribution of likelihood of helping the victim (action) was similar, Mean = `r signif(mean(d$T1Action, na.rm = T), 2)`, SD = `r signif(sd(d$T1Action, na.rm=T), 2)`, with `r sum(d$T1Action==0)` participants (`r 100*signif(sum(d$T1Action==0)/nrow(d), 2)`%) rating their action = 0, and `r sum(d$T1Action==1)` participants (`r 100*signif(sum(d$T1Action==1)/nrow(d), 2)`%) rated action as = 1. Although not a pre-registered prediction, T1 Belief and T1 Action were highly correlated across the four vignettes, consistent with help being worth providing if the signaler's claims were true (see Figure \@ref(fig:t1plot)).
+Across the four vignettes, mean belief of the victim was relatively low at baseline (T1), Mean = `r signif(mean(d$T1Belief, na.rm = T), 2)`, albeit with wide variation, SD = `r signif(sd(d$T1Belief, na.rm=T), 2)`; `r sum(d$T1Belief==0)` participants (`r 100*signif(sum(d$T1Belief==0)/nrow(d), 2)`%) rated their belief = 0, and `r sum(d$T1Belief==1)` participants (`r 100*signif(sum(d$T1Belief==1)/nrow(d), 2)`%) rated it as = 1. The distribution of likelihood of helping the victim (action) was similar, Mean = `r signif(mean(d$T1Action, na.rm = T), 2)`, SD = `r signif(sd(d$T1Action, na.rm=T), 2)`, with `r sum(d$T1Action==0)` participants (`r 100*signif(sum(d$T1Action==0)/nrow(d), 2)`%) rating their action = 0, and `r sum(d$T1Action==1)` participants (`r 100*signif(sum(d$T1Action==1)/nrow(d), 2)`%) rated action as = 1. Although not a pre-registered prediction, *T1 Belief* and *T1 Action* were highly correlated across the four vignettes, consistent with help being worth providing if the signaler's claims were true (see Figure \@ref(fig:t1plot)).
 
-```{r t1plot, fig.width=10, fig.height=10, fig.cap="The distributions of Time 1 Belief vs. Time 1 Action, by vignette. Each dot is one participant. Original 0-100 values rescaled to 0-1. Lines fit by linear regression. Dot size indicates the number of overlapping points. Black cross is the mean of each variable."}
+```{r t1plot, fig.width=10, fig.height=10, fig.cap="The distributions of *T1 Belief* vs.*T1 Action*, by vignette. Each dot is one participant. Original 0-100 values rescaled to 0-1. Lines fit by linear regression. Dot size indicates the number of overlapping points. Black dot is the mean of each variable."}
 plot_T1Belief_T1Action
 ```
 
@@ -429,15 +420,17 @@ signal_action_ttest <- t.test(100*d$T2Action, 100*d$T1Action, paired = T)
 
 ```
 
-As predicted, there was a strong statistically significant positive causal effect of the ordinal signal on T2 Belief and Action (controlling for T1 Belief and Action, respectively), with the effect of each signal increasing in the predicted rank order. See Figure \@ref(fig:beliefeffect) and models m1 and m3 in Tables \@ref(tab:regressiontables) and \@ref(tab:anovatables).
+As predicted, there was a strong statistically significant positive causal effect of the ordinal signal on *T2 Belief* and *T2 Action* (controlling for *T1 Belief* and *T1 Action*, respectively), with the effect of each signal increasing in the predicted rank order (verbal request, crying, mild depression, depression, suicide attempt). See Figure \@ref(fig:beliefeffect) and models m1 and m3 in Tables \@ref(tab:regressiontables) and \@ref(tab:anovatables).
 
 The marginal between-subjects effect of the high cost *Suicide attempt* vs. the *Verbal request* control on T2 *Belief* (averaging over all four vignettes and all values of T1 *Belief*) was an increase of `r fmt_margins(models$Margins$m1, 'signalSuicide attempt')` points on the original 0-100 point scale. The equivalent increase for T2 *Action* was `r fmt_margins(models$Margins$m3, 'signalSuicide attempt')` points. Given that the standard deviations of T2 *Belief* and *Action* are `r signif(sd(100*d$T2Belief), 2)` and `r signif(sd(100*d$T2Action), 2)`, respectively, these represent increases of `r suicide_belief_eff` and `r suicide_action_eff` SD's, respectively.
 
-```{r beliefeffect, fig.width=6, fig.height=8, fig.cap=paste0("The effect of the signals on T2 Belief (top) and Action (bottom) controlling for T1 values of Belief and Action, respectively. Effects plotted for T1 values set to their median value (T1Belief=", median(d$T1Belief, na.rm=T), ", T1Action=", median(d$T1Action, na.rm=T), "). Fit using generalized linear regression models with the quasibinomial family. For coefficents, p-values, and other statistics, see models m1 and m3 in Tables \\@ref(tab:regressiontables) and \\@ref(tab:anovatables).")}
+```{r beliefeffect, fig.width=6, fig.height=8, fig.cap=paste0("The effect of the signals on *T2 Belief* (top) and *T2 Action* (bottom) controlling for *T1 Belief* and *T1 Action*, respectively. Effects plotted for T1 values set to their median value (*T1 Belief*=", median(d$T1Belief, na.rm=T), ", *T1 Action*=", median(d$T1Action, na.rm=T), "). Fit using generalized linear regression models with the quasibinomial family. Grey bars are 95% CIs. For coefficents, p-values, and other statistics, see models m1 and m3 in Tables \\@ref(tab:regressiontables) and \\@ref(tab:anovatables).")}
 (effectsPlots$m1plot + theme(axis.text.x = element_blank()))/effectsPlots$m3plot + plot_layout(ncol = 1) & theme(plot.margin = unit(c(0,0,0,0), units = 'mm'))
 ```
 
-Within-subjects, the average effect across all signals on *Belief* at T2 compared to T1 was `r inline_ttest(signal_belief_ttest)`, and on *Action* was `r inline_ttest(signal_action_ttest)` (on the original 0-100 point scale). For the change in *Belief* and *Action* for, T1 to T2 for all participants in all conditions, see Figure \@ref(fig:rawbeliefactions2d).
+<!-- Within-subjects, the average effect across all signals on *Belief* at T2 compared to T1 was `r inline_ttest(signal_belief_ttest)`, and on *Action* was `r inline_ttest(signal_action_ttest)` (on the original 0-100 point scale). For the change in *Belief* and *Action* for, T1 to T2 for all participants in all conditions, see Figure @ref(fig:rawbeliefactions2d). -->
+
+The within-subject effects of each signal are depicted in Figure \@ref(fig:rawbeliefactions2d).
 
 ## Exploratory: Signals effects differ by vignette
 
@@ -464,11 +457,11 @@ bil_a_verbal <- signif(effect_sizes2$effsize[effect_sizes2$id=="Verbal request,B
 
 ```
 
-The largest between-subjects effect was *Suicide attempt* vs. *Verbal request* control on *Belief* in the "Brother-in-law" vignette, d = `r bil_b_suicide`, and the smallest was the effect of *Crying* on *Belief* in the "Romantic partner" vignette, d =`r rom_b_crying`. The largest within-subjects effect was *Suicide attempt* on *Action* at T2 vs. T1 in the "Brother-in-law" vignette, d = `r bil_a_suicide`, and the smallest was the *negative* effect of *Verbal request* on *Action* at T2 vs. T1 in the "Brother-in-law" vignette, d =`r bil_a_verbal`. See Figures \@ref(fig:effectsizes) and \@ref(fig:effectsizes2).
+The largest between-subjects effect was *Suicide attempt* vs. *Verbal request* control on *Belief* in the "Brother-in-law" vignette, Cohen's d = `r bil_b_suicide`, and the smallest was the effect of *Crying* on *Belief* in the "Romantic partner" vignette, Cohen's d =`r rom_b_crying`. The largest within-subjects effect was *Suicide attempt* on *Action* at T2 vs. T1 in the "Brother-in-law" vignette, Cohen's d = `r bil_a_suicide`, and the smallest was the *negative* effect of *Verbal request* on *Action* at T2 vs. T1 in the "Brother-in-law" vignette, Cohen's d =`r bil_a_verbal`. See Figures \@ref(fig:effectsizes) and \@ref(fig:effectsizes2).
 
 We note the following patterns, which we will return to in the Discussion section. First, as we intended, the distributions of *Belief* and *Action* in the *Verbal request* control condition were very similar to their distributions at T1 baseline across vignettes. In the "Basketball coach" and "Brother-in-law" vignettes, though, their distributions in the *Verbal request* condition were shifted to somewhat lower values relative to baseline (i.e., the verbal request slightly *reduced* belief and action in those vignettes). Second, in the "Romantic partner" and "Brother-in-law" vignettes, the effect of *Crying* differed little from *Verbal request*, but in the "Basketball coach" vignette, it differed little from the *Depression* and *Suicide attempt* signals. Third, the effect of the *Suicide attempt* signal on *Belief* was similar to that of *Depression* across all vignettes, but had a noticeably greater effect on *Action* in the "Romantic partner" and "Brother-in-law" vignettes. Fourth, there was little difference between the effect of the *Mild depression* vs. *Depression* signals. See Figures \@ref(fig:beliefvignette) and \@ref(fig:ecdf).
 
-```{r beliefvignette, fig.width=8, fig.height=8, fig.cap=paste0("The effect of the signals on T2 Belief (top) and Action (bottom) in each vignette, controlling for T1 values of Belief and Action, respectively. Ratings rescaled to [0, 1]. Effects plotted for T1 values set to their median value (T1Belief=", median(d$T1Belief, na.rm=T), ", T1Action=", median(d$T1Action, na.rm=T), "). Fit using generalized linear regression models with the quasibinomial family. For coefficents, p-values, and other statistics, see models m2 and m4 in Tables \\@ref(tab:regressiontables) and \\@ref(tab:anovatables).")}
+```{r beliefvignette, fig.width=8, fig.height=8, fig.cap=paste0("The effect of the signals on *T2 Belief* (top) and *T2 Action* (bottom) in each vignette, controlling for T1 values of Belief and Action, respectively. Ratings rescaled to [0, 1]. Effects plotted for T1 values set to their median value (*T1 Belief*=", median(d$T1Belief, na.rm=T), ", *T1 Action*=", median(d$T1Action, na.rm=T), "). Fit using generalized linear regression models with the quasibinomial family. Grey bars are 95% CIs. For coefficents, p-values, and other statistics, see models m2 and m4 in Tables \\@ref(tab:regressiontables) and \\@ref(tab:anovatables).")}
 (effectsPlots$m2plot + theme(axis.text.x = element_blank()))/effectsPlots$m4plot + plot_layout(ncol = 1) & theme(plot.margin = unit(c(0,0,0,0), units = 'mm'))
 ```
 
@@ -493,19 +486,19 @@ depressionmed <- 100*signif(rslts$n.avg[rslts$signal == 'Depression' & rslts$Sta
 
 According to our theoretical model, credible signals of need increase observers' belief that the victim is telling the truth. Increased belief then increases the likelihood of helping the victim (action). See Figure \@ref(fig:medmodel).
 
-The total effect of the *Suicide attempt* signal (treatment) vs. *Verbal request* (control) on the likelihood of *Action* was to increase it by `r suicidetotal` points from T1 to T2 (on the original 100-point scale). Of this increase, `r suicidemed`% was mediated by the increased *Belief* that the victim was telling the truth. The total effect of the *Depression* signal (treatment) vs. *Verbal request* (control) on the likelihood of *Action* was to increase it by `r depressiontotal` points from T1 to T2. Of this increase, `r depressionmed`% was mediated by the increased *Belief* that the victim was telling the truth. See Figure \@ref(fig:mediation).
+We fit the mediation and outcome models using GLM's with the binomial family as the mediation package does not support the quasibinomial family. The total effect of the *Suicide attempt* signal (treatment) vs. *Verbal request* (control) on the likelihood of *Action* was to increase it by `r suicidetotal` points from T1 to T2 (on the original 100-point scale). Of this increase, `r suicidemed`% was mediated by the increased *Belief* that the victim was telling the truth. The total effect of the *Depression* signal (treatment) vs. *Verbal request* (control) on the likelihood of *Action* was to increase it by `r depressiontotal` points from T1 to T2. Of this increase, `r depressionmed`% was mediated by the increased *Belief* that the victim was telling the truth. See Figure \@ref(fig:mediation).
 
 <!-- (Check if med4 or med4b is correct; they look identical to me). -->
 
-```{r mediation, fig.width=8, fig.height=4, fig.cap="The effect of each signal (treatment) vs. Verbal request (control) on Action, [0, 1] scale, is largely mediated by Belief (percent mediated on the right). The mediation model controlled for T1 Belief, and the outcome model controlled for T1 Belief and T1 Action. Both models were GLMs with the binomial family (the mediation package does not support the quasibinomial family). ACME: Average causal mediation effect. ADE: Average direct effect. Total: Total effect (ADE + ACME)."}
+```{r mediation, fig.width=8, fig.height=4, fig.cap="The effect of each signal (treatment) vs. Verbal request (control) on Action. The x-axis is the change in Action on the [0, 1] scale. The effects of the signals on Action are largely mediated by Belief (percent mediated on the right). The mediation model controlled for *T1 Belief*, and the outcome model controlled for *T1 Belief* and *T1 Action*. Both models were GLMs with the binomial family (the mediation package does not support the quasibinomial family). ACME: Average causal mediation effect. ADE: Average direct effect. Total: Total effect (ADE + ACME). Bars are 95% CIs."}
 all_mediations$plot
 ```
 
 ## Exploratory: Costlier signals decrease perceived manipulation and increase perceived low mood
 
-The proportion of participants inferring each emotion in each vignette at T1 is depicted in Figure \@ref(fig:t1emotionheatmap), after each signal at T2 in Figure \@ref(fig:t2emotionheatmap), and the change in proportions from T1 to T2 in Figure \@ref(fig:diffemotions). The increase in inferred depression in the *Depression* and *Suicide attempt* conditions, but not the *Verbal request* and *Crying* conditions, helps validate these manipulations, as does the increase in inferred suicidality in the *Suicide attempt* condition.
+The proportion of participants inferring each emotion in each vignette at T1 is depicted in Figure \@ref(fig:t1emotionheatmap), after each signal at T2 in Figure \@ref(fig:t2emotionheatmap), and the change in proportions from T1 to T2 in Figure \@ref(fig:diffemotions). The increase in inferred depression in the *Depression* and *Suicide attempt* conditions, but not the *Verbal request* and *Crying* conditions, helps validate these signals, as does the increase in inferred suicidality in the *Suicide attempt* condition.
 
-To further explore the effect of signaling on participants' inferences of the signaler's emotional state, we created four new variables: *Low mood* (T1 and T2) was the sum of the binary variables *Depressed*, *Distressed* and *Sad*; and *Manipulative* (T1 and T2) was the sum of the binary variables *Devious* and *Jealous.* The mean change in the *Low mood* and *Manipulative* variables from T1 to T2 for each signal in each vignette reveals a large decrease in inferred *Manipulation* for costly signals, and a large increase in inferred *Low mood* (with the exception of the Thwarted marriage vignette, in which changes are small). See Figure \@ref(fig:emotionsplot)).
+The mean change in the *Low mood* and *Manipulative* variables from T1 to T2 for each signal in each vignette reveals a large decrease in inferred *Manipulation* for costly signals, and a large increase in inferred *Low mood* (with the exception of the Thwarted marriage vignette, in which changes are small). See Figure \@ref(fig:emotionsplot).
 
 ```{r emotionsplot, fig.width=10, fig.height=8, fig.cap="The within-subjects effect of the signals on participants' inferred *Manipulative* and *LowMood* emotional states of the victim, from T1 (arrow base) to T2 (arrow head), for each signal in each of the four vignettes. Low mood: higher values indicate lower perceived mood. Manipulative: higher values indicate higher perceived manipulativeness. Thick arrows: mean change. Thin arrows: means of 500 bootstrap resamples."}
 plot_emotions
@@ -515,9 +508,9 @@ plot_emotions
 
 The sociodemographic variables were strongly confounded with nationality (Indian participants were younger, lower income, with more years of education than US), which, in turn, were confounded with vignette (responses in the Indian Thwarted marriage vignette differed substantially from those in the US vignettes). We therefore conducted our exploration of the sociodemographic variables separately by nationality.
 
-In the US sample, women participants were more likely to believe and help the victim than men, and younger participants were more likely to believe and help the victim than older participants. We found no significant effects of *Income*, *Education*, relationship status (e.g., married, single), or number of sons or daughters on *Belief* or *Action*. See Figure \@ref(fig:demographicsignal).
+In the US sample, female participants were more likely to believe and help the victim than male participants, and younger participants were more likely to believe and help the victim than older participants. We found no significant effects of *Income*, *Education*, relationship status (e.g., married, single), or number of sons or daughters on *Belief* or *Action*. See Figure \@ref(fig:demographicsignal).
 
-```{r demographicsignal, fig.width=11, fig.height=8, fig.cap="Sociodemographic effects on *Belief* and *Action*. **Top**: Association of T2 Belief with Sex (left) and Age (right) controlling for T1 Belief, vignette, Education, and Income. **Bottom**: Association of T2 Action with Sex (left) and Age (right) controlling for T1 Action, vignette, Education, and Income. Estimated using generalized linear regression models with the quasibinomial family."}
+```{r demographicsignal, fig.width=11, fig.height=8, fig.cap="Sociodemographic associations with *T2 Belief* (top) and *T2 Action* (bottom) in US participants. Each model controlled for *T1 Belief* or *T1 Action*, vignette, Education, and Income. Significant associations displayed here. Estimated using generalized linear regression models with the quasibinomial family. Grey bars are 95% CIs."}
 
 effectsPlots_US$m12plot + 
     theme(axis.text.x = element_blank()) +
@@ -532,9 +525,9 @@ effectsPlots_US$m13bplot +
     theme(axis.text.y = element_blank(), axis.title.y = element_blank())
 ```
 
-In the Indian sample and vignette, in contrast, men were more likely to help the victim than women, those with more years of education were less likely to believe the victim, and there was a marked increase in likelihood of helping among older individuals in the suicide signal condition. We found no significant associations with age or income. See Figure \@ref(fig:indiademographics).
+In the Indian sample and vignette, in contrast, males were more likely to help the victim than females, those with more years of education were less likely to believe the victim, and there was a marked increase in likelihood of helping among older individuals in the suicide signal condition. We found no significant associations with age or income. See Figure \@ref(fig:indiademographics).
 
-```{r indiademographics, fig.width=10, fig.height=8, fig.cap="India participants (Thwarted marriage vignette). Sociodemographic associations with T2 Belief and Action. Each model included T1 Belief or Action, Income, Age, Sex, Years of education, and signal. Significant associations displayed here."}
+```{r indiademographics, fig.width=10, fig.height=8, fig.cap="Sociodemographic associations with *T2 Belief* and *T2 Action* in Indian participants (Thwarted marriage vignette). Each model included *T1 Belief* or *T1 Action*, Income, Age, Sex, Years of education, and signal. Significant associations displayed here. Estimated using generalized linear regression models with the quasibinomial family. Grey bars are 95% CIs."}
 (effectsPlots_India$m12plot + xlab('Education (years)') + effectsPlots_India$m13plot) / effectsPlots_India$m17plot
 ```
 
@@ -544,23 +537,28 @@ In the Indian sample and vignette, in contrast, men were more likely to help the
 t2t3actionttest <- t.test(d$T3Action, d$T2Action, paired = T)
 ```
 
-As a partial check on the validity of our methods and results, at T3 we presented participants with strong evidence that the victim was telling the truth, and asked them to again rate their likelihood of acting to help the victim (T3Action). Compared to the mean T2Action (M=`r signif(mean(d$T2Action, na.rm=T), 2)`), mean T3Action increased substantially, `r inline_ttest(t2t3actionttest)`. Across the US vignettes, likelihood of acting at T3 increased to near-ceiling, regardless of participants' T2 Action values (M=`r signif(mean(d$T3Action[d$vignette != 'Thwarted marriage']), 2)`), indicating that propensity to act was indeed contingent on believing the victim. In the Indian Thwarted marriage vignette, however, there was little change in T3 Action compared to T2 action (Figure \@ref(fig:t3action)), perhaps because Indian participants' beliefs and actions were relatively insensitive to the signals to begin with (Figures \@ref(fig:beliefvignette) and \@ref(fig:ecdf)).
+As a partial check on the validity of our methods and results, at T3 we presented participants with strong evidence that the victim was telling the truth, and asked them to again rate their likelihood of acting to help the victim (*T3 Action*). Compared to the mean *T2 Action* (M=`r signif(mean(d$T2Action, na.rm=T), 2)`), mean *T3 Action* increased substantially, `r inline_ttest(t2t3actionttest)`. Across the US vignettes, likelihood of acting at T3 increased to near-ceiling, regardless of participants' *T2 Action* values (M=`r signif(mean(d$T3Action[d$vignette != 'Thwarted marriage']), 2)`), indicating that propensity to act was indeed contingent on believing the victim. In the Indian Thwarted marriage vignette, however, there was little change in *T3 Action* compared to *T2 Action* (Figure \@ref(fig:t3action)), perhaps because Indian participants' beliefs and actions were relatively insensitive to the signals to begin with (Figures \@ref(fig:beliefvignette) and \@ref(fig:ecdf)).
 
 # Discussion
 
-## The effect of signaling on belief and likelihood of support
+As predicted, in vignettes involving conflicts of interest and private information about the need for help, costly signals of need increased participants' belief in the victim and their likelihood of helping her, with the increase in perceived need and likelihood of helping increasing monotonically with signal cost. As predicted, the increase in likelihood of helping was largely mediated by the increase in belief in the victim. In an exploratory analysis, costlier signals also decreased perceptions that the victim was manipulative.
 
-Consistent with costly signaling theory, costlier signals resulted in greater perceptions of need and increased the likelihood of participants helping the signaler than the less costly signals. This effect was largest in the "brother-in-law" and "romantic partner" vignettes, both of which involved claims of assault against participants' imagined daughters. Compared to these scenarios, the effect of signal type was much smaller in both the "basketball coach" and the "thwarted marriage" vignette. In the "basketball coach" vignette, part of the reason for this may have been the lack of relatedness between participants and the alleged victim. However, this was still a surprising finding due to the relatively small size of the request (i.e., recommend the coach be suspended rather than kick out family members or a romantic partner).
+These effects were largest in the "brother-in-law" and "romantic partner" vignettes, both of which involved claims of assault against participants' imagined daughters, and smaller in the "basketball coach" and the "thwarted marriage" vignettes. The small effect in the "basketball coach" vignette, might have been due to the lack of relatedness between participants and the victim (the star player), or how participants weighted the costs of suspending the coach vs. punishing a potentially innocent person.
 
-The weak signal effect in the Thwarted marriage condition, which involved the Indian sample, could indicate that our results do not generalize across cultures, undermining our adaptationist hypothesis. It could also reflect our poor understanding of contemporary Indian culture regarding dowry. The fact that support came at the cost of one's younger daughter may explain the relatively small effect of signal strength. However, data from the Indian sample appears to be of lower quality, limiting our confidence in this interpretation (see limitations for more information).
+The small signal effect in the "thwarted marriage" vignette, which involved the Indian sample, could indicate that our results do not generalize across cultures, undermining our adaptationist hypothesis. It could also reflect our poor understanding of contemporary Indian culture regarding dowry (the effect was larger in older participants). Baseline belief in the older daughter, and likelihood of helping her, was relatively high at baseline (greater than 50%) compared to victims in the other vignettes. Private information and conflict therefore probably played a smaller role and thus costly signals were less necessary. We observed a similar pattern in our pilot study, in which baseline belief in the victim's need was high, and costly signals had smaller effects than they did in the current study. Additionally, supporting the older daughter came at the cost of one's younger daughter, which may also help explain the relatively small signal effects. A final consideration is that data from the Indian sample appeared to be of lower quality, limiting our confidence in any of these interpretations (see limitations for more information).
 
-In the "brother-in-law" and "romantic partner" scenarios, *Crying* had little effect on the magnitude of pro-signaler responses relative to *Verbal request*, suggesting it was not costly enough to serve as a reliable signal in times of substantial conflicts of interests. In contrast, both *Depression* conditions increased support, albeit to similar degrees. One potential reason for this is the increase in symptoms from mild depression to depression was not costly enough to result in a large effect as the symptoms only differed in severity (e.g., grades dropping from As to Bs [mild depression] or Cs [depression](#depression-3)). Such small changes may be less impactful in vignette form than in real-life scenarios in which the effects of signaling may increase in severity and be prolonged over a lengthy period of time.
+In the "brother-in-law" and "romantic partner" scenarios, *Crying* had little effect on the magnitude of pro-victim responses relative to *Verbal request*, suggesting it was not costly enough to serve as a reliable signal in times of substantial conflicts of interests. In contrast, both *Depression* conditions increased support, albeit to similar degrees. One potential reason for this is the increase in symptoms from mild depression to depression was not costly enough to result in a large effect, as the symptoms differed little in severity (e.g., grades dropping from As to Bs in *Mild depression* vs. Cs in *Depression*). Such small changes may be less impactful in vignettes than in real-life, where the effects of signaling may increase in severity as they persist over a lengthy period of time.
 
-While the effect of *Suicide attempt* on belief at T2 was similar to the *Depression* conditions across vignettes, it resulted in greater likelihood of support. This may be due to our decision to measure belief in need as the degree participants believed the claims of the signaler (e.g., if the assaults actually happened) rather than a more inclusive measure. For this reason, signal cost may have provided additional information about the costliness of the signaler's adversity on top of information relevant to whether the event claimed actually happened.
+The effect of *Suicide attempt* on belief at T2 was similar to the *Depression* conditions across vignettes, but it resulted in greater likelihood of support. One interpretation is that although some participants did not believe the victim's story, her signal nevertheless convinced them that she needed help. For example, maybe the brother-in-law did not assault her, but the presence of his family in her home was causing genuine distress. Support for this interpretation comes from our mediation analyses, which showed that the likelihood of help was largely, but not entirely, mediated by signal's effect on belief in need.
 
-Support for this interpretation comes from our mediation analyses, which showed that the likelihood of help was largely, but not entirely, mediated by signal's effect on belief in need in this study but totally mediated by belief in need when measured as need of financial support in the pilot study when comparing *Depression* to *Verbal request*. However, another possibility is that participants viewed the signal as providing information about adversity outside of the signaler's claims. For example, participants who saw the "brother-in-law" vignette may have thought the daughter was lying about the assault due to jealously over her cousin, with the stronger signals still conveying the severity of the competition between her and her cousin.
+There were minor associations of age and sex with belief and action in the US participants, with both being higher among females and younger individuals. The US vignettes all involved assaults against young women, which might have been more salient to female and younger participants. In the Indian sample, high baseline belief and action were somewhat lower among those with more education and among females, respectively. Costlier signals, suicidality in particular, had a larger effect among older individuals, perhaps because older individuals were more likely to have children of marriageable age, like the victim in the vignette.
 
-Overall, our results on the connection between belief in need and likelihood of help are consistent with costly signaling and bargaining approaches to depression and suicide. At T1, *Belief* and *Action* were highly correlated yet distinct; while at T2, the effect of signal on both *Belief* and *Action* was to increase the magnitude of pro-signaler responses, with the effect of signal on *T2Action* being largely mediated by signal's effect on belief in need. This relationship between belief in need and likelihood of support and the importance of signal cost should be expected in scenarios when a target of a signal of need would benefit from helping if the signaler's need was genuine but face substantial net costs if it was not. Importantly, such scenarios appear to be common among modern humans and have likely been since individuals could increase their inclusive fitness through supporting kin or important cooperative partners who could return to providing benefits to supporters once their situation returned to normal [@SugiyamaSugiyama2003; @tooby1996].
+Finally, after the T3 evidence that the victim was telling the truth, likelihood of helping by the US participants increased to near ceiling, an effect that helped validate our vignettes. Among Indian participants, in contrast, participants only slightly increased their likelihood of helping from their T2 level. One interpretation of the latter is that Indian participants tended to believe the older daughter anyway, so their decision to help was not changed by additional information.
+
+
+<!-- Overall, our results on the connection between belief in need and likelihood of help are consistent with costly signaling and bargaining approaches to depression and suicide. At T1, *Belief* and *Action* were highly correlated yet distinct; while at T2, the effect of signal on both *Belief* and *Action* was to increase the magnitude of pro-signaler responses, with the effect of signal on *T2 Action* being largely mediated by signal's effect on belief in need. This relationship between belief in need and likelihood of support and the importance of signal cost should be expected in scenarios when a target of a signal of need would benefit from helping if the signaler's need was genuine but face substantial net costs if it was not. Importantly, such scenarios appear to be common among modern humans and have likely been since individuals could increase their inclusive fitness through supporting kin or important cooperative partners who could return to providing benefits to supporters once their situation returned to normal [@SugiyamaSugiyama2003; @tooby1996]. -->
+
+Our results suggest that the costs of depression and suicidality, which in mainstream theories are taken as evidence of brain dysfunction, might instead function to help victims elicit support from reluctant social partners with whom they are in conflict.
 
 Although this study was not designed to examine whether the costs of signaling would be made up for by the increased support stemming from depression and suicide attempts directly, the results are consistent with this hypothesis. In general, the costs required to honestly convey one's qualities should be expected to increase with the potential payoffs of deception and the number of defectors within the broader population [@Rosenthal1993], with the vignettes in this study emphasizing the existence of private information and sizable conflicts of interest to increase the perceived risk of being taken advantage of. In similar real-world scenarios, this difficulty of signaling honest need would coincide with the substantial fitness-relevant benefits of preventing future assaults or being able to marry the partner of one's choice. These benefits coupled with the fact that depression and suicide attempts become relatively less costly to one's fitness prospects with increased need [@Hagen2003], suggest that the increased support seen in this study may be worth the costs required to signal need more often than is often appreciated when counting the entire costs of depression as the signal rather than only the upregulation of symptoms for a communicative purpose.
 
@@ -578,9 +576,7 @@ The need to explain suicide's connection to depression is often overlooked by ex
 
 # Acknowledgements
 
-This study was funded through a Washington State University, Vancouver research mini grant.
-
-Who to thank: Lab group? Arpita? Committee? Anne sounds like she will provide a lot of feedback, so her after that?
+This study was funded through a Washington State University, Vancouver research mini grant. We thank Anne Pisor, Darcy Bird, and members of the Hagen lab group for numerous helpful comments. We also thank XX and YY [pending permission to acknowledge] for feedback on the Thwarted marriage vignette.
 
 # To do:
 
@@ -592,10 +588,10 @@ Who to thank: Lab group? Arpita? Committee? Anne sounds like she will provide a 
 
 # Notes from my meeting with Anne
 
-- Table detailing the cooperative endeavor (maybe word as boundedness of fate), conflict of interest, and what the private information is about would be useful.
-- Calling verbal request control when it's a treatment?
-- Can shift much of the pilot studies info to SI with some detail post line 279 in draft she saw.
-- Cumulative distribution plot: needs more info in captions. could benefit from fig6a and fig6b (confusion over x and y axes)
+-   Table detailing the cooperative endeavor (maybe word as boundedness of fate), conflict of interest, and what the private information is about would be useful.
+-   Calling verbal request control when it's a treatment?
+-   Can shift much of the pilot studies info to SI with some detail post line 279 in draft she saw.
+-   Cumulative distribution plot: needs more info in captions. could benefit from fig6a and fig6b (confusion over x and y axes)
 
 # Supplementary information
 
@@ -608,7 +604,7 @@ pilot_results$effectplot + (pilot_results$mentalplot + theme(axis.text.y = eleme
 ```
 
 In the small reddit.com study, participants viewed and responded to two vignettes used here, each with a different signal.
- 
+
 ## Lessons learned from the pilot study
 
 We learned five major lessons from the MTurk pilot study that influenced the design of the current study. First, as predicted, belief in the sister's need was highest in the *Depression* condition and lowest in the *Verbal request* condition, giving us confidence to continue this research (see Figure \@ref(fig:piloteffects)). Second, to rule out that believability and willingness to help were simply artifacts of the sister's psychiatric distress, we included a "signaling" condition in which the sister exhibited schizophrenic symptoms. As predicted, believability and willingness to help in this condition were dramatically lower than in any other condition, ruling out this alternative explanation. We therefore did not include the schizophrenic condition in the current study. Third, baseline (T1) believability was very high (mean = `r signif(pilot_results$meanT1belief, 2)` and median = `r signif(pilot_results$medianT1belief, 2)` on a 0-100 point scale), leaving little scope for signals to increase believability. In the current study we therefore endeavored to provide details in the vignettes that would undermine the victim's believability at baseline. Fourth, contrary to our hypothesis, the *Suicide threat* and *Suicide attempt* signals reduced believability relative to *Depression*. We surmised that the sister's adversity -- a sick child -- was not sufficient to justify a suicide attempt, thus undermining her believability. In the current study the signaler herself is therefore the victim, and the forms of adversity -- physical and sexual assault and thwarted and forced marriage -- are those that are frequently associated with suicidality. Fifth, the content of the vignette matters, so instead of a single vignette we decided to use four different vignettes to help determine the extent to which signaling effects were sensitive to seemingly irrelevant details of the vignettes.
@@ -619,7 +615,7 @@ In the reddit.com pilot study, participants viewed two vignettes (with different
 
 We estimated power using our pilot study data to compare the effect of the *Depression* signal vs. the *Verbal request* control on *Belief* (that the sister needed the money) at T2 controlling for *Belief* at T1 in a linear regression model. Specifically, we resampled the pilot data with replacement, fit the linear regression model, and extracted the p-value for the signal coefficient, repeating this 2000 times for each sample size ranging from N=20 to N=200. Power was computed as the proportion of p-values \< 0.05. Power was about 80% for a sample size of about `r pwr80_90[[2,2]]`, and was about 90% for a sample size of about `r pwr80_90[[2,3]]`. We then repeated this entire procedure to compare *Depression* to a (flawed) *Control* condition in the pilot study that was meant to not include any signaling (but which we realized, post hoc, did include a verbal request yet differed in substantive ways from the treatment conditions, and therefore was not suitable as a control). Power was about 80% for a sample size of about `r pwr80_90[[1,2]]`, and was about 90% for a sample size of about `r pwr80_90[[1,3]]`. See Figure \@ref(fig:power).
 
-```{r power, fig.cap="Power curve for between-subjects effect of Depression vs. Verbal request signal on T2 Belief, controlling for T1 Belief, and Depression vs. a Control condition that was unique to the pilot study."}
+```{r power, fig.cap="Power curve for between-subjects effect of Depression vs. Verbal request signal on *T2 Belief*, controlling for *T1 Belief*, and Depression vs. a Control condition that was unique to the pilot study."}
   ggplot(power_curve, aes(sample_size, power, color=Base)) +
     geom_line() +
     labs(x = '\n Sample size', y = 'Power\n') +
@@ -628,7 +624,7 @@ We estimated power using our pilot study data to compare the effect of the *Depr
 
 <!-- Second, for participants in the *Depression* condition only, we compared their T2 Belief to their T1 Belief using a paired t-test (in the full pilot data, *Depression* increased belief by about 8 points on a 100 point scale). We again resampled our pilot data 2000 times for each sample size from N=20 to N=200. Power was about 80% for a sample size of 125, and about 90% for a sample size of 175. -->
 
-```{r power2, fig.cap="Power curve for within-subjects effect of Depression signal on T2 Belief relative to T1 Belief."}
+```{r power2, fig.cap="Power curve for within-subjects effect of Depression signal on *T2 Belief* relative to *T1 Belief*."}
   # ggplot(power_curve2, aes(sample_size, power)) +
   #   geom_line() +
   #   labs(x = '\n Sample size', y = 'Power\n') +
@@ -883,8 +879,23 @@ When the two of you talk about the arranged marriage, she starts sobbing and ask
 
 How do you think [the star player / your daughter] feels? Click **all** that apply.
 
-Angry Sad Suicidal Mentally ill Depressed Guilty\
-Calm Neutral Scared Tired Distressed Devious Jealous Confident Traumatized Violated None of the above
+* Angry
+* Sad 
+* Suicidal 
+* Mentally ill 
+* Depressed 
+* Guilty
+* Calm
+* Neutral
+* Scared
+* Tired
+* Distressed
+* Devious
+* Jealous
+* Confident
+* Traumatized
+* Violated
+* None of the above
 
 ## T3 Evidence
 
@@ -904,6 +915,30 @@ Since your last response, your daughter has come to you with a video she secretl
 
 Just now in the market, you saw the man whose family is willing to accept a smaller dowry (the man your daughter does not want to marry). You heard him insult your daughter and your family.
 
+## Preregistered regression models
+
+We preregistered four OLS linear regression models and one mediation model (<https://osf.io/g3s6n>).
+
+The first two OLS regression models tested the effects of our ordinal signal variable on Time 2 *Belief* and *Action*, controlling for T1 *Belief* and *Action*, respectively (a pre-test/post-test design):
+
+`r extract_eq(models_prereg$Model$m1, intercept='beta', wrap=T)` `r extract_eq(models_prereg$Model$m3, intercept='beta', wrap=T)`
+
+We also preregisterd models with an interaction term, for reasons explained in the main text:
+
+`r extract_eq(models_prereg$Model$m1b, intercept='beta', wrap=T)` `r extract_eq(models_prereg$Model$m3b, intercept='beta', wrap=T)`
+
+The `glm` models we report in the main text were:
+
+`r extract_eq(models$Model$m1, intercept='beta', wrap=T)` `r extract_eq(models$Model$m3, intercept='beta', wrap=T)` `r extract_eq(models$Model$m1b, intercept='beta', wrap=T)` `r extract_eq(models$Model$m3b, intercept='beta', wrap=T)`
+
+The preregistered mediation and outcome models, respectively, were:
+
+`r extract_eq(med_prereg$model.m, intercept='beta', wrap=T)` `r extract_eq(med_prereg$model.y, intercept='beta', wrap=T)`
+
+The mediation and outcome models, respectively, that we report in the main text were:
+
+`r extract_eq(med1$model.m, intercept='beta', wrap=T)` `r extract_eq(med1$model.y, intercept='beta', wrap=T)`
+
 ## Sample size in each condition in the current study
 
 ```{r conditions}
@@ -914,7 +949,7 @@ as.data.frame.matrix(xtabs(~signal+vignette, d)) %>%
 
 <!-- ## Distributions of T2 Belief and Action by signal and vignette -->
 
-```{r distbelief, fig.width=10, fig.height=10, fig.cap="Histograms of T2 Belief by signal and vignette."}
+```{r distbelief, fig.width=10, fig.height=10, fig.cap="Histograms of *T2 Belief* by signal and vignette."}
 
 # h <- hist(d$T2Belief, breaks = "FD", plot = FALSE)
 # 
@@ -1014,7 +1049,7 @@ ggplot(effect_sizes, aes(est, fct_reorder(id, est), xmin=low, xmax=high, colour 
   theme(legend.position = 'top')
 ```
 
-```{r effectsizes2, fig.width=10, fig.height=7, fig.cap="Within-subjects Cohen's d (95% CI) for the effect of each signal on T2 Belief and Action in each vignette relative to T1 baseline Belief and Action, respectively, ranked by effect size."}
+```{r effectsizes2, fig.width=10, fig.height=7, fig.cap="Within-subjects Cohen's d (95% CI) for the effect of each signal on *T2 Belief* and *T2 Action* in each vignette relative to baseline *T1 Belief* and *T1 Action*, respectively, ranked by effect size."}
 
 ggplot(effect_sizes2, aes(effsize, fct_reorder(id, effsize), xmin=conf.low, xmax=conf.high, colour = signal, shape=Outcome)) +
   geom_pointrange(position = position_dodge(width = 0.7), lwd = 2.5, fatten = 1, alpha=0.5) +

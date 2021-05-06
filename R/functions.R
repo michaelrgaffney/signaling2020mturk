@@ -69,7 +69,7 @@ T1Belief_Action_dist <- function(d){
     # geom_density2d(alpha = 0.5, show.legend = F) +
     geom_count(alpha = 0.5) +
     geom_smooth(se=F, method = 'lm', show.legend = F) +
-    geom_point(data = dmean, aes(T1Belief, T1Action), colour = 'black', shape = 3, size = 3) +
+    geom_point(data = dmean, aes(T1Belief, T1Action), colour = 'black', size = 3) +
     geom_text(data = dcor, aes(label = r), x = .15, y = 0.95, size=5, colour='black') +
     coord_fixed() +
     labs(x = '\nT1 Belief', y = 'T1 Action\n') +
