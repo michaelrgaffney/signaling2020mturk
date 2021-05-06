@@ -488,14 +488,16 @@ eff_sizes2 <- function(d){
 
 # Power -------------------------------------------------------------------
 
-pwr_curve0 <- function(signalingdata2018, control){
+pwr_curve0 <- function(signalingdata2018, treatment = 'Depression', control = 'Verbal request'){
 
   e <-
     signalingdata2018 %>%
-    dplyr::filter(signal == "Depression" | signal == control) %>%
-    mutate(signal = factor(signal, levels = c(control, "Depression")))
+    dplyr::filter(signal == treatment | signal == control) %>%
+    mutate(signal = factor(signal, levels = c(control, treatment)))
 
   pwr <- function(sample_size){
+    print(paste('sample_size:', sample_size))
+    print(sample(1:nrow(e), sample_size, replace = T))
     pvalues <- map_dbl(1:2000, ~summary(lm(needsmoneyt2 ~ needsmoneyt1 + signal, e[sample(1:nrow(e), sample_size, replace = T),]))$coefficients["signalDepression","Pr(>|t|)"])
     sum(pvalues < 0.05)/length(pvalues)
   }
@@ -508,7 +510,7 @@ pwr_curve0 <- function(signalingdata2018, control){
 }
 
 pwr_curve <- function(d){
-  bind_rows(list('Control' = pwr_curve0(d, 'Control'), 'Verbal' = pwr_curve0(d, 'Verbal request')), .id='Base')
+  bind_rows(list('Control' = pwr_curve0(d, treatment = 'Depression', control = 'Control'), 'Verbal' = pwr_curve0(d, treatment = 'Depression', control = 'Verbal request')), .id='Base')
 }
 
 pwr_curve2 <- function(signalingdata2018){
