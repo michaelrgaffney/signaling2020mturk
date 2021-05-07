@@ -488,17 +488,16 @@ eff_sizes2 <- function(d){
 
 # Power -------------------------------------------------------------------
 
-pwr_curve0 <- function(signalingdata2018, treatment = 'Depression', control = 'Verbal request'){
+pwr_curve <- function(d, treatment, control, n = 2000){
 
   e <-
-    signalingdata2018 %>%
+    d %>%
     dplyr::filter(signal == treatment | signal == control) %>%
     mutate(signal = factor(signal, levels = c(control, treatment)))
 
+  coefname <- paste0('signal', treatment)
   pwr <- function(sample_size){
-    print(paste('sample_size:', sample_size))
-    print(sample(1:nrow(e), sample_size, replace = T))
-    pvalues <- map_dbl(1:2000, ~summary(lm(needsmoneyt2 ~ needsmoneyt1 + signal, e[sample(1:nrow(e), sample_size, replace = T),]))$coefficients["signalDepression","Pr(>|t|)"])
+    pvalues <- map_dbl(1:n, ~summary(lm(needsmoneyt2 ~ needsmoneyt1 + signal, e[sample(1:nrow(e), sample_size, replace = T),]))$coefficients[coefname, "Pr(>|t|)"])
     sum(pvalues < 0.05)/length(pvalues)
   }
 
@@ -509,9 +508,9 @@ pwr_curve0 <- function(signalingdata2018, treatment = 'Depression', control = 'V
     )
 }
 
-pwr_curve <- function(d){
-  bind_rows(list('Control' = pwr_curve0(d, treatment = 'Depression', control = 'Control'), 'Verbal' = pwr_curve0(d, treatment = 'Depression', control = 'Verbal request')), .id='Base')
-}
+# pwr_curve <- function(d){
+#   bind_rows(list('Control' = pwr_curve0(d, treatment = 'Depression', control = 'Control'), 'Verbal' = pwr_curve0(d, treatment = 'Depression', control = 'Verbal request')), .id='Base')
+# }
 
 pwr_curve2 <- function(signalingdata2018){
   e <- signalingdata2018 %>% dplyr::filter(signal == "Depression")

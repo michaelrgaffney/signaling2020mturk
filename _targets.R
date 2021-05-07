@@ -90,7 +90,7 @@ list(
 
   tar_target(
     power_curve,
-    pwr_curve(signalingdata2018b)
+    pwr_curve(signalingdata2018b, treatment = 'Mild depression', control = 'Verbal request')
   ),
 
 # Pilot results -----------------------------------------------------------
