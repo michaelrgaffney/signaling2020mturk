@@ -80,6 +80,9 @@ T1Belief_Action_dist <- function(d){
 
 }
 
+
+# Fit models --------------------------------------------------------------
+
 fit_models <- function(data, formulas, family = 'quasibinomial'){
   d <- tibble(
     Name = names(formulas),
@@ -89,13 +92,15 @@ fit_models <- function(data, formulas, family = 'quasibinomial'){
     } else {
       map(Formulas, ~lm(formula = .x, data = data))
       },
+    RobustCI = map(Model, ~lmtest::coefci(.x, vcov = sandwich::vcovHC(.x, type="HC"))),
     TidyModel = map(Model, ~tidy(.x, conf.int = T)),
     Anova = map(Model, ~Anova(.x, type = 3)),
     TidyANOVA = map(Anova, ~tidy(.x, conf.int = T)),
-    Margins = map(Model, ~margins(.x, type = 'response'))
+    Margins = map(Model, ~margins(.x, vcov = sandwich::vcovHC(.x, type="HC"), type = 'response'))
   )
 
   names(d$Model) <- d$Name
+  names(d$RobustCI) <- d$Name
   names(d$TidyModel) <- d$Name
   names(d$TidyANOVA) <- d$Name
   names(d$Margins) <- d$Name
@@ -116,6 +121,9 @@ fractional_model <- function(m, table = F){
   x = model.matrix(m)[,-1] # remove intercept
   frm(m$y, x, linkfrac = 'logit', table = table)
 }
+
+# Effect plots ------------------------------------------------------------
+
 
 effect_plot <- function(m, ...){
 
@@ -188,6 +196,8 @@ visreg_diff <- function(m, vignette, signal1, signal2, d, sig = 2){
   v2 <- fit$visregFit[fit$signal==signal2 & fit$vignette==vignette]
   signif(100*(v1 - v2), sig)
 }
+
+# Mediation ---------------------------------------------------------------
 
 signal_mediate <- function(
   data = NULL,
@@ -274,6 +284,7 @@ all_signals_mediate <- function(d){
   list(results=meds, plot=p)
 }
 
+# Plots -------------------------------------------------------------------
 
 emotion_plot <- function(d){
 
@@ -603,9 +614,16 @@ ggkde <- function(mkde){
 
 # Model comparison plot ---------------------------------------------------
 
-compare_plot <- function(mquasi, mboot, mfrac, title){
+compare_plot <- function(mquasi, mrobust, mboot, mfrac, title){
 
-  df_mquasi <- mquasi[c(1,2,6,7)]
+  df_mquasi <- mquasi[c('term', 'estimate', 'conf.low', 'conf.high')]
+
+  df_mrobust <- tibble(
+    term = rownames(mrobust),
+    estimate = df_mquasi$estimate,
+    conf.low = mrobust[, '2.5 %'],
+    conf.high = mrobust[, '97.5 %']
+  )
 
   df_mboot <-
     as_tibble(mboot[,c(1:3)]) %>%
@@ -631,7 +649,7 @@ compare_plot <- function(mquasi, mboot, mfrac, title){
     )
 
   d <-
-    bind_rows(glm = df_mquasi, bootstrap = df_mboot, fractional = df_mfrac, .id = 'Model') %>%
+    bind_rows(glm = df_mquasi, glmrobust = df_mrobust, bootstrap = df_mboot, fractional = df_mfrac, .id = 'Model') %>%
     mutate(
       term = factor(term, levels = rev(df_mquasi$term))
     )

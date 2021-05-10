@@ -241,12 +241,12 @@ list(
 
   tar_target(
     belief_compare_plot,
-    compare_plot(models$TidyModel$m1, m1_boot, m1_frac, 'Belief models')
+    compare_plot(models$TidyModel$m1, models$RobustCI$m1, m1_boot, m1_frac, 'Belief models')
   ),
 
   tar_target(
     action_compare_plot,
-    compare_plot(models$TidyModel$m3, m3_boot, m3_frac, 'Action models')
+    compare_plot(models$TidyModel$m3, models$RobustCI$m3, m3_boot, m3_frac, 'Action models')
   ),
 
 # Effects plots -----------------------------------------------------------
