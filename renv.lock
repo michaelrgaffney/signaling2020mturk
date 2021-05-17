@@ -869,6 +869,13 @@
       "Repository": "CRAN",
       "Hash": "5f2466f5127e0ce67e44bb381387eeca"
     },
+    "lmtest": {
+      "Package": "lmtest",
+      "Version": "0.9-38",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "b0edacc02f7a3dad41a1afc385e929f4"
+    },
     "lpSolve": {
       "Package": "lpSolve",
       "Version": "5.6.15",
