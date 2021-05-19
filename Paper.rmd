@@ -65,7 +65,7 @@ tar_load(
 
 # Abstract
 
-Major depression and suicide are generally viewed as pathological responses to stress that elicit aversive responses from others. Alternatively, depression and suicide attempts might involve honest signals of need in response to stress and help to bargain for increased support from reluctant others. To address this hypothesis, we examined responses to emotional signals in an experimental vignette study involving claims of substantial need in the presence of conflicts of interest and private information about whether the signaler was actually in need. In our sample of 1,240 participants recruited from Amazon Mechanical Turk, costlier signals like depression and suicide attempts resulted in greater perceptions of need, reduced perceptions of manipulativeness, and increased likelihood of support compared to simple verbal requests and crying without further symptoms. Additionally, as predicted, the effect of signal type on likelihood of support was largely mediated by the effect of signaling on belief in need. Our results suggest that depression and suicide attempts, apparent human universals, are relatively successful ways of signaling honest need and eliciting support, consistent with costly signaling explanations.
+Major depression and suicide are generally viewed as pathological responses to stress that elicit aversive responses from others. Alternatively, depression and suicide attempts might involve honest signals of need in response to stress that can increase support from reluctant others. To test this hypothesis, we examined responses to emotional signals in an experimental vignette study involving claims of substantial need in the presence of conflicts of interest and private information about whether the signaler was actually in need. In a sample of 1,240 participants recruited from Amazon Mechanical Turk, costlier signals like depression and suicide attempts resulted in greater perceptions of need, reduced perceptions of manipulativeness, and increased likelihood of support compared to simple verbal requests and crying without further symptoms. Additionally, as predicted, the effect of signal type on likelihood of support was largely mediated by the effect of signaling on belief in need. Our results support the hypothesis that depression and suicide attempts, apparent human universals, are credible signals of need.
 
 # Introduction
 
@@ -421,7 +421,7 @@ signal_action_ttest <- t.test(100*d$T2Action, 100*d$T1Action, paired = T)
 
 ```
 
-As predicted, there was a strong statistically significant positive causal effect of the ordinal signal on *T2 Belief* and *T2 Action* (controlling for *T1 Belief* and *T1 Action*, respectively), with the effect of each signal increasing in the predicted rank order (verbal request, crying, mild depression, depression, suicide attempt). See Figure \@ref(fig:beliefeffect) and models m1 and m3 in Tables \@ref(tab:regressiontables) and \@ref(tab:anovatables).
+As predicted, there was a strong statistically significant positive causal effect of the ordinal signal on *T2 Belief* and *T2 Action* (controlling for *T1 Belief* and *T1 Action*, respectively), with the effect of each signal increasing in the predicted rank order (verbal request, crying, mild depression, depression, suicide attempt). See Figure \@ref(fig:beliefeffect) and models m1 and m3 in Tables \@ref(tab:regressiontables) and \@ref(tab:anovatables). (Results for the preregistered OLS models were very similar; see Figures \@ref(fig:preregbelief) and \@ref(fig:preregbeliefB).)
 
 The marginal between-subjects effect of the high cost *Suicide attempt* vs. the *Verbal request* control on T2 *Belief* (averaging over all four vignettes and all values of T1 *Belief*) was an increase of `r fmt_margins(models$Margins$m1, 'signalSuicide attempt')` points on the original 0-100 point scale. The equivalent increase for T2 *Action* was `r fmt_margins(models$Margins$m3, 'signalSuicide attempt')` points. Given that the standard deviations of T2 *Belief* and *Action* are `r signif(sd(100*d$T2Belief), 2)` and `r signif(sd(100*d$T2Action), 2)`, respectively, these represent increases of `r suicide_belief_eff` and `r suicide_action_eff` SD's, respectively.
 
@@ -432,43 +432,6 @@ The marginal between-subjects effect of the high cost *Suicide attempt* vs. the 
 <!-- Within-subjects, the average effect across all signals on *Belief* at T2 compared to T1 was `r inline_ttest(signal_belief_ttest)`, and on *Action* was `r inline_ttest(signal_action_ttest)` (on the original 0-100 point scale). For the change in *Belief* and *Action* for, T1 to T2 for all participants in all conditions, see Figure @ref(fig:rawbeliefactions2d). -->
 
 The within-subject effects of each signal are depicted in Figure \@ref(fig:rawbeliefactions2d).
-
-## Exploratory: Signals effects differ by vignette
-
-```{r}
-
-thwart_sv_bdiff <- visreg_diff(models$Model$m2, 'Thwarted marriage', 'Suicide attempt', 'Verbal request', d)
-
-thwart_sv_adiff <- visreg_diff(models$Model$m4, 'Thwarted marriage', 'Suicide attempt', 'Verbal request', d)
-
-brother_sv_bdiff <- visreg_diff(models$Model$m2, 'Brother-in-law', 'Suicide attempt', 'Verbal request', d)
-
-brother_sv_adiff <- visreg_diff(models$Model$m4, 'Brother-in-law', 'Suicide attempt', 'Verbal request', d)
-
-```
-
-```{r}
-bil_b_suicide <- signif(effect_sizes$est[effect_sizes$id=="Suicide attempt,Brother-in-law" & effect_sizes$Outcome=="Belief"], 2)
-
-rom_b_crying <- signif(effect_sizes$est[effect_sizes$id=="Crying,Romantic partner" & effect_sizes$Outcome=="Belief"], 2)
-
-bil_a_suicide <- signif(effect_sizes2$effsize[effect_sizes2$id=="Suicide attempt,Brother-in-law" & effect_sizes2$Outcome=="Action"], 2)
-
-bil_a_verbal <- signif(effect_sizes2$effsize[effect_sizes2$id=="Verbal request,Brother-in-law" & effect_sizes2$Outcome=="Action"], 2)
-
-```
-
-The largest between-subjects effect was *Suicide attempt* vs. *Verbal request* control on *Belief* in the "Brother-in-law" vignette, Cohen's d = `r bil_b_suicide`, and the smallest was the effect of *Crying* on *Belief* in the "Romantic partner" vignette, Cohen's d =`r rom_b_crying`. The largest within-subjects effect was *Suicide attempt* on *Action* at T2 vs. T1 in the "Brother-in-law" vignette, Cohen's d = `r bil_a_suicide`, and the smallest was the *negative* effect of *Verbal request* on *Action* at T2 vs. T1 in the "Brother-in-law" vignette, Cohen's d =`r bil_a_verbal`. See Figures \@ref(fig:effectsizes) and \@ref(fig:effectsizes2).
-
-We note the following patterns, which we will return to in the Discussion section. First, as we intended, the distributions of *Belief* and *Action* in the *Verbal request* control condition were very similar to their distributions at T1 baseline across vignettes. In the "Basketball coach" and "Brother-in-law" vignettes, though, their distributions in the *Verbal request* condition were shifted to somewhat lower values relative to baseline (i.e., the verbal request slightly *reduced* belief and action in those vignettes). Second, in the "Romantic partner" and "Brother-in-law" vignettes, the effect of *Crying* differed little from *Verbal request*, but in the "Basketball coach" vignette, it differed little from the *Depression* and *Suicide attempt* signals. Third, the effect of the *Suicide attempt* signal on *Belief* was similar to that of *Depression* across all vignettes, but had a noticeably greater effect on *Action* in the "Romantic partner" and "Brother-in-law" vignettes. Fourth, there was little difference between the effect of the *Mild depression* vs. *Depression* signals. See Figures \@ref(fig:beliefvignette) and \@ref(fig:ecdf).
-
-```{r beliefvignette, fig.width=8, fig.height=8, fig.cap=paste0("The effect of the signals on *T2 Belief* (top) and *T2 Action* (bottom) in each vignette, controlling for T1 values of Belief and Action, respectively. Ratings rescaled to [0, 1]. Effects plotted for T1 values set to their median value (*T1 Belief*=", median(d$T1Belief, na.rm=T), ", *T1 Action*=", median(d$T1Action, na.rm=T), "). Fit using generalized linear regression models with the quasibinomial family. Grey bars are 95% CIs. For coefficents, p-values, and other statistics, see models m2 and m4 in Tables \\@ref(tab:regressiontables) and \\@ref(tab:anovatables).")}
-(effectsPlots$m2plot + theme(axis.text.x = element_blank()))/effectsPlots$m4plot + plot_layout(ncol = 1) & theme(plot.margin = unit(c(0,0,0,0), units = 'mm'))
-```
-
-```{r ecdf, fig.width=11, fig.height=6, fig.cap="Empirical cummulative distribution functions for Time 2 Belief (top) and Action (bottom) compared to their Time 1 baseline values (red), by signal and vignette. Y-values indicate the fraction of all ratings equal to or less than a given x-value. Ratings rescaled to [0, 1]. Dots indicate median values of Belief and Action, by signal and vignette."}
-ecdf_plot
-```
 
 ## Confirmatory: The effect of signals on action is largely mediated by belief
 
@@ -505,6 +468,45 @@ The mean change in the *Low mood* and *Manipulative* variables from T1 to T2 for
 plot_emotions
 ```
 
+## Exploratory: Signal effects differ by vignette
+
+```{r}
+
+thwart_sv_bdiff <- visreg_diff(models$Model$m2, 'Thwarted marriage', 'Suicide attempt', 'Verbal request', d)
+
+thwart_sv_adiff <- visreg_diff(models$Model$m4, 'Thwarted marriage', 'Suicide attempt', 'Verbal request', d)
+
+brother_sv_bdiff <- visreg_diff(models$Model$m2, 'Brother-in-law', 'Suicide attempt', 'Verbal request', d)
+
+brother_sv_adiff <- visreg_diff(models$Model$m4, 'Brother-in-law', 'Suicide attempt', 'Verbal request', d)
+
+```
+
+```{r}
+bil_b_suicide <- signif(effect_sizes$est[effect_sizes$id=="Suicide attempt,Brother-in-law" & effect_sizes$Outcome=="Belief"], 2)
+
+rom_b_crying <- signif(effect_sizes$est[effect_sizes$id=="Crying,Romantic partner" & effect_sizes$Outcome=="Belief"], 2)
+
+bil_a_suicide <- signif(effect_sizes2$effsize[effect_sizes2$id=="Suicide attempt,Brother-in-law" & effect_sizes2$Outcome=="Action"], 2)
+
+bil_a_verbal <- signif(effect_sizes2$effsize[effect_sizes2$id=="Verbal request,Brother-in-law" & effect_sizes2$Outcome=="Action"], 2)
+
+```
+
+The effects of the signals on rated beliefs and actions differed substantially by vignette, which we display in three ways for each signal in each vignette: estimated cumulative distributions plots, which show the entire distributions of rated beliefs and actions, including which signals and vignettes have high fractions of 0's and 1's (Figures \@ref(fig:ecdf)); regression estimates of the mean effects of the signals on beliefs and actions by vignette (Figure \@ref(fig:beliefvignette)); and between- and within-subjects signal effect sizes by vignette (Figures \@ref(fig:effectsizes) and \@ref(fig:effectsizes2)).
+
+```{r ecdf, fig.width=11, fig.height=6, fig.cap="Empirical cummulative distribution functions for Time 2 Belief (top) and Action (bottom) compared to their Time 1 baseline values (red), by signal and vignette. Y-values indicate the fraction of all ratings equal to or less than a given x-value. Ratings rescaled to [0, 1]. Dots indicate median values of Belief and Action, by signal and vignette."}
+ecdf_plot
+```
+
+```{r beliefvignette, fig.width=8, fig.height=8, fig.cap=paste0("The effect of the signals on *T2 Belief* (top) and *T2 Action* (bottom) in each vignette, controlling for T1 values of Belief and Action, respectively. Ratings rescaled to [0, 1]. Effects plotted for T1 values set to their median value (*T1 Belief*=", median(d$T1Belief, na.rm=T), ", *T1 Action*=", median(d$T1Action, na.rm=T), "). Fit using generalized linear regression models with the quasibinomial family. Grey bars are 95% CIs. For coefficents, p-values, and other statistics, see models m2 and m4 in Tables \\@ref(tab:regressiontables) and \\@ref(tab:anovatables).")}
+(effectsPlots$m2plot + theme(axis.text.x = element_blank()))/effectsPlots$m4plot + plot_layout(ncol = 1) & theme(plot.margin = unit(c(0,0,0,0), units = 'mm'))
+```
+
+We note the following patterns in Figure \@ref(fig:ecdf), which we will return to in the Discussion section. First, as we intended, the distributions of *Belief* and *Action* in the *Verbal request* control condition were very similar to their distributions at T1 baseline across vignettes. In the "Basketball coach" and "Brother-in-law" vignettes, though, their distributions in the *Verbal request* condition were shifted to somewhat lower values relative to baseline (i.e., the verbal request slightly *reduced* belief and action in those vignettes). Second, in the "Romantic partner" and "Brother-in-law" vignettes, the effect of *Crying* differed little from *Verbal request*, but in the "Basketball coach" vignette, it differed little from the *Depression* and *Suicide attempt* signals. Third, the effect of the *Suicide attempt* signal on *Belief* was similar to that of *Depression* across all vignettes, but had a noticeably greater effect on *Action* in the "Romantic partner" and "Brother-in-law" vignettes. Fourth, there was little difference between the effect of the *Mild depression* vs. *Depression* signals.
+
+The largest between-subjects effect was *Suicide attempt* vs. *Verbal request* control on *Belief* in the "Brother-in-law" vignette, Cohen's d = `r bil_b_suicide`, and the smallest was the effect of *Crying* on *Belief* in the "Romantic partner" vignette, Cohen's d =`r rom_b_crying`. The largest within-subjects effect was *Suicide attempt* on *Action* at T2 vs. T1 in the "Brother-in-law" vignette, Cohen's d = `r bil_a_suicide`, and the smallest was the *negative* effect of *Verbal request* on *Action* at T2 vs. T1 in the "Brother-in-law" vignette, Cohen's d =`r bil_a_verbal`.
+
 ## Exploratory: Sociodemographic associations
 
 The sociodemographic variables were strongly confounded with nationality (Indian participants were younger, lower income, with more years of education than US), which, in turn, were confounded with vignette (responses in the Indian Thwarted marriage vignette differed substantially from those in the US vignettes). We therefore conducted our exploration of the sociodemographic variables separately by nationality.
@@ -538,7 +540,7 @@ In the Indian sample and vignette, in contrast, males were more likely to help t
 t2t3actionttest <- t.test(d$T3Action, d$T2Action, paired = T)
 ```
 
-As a partial check on the validity of our methods and results, at T3 we presented participants with strong evidence that the victim was telling the truth, and asked them to again rate their likelihood of acting to help the victim (*T3 Action*). Compared to the mean *T2 Action* (M=`r signif(mean(d$T2Action, na.rm=T), 2)`), mean *T3 Action* increased substantially, `r inline_ttest(t2t3actionttest)`. Across the US vignettes, likelihood of acting at T3 increased to near-ceiling (M=`r signif(mean(d$T3Action[d$vignette != 'Thwarted marriage']), 2)`), regardless of participants' *T2 Action* values, indicating that propensity to act was indeed contingent on believing the victim. In the Indian Thwarted marriage vignette, however, there was little change in *T3 Action* compared to *T2 Action* (Figure \@ref(fig:t3action)), perhaps because Indian participants' beliefs and actions were relatively insensitive to the signals to begin with (Figures \@ref(fig:beliefvignette) and \@ref(fig:ecdf)).
+As a partial check on the validity of our methods and results, at T3 we presented participants with strong evidence that the victim was telling the truth, and asked them to again rate their likelihood of acting to help the victim (*T3 Action*). Compared to the mean *T2 Action* (M=`r signif(mean(d$T2Action, na.rm=T), 2)`), mean *T3 Action* increased substantially, `r inline_ttest(t2t3actionttest)`. Across the US vignettes, likelihood of acting at T3 increased to near-ceiling (M=`r signif(mean(d$T3Action[d$vignette != 'Thwarted marriage']), 2)`), regardless of participants' *T2 Action* values, indicating that propensity to act was indeed contingent on believing the victim. In the Indian Thwarted marriage vignette, however, there was little change in *T3 Action* compared to *T2 Action* (Figure \@ref(fig:t3action)), perhaps because Indian participants' beliefs and actions were relatively insensitive to the signals to begin with (Figures \@ref(fig:ecdf) and \@ref(fig:beliefvignette)).
 
 # Discussion
 
@@ -603,7 +605,7 @@ This study was funded through a Washington State University, Vancouver Research 
 
 ## Pilot studies
 
-We conducted two pilot studies, one on MTurk with a large sample size (N=`r `nrow(signalingdata2018b)`), and one on [reddit.com/r/SampleSize](https://reddit.com/r/SampleSize) with a small sample size (N=28). Both studies used the experimental pre-test, post-test design used in the current study.
+We conducted two pilot studies, one on MTurk with a large sample size (N=`r nrow(signalingdata2018b)`), and one on [reddit.com/r/SampleSize](https://reddit.com/r/SampleSize) with a small sample size (N=28). Both studies used the experimental pre-test, post-test design used in the current study.
 
 In the MTurk study, participants read a vignette that put them in situations in which an imagined sister was requesting a loan of \$50,000 from the participant that was originally saved for the participant's imagined daughter's college education. The sister claims the money is needed for medical treatment for her own child, but she has incentives to deceive. The manipulations were signals very similar to those used in this study, and the outcomes were belief that the sister really needed the money and intention to loan her the money. See XX for the full write-up. See <https://osf.io/3rg8b> for preregistration of the pilot study. See <http://doi.org/10.5281/zenodo.4637883> for pilot data.
 
@@ -622,8 +624,13 @@ In the reddit.com pilot study, participants viewed two vignettes (with different
 We estimated power using our MTurk pilot study data to compare the effect of the *Mild depression* signal vs. the *Verbal request* control on *Belief* (that the sister needed the money) at T2 controlling for *Belief* at T1 in a linear regression model. Specifically, we resampled the pilot data with replacement, fit the linear regression model, and extracted the p-value for the signal coefficient, repeating this 2000 times for each sample size ranging from N=20 to N=200. Power was computed as the proportion of p-values \< 0.05. Power was about 80% for a sample size of about `r pwr80_90[[1,1]]`, and was about 90% for a sample size of about `r pwr80_90[[1,2]]`. See Figure \@ref(fig:power).
 
 ```{r power, fig.cap="Power curve for between-subjects effect of Mild depression vs. Verbal request signal on T2 Belief, controlling for T1 Belief."}
+
+smplesize <- nrow(d)/10
+
 ggplot(power_curve, aes(sample_size, power)) +
   geom_line() +
+  geom_vline(xintercept = smplesize, linetype = 'dotted') +
+  annotate(geom = 'text', x = smplesize + 3, y = 0.75, label = 'Current study sample size', hjust = 0) +
   labs(x = '\n Sample size', y = 'Power\n') +
   theme_minimal(15) + theme(axis.title.y = element_text(angle = 0))
 ```
@@ -1158,12 +1165,12 @@ effectsPlots$m26plot + theme(panel.spacing = unit(1.5, "lines"))
 
 ## Feedback distribution by vignette
 
-```{r feedbackplot, fig.width=9, fig.cap="The distribution of optional feedback provided at the end of the study. None: no feedback provided (includes, e.g., 'none', 'no', 'N/A'). Generic: A few short words, such as 'nice study', or 'thanks'. Informative: one or two sentences commenting on specific aspects of the survey."}
+```{r feedbackplot, fig.width=9, fig.cap="The distribution of optional feedback provided at the end of the study. None: no feedback provided (includes, e.g., 'none', 'no', 'N/A'). Generic: A few short words, such as 'nice study', or 'thanks'. Informative: one or two sentences commenting on specific aspects of the survey. Numbers are the number of participants in that category."}
 
 hagenutils::ggxtabs(xtabs(~Feedback3 + vignette, d), cell_counts = T) + xlab('')
 ```
 
-```{r informativeplot, fig.width=9, fig.cap="The distribution of informative feedback provided at the end of the study. See Figure \\@ref(fig:feedbackplot) for other types of feedback. See Table \\@ref(tab:informativetab) for the text of all informative statements."}
+```{r informativeplot, fig.width=9, fig.cap="The distribution of informative feedback provided at the end of the study. See Figure \\@ref(fig:feedbackplot) for other types of feedback. See Table \\@ref(tab:informativetab) for the text of all informative statements. Numbers are the number of participants in that category."}
 hagenutils::ggxtabs(xtabs(~Informative + vignette, d), cell_counts = T) + xlab('')
 ```
 
