@@ -312,10 +312,11 @@ emotion_plot <- function(d){
   ggplot() +
     geom_segment(data = d_boot, aes(x = T1LowMood_mean, y = T1Manipulative_mean, xend = T1LowMood_mean + T2LowMood_mean, yend = T1Manipulative_mean + T2Manipulative_mean, colour=signal), alpha = 0.02, arrow = arrow(length = unit(3, "mm"))) +
     geom_segment(data = d_full, aes(x = T1LowMood_mean, y = T1Manipulative_mean, xend = T1LowMood_mean + T2LowMood_mean, yend = T1Manipulative_mean + T2Manipulative_mean, colour=signal), alpha = 1, size = 1, arrow = arrow(length = unit(3, "mm"))) +
+    scale_color_viridis_d(option = 'magma', end = 0.95) +
     xlim(0, NA) +
     facet_wrap(~vignette) +
     labs(title = 'Change in mean emotions from T1 to T2', x = '\nLow mood', y = 'Manipulative\n') +
-    theme_bw(15) +
+    theme_minimal(15) +
     theme(axis.title.y = element_text(angle = 0))
 }
 
