@@ -658,15 +658,15 @@
     },
     "hagenutils": {
       "Package": "hagenutils",
-      "Version": "0.1.8",
+      "Version": "0.1.9",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
       "RemoteRepo": "hagenutils",
       "RemoteUsername": "grasshoppermouse",
       "RemoteRef": "HEAD",
-      "RemoteSha": "ae2d8a8fd244c278fc5aa32f83911d0b8f4700a3",
-      "Hash": "beeea5172c8652a77d2437abe8da7dfd"
+      "RemoteSha": "b18453aca659332793dcbfe377055a36c09faacb",
+      "Hash": "fb2a7f7366b8e73fb0d6f74396dc8b90"
     },
     "haven": {
       "Package": "haven",

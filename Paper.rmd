@@ -5,6 +5,7 @@ date: '`r format(Sys.Date(), "%B %d, %Y")`'
 always_allow_html: false
 output: 
   bookdown::html_document2:
+    toc: true
     number_sections: false
 bibliography: MTBib.bib
 csl: apa-6th-edition.csl
@@ -69,11 +70,11 @@ Major depression and suicide are generally viewed as pathological responses to s
 
 # Introduction
 
-Almost all individuals will suffer adversity, such as injury or loss of material or social resources, at some point in their lives. Psychological pain, such as sadness and low mood, probably evolved to motivate victims of adversity to shift their attention to the causes of adversity so as to mitigate its negative fitness consequences and to learn to avoid future such adverse events [@thornhill1989; @andrews2010; @Nesse1990]. In many cases, social partners could help, and therefore signals of psychological pain, such as sad expressions and crying, probably evolved to indicate need [e.g., @balsters2013].
+Almost all individuals will suffer adversity, such as injury or loss of material or social resources, at some point in their lives. Psychological pain, such as sadness and low mood, probably evolved to motivate victims of adversity to shift their attention to the causes of adversity so as to mitigate its negative fitness consequences and to learn to avoid future such adverse events [@thornhill1989; @andrews2010; @Nesse1990]. In many cases, social partners could help victims, and therefore signals of psychological pain, such as sad expressions and crying, probably evolved to indicate need [e.g., @balsters2013].
 
 <!-- Almost all individuals will suffer adversity, such as injury or loss of material or social resources, at some point in their lives. Psychological pain, such as sadness and low mood, probably evolved to motivate victims of adversity to shift their attention to the causes of the problem so as to mitigate its negative fitness consequences and to learn to avoid future such adverse events [@thornhill1989; @andrews2010; @Nesse1990]. In many types of adversity, social partners could help minimize the costs. Therefore signals of psychological pain, such as sad expressions and crying, probably evolved to indicate need [e.g., @balsters2013]. CurrentDraft-->
 
-There is strong evidence that most cases of depression are caused by major negative life events [@Hammen2005; @Mazure1998; @devries2011; @ellsberg2008]. Compared to non-depressed individuals, those with depression report about twice as many instances of negative events than non-depressed individuals [@Mazure1998] and more negative events than those with schizophrenia and bipolar depression across multiple studies [@Paykel1994]. In longitudinal studies, depression onsets soon after a negative event [@KendlerEtAl1999] or coincides with periods where adversity is likely to increase prior to it [e.g., depression starting before a divorce rather than after; @rosenstrom2017]. Additional support for the causal role of negative life events comes from the fact that the relationship between negative events and depression holds true when looking at events outside of one's control, showing that the connection is unlikely to be driven solely by individuals who are already depressed creating situations where negative events are likely to be common [@Hammen2005; @KendlerEtAl1999]. Furthermore, twin studies have shown that one's history of negative events is still a strong predictor of major depression when controlling for genetic similarity, and that part of the heritability of depression stems from the heritability of negative events like divorce and family conflict [@KendlerBaker2007; @KendlerEtAl1999]. For these and other reasons, most cases of depression are probably not due to mental illness but are instead functional instances of psychological pain [@Hagen:1999; @Hagen2003; @horwitz_loss_2007; @andrews2010; @SymeHagen2021].
+There is strong evidence that most cases of depression are caused by major negative life events [@Hammen2005; @Mazure1998; @devries2011; @ellsberg2008]. Compared to non-depressed individuals, those with depression report about twice as many instances of negative events than non-depressed individuals [@Mazure1998] and more negative events than those with schizophrenia and bipolar depression across multiple studies [@Paykel1994]. In longitudinal studies, depression onsets soon after a negative event [@KendlerEtAl1999] or coincides with periods where adversity is likely to increase prior to it [e.g., depression starting before a divorce rather than after, @rosenstrom2017]. Additional support for the causal role of negative life events comes from the fact that the relationship between negative events and depression holds true when looking at events outside of one's control, showing that the connection is unlikely to be driven solely by individuals who are already depressed creating situations where negative events are likely to be common [@Hammen2005; @KendlerEtAl1999]. Furthermore, twin studies have shown that one's history of negative events is still a strong predictor of major depression when controlling for genetic similarity, and that part of the heritability of depression stems from the heritability of negative events like divorce and family conflict [@KendlerBaker2007; @KendlerEtAl1999]. For these and other reasons, most cases of depression are probably not due to mental illness but are instead functional instances of psychological pain [@Hagen:1999; @Hagen2003; @horwitz_loss_2007; @andrews2010; @SymeHagen2021].
 
 There is equally strong evidence that depression is closely associated with anger and conflict [@cassiello2016]. Of the types of negative life events associated with depression, those which involve conflict tend to be more strongly associated with depression [@Hammen2005; @Mazure1998]. Marital problems, bullying, and abusive relationships are all common risk factors for depression [@KendlerEtAl1995; @KendlerEtAl1999; @klomek2007; @klomek2019], with assault (both sexual and non-sexual), in particular, greatly increasing one's risk of depression [@KendlerEtAl1995; @KendlerEtAl1999]. This holds true even in a small-scale, non-Western society: among the Tsimane, Amazonian horticulturalists, depression is also associated with conflict, particularly conflict involving non-kin [@StieglitzEtAl2015a]. See @SymeHagen2021 for a review of the association of depression with anger and conflict.
 
@@ -201,7 +202,7 @@ Most of the limited literature on social responses to depression and suicidality
 
 Experimental vignette studies, which employ a short, carefully constructed description of a person, object, or situation, aim to approach the ecological validity of observational studies by presenting participants with rich, real-world scenarios, while at the same time allowing researchers to randomize participants into conditions in which theoretically relevant dimensions of the vignettes are systematically manipulated, thus enabling robust causal inferences [@atzmuller2010]. Experimental vignette studies are conducted in a broad range of disciplines, including psychology, economics, sociology, management studies, political science, and education [@atzmuller2010; @aguinis2014].
 
-The primary aim of this study was to examine responses to emotional signals that varied from low to high cost, in an experimental vignette study in which a possible victim of adversity asks for help from the participant, but has incentives to exaggerate her need. In the bargaining framework, the willingness to delay credibly signals the valuation of current cooperative arrangements, with greater delays indicating lower valuations. As signal cost increased, we predicted that participants would report (1) increased belief in the signaler's claims and (2) increased likelihood of providing help, with (3) the increased likelihood of providing help mediated by the increased belief in the signaler's need. 
+In the bargaining framework, the willingness to delay credibly signals the valuation of current cooperative arrangements, with greater delays indicating lower valuations. The primary aim of this study was to examine responses to emotional signals that varied in the extent to which they reduced productivity, which we refer to as costs, in an experimental vignette study in which a possible victim of adversity asks for help from the participant, but has incentives to exaggerate her need. As signal cost increased, we predicted that participants would report (1) increased belief in the signaler's claims and (2) increased likelihood of providing help, with (3) the increased likelihood of providing help mediated by the increased belief in the signaler's need. 
 
 <!-- A secondary aim was to investigate a scenario that is common in traditional societies but uncommon in Western societies -- arranged marriages -- where conflicts between parents and offspring often result in depression and suicidality [@SymeEtAl2016] -->
 
@@ -288,9 +289,9 @@ We also asked which emotions participants felt the signaler was experiencing usi
 
 ### Time 2: Signals
 
-After rating their beliefs and actions, and which emotions they thought the potential victim was experiencing, participants were randomized into either the control condition or one of four emotional signals by the victim (in order of increasing signal cost): (1) control condition: a verbal request without additional signaling; (2) crying; (3) mild-depression; (4) depression; and (5) a suicide attempt. The signals involved the participant encountering the victim some time after the adverse event and observing, e.g., crying, sad expressions, or poor personal hygiene. These descriptions did not use the terms depression, depressed, suicidal, or mental health.
+After rating their beliefs and actions, and which emotions they thought the potential victim was experiencing, participants were randomized into either the control condition or one of four emotional signals by the victim (in order of increasing signal cost): (1) control condition: a verbal request without additional signaling; (2) crying; (3) mild-depression; (4) depression; and (5) a suicide attempt. The signals involved the participant encountering the victim some time after the adverse event and observing, e.g., crying; sad expressions; reduced effort, fatigue, and poor personal hygiene; and suicidal self-injury. These descriptions did not use the terms depression, depressed, suicidal, or mental health.
 
-The signals were cumulative: crying can be an important feature of depression [for discussion on the relationship between crying and depression see @bylsma2020], and depression is a major risk factor for suicide [@BostwickPankratz2000; @Kessler2012]. Accordingly, components of less-costly signals were included in more-costly signals. Although we use the term 'signals' throughout the paper for brevity, we expect that the hypothesized signals of need, like many signals, would also provide information to others in the form of cues [for discussion on the evolution of signals from cues see: @biernaskie2018; @Tiokhin2016; @Steinkopf2015]. The full text for the signals are available in the SI.
+The signals were cumulative: crying can be an important feature of depression [for discussion on the relationship between crying and depression see @bylsma2020], and depression is a major risk factor for suicide [@BostwickPankratz2000; @Kessler2012]. Accordingly, components of less-costly signals were included in more-costly signals. Although we use the term 'signals' throughout the paper for brevity, we expect that the hypothesized signals of need, like many signals, would also provide information to others in the form of cues [for discussion on the evolution of signals from cues see: @biernaskie2018; @Tiokhin2016; @Steinkopf2015]. The complete texts of the signals are available in the SI.
 
 ### Post-treatment measures (T2-T3)
 
@@ -446,7 +447,7 @@ all_mediations$plot
 
 ## Exploratory: Costlier signals decrease perceived manipulation and increase perceived low mood
 
-The proportion of participants inferring each emotion in each vignette at T1 is depicted in Figure \@ref(fig:t1emotionheatmap), after each signal at T2 in Figure \@ref(fig:t2emotionheatmap), and the change in proportions from T1 to T2 in Figure \@ref(fig:diffemotions). The increase in inferred depression in the *Depression* and *Suicide attempt* conditions, but not the *Verbal request* and *Crying* conditions, helps validate these signals, as does the increase in inferred suicidality in the *Suicide attempt* condition.
+The proportion of participants inferring each emotion in each vignette at T1 and after each signal at T2 is depicted in Figure \@ref(fig:emotionheatmaps), and the change in proportions from T1 to T2 in Figure \@ref(fig:diffemotions). The increase in inferred depression in the *Depression* and *Suicide attempt* conditions, but not the *Verbal request* and *Crying* conditions, helps validate these signals, as does the increase in inferred suicidality in the *Suicide attempt* condition.
 
 The mean change in the *Low mood* and *Manipulative* variables from T1 to T2 for each signal in each vignette reveals a large decrease in inferred *Manipulation* for costly signals, and a large increase in inferred *Low mood* (with the exception of the Thwarted marriage vignette, in which changes are small). See Figure \@ref(fig:emotionsplot).
 
@@ -946,23 +947,28 @@ We preregistered four OLS linear regression models and one mediation model (<htt
 
 The first two OLS regression models tested the effects of our ordinal signal variable on Time 2 *Belief* and *Action*, controlling for T1 *Belief* and *Action*, respectively (a pre-test/post-test design):
 
-`r extract_eq(models_prereg$Model$m1, intercept='beta', wrap=T)` `r extract_eq(models_prereg$Model$m3, intercept='beta', wrap=T)`
+`r extract_eq(models_prereg$Model$m1, intercept='beta', wrap=T)` 
+`r extract_eq(models_prereg$Model$m3, intercept='beta', wrap=T)`
 
 We also preregisterd models with an interaction term, for reasons explained in the main text:
 
-`r extract_eq(models_prereg$Model$m1b, intercept='beta', wrap=T)` `r extract_eq(models_prereg$Model$m3b, intercept='beta', wrap=T)`
+`r extract_eq(models_prereg$Model$m1b, intercept='beta', wrap=T)` 
+`r extract_eq(models_prereg$Model$m3b, intercept='beta', wrap=T)`
 
-The `glm` models we report in the main text were:
+The `glm` models we report in the main text:
 
-`r extract_eq(models$Model$m1, intercept='beta', wrap=T)` `r extract_eq(models$Model$m3, intercept='beta', wrap=T)` `r extract_eq(models$Model$m1b, intercept='beta', wrap=T)` `r extract_eq(models$Model$m3b, intercept='beta', wrap=T)`
+`r extract_eq(models$Model$m1, intercept='beta', wrap=T)` 
+`r extract_eq(models$Model$m3, intercept='beta', wrap=T)`
 
 The preregistered mediation and outcome models, respectively, were:
 
-`r extract_eq(med_prereg$model.m, intercept='beta', wrap=T)` `r extract_eq(med_prereg$model.y, intercept='beta', wrap=T)`
+`r extract_eq(med_prereg$model.m, intercept='beta', wrap=T)` 
+`r extract_eq(med_prereg$model.y, intercept='beta', wrap=T)`
 
 The mediation and outcome models, respectively, that we report in the main text were:
 
-`r extract_eq(med1$model.m, intercept='beta', wrap=T)` `r extract_eq(med1$model.y, intercept='beta', wrap=T)`
+`r extract_eq(med1$model.m, intercept='beta', wrap=T)` 
+`r extract_eq(med1$model.y, intercept='beta', wrap=T)`
 
 ## Sample size in each condition in the current study
 
@@ -1125,17 +1131,54 @@ ggmediation(med2)
 plot_raw_belief_action2d
 ```
 
-## T1 emotion vs vignette heatmap
+## Emotions in vignette (T1) and signal (T2) conditions
 
-```{r t1emotionheatmap, fig.width=8, fig.cap="Time 1 inference of victim's emotional state in each vignette. Each cell represents the proportion of participants who inferred that emotion. Participants could check multiple emotions from the list. Rows and columns ordered with the PCA angle method in the seriation package."}
-hagenheat(dfT1emotion_vignette, rotate_labels = F, seriation_method = 'PCA_angle', viridis_option = 'B') + theme_minimal(15)
+```{r emotionheatmaps, fig.width=10, fig.cap="Each cell represents the proportion of participants who inferred that emotion. **Time 1 emotions**: inference of victim's emotional state in each vignette at time 1. **Time 2 emotions**: inference of victim's emotional state following the signal at time 2. Participants could check multiple emotions from the list. Rows ordered by mean proportion across vignettes."}
+
+row_order = rowSums(dfT1emotion_vignette[-1])
+
+dfT1emotion_vignette$name <- factor(dfT1emotion_vignette$name, levels = dfT1emotion_vignette$name[order(row_order)])
+
+values <- seq(0, 1, 0.25)
+
+p1 <- 
+  dfT1emotion_vignette %>% 
+  gather(key = key, value = value, -1) %>%
+  mutate(key = factor(key, levels = c('Thwarted marriage', 'Basketball coach', 'Romantic partner', 'Brother-in-law'))) %>%
+  ggplot(aes_string("key", "name", fill = "value")) +
+  geom_tile() + 
+  scale_fill_viridis_c('Proportion', option = 'B', limits = c(0, 1), breaks = values) +
+  scale_x_discrete(labels = scales::label_wrap(10)) +
+  labs(title = 'T1 emotions', x = "", y = "") + 
+  theme_minimal()
+
+dfT2emotion_signal$name <- factor(dfT2emotion_signal$name, levels = dfT1emotion_vignette$name[order(row_order)])
+
+p2 <- 
+  dfT2emotion_signal %>% 
+  gather(key = key, value = value, -1) %>%
+  mutate(key = factor(key, levels = c('Verbal request', 'Crying', 'Mild depression', 'Depression', 'Suicide attempt'))) %>%
+  ggplot(aes_string("key", "name", fill = "value")) +
+  geom_tile() + 
+  scale_fill_viridis_c('Proportion', option = 'B', limits = c(0, 1), breaks = values) +
+  scale_x_discrete(labels = scales::label_wrap(10)) +
+  labs(title = 'T2 emotions', x = "", y = "") + 
+  theme_minimal() +
+  theme(axis.text.y = element_blank())
+
+p1 + p2 + plot_layout(guides='collect')
 ```
 
-## T2 emotion vs signal heatmap
+
+```{r t1emotionheatmap, fig.width=8, fig.cap="Time 1 inference of victim's emotional state in each vignette. Each cell represents the proportion of participants who inferred that emotion. Participants could check multiple emotions from the list. Rows and columns ordered with the PCA angle method in the seriation package."}
+# hagenheat(dfT1emotion_vignette, rotate_labels = F, seriation_method = 'PCA_angle', viridis_option = 'B') + theme_minimal(15)
+```
+
+<!-- ## T2 emotion vs signal -->
 
 ```{r t2emotionheatmap, fig.width=8, fig.cap="Time 2 inference of victim's emotional state following the signal. Each cell represents the proportion of participants who inferred that emotion. Participants could check multiple emotions from the list. Rows and columns ordered with the PCA angle method in the seriation package."}
 
-hagenheat(dfT2emotion_signal, rotate_labels = F, seriation_method = 'PCA_angle', viridis_option = 'B') + theme_minimal(15)
+# hagenheat(dfT2emotion_signal, rotate_labels = F, seriation_method = 'PCA_angle', viridis_option = 'B') + theme_minimal(15)
 ```
 
 ## Change in emotions T1 to T2 by signal
@@ -1145,7 +1188,7 @@ hagenheat(dfT2emotion_signal, rotate_labels = F, seriation_method = 'PCA_angle',
 d_diff <- as.matrix(dfT2emotion_signal[-1]) - as.matrix(dfT1emotion_signal[-1])
 rownames(d_diff) <- dfT2emotion_signal$name
 
-hagenheat(d_diff, rotate_labels = F, seriation_method = 'PCA_angle') + scale_fill_gradient2(low='blue', high='red')
+hagenheat(d_diff, rotate_labels = F, seriation_method = 'PCA_angle', rev_col = T) + scale_fill_gradient2(low='blue', high='red')
 
 ```
 
@@ -1177,10 +1220,14 @@ effectsPlots$m26plot + theme(panel.spacing = unit(1.5, "lines"))
 
 ## Feedback distribution by vignette
 
+At the end of the study, participants could optionally provide written feedback about study. We classified all feedback into two categories: *Generic* for a few short words, such as 'nice study', or 'thanks'; and *Informative* for one or two sentences commenting on specific aspects of the survey. See Figure \@ref(fig:feedbackplot). 
+
 ```{r feedbackplot, fig.width=9, fig.cap="The distribution of optional feedback provided at the end of the study. None: no feedback provided (includes, e.g., 'none', 'no', 'N/A'). Generic: A few short words, such as 'nice study', or 'thanks'. Informative: one or two sentences commenting on specific aspects of the survey. Numbers are the number of participants in that category."}
 
 hagenutils::ggxtabs(xtabs(~Feedback3 + vignette, d), cell_counts = T) + xlab('')
 ```
+
+We then further classified the *Informative* feedback into six categories: the vignette corresponds to real-life experiences; comments on the vignette (e.g., other ways to respond); what the participant thought about the T3 information that the victim was telling the truth; criticisms of the study (e.g., the attention checks); comments on the study; and an explanation of why the participant acted or failed to act. See Figure \@ref(fig:informativeplot). The full texts of all comments are in Table \@ref(tab:informativetab).
 
 ```{r informativeplot, fig.width=9, fig.cap="The distribution of informative feedback provided at the end of the study. See Figure \\@ref(fig:feedbackplot) for other types of feedback. See Table \\@ref(tab:informativetab) for the text of all informative statements. Numbers are the number of participants in that category."}
 hagenutils::ggxtabs(xtabs(~Informative + vignette, d), cell_counts = T) + xlab('')
