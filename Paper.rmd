@@ -3,10 +3,13 @@ title: "Depression and suicidality as credible signals of need"
 author: "Michael R. Gaffney, Kai Adams, Kristen L. Syme, and Edward H. Hagen"
 date: '`r format(Sys.Date(), "%B %d, %Y")`'
 always_allow_html: false
-output: 
+output:
   bookdown::html_document2:
     toc: true
+    toc_float: true
+    collapsed: false
     number_sections: false
+    css: style.css
 bibliography: MTBib.bib
 csl: apa-6th-edition.csl
 ---
@@ -22,7 +25,7 @@ library(ggplot2)
 library(patchwork)
 library(hagenutils)
 
-tar_load(
+tar_load(  
     c(
     'd',
     'd_US',
