@@ -598,34 +598,7 @@ The sociodemographic variables were strongly confounded with nationality (Indian
 
 In the US sample, female participants were more likely to believe and help the victim than male participants, and younger participants were more likely to believe and help the victim than older participants. We found no significant effects of *Income*, *Education*, relationship status (e.g., married, single), or number of sons or daughters on *Belief* or *Action*. See Figure \@ref(fig:demographicsignal).
 
-```{r demographicsignal, fig.width=11, fig.height=8, fig.cap="Sociodemographic associations with *T2 Belief* (top) and *T2 Action* (bottom) in US participants. Each model controlled for *T1 Belief* or *T1 Action*, vignette, Education, and Income. Significant associations displayed here. Estimated using generalized linear regression models with the quasibinomial family. Grey bars are 95% CIs."}
-
-plot_demographicsignal <-
-  effectsPlots_US$m12plot + 
-    theme(axis.text.x = element_blank()) +
-effectsPlots_US$m12bplot + 
-    theme(
-      axis.text = element_blank(), 
-      axis.title.y = element_blank(), 
-      axis.title.x = element_blank()
-      ) + 
-effectsPlots_US$m13plot + 
-effectsPlots_US$m13bplot +
-    theme(axis.text.y = element_blank(), axis.title.y = element_blank())
-
-plot_demographicsignal
-ggsave(figname(), plot_demographicsignal)
-```
-
 In the Indian sample and vignette, in contrast, males were more likely to help the victim than females, those with more years of education were less likely to believe the victim, and there was a marked increase in likelihood of helping among older individuals in the suicide signal condition. We found no significant associations with age or income. See Figure \@ref(fig:indiademographics).
-
-```{r indiademographics, fig.width=10, fig.height=8, fig.cap="Sociodemographic associations with *T2 Belief* and *T2 Action* in Indian participants (Thwarted marriage vignette). Each model included *T1 Belief* or *T1 Action*, Income, Age, Sex, Years of education, and signal. Significant associations displayed here. Estimated using generalized linear regression models with the quasibinomial family. Grey bars are 95% CIs."}
-plot_indiademo<-
-  (effectsPlots_India$m12plot + xlab('Education (years)') + effectsPlots_India$m13plot) / effectsPlots_India$m17plot
-
-plot_indiademo
-ggsave(figname(), plot_indiademo)
-```
 
 ## Validity check: T3 increase in Action with proof that victim was telling the truth
 
@@ -1318,6 +1291,35 @@ effectsPlots_India$m7plot
 
 ```{r divisionage, fig.width=9, fig.cap="Interaction of age with signals on *T2 Division* of dowry between the daughters in the thwarted marriage vignette."}
 effectsPlots_India$m8plot
+```
+
+## Exploratory demographic associations
+
+```{r demographicsignal, fig.width=11, fig.height=8, fig.cap="Sociodemographic associations with *T2 Belief* (top) and *T2 Action* (bottom) in US participants. Each model controlled for *T1 Belief* or *T1 Action*, vignette, Education, and Income. Significant associations displayed here. Estimated using generalized linear regression models with the quasibinomial family. Grey bars are 95% CIs."}
+
+plot_demographicsignal <-
+  effectsPlots_US$m12plot + 
+    theme(axis.text.x = element_blank()) +
+effectsPlots_US$m12bplot + 
+    theme(
+      axis.text = element_blank(), 
+      axis.title.y = element_blank(), 
+      axis.title.x = element_blank()
+      ) + 
+effectsPlots_US$m13plot + 
+effectsPlots_US$m13bplot +
+    theme(axis.text.y = element_blank(), axis.title.y = element_blank())
+
+plot_demographicsignal
+ggsave(figname(), plot_demographicsignal)
+```
+
+```{r indiademographics, fig.width=10, fig.height=8, fig.cap="Sociodemographic associations with *T2 Belief* and *T2 Action* in Indian participants (Thwarted marriage vignette). Each model included *T1 Belief* or *T1 Action*, Income, Age, Sex, Years of education, and signal. Significant associations displayed here. Estimated using generalized linear regression models with the quasibinomial family. Grey bars are 95% CIs."}
+plot_indiademo<-
+  (effectsPlots_India$m12plot + xlab('Education (years)') + effectsPlots_India$m13plot) / effectsPlots_India$m17plot
+
+plot_indiademo
+ggsave(figname(), plot_indiademo)
 ```
 
 ## Validity check: T3 Action vs. T2 Action
