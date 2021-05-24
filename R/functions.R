@@ -133,7 +133,12 @@ effect_plot <- function(m, ...){
   args$gg <- T
   args$scale <- 'response'
 
-  p <- exec('visreg', !!!args) +
+  p <- exec('visreg', !!!args)
+
+  if ('plot' %in% names(args) && !args$plot) return(p)
+
+  p <-
+    p +
     ylim(0, 1) +
     ylab(args$ylbl) +
     theme_bw(15) +
@@ -150,12 +155,12 @@ effect_plot <- function(m, ...){
 
 effect_plots <- function(models, data){
   list(
-    m1plot = effect_plot(fit=models$m1, xvar='signal', ylbl='T2 Belief', data=data),
+    m1plot = effect_plot(fit=models$m1, xvar='signal', ylbl='T2 Belief', data=data, plot = F),
     m1bplot = effect_plot(fit=models$m1b, xvar='signal', by='T1Belief', ylbl='T2 Belief', data=data),
-    m2plot = effect_plot(fit=models$m2, xvar='signal', by='vignette', ylbl='T2 Belief', data=data),
-    m3plot = effect_plot(fit=models$m3, xvar='signal', ylbl='T2 Action', data=data),
+    m2plot = effect_plot(fit=models$m2, xvar='signal', by='vignette', ylbl='T2 Belief', data=data, plot = F),
+    m3plot = effect_plot(fit=models$m3, xvar='signal', ylbl='T2 Action', data=data, plot = F),
     m3bplot = effect_plot(fit=models$m3b, xvar='signal', by='T1Action', ylbl='T2 Action', data=data),
-    m4plot = effect_plot(fit=models$m4, xvar='signal', by='vignette', ylbl='T2 Action', data=data),
+    m4plot = effect_plot(fit=models$m4, xvar='signal', by='vignette', ylbl='T2 Action', data=data, plot = F),
     m12plot = effect_plot(fit=models$m12, xvar='Sex', ylbl='T2 Belief', data=data),
     m12bplot = effect_plot(fit=models$m12, xvar='Age', ylbl='T2 Belief', data=data),
     m13plot = effect_plot(fit=models$m13, xvar='Sex', ylbl='T2 Action', data=data),
@@ -196,6 +201,20 @@ visreg_diff <- function(m, vignette, signal1, signal2, d, sig = 2){
   v2 <- fit$visregFit[fit$signal==signal2 & fit$vignette==vignette]
   signif(100*(v1 - v2), sig)
 }
+
+
+# x1 <- visreg(models$Model$m1, xvar = 'signal', data = d, scale = 'response')
+# x2 <- visreg(models$Model$m3, xvar = 'signal', data = d, scale = 'response')
+# x <-
+#   bind_rows(Belief = x1$fit, Action = x2$fit, .id = 'Outcome')
+#
+# ggplot(x, aes(visregFit, signal, xmin = visregLwr, xmax = visregUpr, colour = Outcome)) +
+#   geom_pointrange(lwd = 3.5, fatten = 1, alpha = 0.75, position = position_dodge(width = 0.5)) +
+#   scale_color_viridis_d(option = 'B', begin = 0.2, end = 0.8) +
+#   scale_x_continuous(limits = c(0, 1), breaks = c(0, 0.25, 0.5, 0.75, 1)) +
+#   guides(color=guide_legend(override.aes = list(size=1))) +
+#   labs(x = '\nT2 Action/Belief', y = '') +
+#   theme_minimal(15)
 
 # Mediation ---------------------------------------------------------------
 
@@ -352,7 +371,9 @@ plot_ecdf <- function(d){
     theme(
       axis.title.y = element_text(angle=0, hjust=1),
       strip.text.y = element_text(angle=0, hjust=0),
-      legend.position = 'top')
+      axis.text.x = element_text(size = 8),
+      legend.position = 'top'
+      )
 }
 
 plot_raw_data <- function(d, type){

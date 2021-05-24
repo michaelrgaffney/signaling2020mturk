@@ -1,13 +1,21 @@
 ---
 title: "Depression and suicidality as credible signals of need"
-author: "Michael R. Gaffney, Kai Adams, Kristen L. Syme, and Edward H. Hagen"
+author:
+- name: Michael R. Gaffney
+  affiliation: Department of Anthropology, Washington State University
+- name: Kai Adams
+  affiliation: UC Berkeley Haas School of Business
+- name: Kristen L. Syme
+  affiliation: Department of Experimental and Applied Psychology, Vrije Universiteit Amsterdam
+- name: Edward H. Hagen
+  affiliation: Department of Anthropology, Washington State University
+  email: edhagen@wsu.edu
 date: '`r format(Sys.Date(), "%B %d, %Y")`'
 always_allow_html: false
 output:
   bookdown::html_document2:
     toc: true
     toc_float: true
-    collapsed: false
     number_sections: false
     css: style.css
 bibliography: MTBib.bib
@@ -65,6 +73,13 @@ tar_load(
     )
 )
 
+if (!dir.exists('Figures')) dir.create('Figures')
+
+figname <- function(){
+  if (!exists('fignum')) fignum <<- 0
+  fignum <<- fignum + 1
+  paste0('Figures/Figure', fignum, '.pdf')
+  }
 ```
 
 # Abstract
@@ -73,7 +88,7 @@ Major depression and suicide are generally viewed as pathological responses to s
 
 # Introduction
 
-Almost all individuals will suffer adversity, such as injury or loss of material or social resources, at some point in their lives. Psychological pain, such as sadness and low mood, probably evolved to motivate victims of adversity to shift their attention to the causes of adversity so as to mitigate its negative fitness consequences and to learn to avoid future such adverse events [@thornhill1989; @andrews2010; @Nesse1990]. In many cases, social partners could help victims, and therefore signals of psychological pain, such as sad expressions and crying, probably evolved to indicate need [e.g., @balsters2013].
+Almost all individuals will suffer adversity, such as injury or loss of material or social resources, at some point in their lives. Psychological pain, such as sadness and low mood, probably evolved to motivate victims of adversity to shift their attention to the causes of adversity so as to mitigate its negative fitness consequences and to learn to avoid future such adverse events [@thornhill1989; @andrews2010; @Nesse1990]. In many cases, social partners could help victims, and therefore signals of psychological pain, such as sad expressions and crying, probably evolved to indicate need [e.g., @darwin1872; @bowlby1980; @balsters2013].
 
 <!-- Almost all individuals will suffer adversity, such as injury or loss of material or social resources, at some point in their lives. Psychological pain, such as sadness and low mood, probably evolved to motivate victims of adversity to shift their attention to the causes of the problem so as to mitigate its negative fitness consequences and to learn to avoid future such adverse events [@thornhill1989; @andrews2010; @Nesse1990]. In many types of adversity, social partners could help minimize the costs. Therefore signals of psychological pain, such as sad expressions and crying, probably evolved to indicate need [e.g., @balsters2013]. CurrentDraft-->
 
@@ -93,19 +108,19 @@ Other notable risk factors, like loss of a loved one or severe or prolonged illn
 
 With a cooperative species like our own, ubiquitous conflicts of interest means that there will always be disagreement over the levels of investment in a cooperative endeavor and the division of the resulting benefits. In many such cases, individuals who were dissatisfied with the terms of cooperation could seek other partners [@hammerstein2016]. In many other cases, however, it would be difficult or impossible to switch partners. Spouses who were dissatisfied with their partner's investment in their new infant, for example, would not easily find a different partner to invest in that infant [@Hagen:1999]. Similarly, an adolescent who was dissatisfied with her parent's investment in her would not easily find other parents who were willing to invest more, nor could parents easily produce another adolescent. In these examples, and many cooperative endeavors central to human biological fitness, all parties have monopoly power over the benefits they bring to the endeavor -- no one is easily replaced [@Hagen2002; @Hagen2003]. Such interdependence is increasingly recognized to be important to the evolution of cooperation in humans and other animals [@roberts2005; @tomasello2012; @aktipis2018].
 
-@Hagen2003 proposed that physical aggression and depression were complementary strategies to resolve conflicts in interdependent relationships. @SellEtAl2009 found that physically formidable individuals were more prone to anger, prevailed more in conflicts of interest, and considered themselves entitled to better treatment. Physically or socially weaker individuals, though, are not without options to resolve conflicts in their favor. An individual with monopoly power over the benefits she contributes to a critical cooperative endeavor can withhold those benefits, or put them at risk, until her partners change their behaviors in ways that benefit her. Depression is characterized, in part by a profound loss of interest in virtually all activities [@dsm5], a symptom that is probably responsible for a sharp reduction in productivity [for review, see @SymeHagen2021]. Depression might therefore be a bargaining strategy for relatively powerless individuals in the wake of adversity and social conflict [@Hagen2003; @SymeHagen2021; see also @Watson:2002].
+@Hagen2003 proposed that physical aggression and core depression symptoms like loss of interest in virtually all activities were complementary strategies to resolve conflicts in interdependent relationships. @SellEtAl2009 found that physically formidable individuals were more prone to anger, prevailed more in conflicts of interest, and considered themselves entitled to better treatment. Physically or socially weaker individuals, though, are not without options to resolve conflicts in their favor. An individual with monopoly power over the benefits she contributes to a critical cooperative endeavor can withhold those benefits, or put them at risk, until her partners change their behaviors in ways that benefit her. Depression is characterized, in part by a profound loss of interest in virtually all activities [@dsm5], a symptom that is probably responsible for a sharp reduction in productivity [for review, see @SymeHagen2021]. Depression might therefore be a bargaining strategy for relatively powerless individuals in the wake of adversity and social conflict [@Hagen2003; @SymeHagen2021; see also @Watson:2002].
 
 Bargaining models assume that delaying cooperation is costly so that there is an incentive to quickly agree on a division of benefits, and more so for those who highly value the fruits of the cooperative endeavor. In a classic non-cooperative game theory model of bargaining, @rubinstein1982 showed that two parties can come to an immediate agreement over division of benefits despite conflicts of interest if the parties' valuations of cooperation are not private information: in this case, each party knows exactly what division of benefits the other will accept, and can therefore make that offer immediately, avoiding the cost of delay. 
 
 If valuations are private information, however, then costly delays might be unavoidable because each party has an incentive to request more than their actual valuation, and to reject the likely inflated requests from partners, leading to multiple rounds of bargaining. Models of bargaining with private information have a close relationship to models of credible signaling. A willingness to delay (i.e., refuse offers) credibly reveals one's low valuation of the endeavor, and therefore genuine need -- the benefit of waiting for a better offer outweighs the low cost of delay. Eagerness to reach a deal, on the other hand, credibly reveals a high valuation -- the benefit of waiting for a better offer does not outweigh the higher cost of delay. Once valuations are known, the game reduces to the one in @rubinstein1982, and the parties can reach an agreement on the division of benefits [@KennanWilson1993]. Delays also typically require that additional factors come into play [@feinberg2005 and references therein].
 
-@Hagen2003 proposed that the substantial reduction in productivity in depression corresponds to a willingness to delay, and is therefore a credible signal of low valuation and need. In other words, reduced productivity is relatively less costly for those whose efforts are currently not yielding many fitness benefits than for those whose efforts are yielding substantial benefits.
+@Hagen2003 proposed that the substantial reduction in productivity that characterizes many cases of depression corresponds to a willingness to delay, and is therefore a credible signal of low valuation and need. In other words, reduced productivity is relatively less costly for those whose efforts are currently not yielding many fitness benefits than for those whose efforts are yielding substantial benefits.
 
 <!-- Formal models of bargaining highlight the role of private information regarding the value each party places the cooperative endeavor. Withholding or risking one's contributions to a cooperative endeavor can be conceptualized as credibly signaling private information about one's need. Cooperation generates benefits over time. Thus, withholding or risking contributions incurs a *cost of delay* -- the more one values the endeavor, the greater the cost of delay.  -->
 
 ## Suicidality
 
-Suicidality is closely linked to depression. Suicidal ideation is one of nine diagnostic criteria for a major depressive episode (MDE) [@dsm5], it is associated with depression across cultures [@haroz2017], and depression is a major risk factor for suicidal behavior [@hawton2013].
+Suicidal ideation is one of nine diagnostic criteria for a major depressive episode (MDE) [@dsm5], it is associated with depression across cultures [@haroz2017], and depression is a major risk factor for suicidal behavior [@hawton2013].
 
 Anthropology has long viewed suicidality as largely the result of social problems. Early in the field's history, anthropologists tackled the problem of suicide as manifested in the small, traditional societies in which they conducted their fieldwork. Suicide, they found, was commonly a form of protest, revenge, and/or appeal [@firth1936; @Firth:1961; @Malinowski:1932; @niehaus2012]. Some ethnographers emphasized suicide as a form of anger or social pressure [@Hezel:1987; @Giddens:1964], whereas others emphasized the powerlessness of suicide victims [@Counts:1980].
 
@@ -113,7 +128,9 @@ Common to almost all theoretical and empirical investigations of suicide is a fo
 
 ```{r cdc, fig.width=8, fig.cap="US Suicidality non-fatal injury and death rates by age and sex (2001-2019). Data from @CDC2021."}
 library(hrafsuicidedata)
-cdc2 %>% 
+
+plot_cdc <-
+  cdc2 %>% 
   na.omit() %>% 
   ggplot(aes(Age, `Crude Rate`, colour = Sex, linetype = Type)) + 
   geom_line() +
@@ -125,6 +142,9 @@ cdc2 %>%
   labs(x = '\nAge (years)', y = 'Annual rate\n(per 100,000)') +
   theme_minimal(15) +
   theme(axis.title.y = element_text(angle = 0, hjust=0))
+
+plot_cdc
+ggsave(figname(), plot_cdc)
 ```
 
 Raymond Firth was one of the first to view suicidality as a gamble to improve one's circumstances in the here and now. Based on observations that suicide attempts often followed loss or conflict and varied substantially in their likelihood of death, he argued that a sizable subset of the suicide attempts among the Tikopia were not meant to end in death but instead were a means to elicit attention, status, or immediate reintegration into the community following negative events [@firth1936; @Firth:1961].
@@ -133,7 +153,7 @@ Raymond Firth was one of the first to view suicidality as a gamble to improve on
 
 In the bargaining framework, suicidality is conceptualized as putting all future contributions to cooperative endeavors with social partners at risk with some low but non-zero probability, credibly signaling low valuation of current circumstances [see @Rosenthal1993 for a game theory model of suicide attempts as costly signals]. On this view, most suicides deaths, especially in young, physically healthy individuals, would therefore be the inevitable consequence that some individuals lose this gamble. These and similar ideas [@andrews2006; @HagenEtAl2008; @nock2008; @Stengel1956] suggest that depression symptoms that put one's value to others at risk, such as loss of interest and suicidality, are credible signals of need.
 
-Some evolutionary theorists have questioned the bargaining model based on evidence that depression is aversive to social partners [@nettle2004; @allen2006; @nesse2006; @myers2016]. These critics failed to recognize the central role of *conflict* in the signaling/bargaining models. Anger is aversive to targeted social partners, yet it is probably an adaptation that exploits advantages in physical or social formidability to force concessions from them [@SellEtAl2009]. Aversive responses to depressive bargaining are likewise expected throughout the process, with potential helpers signaling the costliness of providing support in turn. Importantly, as with anger, aversive responses to depression do not prevent concessions by interdependent social partners [@SymeHagen2021].
+Some evolutionary theorists have questioned the bargaining model based on evidence that depression is aversive to social partners [@nettle2004; @allen2006; @nesse2006; @myers2016]. These critics failed to recognize the central role of *conflict* in the model. Anger is aversive to targeted social partners, yet it is probably an adaptation that exploits advantages in physical or social formidability to force concessions from them [@SellEtAl2009]. Aversive responses to depressive bargaining are likewise expected throughout the process, with potential helpers signaling the costliness of providing support in turn. Importantly, as with anger, aversive responses to depression encourage concessions by interdependent social partners [@SymeHagen2021].
 
 <!-- Compared to suicide, however, there are fewer anthropological investigations of depression [@kleinman1985] despite frequent reports of depression or depression-like behavior in a wide range of societies [@haroz2017; @liu2020] and the potential for cross-cultural research to help understand depressive states [@haroz2017]. -->
 
@@ -288,7 +308,7 @@ After reading the vignettes, participants rated their belief the signaler to be 
 
 Responses were recorded with sliders due to the fact they allow for finer grained changes than categorical scales [@KlimekEtAl2017]. Based on findings that a slider's starting position may bias results [@liu2019], we had concerns that participants would be less likely to move away from intermediate starting values than they would be in reality. For this reason, we set each T1 slider to start fully to the left (0). For the exact wording of the question and the labels on the sliders, see Table \@ref(tab:outcomes).
 
-We also asked which emotions participants felt the signaler was experiencing using a multiple choice question in which they could select as many options as they would like. This included emotions directly related to the signals (e.g., sad, depressed, and suicidal), states which suggest genuine need (traumatized and violated), and states which suggest deception (e.g., deviousness or jealousy). The complete list can be found in the SI. To further explore the effect of signaling on participants' inferences of the signaler's emotional state, we created two new variables: *Low mood* was the sum of the binary variables *Depressed*, *Distressed* and *Sad*; and *Manipulative* was the sum of the binary variables *Devious* and *Jealous.*
+We also asked which emotions participants felt the signaler was experiencing using a multiple choice question in which they could select as many options as they would like. This included emotions directly related to the signals (e.g., sad, depressed, and suicidal), states which suggest genuine need (traumatized and violated), states which suggest deception (e.g., deviousness or jealousy), and was the victim mentally ill. The complete list can be found in the SI. To further explore the effect of signaling on participants' inferences of the signaler's emotional state, we created two new variables: *Low mood* was the sum of the binary variables *Depressed*, *Distressed* and *Sad*; and *Manipulative* was the sum of the binary variables *Devious* and *Jealous.*
 
 ### Time 2: Signals
 
@@ -336,6 +356,7 @@ To test our preregistered hypothesis that the likelihood of acting to help the v
 
 ```{r medmodel, fig.cap="Possible causal effects of the signal on helping behavior. A credible signal of need increases belief that the victim is telling the truth and needs help, which increase the likelihood of helping. The direct path from the signal to action represents other causal effects of the signal on observers, such as perceptions of the victim's emotional state (and other factors not measured in this study) that might alter observer behavior."}
 
+x <- figname()
 knitr::include_graphics('paths.svg')
 ```
 
@@ -394,7 +415,8 @@ kable(custom.summarize(d, vars), caption = "Summary statistics for study variabl
 Across the four vignettes, mean belief of the victim was relatively low at baseline (T1), Mean = `r signif(mean(d$T1Belief, na.rm = T), 2)`, albeit with wide variation, SD = `r signif(sd(d$T1Belief, na.rm=T), 2)`; `r sum(d$T1Belief==0)` participants (`r 100*signif(sum(d$T1Belief==0)/nrow(d), 2)`%) rated their belief = 0, and `r sum(d$T1Belief==1)` participants (`r 100*signif(sum(d$T1Belief==1)/nrow(d), 2)`%) rated it as = 1. The distribution of likelihood of helping the victim (action) was similar, Mean = `r signif(mean(d$T1Action, na.rm = T), 2)`, SD = `r signif(sd(d$T1Action, na.rm=T), 2)`, with `r sum(d$T1Action==0)` participants (`r 100*signif(sum(d$T1Action==0)/nrow(d), 2)`%) rating their action = 0, and `r sum(d$T1Action==1)` participants (`r 100*signif(sum(d$T1Action==1)/nrow(d), 2)`%) rated action as = 1. Although not a pre-registered prediction, *T1 Belief* and *T1 Action* were highly correlated across the four vignettes, consistent with help being worth providing if the signaler's claims were true (see Figure \@ref(fig:t1plot)).
 
 ```{r t1plot, fig.width=10, fig.height=10, fig.cap="The distributions of *T1 Belief* vs.*T1 Action*, by vignette. Each dot is one participant. Original 0-100 values rescaled to 0-1. Lines fit by linear regression. Dot size indicates the number of overlapping points. Black dot is the mean of each variable."}
-plot_T1Belief_T1Action
+plot_T1Belief_T1Action 
+ggsave(figname(), plot_T1Belief_T1Action)
 ```
 
 ## Confirmatory: Signals increase beliefs and actions in the predicted rank order
@@ -411,17 +433,40 @@ signal_action_ttest <- t.test(100*d$T2Action, 100*d$T1Action, paired = T)
 
 ```
 
-As predicted, there was a strong statistically significant positive causal effect of the ordinal signal on *T2 Belief* and *T2 Action* (controlling for *T1 Belief* and *T1 Action*, respectively), with the effect of each signal increasing in the predicted rank order (verbal request, crying, mild depression, depression, suicide attempt). See Figure \@ref(fig:beliefeffect) and models m1 and m3 in Tables \@ref(tab:regressiontables) and \@ref(tab:anovatables). (Results for the preregistered OLS models were very similar; see Figures \@ref(fig:preregbelief) and \@ref(fig:preregbeliefB).)
+As predicted, there was a strong statistically significant positive causal effect of the ordinal signal on *T2 Belief* and *T2 Action* (controlling for *T1 Belief* and *T1 Action*, respectively), with the effect of each signal increasing in the predicted rank order (verbal request, crying, mild depression, depression, suicide attempt). See Figure \@ref(fig:beliefeffect) and models m1 and m3 in Tables \@ref(tab:regressiontables) and \@ref(tab:anovatables). Results for the preregistered OLS models were very similar; see Figures \@ref(fig:preregbelief) and \@ref(fig:preregbeliefB). The within-subject effects of each signal are depicted in Figure \@ref(fig:rawbeliefactions2d).
 
-The marginal between-subjects effect of the high cost *Suicide attempt* vs. the *Verbal request* control on T2 *Belief* (averaging over all four vignettes and all values of T1 *Belief*) was an increase of `r fmt_margins(models$Margins$m1, 'signalSuicide attempt')` points on the original 0-100 point scale. The equivalent increase for T2 *Action* was `r fmt_margins(models$Margins$m3, 'signalSuicide attempt')` points. Given that the standard deviations of T2 *Belief* and *Action* are `r signif(sd(100*d$T2Belief), 2)` and `r signif(sd(100*d$T2Action), 2)`, respectively, these represent increases of `r suicide_belief_eff` and `r suicide_action_eff` SD's, respectively.
+```{r beliefeffect, fig.width=8, fig.height=4, fig.cap=paste0("The mean effects of the signals on *T2 Belief* and *T2 Action*, controlling for *T1 Belief* and *T1 Action*, respectively (original 0-100 scale rescaled to 0-1). Effects plotted for T1 values set to their median value (*T1 Belief*=", median(d$T1Belief, na.rm=T), ", *T1 Action*=", median(d$T1Action, na.rm=T), "). Fit using generalized linear regression models with the quasibinomial family. Bars are 95% CIs. Dots are *T2 Belief* and *T2 Action* values; dot size = number of overlapping data points. For coefficents, p-values, and other statistics, see models m1 and m3 in Tables \\@ref(tab:regressiontables) and \\@ref(tab:anovatables).")}
+# plot_beliefeffect <-
+#   (effectsPlots$m1plot + theme(axis.text.x = element_blank()))/effectsPlots$m3plot + plot_layout(ncol = 1) & theme(plot.margin = unit(c(0,0,0,0), units = 'mm'))
 
-```{r beliefeffect, fig.width=6, fig.height=8, fig.cap=paste0("The effect of the signals on *T2 Belief* (top) and *T2 Action* (bottom) controlling for *T1 Belief* and *T1 Action*, respectively. Effects plotted for T1 values set to their median value (*T1 Belief*=", median(d$T1Belief, na.rm=T), ", *T1 Action*=", median(d$T1Action, na.rm=T), "). Fit using generalized linear regression models with the quasibinomial family. Grey bars are 95% CIs. For coefficents, p-values, and other statistics, see models m1 and m3 in Tables \\@ref(tab:regressiontables) and \\@ref(tab:anovatables).")}
-(effectsPlots$m1plot + theme(axis.text.x = element_blank()))/effectsPlots$m3plot + plot_layout(ncol = 1) & theme(plot.margin = unit(c(0,0,0,0), units = 'mm'))
+d_tmp <-
+  d %>% 
+  dplyr::select(signal, T2Action, T2Belief) %>% 
+  pivot_longer(-signal, names_to = 'Outcome') %>% 
+  mutate(Outcome = str_remove(Outcome, 'T2'))
+
+d_m1m3 <- bind_rows(Belief = effectsPlots$m1plot$fit, Action = effectsPlots$m3plot$fit, .id = 'Outcome')
+
+plot_actionbeliefeffect <-
+  ggplot(d_m1m3, aes(visregFit, signal, xmin = visregLwr, xmax = visregUpr, colour = Outcome, group = Outcome)) +
+  geom_errorbarh(lwd = 4.5, alpha = 0.75, position = position_dodge(width = 0.6), height = 0) +
+  geom_point(position = position_dodge(width = 0.6), colour = 'black') +
+  geom_count(data = d_tmp, aes(value, signal, colour = Outcome), inherit.aes = F, alpha = 0.25, position = position_dodge(width = 0.6)) +
+  scale_color_viridis_d(option = 'B', begin = 0.2, end = 0.8) +
+  scale_x_continuous(limits = c(0, 1), breaks = c(0, 0.25, 0.5, 0.75, 1)) +
+  scale_size_area() +
+  guides(color=guide_legend(reverse = T, override.aes = list(size=3))) +
+  labs(x = '\nT2 Belief/Action', y = '') +
+  theme_minimal(15)
+
+plot_actionbeliefeffect
+ggsave(figname(), plot_actionbeliefeffect)
+rm(d_tmp, d_m1m3)
 ```
 
-<!-- Within-subjects, the average effect across all signals on *Belief* at T2 compared to T1 was `r inline_ttest(signal_belief_ttest)`, and on *Action* was `r inline_ttest(signal_action_ttest)` (on the original 0-100 point scale). For the change in *Belief* and *Action* for, T1 to T2 for all participants in all conditions, see Figure @ref(fig:rawbeliefactions2d). -->
+The estimated marginal mean between-subjects effect of the high cost *Suicide attempt* vs. the *Verbal request* control on T2 *Belief* (averaging over all four vignettes and all values of T1 *Belief*) was an increase of `r fmt_margins(models$Margins$m1, 'signalSuicide attempt')` points on the original 0-100 point scale. The equivalent increase for T2 *Action* was `r fmt_margins(models$Margins$m3, 'signalSuicide attempt')` points. Given that the standard deviations of T2 *Belief* and *Action* are `r signif(sd(100*d$T2Belief), 2)` and `r signif(sd(100*d$T2Action), 2)`, respectively, these represent increases of `r suicide_belief_eff` and `r suicide_action_eff` SD's, respectively.
 
-The within-subject effects of each signal are depicted in Figure \@ref(fig:rawbeliefactions2d).
+<!-- Within-subjects, the average effect across all signals on *Belief* at T2 compared to T1 was `r inline_ttest(signal_belief_ttest)`, and on *Action* was `r inline_ttest(signal_action_ttest)` (on the original 0-100 point scale). For the change in *Belief* and *Action* for, T1 to T2 for all participants in all conditions, see Figure @ref(fig:rawbeliefactions2d). -->
 
 ## Confirmatory: The effect of signals on action is largely mediated by belief
 
@@ -446,17 +491,33 @@ We fit the mediation and outcome models using GLM's with the binomial family as 
 
 ```{r mediation, fig.width=8, fig.height=4, fig.cap="The effect of each signal (treatment) vs. Verbal request (control) on Action. The x-axis is the change in Action on the [0, 1] scale. The effects of the signals on Action are largely mediated by Belief (percent mediated on the right). The mediation model controlled for *T1 Belief*, and the outcome model controlled for *T1 Belief* and *T1 Action*. Both models were GLMs with the binomial family (the mediation package does not support the quasibinomial family). ACME: Average causal mediation effect. ADE: Average direct effect. Total: Total effect (ADE + ACME). Bars are 95% CIs."}
 all_mediations$plot
+ggsave(figname(), all_mediations$plot)
 ```
 
 ## Exploratory: Costlier signals decrease perceived manipulation and increase perceived low mood
-
-The proportion of participants inferring each emotion in each vignette at T1 and after each signal at T2 is depicted in Figure \@ref(fig:emotionheatmaps), and the change in proportions from T1 to T2 in Figure \@ref(fig:diffemotions). The increase in inferred depression in the *Depression* and *Suicide attempt* conditions, but not the *Verbal request* and *Crying* conditions, helps validate these signals, as does the increase in inferred suicidality in the *Suicide attempt* condition.
 
 The mean change in the *Low mood* and *Manipulative* variables from T1 to T2 for each signal in each vignette reveals a large decrease in inferred *Manipulation* for costly signals, and a large increase in inferred *Low mood* (with the exception of the Thwarted marriage vignette, in which changes are small). See Figure \@ref(fig:emotionsplot).
 
 ```{r emotionsplot, fig.width=10, fig.height=8, fig.cap="The within-subjects effect of the signals on participants' inferred *Manipulative* and *LowMood* emotional states of the victim, from T1 (arrow base) to T2 (arrow head), for each signal in each of the four vignettes. Low mood: higher values indicate lower perceived mood. Manipulative: higher values indicate higher perceived manipulativeness. Thick arrows: mean change. Thin arrows: means of 500 bootstrap resamples."}
 plot_emotions
+ggsave(figname(), plot_emotions)
 ```
+
+```{r}
+mentallyIll <- signif(100*mean(d$T1MentallyIll), 2)
+
+miT2 <- 
+  as_tibble(xtabs(~T2MentallyIll + signal + vignette, d)) %>%
+  mutate(T2MentallyIll = as.numeric(T2MentallyIll)) %>% 
+  group_by(signal) %>% 
+  summarise(percent = signif(100*sum(T2MentallyIll*n)/sum(n), 2))
+
+```
+
+
+The proportion of participants inferring each emotion in each vignette at T1 and after each signal at T2 is depicted in Figure \@ref(fig:emotionheatmaps), and the change in proportions from T1 to T2 in Figure \@ref(fig:diffemotions). The increase in inferred depression in the *Depression* and *Suicide attempt* conditions, but not the *Verbal request* and *Crying* conditions, helps validate these signals, as does the increase in inferred suicidality in the *Suicide attempt* condition.
+
+At baseline (T1), `r mentallyIll`% of participants thought the victim was mentally ill, which decreased slightly at T2 in the *Verbal request* and *Crying* conditions (`r miT2$percent[miT2$signal=='Crying']`%), and then increased with signal cost to `r miT2$percent[miT2$signal=='Mild depression']`% in *Mild depression*, `r miT2$percent[miT2$signal=='Depression']`% in *Depression*, and `r miT2$percent[miT2$signal=='Suicide attempt']`% in *Suicide attempt*, with some variation by vignette. See Figures \@ref(fig:mentallyillT1) and \@ref(fig:mentallyillT2).
 
 ## Exploratory: Signal effects differ by vignette
 
@@ -487,10 +548,44 @@ The effects of the signals on rated beliefs and actions differed substantially b
 
 ```{r ecdf, fig.width=11, fig.height=6, fig.cap="Empirical cummulative distribution functions for Time 2 Belief (top) and Action (bottom) compared to their Time 1 baseline values (red), by signal and vignette. Y-values indicate the fraction of all ratings equal to or less than a given x-value. Ratings rescaled to [0, 1]. Dots indicate median values of Belief and Action, by signal and vignette."}
 ecdf_plot
+ggsave(figname(), ecdf_plot)
 ```
 
-```{r beliefvignette, fig.width=8, fig.height=8, fig.cap=paste0("The effect of the signals on *T2 Belief* (top) and *T2 Action* (bottom) in each vignette, controlling for T1 values of Belief and Action, respectively. Ratings rescaled to [0, 1]. Effects plotted for T1 values set to their median value (*T1 Belief*=", median(d$T1Belief, na.rm=T), ", *T1 Action*=", median(d$T1Action, na.rm=T), "). Fit using generalized linear regression models with the quasibinomial family. Grey bars are 95% CIs. For coefficents, p-values, and other statistics, see models m2 and m4 in Tables \\@ref(tab:regressiontables) and \\@ref(tab:anovatables).")}
-(effectsPlots$m2plot + theme(axis.text.x = element_blank()))/effectsPlots$m4plot + plot_layout(ncol = 1) & theme(plot.margin = unit(c(0,0,0,0), units = 'mm'))
+```{r beliefvignette, fig.width=8, fig.height=6, fig.cap=paste0("The effect of the signals on *T2 Belief* and *T2 Action* in each vignette, controlling for T1 values of Belief and Action, respectively. Ratings rescaled to [0, 1]. Effects plotted for T1 values set to their median value (*T1 Belief*=", median(d$T1Belief, na.rm=T), ", *T1 Action*=", median(d$T1Action, na.rm=T), "). Fit using generalized linear regression models with the quasibinomial family. Bars are 95% CIs. For coefficents, p-values, and other statistics, see models m2 and m4 in Tables \\@ref(tab:regressiontables) and \\@ref(tab:anovatables).")}
+# plot_beliefvignette <-
+#   (effectsPlots$m2plot + theme(axis.text.x = element_blank()))/effectsPlots$m4plot + plot_layout(ncol = 1) & theme(plot.margin = unit(c(0,0,0,0), units = 'mm'))
+  
+# d_tmp <-
+#   d %>% 
+#   dplyr::select(signal, vignette, T2Action, T2Belief) %>% 
+#   pivot_longer(-c(signal, vignette), names_to = 'Outcome', values_to = 'visregFit') %>% 
+#   mutate(
+#     Outcome = str_remove(Outcome, 'T2'),
+#     visregLwr = 0,
+#     visregUpr = 0
+#     )
+
+d_m2m4 <- 
+  bind_rows(Belief = effectsPlots$m2plot$fit, Action = effectsPlots$m4plot$fit, .id = 'Outcome') %>% 
+  dplyr::select(Outcome, signal, vignette, visregFit, visregLwr, visregUpr)
+
+plot_beliefvignette <-
+  ggplot(d_m2m4, aes(signal, visregFit, ymin = visregLwr, ymax = visregUpr, colour = Outcome, group = Outcome)) +
+  geom_errorbar(lwd = 3, alpha = 0.75, position = position_dodge(width = 0.6), width = 0) +
+  geom_point(position = position_dodge(width = 0.6), colour = 'black') +
+  scale_color_viridis_d(option = 'B', begin = 0.2, end = 0.8) +
+  scale_y_continuous(limits = c(0, 1), breaks = c(0, 0.25, 0.5, 0.75, 1)) +
+  guides(color=guide_legend(reverse = F, override.aes = list(size=3))) +
+  labs(x = '', y = '') +
+  facet_wrap(~vignette, ncol = 4, strip.position = 'top') +
+  theme_bw(15) + 
+  theme(
+    axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5),
+    legend.position = 'top'
+    )
+
+plot_beliefvignette
+ggsave(figname(), plot_beliefvignette)
 ```
 
 We note the following patterns in Figure \@ref(fig:ecdf), which we will return to in the Discussion section. First, as we intended, the distributions of *Belief* and *Action* in the *Verbal request* control condition were very similar to their distributions at T1 baseline across vignettes. In the "Basketball coach" and "Brother-in-law" vignettes, though, their distributions in the *Verbal request* condition were shifted to somewhat lower values relative to baseline (i.e., the verbal request slightly *reduced* belief and action in those vignettes). Second, in the "Romantic partner" and "Brother-in-law" vignettes, the effect of *Crying* differed little from *Verbal request*, but in the "Basketball coach" vignette, it differed little from the *Depression* and *Suicide attempt* signals. Third, the effect of the *Suicide attempt* signal on *Belief* was similar to that of *Depression* across all vignettes, but had a noticeably greater effect on *Action* in the "Romantic partner" and "Brother-in-law" vignettes. Fourth, there was little difference between the effect of the *Mild depression* vs. *Depression* signals.
@@ -505,7 +600,8 @@ In the US sample, female participants were more likely to believe and help the v
 
 ```{r demographicsignal, fig.width=11, fig.height=8, fig.cap="Sociodemographic associations with *T2 Belief* (top) and *T2 Action* (bottom) in US participants. Each model controlled for *T1 Belief* or *T1 Action*, vignette, Education, and Income. Significant associations displayed here. Estimated using generalized linear regression models with the quasibinomial family. Grey bars are 95% CIs."}
 
-effectsPlots_US$m12plot + 
+plot_demographicsignal <-
+  effectsPlots_US$m12plot + 
     theme(axis.text.x = element_blank()) +
 effectsPlots_US$m12bplot + 
     theme(
@@ -516,12 +612,19 @@ effectsPlots_US$m12bplot +
 effectsPlots_US$m13plot + 
 effectsPlots_US$m13bplot +
     theme(axis.text.y = element_blank(), axis.title.y = element_blank())
+
+plot_demographicsignal
+ggsave(figname(), plot_demographicsignal)
 ```
 
 In the Indian sample and vignette, in contrast, males were more likely to help the victim than females, those with more years of education were less likely to believe the victim, and there was a marked increase in likelihood of helping among older individuals in the suicide signal condition. We found no significant associations with age or income. See Figure \@ref(fig:indiademographics).
 
 ```{r indiademographics, fig.width=10, fig.height=8, fig.cap="Sociodemographic associations with *T2 Belief* and *T2 Action* in Indian participants (Thwarted marriage vignette). Each model included *T1 Belief* or *T1 Action*, Income, Age, Sex, Years of education, and signal. Significant associations displayed here. Estimated using generalized linear regression models with the quasibinomial family. Grey bars are 95% CIs."}
-(effectsPlots_India$m12plot + xlab('Education (years)') + effectsPlots_India$m13plot) / effectsPlots_India$m17plot
+plot_indiademo<-
+  (effectsPlots_India$m12plot + xlab('Education (years)') + effectsPlots_India$m13plot) / effectsPlots_India$m17plot
+
+plot_indiademo
+ggsave(figname(), plot_indiademo)
 ```
 
 ## Validity check: T3 increase in Action with proof that victim was telling the truth
@@ -554,11 +657,13 @@ Finally, after the T3 evidence that the victim was telling the truth, likelihood
 
 ## Limitations
 
-The main limitation of this study is that is has less ecological validity than real-world observations of depressed individuals interacting with their social partners. This may have biased results in a pro-signaler direction if the lack of real costs of helping made support feel less costly or if there was a social desirability bias toward helping [@grimm2010]. It may have also biased participants against helping if they could not fully imagine the characters in the story as kin or important cooperative partners, and the survey's short duration may have weakened the strength of the costlier signals as bargaining tools.
+This study has less ecological validity than real-world observations of depressed individuals interacting with their social partners, which might have biased results in a pro-signaler direction if the lack of real costs of helping made support feel less costly or if there was a social desirability bias toward helping [@grimm2010]. It may have also biased participants against helping if they could not fully imagine the characters in the story as kin or interdependent partners, and the survey's short duration may have weakened the strength of the costlier signals as bargaining tools.
 
-Our design did not include vignettes with male signalers. For this reason, we have no data on the possibility of sex differences in the effectiveness of the signaling strategies examined. Although not predicted theoretically, such differences are possible if the costs of signaling vary between the sexes due to differential access to alternative bargaining strategies [@HagenRosenstrom2016] or if one sex tends to suffer greater negative reputational effects  when displaying the emotions and behaviors in the vignettes. It is also possible the costliness of the situations presented in the vignettes differ by sex.
+Our design did not include vignettes with male signalers. For this reason, we have no data on the possibility of sex differences in the effectiveness of the signaling strategies examined. Although not predicted theoretically, such differences are possible if the costs of signaling vary between the sexes due to differential access to alternative bargaining strategies [@HagenRosenstrom2016] or if one sex tends to suffer greater negative reputational effects when displaying the emotions and behaviors in the vignettes. It is also possible the costliness of the situations presented in the vignettes differ by sex.
 
-Compared to the US sample, far more Indian participants failed our attention checks, which is consistent with botting, unfamiliarity with English, or low-effort responses [@kennedy2020]. If this high failure rate indicates lower-quality responses among those who passed the attention checks, the weak signal effect in the thwarted marriage vignette may simply be due to greater noise rather than differences in the scenario or the effectiveness of the signals compared to those in the US. Another concern relevant to all vignettes is that our decision to anchor the T1 sliders at 0 may have resulted in participants being more likely to report extreme values. 
+Compared to the US sample, far more Indian participants failed our attention checks, which is consistent with botting, unfamiliarity with English, or low-effort responses [@kennedy2020]. If this high failure rate indicates lower-quality responses among those who passed the attention checks, the weak signal effect in the thwarted marriage vignette may simply be due to greater noise rather than differences in the scenario or the effectiveness of the signals compared to those in the US. Another concern relevant to all vignettes is that our decision to anchor the T1 sliders at 0 may have resulted in participants being more likely to report extreme values.
+
+Finally, we adopted game theory models of bargaining with incomplete information as our theoretical framework, but there are many other models of credible signaling [e.g., @szamado2011], including for need [@szamado2019] and suicidality [@Rosenthal1993]. If depression and suicidality involve signaling, it might be better explained by a different model.
 
 <!-- Slider anchor  -->
 <!-- Regex: stopped in SI -->
