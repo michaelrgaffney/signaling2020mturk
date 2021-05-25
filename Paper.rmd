@@ -11,7 +11,7 @@ author:
   affiliation: Department of Anthropology, Washington State University
   email: edhagen@wsu.edu
 date: '`r format(Sys.Date(), "%B %d, %Y")`'
-always_allow_html: false
+always_allow_html: true
 output:
   bookdown::html_document2:
     toc: true
@@ -84,7 +84,7 @@ figname <- function(){
 
 # Abstract
 
-Major depression and suicide are generally viewed as pathological responses to stress that elicit aversive responses from others. Alternatively, depression and suicide attempts might involve honest signals of need in response to stress that can increase support from reluctant others. To test this hypothesis, we examined responses to emotional signals in an experimental vignette study involving claims of substantial need in the presence of conflicts of interest and private information about whether the signaler was actually in need. In a sample of 1,240 participants recruited from Amazon Mechanical Turk, costlier signals like depression and suicide attempts resulted in greater perceptions of need, reduced perceptions of manipulativeness, and increased likelihood of support compared to simple verbal requests and crying without further symptoms. Additionally, as predicted, the effect of signaling on likelihood of support was largely mediated by the effect of signaling on belief in need. Our results support the hypothesis that depression and suicide attempts, apparent human universals, are credible signals of need.
+Major depression and suicide are generally viewed as pathological responses to stress that elicit aversive responses from others. Alternatively, depression and suicidality might involve honest signals of need in response to stress that can increase support from reluctant others. To test this hypothesis, we examined responses to emotional signals in an experimental vignette study involving claims of substantial need in the presence of conflicts of interest and private information about whether the signaler was actually in need. In a sample of 1,240 participants recruited from Amazon Mechanical Turk, costlier signals like depression and suicidality resulted in greater perceptions of need, reduced perceptions of manipulativeness, and increased likelihood of support compared to simple verbal requests and crying without further symptoms. Additionally, as predicted, the effect of signaling on likelihood of support was largely mediated by the effect of signaling on belief in need. Our results support the hypothesis that depression and suicidality, apparent human universals, are credible signals of need.
 
 # Introduction
 
@@ -431,9 +431,17 @@ suicide_action_eff <- signif(sm3$AME['signalSuicide attempt']/sd(d$T2Belief), 2)
 signal_belief_ttest <- t.test(100*d$T2Belief, 100*d$T1Belief, paired = T)
 signal_action_ttest <- t.test(100*d$T2Action, 100*d$T1Action, paired = T)
 
+m1_lrX2 = signif(models$Anova$m1$`LR Chisq`[2], 3)
+m1_df = models$Anova$m1$Df[2]
+m1_p = fmt_sci(signif(models$Anova$m1$`Pr(>Chisq)`[2], 2))
+
+m3_lrX2 = signif(models$Anova$m3$`LR Chisq`[2], 3)
+m3_df = models$Anova$m3$Df[2]
+m3_p = fmt_sci(signif(models$Anova$m3$`Pr(>Chisq)`[2], 2))
+
 ```
 
-As predicted, there was a strong statistically significant positive causal effect of the ordinal signal on *T2 Belief* and *T2 Action* (controlling for *T1 Belief* and *T1 Action*, respectively), with the effect of each signal increasing in the predicted rank order (verbal request, crying, mild depression, depression, suicide attempt). See Figure \@ref(fig:beliefeffect) and models m1 and m3 in Tables \@ref(tab:regressiontables) and \@ref(tab:anovatables). Results for the preregistered OLS models were very similar; see Figures \@ref(fig:preregbelief) and \@ref(fig:preregbeliefB). The within-subject effects of each signal are depicted in Figure \@ref(fig:rawbeliefactions2d).
+As predicted, there was a strong statistically significant positive causal effect of the ordinal signal on *T2 Belief* (LR $\chi^2(`r m1_df`)=`r m1_lrX2`$, $p=`r m1_p`$) and *T2 Action* (LR $\chi^2(`r m3_df`)=`r m3_lrX2`$, $p=`r m3_p`$), controlling for *T1 Belief* and *T1 Action*, respectively, with the effect of each signal increasing in the predicted rank order (verbal request, crying, mild depression, depression, suicide attempt). See Figure \@ref(fig:beliefeffect) and models m1 and m3 in Tables \@ref(tab:regressiontables) and \@ref(tab:anovatables). Results for the preregistered OLS models were very similar; see Figures \@ref(fig:preregbelief) and \@ref(fig:preregbeliefB), and Tables \@ref(tab:preregtable) and \@ref(tab:prereganova). The within-subject effects of each signal are depicted in Figure \@ref(fig:rawbeliefactions2d).
 
 ```{r beliefeffect, fig.width=8, fig.height=4, fig.cap=paste0("The mean effects of the signals on *T2 Belief* and *T2 Action*, controlling for *T1 Belief* and *T1 Action*, respectively (original 0-100 scale rescaled to 0-1). Effects plotted for T1 values set to their median value (*T1 Belief*=", median(d$T1Belief, na.rm=T), ", *T1 Action*=", median(d$T1Action, na.rm=T), "). Fit using generalized linear regression models with the quasibinomial family. Bars are 95% CIs. Dots are *T2 Belief* and *T2 Action* values; dot size = number of overlapping data points. For coefficents, p-values, and other statistics, see models m1 and m3 in Tables \\@ref(tab:regressiontables) and \\@ref(tab:anovatables).")}
 # plot_beliefeffect <-
@@ -464,7 +472,7 @@ ggsave(figname(), plot_actionbeliefeffect)
 rm(d_tmp, d_m1m3)
 ```
 
-The estimated marginal mean between-subjects effect of the high cost *Suicide attempt* vs. the *Verbal request* control on T2 *Belief* (averaging over all four vignettes and all values of T1 *Belief*) was an increase of `r fmt_margins(models$Margins$m1, 'signalSuicide attempt')` points on the original 0-100 point scale. The equivalent increase for T2 *Action* was `r fmt_margins(models$Margins$m3, 'signalSuicide attempt')` points. Given that the standard deviations of T2 *Belief* and *Action* are `r signif(sd(100*d$T2Belief), 2)` and `r signif(sd(100*d$T2Action), 2)`, respectively, these represent increases of `r suicide_belief_eff` and `r suicide_action_eff` SD's, respectively.
+The estimated marginal mean between-subjects effect of the high cost *Suicide attempt* vs. the *Verbal request* control on T2 *Belief* (averaging over all four vignettes and all values of T1 *Belief*) was an increase of `r fmt_margins(models$Margins$m1, 'signalSuicide attempt')` points on the original 0-100 point scale. The equivalent increase for T2 *Action* was `r fmt_margins(models$Margins$m3, 'signalSuicide attempt')` points. Given that the standard deviations of T2 *Belief* and *Action* are `r signif(sd(100*d$T2Belief), 2)` and `r signif(sd(100*d$T2Action), 2)`, respectively, these represent increases of `r suicide_belief_eff` and `r suicide_action_eff` standard deviations, respectively.
 
 <!-- Within-subjects, the average effect across all signals on *Belief* at T2 compared to T1 was `r inline_ttest(signal_belief_ttest)`, and on *Action* was `r inline_ttest(signal_action_ttest)` (on the original 0-100 point scale). For the change in *Belief* and *Action* for, T1 to T2 for all participants in all conditions, see Figure @ref(fig:rawbeliefactions2d). -->
 
@@ -1311,7 +1319,7 @@ effectsPlots_US$m13bplot +
     theme(axis.text.y = element_blank(), axis.title.y = element_blank())
 
 plot_demographicsignal
-ggsave(figname(), plot_demographicsignal)
+# ggsave(figname(), plot_demographicsignal)
 ```
 
 ```{r indiademographics, fig.width=10, fig.height=8, fig.cap="Sociodemographic associations with *T2 Belief* and *T2 Action* in Indian participants (Thwarted marriage vignette). Each model included *T1 Belief* or *T1 Action*, Income, Age, Sex, Years of education, and signal. Significant associations displayed here. Estimated using generalized linear regression models with the quasibinomial family. Grey bars are 95% CIs."}
@@ -1319,7 +1327,7 @@ plot_indiademo<-
   (effectsPlots_India$m12plot + xlab('Education (years)') + effectsPlots_India$m13plot) / effectsPlots_India$m17plot
 
 plot_indiademo
-ggsave(figname(), plot_indiademo)
+# ggsave(figname(), plot_indiademo)
 ```
 
 ## Validity check: T3 Action vs. T2 Action
@@ -1355,7 +1363,8 @@ d %>%
 ## Regression tables
 
 ```{r regressiontables}
-tmp <- models %>% 
+tmp <- 
+  models %>% 
   dplyr::filter(Name %in% c('m1', 'm2', 'm3', 'm4', 'm21', 'm24', 'm25'))
 
 regressiontable(tmp$Model, caption = 'Regression coefficients')
@@ -1397,13 +1406,13 @@ p2 <- effect_plot(fit=models_prereg$Model$m3b, xvar='signal', by='T1Action', ylb
 
 ### OLS regression tables
 
-```{r preregtables}
+```{r preregtable}
 regressiontable(models_prereg$Model, caption = 'OLS regression coefficients for preregistered linear regression models.')
 ```
 
 ### OLS Anova tables
 
-```{r prepreganova}
+```{r prereganova}
 bind_rows(models_prereg$TidyANOVA, .id = 'Model') %>%
   dplyr::rename(Variable = term, `LR Chisq` = statistic) %>% 
   gt::gt(groupname_col = "Model", caption = "OLS ANOVA tables") %>% 

@@ -102,6 +102,7 @@ fit_models <- function(data, formulas, family = 'quasibinomial'){
   names(d$Model) <- d$Name
   names(d$RobustCI) <- d$Name
   names(d$TidyModel) <- d$Name
+  names(d$Anova) <- d$Name
   names(d$TidyANOVA) <- d$Name
   names(d$Margins) <- d$Name
 
