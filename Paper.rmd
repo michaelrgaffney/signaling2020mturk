@@ -552,7 +552,7 @@ bil_a_verbal <- signif(effect_sizes2$effsize[effect_sizes2$id=="Verbal request,B
 
 ```
 
-The effects of the signals on rated beliefs and actions differed substantially by vignette, which we display in three ways for each signal in each vignette: estimated cumulative distributions plots, which show the entire distributions of rated beliefs and actions, including which conditions have high fractions of 0's and 1's (Figures \@ref(fig:ecdf)); regression estimates of the mean effects of the signals on beliefs and actions by vignette (Figure \@ref(fig:beliefvignette)); and between- and within-subjects signal effect sizes (Cohen's d) by vignette (Figures \@ref(fig:effectsizes) and \@ref(fig:effectsizes2)).
+The effects of the signals on rated beliefs and actions differed substantially by vignette, which we display in three ways for each signal in each vignette: estimated cumulative distribution function plots, which show the entire distributions of rated beliefs and actions, including which conditions have high fractions of 0's and 1's (Figures \@ref(fig:ecdf)); regression estimates of the mean effects of the signals on beliefs and actions by vignette (Figure \@ref(fig:beliefvignette)); and between- and within-subjects signal effect sizes (Cohen's d) by vignette (Figures \@ref(fig:effectsizes) and \@ref(fig:effectsizes2)).
 
 ```{r ecdf, fig.width=11, fig.height=6, fig.cap="Empirical cummulative distribution functions for Time 2 Belief (top) and Action (bottom) compared to their Time 1 baseline values (red), by signal and vignette. Y-values indicate the fraction of all ratings equal to or less than a given x-value. Ratings rescaled to [0, 1]. Dots indicate median values of Belief and Action, by signal and vignette."}
 ecdf_plot
@@ -602,13 +602,13 @@ The largest between-subjects effect was *Suicide attempt* vs. *Verbal request* c
 
 ## Exploratory: Sociodemographic associations
 
-The sociodemographic variables were strongly confounded with nationality (Indian participants were younger, lower income, with more years of education than US; see Figure \@ref(fig:socioeconomic)), which, in turn, were confounded with vignette (responses in the Indian Thwarted marriage vignette differed substantially from those in the US vignettes). We therefore conducted our exploration of the sociodemographic variables separately by nationality.
+The sociodemographic variables were strongly confounded with nationality (Indian participants were younger, lower income, with more years of education than US participants; see Figure \@ref(fig:socioeconomic)), which, in turn, were confounded with vignette (responses in the Indian Thwarted marriage vignette differed substantially from those in the US vignettes). We therefore conducted our exploration of the sociodemographic variables separately by nationality.
 
 In the US sample, female participants were more likely to believe and help the victim than male participants, and younger participants were more likely to believe and help the victim than older participants. We found no significant effects of *Income*, *Education*, relationship status (e.g., married, single), or number of sons or daughters on *Belief* or *Action*. See Figure \@ref(fig:demographicsignal).
 
 In the Indian sample and vignette, in contrast, males were more likely to help the victim than females, those with more years of education were less likely to believe the victim, and there was a marked increase in likelihood of helping among older individuals in the suicide signal condition. We found no significant associations with age or income. See Figure \@ref(fig:indiademographics).
 
-## Validity check: T3 increase in Action with proof that victim was telling the truth
+## Validity check: large T3 increase in Action with proof that victim was telling the truth
 
 ```{r}
 t2t3actionttest <- t.test(d$T3Action, d$T2Action, paired = T)
