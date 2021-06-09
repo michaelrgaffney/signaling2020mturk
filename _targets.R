@@ -69,7 +69,9 @@ list(
         PC1emotionT1 = -mpcaT1$x[,1],
         PC2emotionT1 = -mpcaT1$x[,2],
         PC1emotionT2 = -mpcaT2$x[,1],
-        PC2emotionT2 = -mpcaT2$x[,2]
+        PC2emotionT2 = -mpcaT2$x[,2],
+        T1MentallyIll_f = factor(T1MentallyIll, labels = c('No', 'Yes')),
+        T2MentallyIll_f = factor(T2MentallyIll, labels = c('No', 'Yes'))
       )
   ),
 
@@ -139,7 +141,9 @@ list(
       m22 = "T2Belief ~ T1Belief * signal + PC1emotionT1 + PC2emotionT1",
       m23 = "T2Action ~ T1Action * signal + PC1emotionT1 + PC2emotionT1",
       m26 = 'T3Action ~ T2Action * vignette',
-      m27 = 'T1MentallyIll ~ vignette'
+      m27 = 'T1MentallyIll ~ vignette',
+      m28 = 'T2Belief ~ T1Belief + T1MentallyIll_f + signal * T2MentallyIll_f + vignette',
+      m29 = 'T2Action ~ T1Action + T1MentallyIll_f + signal * T2MentallyIll_f + vignette'
     )
   ),
 
