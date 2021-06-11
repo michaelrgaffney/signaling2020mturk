@@ -155,7 +155,7 @@ ggsave(figname(), plot_cdc)
 
 Raymond Firth, an anthropologist who worked in the southwestern Pacific, was one of the first to view suicidality as a gamble to improve one's circumstances in the here and now. Based on observations that suicide attempts often followed loss or conflict and varied substantially in their likelihood of death, he argued that a sizable subset of the suicide attempts among the Tikopia were not meant to end in death but instead were a means to elicit aid, status, or immediate reintegration into the community following negative events [@firth1936; @Firth:1961].
 
-In the bargaining framework, suicidality is conceptualized as putting all future contributions to cooperative endeavors with social partners at risk with some low but non-zero probability, credibly signaling low valuation of current circumstances. On this view, most suicides deaths, especially in young, physically healthy individuals, would therefore be the inevitable consequence that some individuals lose this gamble. These and similar ideas [@andrews2006; @HagenEtAl2008; @nock2008; @Stengel1956; @Rosenthal1993] suggest that depression symptoms that put one's value to others at risk, such as loss of interest and suicidality, are credible signals of need.
+In the bargaining framework, suicidality is conceptualized as putting all future contributions to cooperative endeavors with social partners at risk with some low but non-zero probability, credibly signaling low valuation of current circumstances. On this view, most suicides deaths, especially in young, physically healthy individuals, would therefore be the inevitable consequence that some individuals lose this gamble.
 
 <!-- Need to integrate this -->
 As with depression, there are negative social responses to suicidal behavior. Most studies examining responses to those who have survived suicide attempts have focused on stigmatization. In these studies, perceptions of survivors as being weak, selfish, mentally ill, and antisocial are commonly reported [@BatterhamEtAl2013; @TzengLipson2004], with stigmatization often being found within and outside one's social network [@FreyEtAl2016; @ScoccoEtAl2012]. 
@@ -164,7 +164,11 @@ Despite this potential for stigmatization, increased social support and  benefic
 
 <!-- Some evolutionary theorists have questioned the bargaining model based on evidence that depression is aversive to social partners [@nettle2004; @allen2006; @nesse2006; @myers2016]. These critics overlooked the central role of *conflict* in the model.  -->
 
-Anger is aversive to targeted social partners, yet it is probably an adaptation that exploits advantages in physical or social formidability to force concessions from them [@SellEtAl2009]. Aversive responses to depressive and suicidal bargaining are likewise expected throughout the process, encouraging concessions by interdependent social partners, who in turn signal the costliness of increasing their support [@Hagen2003; @SymeHagen2021].
+## Aversiveness is a feature of depression, not a bug
+
+Under the bargaining model, aversive responses to depressive and suicidal bargaining are expected throughout the process, encouraging beneficial concessions by interdependent social partners with whom one is in conflict, who in turn signal the costliness of increasing their support [@Hagen2003; @SymeHagen2021]. This predicted pattern is quite similar to anger, which is aversive to targeted social partners, yet is probably an adaptation that exploits advantages in physical or social formidability to force beneficial concessions from them [@SellEtAl2009]. 
+
+In summary, we propose that depression symptoms that put one's value to others at risk, such as loss of interest and suicidality, are aversive but adaptive signals of need [for similar views, see @andrews2006; @HagenEtAl2008; @nock2008; @Stengel1956; @Rosenthal1993; @firth1936; @Firth:1961; @farberow1961].
 
 <!-- Compared to suicide, however, there are fewer anthropological investigations of depression [@kleinman1985] despite frequent reports of depression or depression-like behavior in a wide range of societies [@haroz2017; @liu2020] and the potential for cross-cultural research to help understand depressive states [@haroz2017]. -->
 
