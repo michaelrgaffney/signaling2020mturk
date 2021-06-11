@@ -181,7 +181,9 @@ effect_plots <- function(models, data){
     # m25plotSex = effect_plot(fit=models$m25, xvar='Sex', ylbl='T2 Action', data=data),
     m26plot = effect_plot(fit=models$m26, xvar='T2Action', by='vignette', ylbl='T3 Action', data=data) +
       theme(axis.text.x = element_text(angle = 0)) + xlab('\nT2 Action'),
-    m27plot = effect_plot(fit=models$m27, xvar='vignette', ylbl='T1 Mentally ill', data=data)
+    m27plot = effect_plot(fit=models$m27, xvar='vignette', ylbl='T1 Mentally ill', data=data),
+    m28plot = effect_plot(fit=models$m28, xvar='T2MentallyIll_f', by='signal', ylbl='T2 Belief', data=data),
+    m29plot = effect_plot(fit=models$m29, xvar='T2MentallyIll_f', by='signal', ylbl='T2 Action', data=data)
   )
 }
 
@@ -380,7 +382,7 @@ plot_ecdf <- function(d){
 plot_raw_data <- function(d, type){
   d <-
     d %>%
-    dplyr::select(MTurkID, signal, vignette, starts_with('T1'), starts_with('T2')) %>%
+    dplyr::select(MTurkID, signal, vignette, starts_with('T1'), starts_with('T2'), -ends_with('_f')) %>%
     pivot_longer(starts_with('T')) %>%
     separate(col=name, into = c('Time', 'Variable'), sep = 2) %>%
     dplyr::rename(
