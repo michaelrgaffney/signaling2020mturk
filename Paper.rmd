@@ -126,7 +126,7 @@ If valuations are private information, however, costly delays might be unavoidab
 
 ## Suicidality
 
-Theoretical models of depression must account for suicidality.Suicidal ideation is one of nine diagnostic criteria for a major depressive episode (MDE) [@dsm5] and is associated with depression across cultures [@haroz2017]; depression is a major risk factor for suicidal behavior [@hawton2013]; and suicidality has been invoked to justify grief-related depression symptoms as psychopathological [e.g., @pies2014]. 
+Theoretical models of depression must account for suicidality. Suicidal ideation is one of nine diagnostic criteria for a major depressive episode (MDE) [@dsm5] and is associated with depression across cultures [@haroz2017]; depression is a major risk factor for suicidal behavior [@hawton2013]; and suicidality has been invoked to justify grief-related depression symptoms as psychopathological [e.g., @pies2014]. 
 
 Anthropology, in contrast, has long viewed suicidality as largely the result of social problems. Early in the field's history, anthropologists reported on suicide attempts and deaths in the small-scale societies that serve as models for the types of societies in which humans evolved. Suicide, they found, was commonly a form of protest, revenge, and/or appeal [@firth1936; @Firth:1961; @Malinowski:1932; @niehaus2012]. Some ethnographers emphasized suicide as a form of anger or social pressure [@Hezel:1987; @Giddens:1964], whereas others emphasized the powerlessness of suicide victims [@Counts:1980].
 
