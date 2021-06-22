@@ -3,7 +3,7 @@ title: "Depression and suicidality as evolved credible signals of need in social
 author:
 - name: Michael R. Gaffney
   affiliation: Department of Anthropology, Washington State University
-- name: Kai Adams
+- name: Kai H. Adams
   affiliation: UC Berkeley Haas School of Business
 - name: Kristen L. Syme
   affiliation: Department of Experimental and Applied Psychology, Vrije Universiteit Amsterdam
@@ -568,7 +568,7 @@ As a partial check on the validity of our methods and results, at T3 we presente
 
 As predicted, in vignettes involving conflicts of interest and private information about the need for help, costly signals of need increased participants' belief in the victim and their likelihood of helping her, with the increase in perceived need and likelihood of helping increasing monotonically with signal cost. As predicted, the increase in likelihood of helping was largely mediated by the increase in belief in the victim. In an exploratory analysis, costlier signals also decreased perceptions that the victim was manipulative. These results provide evidence that, contrary to the influential "interpersonal" view that depressive behaviors are socially dysfunctional [reviewed in @hames2013], they in fact outperform verbal requests, sad expressions, and crying in providing benefits to victims when there are conflicts of interest.
 
-Signal effects were largest in the "brother-in-law" and "romantic partner" vignettes, both of which involved claims of assault against participants' imagined daughters, and smaller in the "basketball coach" and the "thwarted marriage" vignettes. The small effect in the "basketball coach" vignette might have been due to the lack of relatedness between participants and the victim (the star player), or how participants weighted the costs of suspending the coach vs. punishing a potentially innocent person. The US vignettes also had different degrees of evidence *against* the victim beyond just denial by the accused, ranging from strong evidence in the basketball coach vignette (a negative police report) to moderate evidence in the romantic partner vignette (no physical injuries) to weak evidence in the brother-in-law vignette (nothing beyond denial by the brother-in-law), raising the possibility that credible signals are more effective when negative evidence is lacking (Dylan Tweed, personal communication).
+Signal effects were largest in the "brother-in-law" and "romantic partner" vignettes, both of which involved claims of assault against participants' imagined daughters, and smaller in the "basketball coach" and the "thwarted marriage" vignettes. The smaller effect in the "basketball coach" vignette might have been because in the role of athletic director, participants did not value their relationship with the star player as much as we anticipated (e.g., due to lack of relatedness), or how participants weighted the costs of suspending the coach vs. punishing a potentially innocent person [for discussion of suicidal signaling to kin vs. nonkin, see @SymeHagen2018]. The US vignettes also had different degrees of evidence *against* the victim beyond just denial by the accused, ranging from strong evidence in the basketball coach vignette (a negative police report) to moderate evidence in the romantic partner vignette (no physical injuries) to weak evidence in the brother-in-law vignette (nothing beyond denial by the brother-in-law), raising the possibility that credible signals are more effective when negative evidence is lacking (Dylan Tweed, personal communication).
 
 The small signal effect in the "thwarted marriage" vignette, which involved the Indian sample, could indicate that our results do not generalize across cultures, undermining our adaptationist hypothesis. It could also reflect our poor understanding of contemporary Indian culture regarding dowry (the effect was larger in older participants). Baseline belief in the older daughter, and likelihood of helping her, was relatively high at baseline (`r signif(100*mean(d$T1Belief[d$vignette=='Thwarted marriage']), 2)`%) compared to victims in the other vignettes. Private information and conflict therefore probably played a smaller role and thus costly signals were less necessary. We observed a similar pattern in our pilot study, in which baseline belief in the victim's need was high, and costly signals had smaller effects than they did in the current study. Additionally, supporting the older daughter came at the cost of one's younger daughter, which may also help explain the relatively small signal effects. A final consideration is that data from the Indian sample appeared to be of lower quality, limiting our confidence in any of these interpretations (see the Limitations section for more information).
 
@@ -600,7 +600,7 @@ Depression is costly and sometimes leads to death by suicide. Our results sugges
 
 # Acknowledgements
 
-This study was funded through a Washington State University, Vancouver Research Mini Grant. We thank Anne Pisor, Darcy Bird, and members of the Hagen lab group for numerous helpful comments. We also thank XX and YY [pending permission to acknowledge] for feedback on the Thwarted marriage vignette.
+This study was funded through a Washington State University, Vancouver Research Mini Grant. We thank Anne Pisor, Caroline Smith, Tiffany Alvarez, Aaron Lightner, Luke Martello, and Darcy Bird for numerous helpful comments. We thank Arpita Sinha for feedback on the Thwarted marriage vignette.
 
 # Supplementary information
 
@@ -964,7 +964,7 @@ The first two OLS regression models tested the effects of our ordinal signal var
 `r extract_eq(models_prereg$Model$m1, intercept='beta', wrap=T)` 
 `r extract_eq(models_prereg$Model$m3, intercept='beta', wrap=T)`
 
-We also preregisterd models with an interaction term, for reasons explained in the main text:
+We also preregistered models with an interaction term, for reasons explained in the main text:
 
 `r extract_eq(models_prereg$Model$m1b, intercept='beta', wrap=T)` 
 `r extract_eq(models_prereg$Model$m3b, intercept='beta', wrap=T)`
