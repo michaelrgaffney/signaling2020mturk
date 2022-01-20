@@ -76,7 +76,7 @@ T1Belief_Action_dist <- function(d){
     guides(colour = 'none', size = guide_legend(title = 'Overlapping\npoints')) +
     facet_wrap(~vignette) +
     theme_minimal(15) +
-    theme(axis.title.y = element_text(angle=0))
+    theme(axis.title.y = element_text(angle=0, vjust = 0.5))
 
 }
 
@@ -339,7 +339,7 @@ emotion_plot <- function(d){
     facet_wrap(~vignette) +
     labs(title = 'Change in mean emotions from T1 to T2', x = '\nLow mood', y = 'Manipulative\n') +
     theme_minimal(15) +
-    theme(axis.title.y = element_text(angle = 0))
+    theme(axis.title.y = element_text(angle = 0, vjust = 0.5))
 }
 
 plot_ecdf <- function(d){
