@@ -2,7 +2,9 @@
 
 This repository contains all code necessary to reproduce:
 
-[*Depression and suicidality as credible signals of need*](https://michaelrgaffney.github.io/signaling2020mturk/). Michael R. Gaffney, Kai Adams, Kristen L. Syme, and Edward H. Hagen
+[*Depression and suicidality as credible signals of need*](https://michaelrgaffney.github.io/signaling2020mturk/). Michael R. Gaffney, Kai Adams, Kristen L. Syme, and Edward H. Hagen. 
+
+Now published: [https://doi.org/10.1016/j.evolhumbehav.2022.02.004](https://doi.org/10.1016/j.evolhumbehav.2022.02.004)
 
 Instructions:
 
